@@ -33,7 +33,7 @@
 		
 		<!-- 옵션 박스 -->
 		<div class="purchasebtn">
-				<a href="http://localhost:9000/doppio/admin/admin_package/package_write.th"><button type="submit">글쓰기</button></a>
+				<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_write.th"><button type="button">글쓰기</button></a>
 		</div>
 		<div class="lioption_div">
 			<div class="lioption_div2">

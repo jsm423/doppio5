@@ -15,7 +15,7 @@
 	<div class="writecontent">
 		<section class="board_write">
 			<div class="title">
-				<p>레시피 작성</p><br>
+				<p>Recipe 작성</p><br>
 			</div>
 			<form name="board_write" action="#" method="get" >
 				<table class="content_write">
@@ -33,11 +33,13 @@
 				<hr class="writeline">
 				<table class="content_write" id="lasttable">
 					<tr>
-						<th>파일</th>
+						<th>대표사진</th>
 						<td><input type="file" name="file1"></td>
+						<th>내용사진</th>
+						<td><input type="file" name="file2"></td>
 					</tr>
 					<tr>					
-						<td colspan="2">
+						<td colspan="4">
 							<button type="button" class="btn_style2" onclick="boardFormCheck()">저장</button>
 							<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th"></a><button type="reset" class="btn_style2">취소</button>
 						</td>
