@@ -70,10 +70,8 @@ $(document).ready(function(){
 	});
 	
 	
-	
-	
 	/*******************
-	 * qna - 글쓰기 폼체크
+	 * 게시판 - 글쓰기 폼체크
 	 ********************/	
  	$("#btnQna").click(function(){
 		if($("#qtitle").val() == ""){
@@ -88,7 +86,7 @@ $(document).ready(function(){
 			qna_write.submit();
 		}
 	});
-	
+	 
 	/*******************
 	 * 게시판 - 글쓰기 폼체크
 	 ********************/	
@@ -105,6 +103,36 @@ $(document).ready(function(){
 			board_write.submit();
 		}
 	});
+	
+	
+	/*******************
+	 * 레시피 - 글쓰기 폼체크
+	 ********************/	
+ 	$("#btnRecipe").click(function(){
+ 		if($("#rname").val() == ""){ 
+			alert("레시피명을 입력해주세요");
+			$("#rname").focus();
+				return false;
+		}else if($("#rtitle").val() == ""){
+			alert("제목을 입력해주세요");
+			$("#rtitle").focus();
+			return false;
+		}else if($("#rcontent1").val() == ""){
+			alert("재료를 입력해주세요");
+			$("#rcontent1").focus();
+			return false;
+		}else if($("#rcontent2").val() == ""){
+			alert("레시피를 입력해주세요");
+			$("#rcontent2").focus();
+			return false;
+		}else{
+			recipe_write.submit();
+		}
+	});
+	
+	
+	
+	
 	
 	
 	

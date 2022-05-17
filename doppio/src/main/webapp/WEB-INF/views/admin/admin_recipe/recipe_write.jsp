@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
+<script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -15,19 +17,36 @@
 	<div class="writecontent">
 		<section class="board_write">
 			<div class="title">
-				<p>Recipe 작성</p><br>
+				<p>레시피 작성</p><br>
 			</div>
-			<form name="board_write" action="#" method="get" >
+			<form name="recipe_write" action="/doppio/admin/admin_recipe/recipe_write.th" method="post" enctype="multipart/form-data">
 				<table class="content_write">
 					<tr>
+						<th>레시피명</th>
+						<td width="90%"><input type="text" name="rname" id="rname"></td>
+					</tr>
+					<tr>
 						<th>제목</th>
-						<td width="90%"><input type="text"></td>
+						<td width="90%"><input type="text" name="rtitle" id="rtitle"></td>
+					</tr>
+					<tr>
+						<th>영상 주소</th>
+						<td width="90%"><input type="text" name="rurl" id="rurl"></td>
 					</tr>
 				</table>
 				<hr class="writeline">
 				<table class="content_write">
 					<tr>
-						<td><textarea name="bcontent"></textarea></td>
+						<td>
+							재료<br>
+							<textarea name="rcontent1" id="rcontent1"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							레시피<br>
+							<textarea name="rcontent2" id="rcontent2"></textarea>
+						</td>
 					</tr>
 				</table>
 				<hr class="writeline">
@@ -35,13 +54,11 @@
 					<tr>
 						<th>대표사진</th>
 						<td><input type="file" name="file1"></td>
-						<th>내용사진</th>
-						<td><input type="file" name="file2"></td>
 					</tr>
 					<tr>					
-						<td colspan="4">
-							<button type="button" class="btn_style2" onclick="boardFormCheck()">저장</button>
-							<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th"></a><button type="reset" class="btn_style2">취소</button>
+						<td colspan="2">
+							<button type="button" class="btn_style2" id="btnRecipe">저장</button>
+							<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th"></a><button type="button" class="btn_style2">취소</button>
 						</td>
 					</tr>
 				</table>
@@ -50,6 +67,8 @@
 		</section>
 		
 	</div>
+	
+	
 	
 	
 	<!-- footer -->

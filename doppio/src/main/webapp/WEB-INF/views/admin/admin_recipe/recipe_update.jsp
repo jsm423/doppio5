@@ -6,6 +6,30 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
+<script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>
+<script>
+	$(document).ready(function(){
+		$("input[type=file]").change(function(){
+		
+			if(window.FileReader){
+				var fname =  $(this)[0].files[0].name;
+				$("#upload").text(fname);
+			}
+		});		
+		
+	});
+</script>
+<style>
+	#upload {
+		position:relative;
+		/*border:1px solid red;*/
+		left:89px;	top:-29px;
+		background-color:white;
+		width:150px;
+		display:inline-block;
+	}
+</style>
 </head>
 <body>
 	<!-- header -->
@@ -17,29 +41,47 @@
 			<div class="title">
 				<p>레시피 수정</p><br>
 			</div>
-			<form name="board_write" action="#" method="get" >
+			<form name="recipe_write" action="/doppio/admin/admin_recipe/recipe_update.th?rnum=${vo.rnum }" method="post" enctype="multipart/form-data">
 				<table class="content_write">
 					<tr>
+						<th>레시피명</th>
+						<td width="90%"><input type="text" name="rname" id="rname" value="${vo.rname }"></td>
+					</tr>
+					<tr>
 						<th>제목</th>
-						<td width="90%"><input type="text"></td>
+						<td width="90%"><input type="text" name="rtitle" id="rtitle" value="${vo.rtitle }"></td>
+					</tr>
+					<tr>
+						<th>영상 주소</th>
+						<td width="90%"><input type="text" name="rurl" id="rurl" value="${vo.rurl }"></td>
 					</tr>
 				</table>
 				<hr class="writeline">
 				<table class="content_write">
 					<tr>
-						<td><textarea name="bcontent"></textarea></td>
+						<td>
+							재료<br>
+							<textarea name="rcontent1" id="rcontent1">${vo.rcontent1 }</textarea>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							레시피<br>
+							<textarea name="rcontent2" id="rcontent2">${vo.rcontent2 }</textarea>
+						</td>
 					</tr>
 				</table>
 				<hr class="writeline">
 				<table class="content_write" id="lasttable">
 					<tr>
 						<th>파일</th>
-						<td><input type="file" name="file1"></td>
+						<td><input type="file" name="file1">
+						<span id="upload">${vo.rfile }</span></td>
 					</tr>
 					<tr>					
 						<td colspan="2">
-							<button type="button" class="btn_style2" onclick="boardFormCheck()">저장</button>
-							<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_content.th"><button type="button" class="btn_style2">취소</button></a>
+							<button type="submit" class="btn_style2">저장</button>
+							<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_content.th?rnum=${vo.rnum }$rno=${vo.rno}"><button type="button" class="btn_style2">취소</button></a>
 							<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th"><button type="button" class="btn_style2">리스트</button></a>
 						</td>
 					</tr>

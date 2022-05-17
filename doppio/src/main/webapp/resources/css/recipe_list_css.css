@@ -6,17 +6,17 @@
 	*{margin: 0;}
 	
 	div.recipe_header {
-		margin: auto;
+
 		margin-top:20px;
 		text-align: center;
 		border-top: 5px double #D2D2D2; padding-top: 10px;
 		border-bottom: 5px double #D2D2D2; padding-bottom: 10px;
+		width: 100%;
 	}
 	
-	div.header>img {
-		margin: auto;
-		width: 100%;
-		
+	div.recipe_header>img {
+
+		width: 100%;	
 	}
 	
 	.purchasebtn button{
@@ -32,30 +32,36 @@
 	      box-shadow: 1px 1px 1px #F2CB61;
 	   }
 	
-	.purchasebtn :hover {cursor:pointer;}
-	
 	div.recipe_list {
 		text-align: center;
 		width: 100%;
+
 	}
 	
 	div.imgcon_div {
-		text-align: center;
-		width: 100%;
-		margin: auto;
+		width: 100%;		
 		margin-top: 90px;
+		/* border: 1px solid red; */
+		/* margin: 90 auto; */
+		text-align: center;
+		
 	}
 	
-	.imgcon_sc {
-  		width: 1800px; 
-  		margin: auto;
+	div.imgcon_sc {
+		display:inline-block;
+  		width: 1150px; 
+  		text-align: center;
+  		/* border: 1px solid blue; */
   	}
 	
 	div.imgcon1, .imgcon2, .imgcon3, .imgcon4 {
-		text-align: center;
-		margin-bottom: 40px;
+		/* text-align: center; */
+		
 		display: inline-block;
-		width: 20%;
+/* 		width: 20%; */
+		margin: 0 25px;
+		margin-bottom: 40px;
+		/* border: 1px solid red; */
 	}
 	
 	div.recipe_list {
@@ -65,8 +71,8 @@
 	
 	div.list_div {
 		text-align: right;
-		width: 1800px;
-		margin: auto;
+		width: 100%;
+
 		
 	}
 	

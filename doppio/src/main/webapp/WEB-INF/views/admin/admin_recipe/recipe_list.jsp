@@ -1,18 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
-	<head> 
-		<meta charset="UTF-8">
-		<title>Doppio</title>
-		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
-		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/recipe_list_css.css">
-		<style>
-			div.mypage_nav a:nth-child(3) {text-decoration: underline;}
-		</style>
-		</head>
-	<body>
+<head> 
+<meta charset="UTF-8">
+<title>DOPPIO</title>
+<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
+<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/recipe_list_css.css">
+<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/am-pagination.css">
+<script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/doppio/resources/js/am-pagination.js"></script>
+<script>
+	$(document).ready(function(){
+		
+		var pager = jQuery('#ampaginationsm').pagination({
+		
+		    maxSize: 7,	    		// max page size
+		    totals: '${dbCount}',	// total pages	
+		    page: '${reqPage}',		// initial page		
+		    pageSize: '${pageSize}',			// max number items per page
+		
+		    // custom labels		
+		    lastText: '&raquo;&raquo;', 		
+		    firstText: '&laquo;&laquo;',		
+		    prevText: '&laquo;',		
+		    nextText: '&raquo;',
+				     
+		    btnSize:'sm'	// 'sm'  or 'lg'		
+		});
+		
+		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
+			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+	           $(location).attr('href', "http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th?rpage="+e.page);         
+	    });
+		
+ 	});
+</script>
+<style>
+	div.mypage_nav a:nth-child(3) {text-decoration: underline;}
+	.pagenumber{margin-left: auto; margin-right: auto;}
+</style>
+</head>
+<body>
 		
 		<!-- header -->
 		<jsp:include page="../../doppio_header.jsp"></jsp:include>
@@ -53,55 +83,44 @@
 		</div>
 		<!-- 판매 리스트 -->
 			<div class="imgcon_div">
-				<section class="imgcon_sc">
+				<div class="imgcon_sc">
 				
-					<div class="imgcon1">
-						<a href="#"><img src="http://localhost:9000/doppio/resources/img/d1.jpg" class="recipe_img" width="300" height="300"/></a>
-						<br>
-						<a href="#">쿠션을 베어문 듯한 식감, <br>몰랑 수플레</a>
-					</div>
-					<div class="imgcon2">
-							<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_content.th"><img src="/doppio/resources/img/d2.jpg" class="recipe_img" width="300" height="300"/></a>
+					<c:forEach var="vo" items="${list}">
+						<div class="imgcon1">
+							<input type="hidden" name="rno" value="${vo.rno }">
+							<input type="hidden" name="rnum" value="${vo.rnum }">
+							<input type="hidden" name="rsfile" value="${vo.rsfile }">
+							<input type="hidden" name="rtitle" value="${vo.rtitle }">
+							<c:if test="${vo.rsfile != null}">
+								<a href="recipe_content.th?rnum=${vo.rnum }&rno=${vo.rno}">
+									<img src="http://localhost:9000/doppio/resources/upload/${vo.rsfile }" class="recipe_img" width="300" height="300"/>
+								</a>
+							</c:if>
 							<br>
-							<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_content.th">버석바삭! 커피와 함께, <br>크랙 쿠키</a>
-					</div>
-					<div class="imgcon3">
-							<a href="#"><img src="/doppio/resources/img/d3.jpg" class="recipe_img" width="300" height="300"/></a>
-							<br>
-							<a href="#">홍차 한 잔이 떠올라요, <br>얼그레이 타르트</a>
-					</div>
-					<div class="imgcon4">
-							<a href="#"><img src="/doppio/resources/img/d4.jpg" class="recipe_img" width="300" height="300"/></a>
-							<br>
-							<a href="#">아침도 점심도 뚝딱, <br>베이글 샌드위치</a>
-					</div>
-					
-				</section>
+							<a href="#">${vo.rtitle }</a>
+						</div>
+					</c:forEach>
+				
+				</div>
 			</div>
 			</div>
 		</div>
-			<!--
-				<div class="imgcon5">
-						<img src="/doppio/img/d5.jpg" width="300" height="300"/>
-						<br>
-						<a href="#">딸기가 딸기딸기, <br>황 치즈 크로플</a> 
-				</div>
-				<div class="imgcon6">
-						<img src="/doppio/img/d6.jpg" width="300" height="300"/>
-						<br>
-						<a href="#">몽글몽글 쫀득쫀득, <br>크림치즈 찹쌀떡</a>
-				</div>
-				<div class="imgcon7">
-						<img src="/doppio/img/d7.jpg" width="300" height="300"/>
-						<br>
-						<a href="#">집들이 음식으로 딱, <br>핑거 케이크</a>
-				</div>
-				<div class="imgcon8">
-						<img src="/doppio/img/d8.jpg" width="300" height="300"/>
-						<br>
-						<a href="#">이름부터 너무 귀여워, <br>타마고 샌드와 에그 스튜</a>
-				</div> -->
 			
+				<table class="pagenumber">
+					<tr>
+						<td colspan="4"><div id="ampaginationsm"></td>
+					</tr>
+				</table>
+				
+				<br><br><br><br><br><br>
+	<!-- <div style="text-align: center; margin: 0 auto;">
+		<div style="display: inline-block; margin: 50px;"><img alt="" src="" width="250px" height="250px"></div>
+		<div style="display: inline-block; margin: 50px;"><img alt="" src="" width="250px" height="250px"></div>
+		<div style="display: inline-block; margin: 50px;"><img alt="" src="" width="250px" height="250px"></div>
+		<div style="display: inline-block; margin: 50px;"><img alt="" src="" width="250px" height="250px"></div>
+	</div> -->
+		
+		
 			
 		<!-- footer -->
 		<jsp:include page="../../doppio_footer.jsp"></jsp:include>
