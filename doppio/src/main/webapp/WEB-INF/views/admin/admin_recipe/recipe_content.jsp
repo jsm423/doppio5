@@ -8,6 +8,8 @@
 		<title>DOPPIO</title>
 		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
 		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/recipe_content_css.css">
+		<script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+		<script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>
 	</head>
 	<body>
 	
@@ -41,7 +43,7 @@
 				<a href="#"><img alt="kakao" src="http://localhost:9000/doppio/resources/img/kt_con.png" class="share_con" width="30px" height="30px"></a>	
 			<form name="delForm" action="/doppio/admin/admin_recipe/recipe_content.th?rnum=${vo.rnum }" method="post">
 				<div class="admin_button">
-					<button onclick="http://localhost:9000/doppio/admin/admin_recipe/recipe_update.th?rnum=${vo.rnum }&rno=${rno}">수정</button>
+					<button type="button" id="btnUpdate" onclick="location.href='http://localhost:9000/doppio/admin/admin_recipe/recipe_update.th?rnum=${vo.rnum }&rno=${rno}'">수정</button>
 					<button type="submit">삭제</button>
 				</div>
 			</form>
@@ -58,17 +60,6 @@
 			            <li class="ingredient">${vo.rcontent1}</li>
 			         
 			         </ul>
-			         <!-- <ul class="uling" style="line-height: 30px;">
-			            <li class="ingredient">박력분 66g</li>
-			            <li class="ingredient">베이킹 파우더 3g</li>
-			            <li class="ingredient">달걀 70g</li>
-			            <li class="ingredient">황설탕 65g</li>
-			            <li class="ingredient">소금 1꼬집</li>
-			            <li class="ingredient">무염 버터 40g</li>
-			            <li class="ingredient">설탕 70g</li>
-			            <li class="ingredient">바닐라 익스트랙 1ts</li>
-			            <li class="ingredient"><취향에 따라 추가해 보세요.> 코코아 파우더 9g, 초코칩 60g, 다크 초콜릿 160g</li>
-			         </ul> -->
      			 </div>
       		</div>
       		<br>
