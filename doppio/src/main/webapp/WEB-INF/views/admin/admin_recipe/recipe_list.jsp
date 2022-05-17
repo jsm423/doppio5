@@ -97,7 +97,7 @@
 								</a>
 							</c:if>
 							<br>
-							<a href="#">${vo.rtitle }</a>
+							<a href="http://localhost:9000/doppio/resources/upload/${vo.rsfile }">${vo.rtitle }</a>
 						</div>
 					</c:forEach>
 				

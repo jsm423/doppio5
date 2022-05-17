@@ -41,8 +41,8 @@
 				<a href="#"><img alt="kakao" src="http://localhost:9000/doppio/resources/img/kt_con.png" class="share_con" width="30px" height="30px"></a>	
 			<form name="delForm" action="/doppio/admin/admin_recipe/recipe_content.th?rnum=${vo.rnum }" method="post">
 				<div class="admin_button">
-					<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_update.th?rnum=${vo.rnum }&rno=${rno}"><button>수정</button></a>
-					<a><button type="submit">삭제</button></a>
+					<button onclick="http://localhost:9000/doppio/admin/admin_recipe/recipe_update.th?rnum=${vo.rnum }&rno=${rno}">수정</button>
+					<button type="submit">삭제</button>
 				</div>
 			</form>
 			</div>
