@@ -5,14 +5,16 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 public class DpRecipeVO {
 	
 	String rnum, rname, rtitle, rcontent1,rcontent2, rdate, rfile, rsfile, rcate, rurl;
+	int rhits, rno;
+	CommonsMultipartFile file1;
+	
+	
 	public String getRcontent2() {
 		return rcontent2;
 	}
 	public void setRcontent2(String rcontent2) {
 		this.rcontent2 = rcontent2;
 	}
-	int rhits, rno;
-	CommonsMultipartFile file1;
 	
 	public String getRurl() {
 		return rurl;

@@ -130,9 +130,10 @@ $(document).ready(function(){
 		}
 	});
 	
-	
-	
-	
+		
+	$("#btnCancel").click(function(){
+ 		location.href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th"
+	});
 	
 	
 	
