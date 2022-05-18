@@ -44,6 +44,15 @@
 			<form name="recipe_write" action="/doppio/admin/admin_recipe/recipe_update.th?rnum=${vo.rnum }" method="post" enctype="multipart/form-data">
 				<table class="content_write">
 					<tr>
+						<th>카테고리</th>
+						<td width="90%">
+							<select name="rcate">
+								<option value="cf">Coffee</option>
+								<option value="ncf">Non-Coffee</option>
+								<option value="de">Dessert</option>							
+							</select></td>
+					</tr>
+					<tr>
 						<th>레시피명</th>
 						<td width="90%"><input type="text" name="rname" id="rname" value="${vo.rname }"></td>
 					</tr>
