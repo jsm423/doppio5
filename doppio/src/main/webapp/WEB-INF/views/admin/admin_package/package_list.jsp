@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -8,8 +9,38 @@
 		<title>Doppio</title>
 		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
 		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/recipe_list_css.css">
+		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/am-pagination.css">
+		<script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+		<script src="http://localhost:9000/doppio/resources/js/am-pagination.js"></script>
+		<script>
+			$(document).ready(function(){
+				
+				var pager = jQuery('#ampaginationsm').pagination({
+				
+				    maxSize: 7,	    		// max page size
+				    totals: '${dbCount}',	// total pages	
+				    page: '${reqPage}',		// initial page		
+				    pageSize: '${pageSize}',			// max number items per page
+				
+				    // custom labels		
+				    lastText: '&raquo;&raquo;', 		
+				    firstText: '&laquo;&laquo;',		
+				    prevText: '&laquo;',		
+				    nextText: '&raquo;',
+						     
+				    btnSize:'sm'	// 'sm'  or 'lg'		
+				});
+				
+				jQuery('#ampaginationsm').on('am.pagination.change',function(e){
+					   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+			           $(location).attr('href', "http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th?rpage="+e.page);         
+			    });
+				
+		 	});
+		</script>
 		<style>
 			div.mypage_nav a:nth-child(3) {text-decoration: underline;}
+			.pagenumber{margin-left: auto; margin-right: auto;}
 		</style>
 		</head>
 	<body>
@@ -33,7 +64,7 @@
 		
 		<!-- 옵션 박스 -->
 		<div class="purchasebtn">
-				<a href="http://localhost:9000/doppio/admin/admin_package/package_write.th"><button type="submit">글쓰기</button></a>
+				<a href="http://localhost:9000/doppio/admin/admin_package/package_write.th"><button type="submit">등록</button></a>
 		</div>
 		<div class="lioption_div">
 			<div class="lioption_div2">
@@ -54,27 +85,21 @@
 		<!-- 판매 리스트 -->
 			<div class="imgcon_div">
 				<section class="imgcon_sc">
-				
+				<c:forEach var="vo" items="${list}">
 					<div class="imgcon1">
-						<a href="#"><img src="http://localhost:9000/doppio/resources/img/d1.jpg" class="recipe_img" width="300" height="300"/></a>
+						<input type="hidden" name="rno" value="${vo.rno }">
+						<input type="hidden" name="pnum" value="${vo.pnum }">
+						<input type="hidden" name="psfile" value="${vo.psfile }">
+						<input type="hidden" name="ptitle" value="${vo.ptitle }">
+						<c:if test="${vo.psfile != null}">
+							<a href="package_content.th?pnum=${vo.pnum }&rno=${vo.rno}">
+								<img src="http://localhost:9000/doppio/resources/upload/${vo.psfile }" class="package_img" width="300" height="300"/>
+							</a>
+						</c:if>
 						<br>
-						<a href="#">몽블랑 수플레 풀 패키지<br>12000won</a>
+						<a href="http://localhost:9000/doppio/resources/upload/${vo.psfile }">${vo.ptitle }</a>
 					</div>
-					<div class="imgcon2">
-							<a href="http://localhost:9000/doppio/admin/admin_package/package_content.th"><img src="/doppio/resources/img/d2.jpg" class="recipe_img" width="300" height="300"/></a>
-							<br>
-							<a href="http://localhost:9000/doppio/admin/admin_package/package_content.th">크랙쿠키 심플 패키지<br>6500won</a>
-					</div>
-					<div class="imgcon3">
-							<a href="#"><img src="/doppio/resources/img/d3.jpg" class="recipe_img" width="300" height="300"/></a>
-							<br>
-							<a href="#">얼그레이 타르트 올 뉴 리패키지<br>10500won</a>
-					</div>
-					<div class="imgcon4">
-							<a href="#"><img src="/doppio/resources/img/d4.jpg" class="recipe_img" width="300" height="300"/></a>
-							<br>
-							<a href="#">베이글 샌드위치 심플 패키지<br>5500won</a>
-					</div>
+				</c:forEach>
 					
 				</section>
 			</div>

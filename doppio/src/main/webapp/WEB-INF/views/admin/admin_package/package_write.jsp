@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>DOPPIO</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
+<script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 </head>
+
 <body>
 	<!-- header -->
 	<jsp:include page="../../doppio_header.jsp"></jsp:include>
@@ -17,19 +21,45 @@
 			<div class="title">
 				<p>관리자 package</p><br>
 			</div>
-			<form name="board_write" action="#" method="get" >
+			<form name="package_write" action="/doppio/admin/admin_package/package_write.th" method="post" enctype="multipart/form-data">
 				<table class="content_write">
 					<tr>
-						<th>제목</th>
-						<td width="90%"><input type="text"></td>
+						<th>패키지명</th>
+						<td width="90%"><input type="text" name="ptitle" id="ptitle"></td>
+					</tr>
+				</table>
+				<table class="content_write">
+					<tr>
+						<th>제품명</th>
+						<td width="90%"><input type="text" name="pname" id="pname"></td>
+					</tr>
+				</table>
+				<table class="content_write">
+					<tr>
+						<th>소제목</th>
+						<td width="90%"><input type="text" name="pcontent" id="pcontent"></td>
+					</tr>
+				</table>
+				<table class="content_write">
+					<tr>
+						<th>구분</th>
+						<td width="90%"><input type="text" name="pcate" id="pcate"></td>
+					</tr>
+				</table>
+				<table class="content_write">
+					<tr>
+						<th>재고</th>
+						<td width="90%"><input type="text" name="pstock" id="pstock"></td>
+					</tr>
+				</table>
+				<table class="content_write">
+					<tr>
+						<th>가격</th>
+						<td width="90%"><input type="text" name="pprice" id="pprice"></td>
 					</tr>
 				</table>
 				<hr class="writeline">
-				<table class="content_write">
-					<tr>
-						<td><textarea name="bcontent"></textarea></td>
-					</tr>
-				</table>
+				
 				<hr class="writeline">
 				<table class="content_write" id="lasttable">
 					<tr>
@@ -38,7 +68,7 @@
 					</tr>
 					<tr>					
 						<td colspan="2">
-							<button type="button" class="btn_style2" onclick="boardFormCheck()">저장</button>
+							<button type="button" class="btn_style2" id="btnPackage">저장</button>
 							<a href="http://localhost:9000/doppio/admin/admin_package/package_list.th"><button type="button" class="btn_style2">취소</button></a>
 						</td>
 					</tr>

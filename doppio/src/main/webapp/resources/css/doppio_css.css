@@ -311,6 +311,29 @@
 		height:180px;	
 	}
 	
+	section.package_write table th {
+		width:10%;
+		text-align: left;
+	}
+	
+	section.package_write table th, section.package_write table td {
+		padding:8px 0;
+		color:#333;
+	}
+	
+	section.package_write input, section.package_write textarea {
+		width:97.5%;
+		padding:5px 10px;
+	}
+	
+	section.package_write input{
+		border: 1px solid white;
+	}
+	
+	section.package_write textarea {
+		height:180px;	
+	}
+	
 	#content_write tr:last-child td {
 		padding-left: 5px;
 		padding-top:20px;

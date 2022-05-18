@@ -36,6 +36,7 @@
 	<beans:bean id="qnaDao" class="com.web.dao.DpQnaDAO"></beans:bean>
 	<beans:bean id="boardDao" class="com.web.dao.DpBoardDAO"></beans:bean>
 	<beans:bean id="recipeDao" class="com.web.dao.DpRecipeDAO"></beans:bean>
+	<beans:bean id="packageDao" class="com.web.dao.DpPackageDAO"></beans:bean>
 	<!-- Service 객체 생성 -->
 	<beans:bean id="memberService" class="com.web.service.DpMemberServiceImpl"></beans:bean>
 	<beans:bean id="qnaService" class="com.web.service.DpQnaServiceImpl"></beans:bean>
@@ -43,6 +44,7 @@
 	<beans:bean id="boardService" class="com.web.service.DpBoardServiceImpl"></beans:bean>
 	<beans:bean id="fileService" class="com.web.service.FileServiceImpl"></beans:bean>
 	<beans:bean id="recipeService" class="com.web.service.DpRecipeServiceImpl"></beans:bean>
+	<beans:bean id="packageService" class="com.web.service.DpPackageServiceImpl"></beans:bean>
 	
 	
 	<context:component-scan base-package="com.web.controller" />

@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>  
 <!DOCTYPE html>
 <html lang="ko">
 	<head> 
+	
 		<meta charset="UTF-8">
 		<title>Doppio</title>
 		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
 		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/recipe_buy_css.css">
+		<script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+		<script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>
+		
 	</head>
 	<body>
 	
@@ -19,16 +23,21 @@
 		<div class="recipe_buy">
 			<div class="buy_div">
 				
-				<!-- 판매 상품 이미지 -->			
+				<!-- 판매 상품 이미지 -->		
+				<input type="hidden" name="pname" value="${vo.pname }">	
 				<div class="buy_img">
-					<img src="http://localhost:9000/doppio/resources/img/d2.jpg" width="500px" height="500px">
+					<c:if test="${vo.psfile != null}">
+							<img src="http://localhost:9000/doppio/resources/upload/${vo.psfile}"
+							     width="250px" height="250px">
+					</c:if>
+					</td>
 				</div>
 				
 				<!-- 설명창 -->
 				<div class="buy_title">
-					<h2>버석바삭! 커피와 함께, <br>크랙 쿠키</h2><br>
+					<h2>${vo.ptitle}</h2><br>
 					
-				<p style="font-size: 15px">한 번 맛 보면 헤어나올 수 없는 식감. 감성 뿜뿜, 간편하게 만들어 봐요.</p><br>
+				<p style="font-size: 15px">${vo.pcontent}</p><br>
 					
 				<div class="buy_stitle">
 					<h3>할인 받고 저렴하게 구매하세요!</h3>
@@ -90,11 +99,18 @@
 					<h3 style="font-size: 25px;"> 6500 + 3500 + 0 + 4000 <br> 
 					= <span style="font-size: 35px; font-weight: bold;">14000 won</span></h3> 
 				</div>
-				<div class="option_btn">
-				<a href="http://localhost:9000/doppio/admin/admin_package/package_update.th"><button type="submit" class="btn_style">수정</button></a>
-				<a href="#"><button type="submit" class="btn_style">삭제</button></a>
-				</div>
+					
+			<form name="delForm" action="/doppio/admin_package/package_content.th?pnum=${vo.pnum }" method="post">
+				<table id="contenttable">
+				<tr id="contenthead">
+					<td width="82%"></td>
+					<td><a href="http://localhost:9000/doppio/admin_package/package_update.th?pnum=${vo.pnum}&rno=${rno}" width="9%">수정</a></td>
+					<td><a width="9%"><button type="submit" class="delbtn">삭제</button></a></td>
+				</tr>
+				</table>
+			</form>
 			</div>
+		
 			</div>
 			<br><br><br>
 			
