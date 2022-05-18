@@ -146,25 +146,25 @@ $(document).ready(function(){
 		}else if($("#ptitle").val() == ""){
 			alert("제목을 입력해주세요");
 			$("#ptitle").focus();
-			return false;
+				return false;
 		}else if($("#pcontent").val() == ""){
 			alert("소제목을 입력해주세요");
 			$("#pcontent").focus();
-			return false;
+				return false;
 		}else if($("#pcate").val() == ""){
 			alert("상품 구분을 입력해 주세요");
 			$("#pcate").focus();
-			return false;
+				return false;
 		}else if($("#pstock").val() == ""){
 			alert("재고 현황을 입력해 주세요");
 			$("#pstock").focus();
-			return false;
+				return false;
 		}else if($("#pprice").val() == ""){
 			alert("상품 가격을 입력해 주세요");
 			$("#pprice").focus();
-			return false;
+				return false;
 		}else{
-			recipe_write.submit();
+			package_write.submit();
 		}
 	});
 	
