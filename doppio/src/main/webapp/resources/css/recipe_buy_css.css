@@ -9,6 +9,15 @@
 		width: 100%;
 	}
 	
+	#btnBack{
+		text-decoration-line: none;
+		color:black;
+		display: inline-block;
+		margin-right: 980px;
+	}
+	
+	#btnBack:hover{text-decoration: underline;}
+	
 	div.buy_div {
 		text-align: left;
 		width: 1450px;
@@ -31,7 +40,7 @@
 		width: 500px;
 		height: 500px;
 		position: absolute;
-		top: 415px;
+		top: 445px;
 		font-size: 20px;
 		margin-left: 130px;
 	}
@@ -44,7 +53,8 @@
 		width: 300px;
 		height: 300px;
 		position: absolute;
-		top: 645px;
+		top: 600px;
+		/* border: 3px solid blue; */
 	}
 	
 	.option_sc {
@@ -61,7 +71,8 @@
 		width: 300px;
 /* 		height: 300px; */
 		position: absolute;
-		top: 830px;
+		top: 750px;
+		/* border: 3px solid green; */
 	}
 	
 	div.optiondiv>ul.opli {
@@ -96,3 +107,15 @@
 		padding:7px 0;
 	}
 	
+	div#btn_package {
+		width: 500px;
+		display: inline-block;
+		position: absolute;
+		top: 900px;
+		margin-left: 200px;
+		margin-top: 20px;
+	}
+	
+	button.pkbt{
+		width: 80px;
+	}
