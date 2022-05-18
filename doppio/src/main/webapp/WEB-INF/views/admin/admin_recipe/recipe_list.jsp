@@ -56,9 +56,9 @@
 			</div>
 			<br><br>
 		<div class="mypage_nav">
-			<a href="#">coffee</a>&emsp;&emsp;
-			<a href="#">non-coffee</a>&emsp;&emsp;
-			<a href="#">dessert</a>
+			<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list_cf.th">coffee</a>&emsp;&emsp;
+			<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list_ncf.th">non-coffee</a>&emsp;&emsp;
+			<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th">dessert</a>
 		</div>
 		
 		<!-- 옵션 박스 -->

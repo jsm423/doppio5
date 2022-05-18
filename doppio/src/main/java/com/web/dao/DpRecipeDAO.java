@@ -34,6 +34,7 @@ public class DpRecipeDAO implements DpObjectDAO{
 		return sqlSession.insert(namespace+".insert", vo);
 	}
 	
+	
 	@Override //페이지 처리
 	public int execTotalCount() {
 		return sqlSession.selectOne(namespace+".count");

@@ -22,7 +22,7 @@
 	<div class="recipe_content">
 		
 		<div class="content_div">
-				<h2>${vo.rtitle}</h2>
+				<h2>${vo.rtitle},${vo.rcate }</h2>
 			
 				<div class="table_div">
 						<table class="content_table">

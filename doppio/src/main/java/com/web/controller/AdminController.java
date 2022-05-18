@@ -141,8 +141,48 @@ public class AdminController {
 		mv.setViewName("/admin/admin_recipe/recipe_list");
 		return mv;
 	}
+	/*recipe_list 레시피 리스트*/		
+	@RequestMapping(value="/admin/admin_recipe/recipe_list_cf.th", method=RequestMethod.GET)
+	public ModelAndView recipe_list_cf(String rpage) {
+		ModelAndView mv = new ModelAndView();
+		Map<String, String> param = pageService.getPageResult2(rpage, "recipe", recipeService);
+		int startCount = Integer.parseInt(param.get("start"));
+		int endCount = Integer.parseInt(param.get("end"));
+		List<Object> olist = recipeService.getListResult(startCount, endCount);
+		ArrayList<DpRecipeVO> list = new ArrayList<DpRecipeVO>();
+		for(Object obj : olist) {
+			list.add((DpRecipeVO)obj);
+		}
+		mv.addObject("list", list);
+		mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
+		mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
+		mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
+		
+		mv.setViewName("/admin/admin_recipe/recipe_list_cf");
+		return mv;
+	}
+	/*recipe_list 레시피 리스트*/		
+	@RequestMapping(value="/admin/admin_recipe/recipe_list_ncf.th", method=RequestMethod.GET)
+	public ModelAndView recipe_list_ncf(String rpage) {
+		ModelAndView mv = new ModelAndView();
+		Map<String, String> param = pageService.getPageResult2(rpage, "recipe", recipeService);
+		int startCount = Integer.parseInt(param.get("start"));
+		int endCount = Integer.parseInt(param.get("end"));
+		List<Object> olist = recipeService.getListResult(startCount, endCount);
+		ArrayList<DpRecipeVO> list = new ArrayList<DpRecipeVO>();
+		for(Object obj : olist) {
+			list.add((DpRecipeVO)obj);
+		}
+		mv.addObject("list", list);
+		mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
+		mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
+		mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
+		
+		mv.setViewName("/admin/admin_recipe/recipe_list_ncf");
+		return mv;
+	}
 	
-	
+	//레시피 상세페이지
 	@RequestMapping(value="/admin/admin_recipe/recipe_content.th", method=RequestMethod.GET)
 	public ModelAndView recipe_content(String rnum, String rno) {
 		ModelAndView mv = new ModelAndView();
@@ -155,6 +195,55 @@ public class AdminController {
 		mv.setViewName("/admin/admin_recipe/recipe_content");
 		return mv;
 	}
+	
+	//레시피 상세페이지
+		@RequestMapping(value="/admin/admin_recipe/recipe_content_cf.th", method=RequestMethod.GET)
+		public ModelAndView recipe_content_cf(String rnum, String rno) {
+			ModelAndView mv = new ModelAndView();
+			recipeService.getUpdateHits(rnum);
+			DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
+			
+			mv.addObject("rnum", rnum);
+			mv.addObject("vo", vo);
+			mv.addObject("rno", rno);
+			mv.setViewName("/admin/admin_recipe/recipe_content_cf");
+			return mv;
+		}
+		
+		//레시피 상세페이지
+		@RequestMapping(value="/admin/admin_recipe/recipe_content_ncf.th", method=RequestMethod.GET)
+		public ModelAndView recipe_content_ncf(String rnum, String rno) {
+			ModelAndView mv = new ModelAndView();
+			recipeService.getUpdateHits(rnum);
+			DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
+			
+			mv.addObject("rnum", rnum);
+			mv.addObject("vo", vo);
+			mv.addObject("rno", rno);
+			mv.setViewName("/admin/admin_recipe/recipe_content_ncf");
+			return mv;
+		}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	/* 관리자 패키지 */

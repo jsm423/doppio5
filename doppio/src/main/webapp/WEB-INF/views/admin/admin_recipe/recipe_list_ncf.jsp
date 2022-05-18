@@ -32,20 +32,20 @@
 		
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	           $(location).attr('href', "http://localhost:9000/doppio/recipe/recipe_list_de.th?rpage="+e.page);         
+	           $(location).attr('href', "http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th?rpage="+e.page);         
 	    });
 		
  	});
 </script>
 <style>
-	div.mypage_nav a:nth-child(3) {text-decoration: underline;}
+	div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 	.pagenumber{margin-left: auto; margin-right: auto;}
 </style>
 </head>
 <body>
 		
 		<!-- header -->
-		<jsp:include page="../doppio_header.jsp"></jsp:include>
+		<jsp:include page="../../doppio_header.jsp"></jsp:include>
 		
 		<!-- content -->
 		<div class="recipe_list">
@@ -56,13 +56,15 @@
 			</div>
 			<br><br>
 		<div class="mypage_nav">
-			<a href="http://localhost:9000/doppio/recipe/recipe_list_cf.th">coffee</a>&emsp;&emsp;
-			<a href="http://localhost:9000/doppio/recipe/recipe_list_ncf.th">non-coffee</a>&emsp;&emsp;
-			<a href="http://localhost:9000/doppio/recipe/recipe_list_de.th">dessert</a>
+			<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list_cf.th">coffee</a>&emsp;&emsp;
+			<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list_ncf.th">non-coffee</a>&emsp;&emsp;
+			<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th">dessert</a>
 		</div>
 		
 		<!-- 옵션 박스 -->
-
+		<div class="purchasebtn">
+				<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_write.th"><button type="button">글쓰기</button></a>
+		</div>
 		<div class="lioption_div">
 			<div class="lioption_div2">
 				<section class="lioption_sc">
@@ -80,11 +82,11 @@
 			</div>
 		</div>
 		<!-- 판매 리스트 -->
-			<div class="imgcon_div2" >
-				<div class="imgcon_sc2">
-
+			<div class="imgcon_div">
+				<div class="imgcon_sc">
+				
 					<c:forEach var="vo" items="${list}">
-						<div class="imgcon12">
+						<div class="imgcon1">
 							<input type="hidden" name="rno" value="${vo.rno }">
 							<input type="hidden" name="rnum" value="${vo.rnum }">
 							<input type="hidden" name="rsfile" value="${vo.rsfile }">
@@ -121,7 +123,7 @@
 		
 			
 		<!-- footer -->
-		<jsp:include page="../doppio_footer.jsp"></jsp:include>
+		<jsp:include page="../../doppio_footer.jsp"></jsp:include>
 		
 	</body>
 </html>

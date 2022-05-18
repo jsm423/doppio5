@@ -18,9 +18,9 @@
 	</select>
 	
 	<select id="list" parameterType="map" resultType="com.web.vo.DpRecipeVO">
-		select rno, rnum, rtitle, rhits, rdate, rfile, rsfile from 
-				 (select rownum rno, rnum, rtitle, rhits, rdate , rfile, rsfile 
-			     from (SELECT rnum, rtitle, rhits, rdate, rfile, rsfile from doppio_recipe order by rdate desc) 
+		select rno, rnum, rtitle, rhits, rdate, rfile, rsfile, rcate from 
+				 (select rownum rno, rnum, rtitle, rhits, rdate , rfile, rsfile, rcate
+			     from (SELECT rnum, rtitle, rhits, rdate, rfile, rsfile, rcate from doppio_recipe order by rdate desc) 
 			     ) where rno between #{start} and #{end}
 	</select>
 	
@@ -28,16 +28,18 @@
 		insert into doppio_recipe
 			<choose>
 				<when test="rfile != null">
-					values('r_'||sequ_doppio_recipe_rnum.nextval, #{rname},#{rtitle},#{rcontent1},#{rcontent2},sysdate,0,#{rfile},#{rsfile},#{rurl},'de')
+					values('r_'||sequ_doppio_recipe_rnum.nextval, #{rname},#{rtitle},#{rcontent1},#{rcontent2},sysdate,0,#{rfile},#{rsfile},#{rurl},#{rcate})
 				</when>
 				<otherwise>
-					values('r_'||sequ_doppio_recipe_rnum.nextval, #{rname},#{rtitle},#{rcontent1},#{rcontent2},sysdate,0,null,null,#{rurl},'de')
+					values('r_'||sequ_doppio_recipe_rnum.nextval, #{rname},#{rtitle},#{rcontent1},#{rcontent2},sysdate,0,null,null,#{rurl},#{rcate})
 				</otherwise>
 			</choose>
 	</insert>
+
+	
 	
 	<select id="content" parameterType="java.lang.String" resultType="com.web.vo.DpRecipeVO">
-		select rnum, rname, rtitle, rcontent1, rcontent2, rhits, rdate, rurl, rfile, rsfile from doppio_recipe where rnum=#{rnum}
+		select rnum, rname, rtitle, rcontent1, rcontent2, rhits, rdate, rurl, rfile, rsfile, rcate from doppio_recipe where rnum=#{rnum}
 	</select>
 
 	<update id="update" parameterType="com.web.vo.DpRecipeVO">
