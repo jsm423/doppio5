@@ -317,7 +317,7 @@ public class AdminController {
 	
 		public ModelAndView package_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
-			Map<String, String> param = pageService.getPageResult(rpage, "package", packageService);
+			Map<String, String> param = pageService.getPageResult2(rpage, "package", packageService);
 				
 				int startCount = Integer.parseInt(param.get("start"));
 				int endCount = Integer.parseInt(param.get("end"));

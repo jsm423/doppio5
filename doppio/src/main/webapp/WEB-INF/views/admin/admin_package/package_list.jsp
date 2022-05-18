@@ -33,7 +33,7 @@
 				
 				jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 					   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-			           $(location).attr('href', "http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th?rpage="+e.page);         
+			           $(location).attr('href', "http://localhost:9000/doppio/admin/admin_package/package_list.th?rpage="+e.page);         
 			    });
 				
 		 	});
@@ -126,7 +126,14 @@
 						<br>
 						<a href="#">이름부터 너무 귀여워, <br>타마고 샌드와 에그 스튜</a>
 				</div> -->
-			
+		
+		<table class="pagenumber">
+			<tr>
+				<td colspan="4"><div id="ampaginationsm"></div></td>
+			</tr>
+		</table>
+				
+		<br><br><br><br><br><br>
 			
 		<!-- footer -->
 		<jsp:include page="../../doppio_footer.jsp"></jsp:include>

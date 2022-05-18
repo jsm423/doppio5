@@ -16,6 +16,9 @@ public class DpPageServiceImpl{
 	@Autowired
 	private DpRecipeServiceImpl recipeService;
 	
+	@Autowired
+	private DpPackageServiceImpl packageService;
+	
 	/**
 	 * 페이징 처리
 	 */
@@ -70,6 +73,8 @@ public class DpPageServiceImpl{
 		return param;
 	}
 	
+	
+	
 	public Map<String, String> getPageResult2(String rpage, String serviceName, DpObjectService service){
 		Map<String, String> param = new HashMap<String,String>();
 		
@@ -85,6 +90,11 @@ public class DpPageServiceImpl{
 		if(serviceName.equals("recipe")) {
 			recipeService = (DpRecipeServiceImpl)service;
 			dbCount = recipeService.getListCount();
+		} 
+		
+		if(serviceName.equals("package")) {
+			packageService = (DpPackageServiceImpl)service;
+			dbCount = packageService.getListCount();
 		}
 		
 		//총 페이지 수 계산
