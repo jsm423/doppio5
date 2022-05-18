@@ -355,14 +355,14 @@ public class AdminController {
 		@RequestMapping(value="/admin/admin_package/package_content.th", method=RequestMethod.POST)
 		public ModelAndView package_delete(DpPackageVO vo, HttpServletRequest request) throws Exception{
 			ModelAndView mv = new ModelAndView();
-			String rsfile = recipeService.getFilename(vo.getPnum());
-			int result = recipeService.getDeleteResult(vo.getPnum());
+			String psfile = packageService.getFilename(vo.getPnum());
+			int result = packageService.getDeleteResult(vo.getPnum());
 			
 			if(result == 1) {
-				if(rsfile != null) {
+				if(psfile != null) {
 					String path = request.getSession().getServletContext().getRealPath("/");
 					path += "resources\\upload\\";
-					File file = new File(path + rsfile);
+					File file = new File(path + psfile);
 					if(file.exists()) file.delete();
 				}
 				mv.setViewName("redirect:/admin/admin_package/package_list.th");

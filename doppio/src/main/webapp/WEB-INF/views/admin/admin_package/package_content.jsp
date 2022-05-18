@@ -24,11 +24,11 @@
 			<div class="buy_div">
 				
 				<!-- 판매 상품 이미지 -->		
-				<input type="hidden" name="pname" value="${vo.pname }">	
+				<input type="hidden" name="pname" value="${vo.ptitle }">	
 				<div class="buy_img">
 					<c:if test="${vo.psfile != null}">
 							<img src="http://localhost:9000/doppio/resources/upload/${vo.psfile}"
-							     width="250px" height="250px">
+							     width="500px" height="500px">
 					</c:if>
 					</td>
 				</div>
@@ -96,6 +96,7 @@
 					</section>
 				</div>
 				<div class="option_sum">
+					<h2>임시 가격 : ${vo.pprice}</h2>
 					<h3 style="font-size: 25px;"> 6500 + 3500 + 0 + 4000 <br> 
 					= <span style="font-size: 35px; font-weight: bold;">14000 won</span></h3> 
 				</div>
@@ -104,8 +105,8 @@
 				<table id="contenttable">
 				<tr id="contenthead">
 					<td width="82%"></td>
-					<td><a href="http://localhost:9000/doppio/admin_package/package_update.th?pnum=${vo.pnum}&rno=${rno}" width="9%">수정</a></td>
-					<td><a width="9%"><button type="submit" class="delbtn">삭제</button></a></td>
+					<td><button type="button" onclick="location.href='http://localhost:9000/doppio/admin/admin_package/package_update.th?pnum=${vo.pnum }&rno=${rno}'">수정</button></td>
+					<td><button type="submit">삭제</button></td>
 				</tr>
 				</table>
 			</form>

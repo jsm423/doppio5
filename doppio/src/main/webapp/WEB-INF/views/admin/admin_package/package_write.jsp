@@ -24,18 +24,18 @@
 				<table class="content_write">
 					<tr>
 						<th>패키지명</th>
-						<td width="90%"><input type="text" name="ptitle" id="ptitle"></td>
-					</tr>
-				</table>
-				<table class="content_write">
-					<tr>
-						<th>제품명</th>
 						<td width="90%"><input type="text" name="pname" id="pname"></td>
 					</tr>
 				</table>
 				<table class="content_write">
 					<tr>
-						<th>소제목</th>
+						<th>패키지 제목</th>
+						<td width="90%"><input type="text" name="ptitle" id="ptitle"></td>
+					</tr>
+				</table>
+				<table class="content_write">
+					<tr>
+						<th>설명문</th>
 						<td width="90%"><input type="text" name="pcontent" id="pcontent"></td>
 					</tr>
 				</table>
