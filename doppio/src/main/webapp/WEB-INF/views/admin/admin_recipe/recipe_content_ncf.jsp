@@ -73,10 +73,22 @@
      		 </div>
       
      	 <div class="댓글">
-        	<div class="subtitle">댓글</div>
+        	<div class="subtitle">&nbsp;댓글</div>
          	<div class="commentfield">
-            	<textarea rows="1" cols="40" style="width: 600px;" placeholder="내용을 입력해 주세요"></textarea>
-           		<button type="button" onclick="location.href='#'">등록</button>         
+         	
+
+         		<table class="commtable">
+         			<tr class="commbtn">
+         				<td colspan="2" class="commbtntd"><p>2022-05-19</p>&nbsp;<button class="commbtnup">수정</button><button class="commbtndel">삭제</button></td>
+         			</tr>
+         			<tr>
+         				<th class="commth" >작성자 id</th><td class="commtd">댓글내용입니다</td>
+         			</tr>
+         		</table>        		
+
+         		
+            	<textarea rows="1" cols="40" style="width: 600px;" placeholder="내용을 입력해 주세요" id="cmcontent" name="cmcontent"></textarea>
+           		<button type="button" class="enter" id="btnComm">등록</button>         
          	</div>
       		</div>
    		</div>

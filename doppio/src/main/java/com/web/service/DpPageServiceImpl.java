@@ -87,7 +87,15 @@ public class DpPageServiceImpl{
 				int dbCount = 0;    //DB에서 가져온 전체 행수
 		
 		
-		if(serviceName.equals("recipe")) {
+		if(serviceName.equals("recipe_cf")) {
+			recipeService = (DpRecipeServiceImpl)service;
+			dbCount = recipeService.getListCount();
+		} 
+		if(serviceName.equals("recipe_ncf")) {
+			recipeService = (DpRecipeServiceImpl)service;
+			dbCount = recipeService.getListCount();
+		} 
+		if(serviceName.equals("recipe_de")) {
 			recipeService = (DpRecipeServiceImpl)service;
 			dbCount = recipeService.getListCount();
 		} 
@@ -122,6 +130,8 @@ public class DpPageServiceImpl{
 				
 				return param;
 	}
+	
+	
 	
 	
 }

@@ -84,7 +84,7 @@
 							<input type="hidden" name="rsfile" value="${vo.rsfile }">
 							<input type="hidden" name="rtitle" value="${vo.rtitle }">
 							<c:if test="${vo.rsfile != null}">
-								<a href="http://localhost:9000/doppio/recipe/recipe_content.th?rnum=${vo.rnum }&rno=${vo.rno}">
+								<a href="http://localhost:9000/doppio/recipe/recipe_content_de.th?rnum=${vo.rnum }&rno=${vo.rno}">
 									<img src="http://localhost:9000/doppio/resources/upload/${vo.rsfile }" class="recipe_img" width="300" height="300"/>
 								</a>
 							</c:if>

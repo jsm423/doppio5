@@ -283,7 +283,7 @@ public class AdminController {
 	@RequestMapping(value="/admin/admin_recipe/recipe_list_de.th", method=RequestMethod.GET)
 	public ModelAndView recipe_list(String rpage) {
 		ModelAndView mv = new ModelAndView();
-		Map<String, String> param = pageService.getPageResult2(rpage, "recipe", recipeService);
+		Map<String, String> param = pageService.getPageResult2(rpage, "recipe_de", recipeService);
 		int startCount = Integer.parseInt(param.get("start"));
 		int endCount = Integer.parseInt(param.get("end"));
 		List<Object> olist = recipeService.getListResult(startCount, endCount, "de");
@@ -303,7 +303,7 @@ public class AdminController {
 	@RequestMapping(value="/admin/admin_recipe/recipe_list_cf.th", method=RequestMethod.GET)
 	public ModelAndView recipe_list_cf(String rpage) {
 		ModelAndView mv = new ModelAndView();
-		Map<String, String> param = pageService.getPageResult2(rpage, "recipe", recipeService);
+		Map<String, String> param = pageService.getPageResult2(rpage, "recipe_cf", recipeService);
 		int startCount = Integer.parseInt(param.get("start"));
 		int endCount = Integer.parseInt(param.get("end"));
 		List<Object> olist = recipeService.getListResult(startCount, endCount, "cf");
@@ -323,7 +323,7 @@ public class AdminController {
 	@RequestMapping(value="/admin/admin_recipe/recipe_list_ncf.th", method=RequestMethod.GET)
 	public ModelAndView recipe_list_ncf(String rpage) {
 		ModelAndView mv = new ModelAndView();
-		Map<String, String> param = pageService.getPageResult2(rpage, "recipe", recipeService);
+		Map<String, String> param = pageService.getPageResult2(rpage, "recipe_ncf", recipeService);
 		int startCount = Integer.parseInt(param.get("start"));
 		int endCount = Integer.parseInt(param.get("end"));
 		List<Object> olist = recipeService.getListResult(startCount, endCount,"ncf");
@@ -344,7 +344,7 @@ public class AdminController {
 	@RequestMapping(value="/admin/admin_recipe/recipe_content_de.th", method=RequestMethod.GET)
 	public ModelAndView recipe_content(String rnum, String rno) {
 		ModelAndView mv = new ModelAndView();
-		recipeService.getUpdateHits(rnum);
+		/* recipeService.getUpdateHits(rnum); */
 		DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
 		
 		mv.addObject("rnum", rnum);
@@ -358,7 +358,7 @@ public class AdminController {
 		@RequestMapping(value="/admin/admin_recipe/recipe_content_cf.th", method=RequestMethod.GET)
 		public ModelAndView recipe_content_cf(String rnum, String rno) {
 			ModelAndView mv = new ModelAndView();
-			recipeService.getUpdateHits(rnum);
+			/* recipeService.getUpdateHits(rnum); */
 			DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
 			
 			mv.addObject("rnum", rnum);
@@ -372,7 +372,7 @@ public class AdminController {
 		@RequestMapping(value="/admin/admin_recipe/recipe_content_ncf.th", method=RequestMethod.GET)
 		public ModelAndView recipe_content_ncf(String rnum, String rno) {
 			ModelAndView mv = new ModelAndView();
-			recipeService.getUpdateHits(rnum);
+			/* recipeService.getUpdateHits(rnum); */
 			DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
 			
 			mv.addObject("rnum", rnum);
@@ -494,7 +494,7 @@ public class AdminController {
 		@RequestMapping(value="/admin/admin_package/package_content.th", method=RequestMethod.GET)
 		public ModelAndView package_content(String pnum, String rno) {
 			ModelAndView mv = new ModelAndView();
-			packageService.getUpdateHits(pnum);
+			/* packageService.getUpdateHits(pnum); */
 			DpPackageVO vo = (DpPackageVO)packageService.getContent(pnum);
 			
 			mv.addObject("pnum", pnum);

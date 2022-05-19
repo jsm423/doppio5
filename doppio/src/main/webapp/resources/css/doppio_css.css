@@ -375,3 +375,27 @@
 	.error_div{
 		margin-top: 250px;
 	}
+	
+	/* 댓글 */
+	.commtable{
+		width:700px;
+		/* border: 1px solid red; */ 
+		margin-bottom: 10px;
+		text-align: left;
+	}
+	.commtable>tr{
+		/*  border: 1px solid blue;  */
+
+	}
+	.commth{/* border: 1px solid pink; */ width: 15%; font-size: 14px;}
+	.commtd{/* border: 1px solid black; */font-size: 14px;}
+	.commbtn{width: 700px; }
+	.commbtntd{/* border: 1px solid purple; */ text-align: right; }
+	.commbtntd>p{font-size: 3pt; vertical-align: middle; display: inline-block;}
+	.commbtnup,.commbtndel{
+		width:35px; margin: 0px; padding:0px; 
+		font-size: 3pt; border: none;
+		cursor: pointer; background-color: white;
+	}
+	.commbtnup:hover{text-decoration: underline;}
+	.commbtndel:hover {text-decoration: underline;}

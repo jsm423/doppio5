@@ -28,7 +28,7 @@ import com.web.vo.DpRecipeVO;
 		@RequestMapping(value="/recipe/recipe_list_de.th", method=RequestMethod.GET)
 		public ModelAndView recipe_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
-			Map<String, String> param = pageService.getPageResult2(rpage, "recipe", recipeService);
+			Map<String, String> param = pageService.getPageResult2(rpage, "recipe_de", recipeService);
 			int startCount = Integer.parseInt(param.get("start"));
 			int endCount = Integer.parseInt(param.get("end"));
 			List<Object> olist = recipeService.getListResult(startCount, endCount, "de");
@@ -48,7 +48,7 @@ import com.web.vo.DpRecipeVO;
 		@RequestMapping(value="/recipe/recipe_list_cf.th", method=RequestMethod.GET)
 		public ModelAndView recipe_list_cf(String rpage) {
 			ModelAndView mv = new ModelAndView();
-			Map<String, String> param = pageService.getPageResult2(rpage, "recipe", recipeService);
+			Map<String, String> param = pageService.getPageResult2(rpage, "recipe_cf", recipeService);
 			int startCount = Integer.parseInt(param.get("start"));
 			int endCount = Integer.parseInt(param.get("end"));
 			List<Object> olist = recipeService.getListResult(startCount, endCount, "cf");
@@ -68,7 +68,7 @@ import com.web.vo.DpRecipeVO;
 		@RequestMapping(value="/recipe/recipe_list_ncf.th", method=RequestMethod.GET)
 		public ModelAndView recipe_list_ncf(String rpage) {
 			ModelAndView mv = new ModelAndView();
-			Map<String, String> param = pageService.getPageResult2(rpage, "recipe", recipeService);
+			Map<String, String> param = pageService.getPageResult2(rpage, "recipe_ncf", recipeService);
 			int startCount = Integer.parseInt(param.get("start"));
 			int endCount = Integer.parseInt(param.get("end"));
 			List<Object> olist = recipeService.getListResult(startCount, endCount,"ncf");
@@ -123,7 +123,7 @@ import com.web.vo.DpRecipeVO;
 				mv.addObject("rnum", rnum);
 				mv.addObject("vo", vo);
 				mv.addObject("rno", rno);
-				mv.setViewName("/recipe/recipe_content_ncf.th");
+				mv.setViewName("/recipe/recipe_content_ncf");
 				return mv;
 			}	
 		
