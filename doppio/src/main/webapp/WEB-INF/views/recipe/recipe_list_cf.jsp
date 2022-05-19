@@ -1,14 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
-	<head> 
-		<meta charset="UTF-8">
-		<title>Doppio</title>
-		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
-		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/recipe_list_css.css">
-		</head>
+<head> 
+<meta charset="UTF-8">
+<title>DOPPIO</title>
+<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
+<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/recipe_list_css.css">
+<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/am-pagination.css">
+<script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/doppio/resources/js/am-pagination.js"></script>
+<script>
+	$(document).ready(function(){
+		
+		var pager = jQuery('#ampaginationsm').pagination({
+		
+		    maxSize: 7,	    		// max page size
+		    totals: '${dbCount}',	// total pages	
+		    page: '${reqPage}',		// initial page		
+		    pageSize: '${pageSize}',			// max number items per page
+		
+		    // custom labels		
+		    lastText: '&raquo;&raquo;', 		
+		    firstText: '&laquo;&laquo;',		
+		    prevText: '&laquo;',		
+		    nextText: '&raquo;',
+				     
+		    btnSize:'sm'	// 'sm'  or 'lg'		
+		});
+		
+		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
+			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+	           $(location).attr('href', "http://localhost:9000/doppio/admin/admin_recipe/recipe_list_cf.th?rpage="+e.page);         
+	    });
+		
+ 	});
+</script>
+<style>
+	.pagenumber{margin-left: auto; margin-right: auto;}
+</style>
+</head>
 	<body>
 		
 		<!-- header -->
@@ -41,34 +73,35 @@
 		</div>
 		<!-- 판매 리스트 -->
 			<div class="imgcon_div">
-				<section class="imgcon_sc">
+				<div class="imgcon_sc">
 				
-					<div class="imgcon1">
-						<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th"><img src="http://localhost:9000/doppio/resources/img/c1.jpg" class="recipe_img" width="300" height="300"/></a>
-						<br>
-						<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th">심플 이즈 베스트, <br>에스프레소</a>
-					</div>
-					<div class="imgcon2">
-							<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th"><img src="/doppio/resources/img/c2.jpg" class="recipe_img" width="300" height="300"/></a>
+					<c:forEach var="vo" items="${list}">
+						<div class="imgcon1">
+							<input type="hidden" name="rno" value="${vo.rno }">
+							<input type="hidden" name="rnum" value="${vo.rnum }">
+							<input type="hidden" name="rsfile" value="${vo.rsfile }">
+							<input type="hidden" name="rtitle" value="${vo.rtitle }">
+							<c:if test="${vo.rsfile != null}">
+								<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th?rnum=${vo.rnum }&rno=${vo.rno}">
+			<!-- 사진 -->			<img src="http://localhost:9000/doppio/resources/upload/${vo.rsfile }" class="recipe_img" width="300" height="300"/>
+								</a>
+							</c:if>
 							<br>
-							<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th">막대 아이스크림으로도 충분해요, <br>하드 아포가토</a>
-					</div>
-					<div class="imgcon3">
-							<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th"><img src="/doppio/resources/img/c3.jpg" class="recipe_img" width="300" height="300"/></a>
-							<br>
-							<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th">때로는 달콤하게 때로는 쌉쌀하게, <br>딥 다크 초코 라떼</a>
-					</div>
-					<div class="imgcon4">
-							<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th"><img src="/doppio/resources/img/c4.jpg" class="recipe_img" width="300" height="300"/></a>
-							<br>
-							<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th">SNS 화제의 그 음료, <br>달고나 라떼</a>
-					</div>
+			<!-- 글 -->		<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th?rnum=${vo.rnum }&rno=${vo.rno}">${vo.rtitle }</a>
+						</div>
+					</c:forEach>
 					
-				</section>
+				</div>
 			</div>
 			</div>
 		</div>
-			
+		
+				<table class="pagenumber">
+					<tr>
+						<td colspan="4"><div id="ampaginationsm"></td>
+					</tr>
+				</table>
+				<br><br><br><br><br><br>
 			
 		<!-- footer -->
 		<jsp:include page="../doppio_footer.jsp"></jsp:include>

@@ -38,7 +38,6 @@
  	});
 </script>
 <style>
-	div.mypage_nav a:nth-child(3) {text-decoration: underline;}
 	.pagenumber{margin-left: auto; margin-right: auto;}
 </style>
 </head>
@@ -54,12 +53,7 @@
 			<div class="recipe_header">
 				<img alt="dessert" src="http://localhost:9000/doppio/resources/img/recipe_dessert_bn.png">
 			</div>
-			<br><br>
-		<div class="mypage_nav">
-			<a href="http://localhost:9000/doppio/recipe/recipe_list_cf.th">coffee</a>&emsp;&emsp;
-			<a href="http://localhost:9000/doppio/recipe/recipe_list_ncf.th">non-coffee</a>&emsp;&emsp;
-			<a href="http://localhost:9000/doppio/recipe/recipe_list_de.th">dessert</a>
-		</div>
+
 		
 		<!-- 옵션 박스 -->
 
@@ -90,12 +84,12 @@
 							<input type="hidden" name="rsfile" value="${vo.rsfile }">
 							<input type="hidden" name="rtitle" value="${vo.rtitle }">
 							<c:if test="${vo.rsfile != null}">
-								<a href="recipe_content.th?rnum=${vo.rnum }&rno=${vo.rno}">
+								<a href="http://localhost:9000/doppio/recipe/recipe_content.th?rnum=${vo.rnum }&rno=${vo.rno}">
 									<img src="http://localhost:9000/doppio/resources/upload/${vo.rsfile }" class="recipe_img" width="300" height="300"/>
 								</a>
 							</c:if>
 							<br>
-							<a href="http://localhost:9000/doppio/resources/upload/${vo.rsfile }">${vo.rtitle }</a>
+							<a href="http://localhost:9000/doppio/recipe/recipe_content_de.th?rnum=${vo.rnum }&rno=${vo.rno}">${vo.rtitle }</a>
 						</div>
 					</c:forEach>
 				
@@ -111,12 +105,7 @@
 				</table>
 				
 				<br><br><br><br><br><br>
-	<!-- <div style="text-align: center; margin: 0 auto;">
-		<div style="display: inline-block; margin: 50px;"><img alt="" src="" width="250px" height="250px"></div>
-		<div style="display: inline-block; margin: 50px;"><img alt="" src="" width="250px" height="250px"></div>
-		<div style="display: inline-block; margin: 50px;"><img alt="" src="" width="250px" height="250px"></div>
-		<div style="display: inline-block; margin: 50px;"><img alt="" src="" width="250px" height="250px"></div>
-	</div> -->
+	
 		
 		
 			

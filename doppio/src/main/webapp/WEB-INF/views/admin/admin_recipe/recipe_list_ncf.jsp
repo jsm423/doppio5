@@ -73,8 +73,8 @@
 							<li>
 								<select name="oplist" id="oplist" style= "width: 200px; height: 30px;">
 								<option value="전체보기">전체보기</option>
-								<option value="쿠키&브래드">쿠키&브래드</option>
-								<option value="샐러드&샌드위치">샐러드&샌드위치</option></select>
+								<option value="알콜">알콜</option>
+								<option value="논알콜">논알콜</option></select>
 							</li>
 							
 						</ul>

@@ -24,18 +24,14 @@ import com.web.vo.DpRecipeVO;
 		@Autowired
 		private DpPageServiceImpl pageService;
 	
-		/*
-		 * 		recipe_list_de
-		 * */
-		
-		
+		/*recipe_list 레시피 리스트  - 디저트*/		
 		@RequestMapping(value="/recipe/recipe_list_de.th", method=RequestMethod.GET)
 		public ModelAndView recipe_list(String rpage) {
 			ModelAndView mv = new ModelAndView();
 			Map<String, String> param = pageService.getPageResult2(rpage, "recipe", recipeService);
 			int startCount = Integer.parseInt(param.get("start"));
 			int endCount = Integer.parseInt(param.get("end"));
-			List<Object> olist = recipeService.getListResult(startCount, endCount);
+			List<Object> olist = recipeService.getListResult(startCount, endCount, "de");
 			ArrayList<DpRecipeVO> list = new ArrayList<DpRecipeVO>();
 			for(Object obj : olist) {
 				list.add((DpRecipeVO)obj);
@@ -48,59 +44,88 @@ import com.web.vo.DpRecipeVO;
 			mv.setViewName("/recipe/recipe_list_de");
 			return mv;
 		}
-		
-		
-		
-		
-		/*
-		 * 		recipe_list_cf
-		 * */
-		
+		/*recipe_list 레시피 리스트 - 커피*/		
 		@RequestMapping(value="/recipe/recipe_list_cf.th", method=RequestMethod.GET)
-		public String recipe_list_cf() {
-		
-			return "/recipe/recipe_list_cf";
+		public ModelAndView recipe_list_cf(String rpage) {
+			ModelAndView mv = new ModelAndView();
+			Map<String, String> param = pageService.getPageResult2(rpage, "recipe", recipeService);
+			int startCount = Integer.parseInt(param.get("start"));
+			int endCount = Integer.parseInt(param.get("end"));
+			List<Object> olist = recipeService.getListResult(startCount, endCount, "cf");
+			ArrayList<DpRecipeVO> list = new ArrayList<DpRecipeVO>();
+			for(Object obj : olist) {
+				list.add((DpRecipeVO)obj);
+			}
+			mv.addObject("list", list);
+			mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
+			mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
+			mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
+			
+			mv.setViewName("/recipe/recipe_list_cf");
+			return mv;
 		}
-		
-		/*
-		 * 		recipe_list_ncf
-		 * */
-		
+		/*recipe_list 레시피 리스트 - 논커피*/		
 		@RequestMapping(value="/recipe/recipe_list_ncf.th", method=RequestMethod.GET)
-		public String recipe_list_ncf() {
-		
-			return "/recipe/recipe_list_ncf";
+		public ModelAndView recipe_list_ncf(String rpage) {
+			ModelAndView mv = new ModelAndView();
+			Map<String, String> param = pageService.getPageResult2(rpage, "recipe", recipeService);
+			int startCount = Integer.parseInt(param.get("start"));
+			int endCount = Integer.parseInt(param.get("end"));
+			List<Object> olist = recipeService.getListResult(startCount, endCount,"ncf");
+			ArrayList<DpRecipeVO> list = new ArrayList<DpRecipeVO>();
+			for(Object obj : olist) {
+				list.add((DpRecipeVO)obj);
+			}
+			mv.addObject("list", list);
+			mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
+			mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
+			mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
+			
+			mv.setViewName("/recipe/recipe_list_ncf");
+			return mv;
 		}
 		
-		/*
-		 * 		recipe_content_de
-		 * */
-		
+		//레시피 상세페이지 - 디저트
 		@RequestMapping(value="/recipe/recipe_content_de.th", method=RequestMethod.GET)
-		public String recipe_content_de() {
-		
-			return "/recipe/recipe_content_de";
+		public ModelAndView recipe_content(String rnum, String rno) {
+			ModelAndView mv = new ModelAndView();
+			recipeService.getUpdateHits(rnum);
+			DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
+			
+			mv.addObject("rnum", rnum);
+			mv.addObject("vo", vo);
+			mv.addObject("rno", rno);
+			mv.setViewName("/recipe/recipe_content_de");
+			return mv;
 		}
 		
-		/*
-		 * 		recipe_content_cf
-		 * */
-		
-		@RequestMapping(value="/recipe/recipe_content_cf.th", method=RequestMethod.GET)
-		public String recipe_content_cf() {
-		
-			return "/recipe/recipe_content_cf";
-		}
-		
-		/*
-		 * 		recipe_content_ncf
-		 * */
-		
-		@RequestMapping(value="/recipe/recipe_content_ncf.th", method=RequestMethod.GET)
-		public String recipe_content_ncf() {
-		
-			return "/recipe/recipe_content_ncf";
-		}
+		//레시피 상세페이지 - 커피
+			@RequestMapping(value="/recipe/recipe_content_cf.th", method=RequestMethod.GET)
+			public ModelAndView recipe_content_cf(String rnum, String rno) {
+				ModelAndView mv = new ModelAndView();
+				recipeService.getUpdateHits(rnum);
+				DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
+				
+				mv.addObject("rnum", rnum);
+				mv.addObject("vo", vo);
+				mv.addObject("rno", rno);
+				mv.setViewName("/recipe/recipe_content_cf");
+				return mv;
+			}
+			
+			//레시피 상세페이지 - 논커피
+			@RequestMapping(value="/recipe/recipe_content_ncf.th", method=RequestMethod.GET)
+			public ModelAndView recipe_content_ncf(String rnum, String rno) {
+				ModelAndView mv = new ModelAndView();
+				recipeService.getUpdateHits(rnum);
+				DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
+				
+				mv.addObject("rnum", rnum);
+				mv.addObject("vo", vo);
+				mv.addObject("rno", rno);
+				mv.setViewName("/recipe/recipe_content_ncf.th");
+				return mv;
+			}	
 		
 	
 		
