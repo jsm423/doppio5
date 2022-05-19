@@ -52,6 +52,11 @@ public class DpRecipeServiceImpl implements DpRecipeService{
 	public int getDeleteResult(String rnum) {
 		return recipeDao.delete(rnum);
 	}
+
+	@Override
+	public List<Object> getListResult(int startCount, int endCount, String cate) {
+		return recipeDao.select(startCount, endCount, cate);
+	}
 	
 	
 	

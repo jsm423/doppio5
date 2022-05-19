@@ -41,7 +41,7 @@
 			<div class="title">
 				<p>레시피 수정</p><br>
 			</div>
-			<form name="recipe_write" action="/doppio/admin/admin_recipe/recipe_update.th?rnum=${vo.rnum }" method="post" enctype="multipart/form-data">
+			<form name="recipe_write" action="/doppio/admin/admin_recipe/recipe_update_cf.th?rnum=${vo.rnum }" method="post" enctype="multipart/form-data">
 				<table class="content_write">
 					<tr>
 						<th>카테고리</th>
@@ -90,8 +90,8 @@
 					<tr>					
 						<td colspan="2">
 							<button type="submit" class="btn_style2">저장</button>
-							<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_content.th?rnum=${vo.rnum }&rno=${vo.rno}"><button type="button" class="btn_style2">취소</button></a>
-							<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th"><button type="button" class="btn_style2">리스트</button></a>
+							<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_content_cf.th?rnum=${vo.rnum }&rno=${vo.rno}"><button type="button" class="btn_style2">취소</button></a>
+							<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list_cf.th"><button type="button" class="btn_style2">리스트</button></a>
 						</td>
 					</tr>
 				</table>

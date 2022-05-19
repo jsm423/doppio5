@@ -18,7 +18,7 @@
 		
 		<!-- content -->
 		<br>
-		<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th" id="tolist" class="tolist2"> >목록으로</a>
+		<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list_de.th?rcate=de" id="tolist" class="tolist2"> >목록으로</a>
 	<div class="recipe_content">
 		
 		<div class="content_div">
@@ -41,9 +41,9 @@
 				<a href="#"><img alt="url" src="http://localhost:9000/doppio/resources/img/url_con.png" class="share_con" width="30px" height="30px"></a>	
 				<a href="#"><img alt="twitter" src="http://localhost:9000/doppio/resources/img/twt_con.png" class="share_con" width="30px" height="30px"></a>	
 				<a href="#"><img alt="kakao" src="http://localhost:9000/doppio/resources/img/kt_con.png" class="share_con" width="30px" height="30px"></a>	
-			<form name="delForm" action="/doppio/admin/admin_recipe/recipe_content.th?rnum=${vo.rnum }" method="post">
+			<form name="delForm" action="/doppio/admin/admin_recipe/recipe_content_de.th?rnum=${vo.rnum }" method="post">
 				<div class="admin_button">
-					<button type="button" id="btnUpdate" onclick="location.href='http://localhost:9000/doppio/admin/admin_recipe/recipe_update.th?rnum=${vo.rnum }&rno=${rno}'">수정</button>
+					<button type="button" id="btnUpdate" onclick="location.href='http://localhost:9000/doppio/admin/admin_recipe/recipe_update_de.th?rnum=${vo.rnum }&rno=${rno}'">수정</button>
 					<button type="submit">삭제</button>
 				</div>
 			</form>

@@ -20,11 +20,12 @@ public class DpRecipeDAO implements DpObjectDAO{
 	}
 	
 	@Override //리스트
-	public List<Object> select(int startCount, int endCount){
+	public List<Object> select(int startCount, int endCount, String rcate){
 		Map param = new HashMap<String, String>();
 		param.put("start", startCount);
 		param.put("end", endCount);
-		
+		if(rcate != null && rcate !="")
+			param.put("rcate", rcate);
 		return sqlSession.selectList(namespace+".list", param);
 	}
 	
@@ -59,6 +60,12 @@ public class DpRecipeDAO implements DpObjectDAO{
 	@Override //레시피 삭제
 	public int delete(String rnum) {
 		return sqlSession.delete(namespace+".delete",rnum);
+	}
+
+	@Override
+	public List<Object> select(int startCount, int endCount) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	 
 	

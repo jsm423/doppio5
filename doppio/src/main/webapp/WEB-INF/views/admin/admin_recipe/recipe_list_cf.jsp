@@ -32,7 +32,7 @@
 		
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	           $(location).attr('href', "http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th?rpage="+e.page);         
+	           $(location).attr('href', "http://localhost:9000/doppio/admin/admin_recipe/recipe_list_cf.th?rpage="+e.page);         
 	    });
 		
  	});
@@ -52,18 +52,18 @@
 			<div class="list_div">
 		
 			<div class="recipe_header">
-				<img alt="dessert" src="http://localhost:9000/doppio/resources/img/recipe_dessert_bn.png">
+				<img alt="dessert" src="http://localhost:9000/doppio/resources/img/recipe_coffee_bn.png">
 			</div>
 			<br><br>
 		<div class="mypage_nav">
-			<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list_cf.th">coffee</a>&emsp;&emsp;
-			<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list_ncf.th">non-coffee</a>&emsp;&emsp;
-			<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th">dessert</a>
+			<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list_cf.th?rcate=cf">coffee</a>&emsp;&emsp;
+			<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list_ncf.th?rcate=ncf">non-coffee</a>&emsp;&emsp;
+			<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list_de.th?rcate=de">dessert</a>
 		</div>
 		
 		<!-- 옵션 박스 -->
 		<div class="purchasebtn">
-				<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_write.th"><button type="button">글쓰기</button></a>
+				<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_write_cf.th"><button type="button">레시피 등록</button></a>
 		</div>
 		<div class="lioption_div">
 			<div class="lioption_div2">
@@ -92,12 +92,12 @@
 							<input type="hidden" name="rsfile" value="${vo.rsfile }">
 							<input type="hidden" name="rtitle" value="${vo.rtitle }">
 							<c:if test="${vo.rsfile != null}">
-								<a href="recipe_content.th?rnum=${vo.rnum }&rno=${vo.rno}">
-									<img src="http://localhost:9000/doppio/resources/upload/${vo.rsfile }" class="recipe_img" width="300" height="300"/>
+								<a href="recipe_content_cf.th?rnum=${vo.rnum }&rno=${vo.rno}">
+			<!-- 사진 -->			<img src="http://localhost:9000/doppio/resources/upload/${vo.rsfile }" class="recipe_img" width="300" height="300"/>
 								</a>
 							</c:if>
 							<br>
-							<a href="http://localhost:9000/doppio/resources/upload/${vo.rsfile }">${vo.rtitle }</a>
+			<!-- 글 -->		<a href="recipe_content_cf.th?rnum=${vo.rnum }&rno=${vo.rno}">${vo.rtitle }</a>
 						</div>
 					</c:forEach>
 				

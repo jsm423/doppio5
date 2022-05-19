@@ -20,8 +20,13 @@
 	<select id="list" parameterType="map" resultType="com.web.vo.DpRecipeVO">
 		select rno, rnum, rtitle, rhits, rdate, rfile, rsfile, rcate from 
 				 (select rownum rno, rnum, rtitle, rhits, rdate , rfile, rsfile, rcate
-			     from (SELECT rnum, rtitle, rhits, rdate, rfile, rsfile, rcate from doppio_recipe order by rdate desc) 
+			     from (SELECT rnum, rtitle, rhits, rdate, rfile, rsfile, rcate from doppio_recipe 
+			     <if test='rcate!=null and rcate!=""'>
+					where rcate=#{rcate}
+			     </if>
+			      order by rdate desc) 
 			     ) where rno between #{start} and #{end}
+			     
 	</select>
 	
 	<insert id="insert" parameterType="com.web.vo.DpRecipeVO">

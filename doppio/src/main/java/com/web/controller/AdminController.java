@@ -47,9 +47,9 @@ public class AdminController {
 	}
 	
 	/* 관리자 레시피 */
-	//레시피 삭제처리
-	@RequestMapping(value="/admin/admin_recipe/recipe_content.th", method=RequestMethod.POST)
-	public ModelAndView recipe_delete(DpRecipeVO vo, HttpServletRequest request) throws Exception{
+	//레시피 삭제처리 - 커피
+	@RequestMapping(value="/admin/admin_recipe/recipe_content_cf.th", method=RequestMethod.POST)
+	public ModelAndView recipe_delete_cf(DpRecipeVO vo, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		String rsfile = recipeService.getFilename(vo.getRnum());
 		int result = recipeService.getDeleteResult(vo.getRnum());
@@ -61,28 +61,91 @@ public class AdminController {
 				File file = new File(path + rsfile);
 				if(file.exists()) file.delete();
 			}
-			mv.setViewName("redirect:/admin/admin_recipe/recipe_list.th");
+			mv.setViewName("redirect:/admin/admin_recipe/recipe_list_cf.th");
+		}
+		return mv;
+		
+	}
+	//레시피 삭제처리 - 논커피
+	@RequestMapping(value="/admin/admin_recipe/recipe_content_ncf.th", method=RequestMethod.POST)
+	public ModelAndView recipe_delete_ncf(DpRecipeVO vo, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String rsfile = recipeService.getFilename(vo.getRnum());
+		int result = recipeService.getDeleteResult(vo.getRnum());
+		
+		if(result == 1) {
+			if(rsfile != null) {
+				String path = request.getSession().getServletContext().getRealPath("/");
+				path += "resources\\upload\\";
+				File file = new File(path + rsfile);
+				if(file.exists()) file.delete();
+			}
+			mv.setViewName("redirect:/admin/admin_recipe/recipe_list_ncf.th");
+		}
+		return mv;
+		
+	}
+	
+	//레시피 삭제처리 - 디저트
+	@RequestMapping(value="/admin/admin_recipe/recipe_content_de.th", method=RequestMethod.POST)
+	public ModelAndView recipe_delete_de(DpRecipeVO vo, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String rsfile = recipeService.getFilename(vo.getRnum());
+		int result = recipeService.getDeleteResult(vo.getRnum());
+		
+		if(result == 1) {
+			if(rsfile != null) {
+				String path = request.getSession().getServletContext().getRealPath("/");
+				path += "resources\\upload\\";
+				File file = new File(path + rsfile);
+				if(file.exists()) file.delete();
+			}
+			mv.setViewName("redirect:/admin/admin_recipe/recipe_list_de.th");
 		}
 		return mv;
 		
 	}
 	
 	
-	//레시피 업데이트 폼
-	@RequestMapping(value="/admin/admin_recipe/recipe_update.th", method=RequestMethod.GET)
-	public ModelAndView recipe_update(String rnum, String rno) {
+	//레시피 업데이트 폼 - 커피
+	@RequestMapping(value="/admin/admin_recipe/recipe_update_cf.th", method=RequestMethod.GET)
+	public ModelAndView recipe_update_cf(String rnum, String rno) {
 		ModelAndView mv = new ModelAndView();
 		DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
 		
 		mv.addObject("vo",vo);
 		mv.addObject("rno",rno);
-		mv.setViewName("/admin/admin_recipe/recipe_update");
+		mv.setViewName("/admin/admin_recipe/recipe_update_cf");
 		return mv;
 	}
 	
-	//레시피 업데이트 처리
-		@RequestMapping(value="/admin/admin_recipe/recipe_update.th", method=RequestMethod.POST)
-		public ModelAndView recipe_update(DpRecipeVO vo, HttpServletRequest request) throws Exception{
+	//레시피 업데이트 폼 - 논커피
+	@RequestMapping(value="/admin/admin_recipe/recipe_update_ncf.th", method=RequestMethod.GET)
+	public ModelAndView recipe_update_ncf(String rnum, String rno) {
+		ModelAndView mv = new ModelAndView();
+		DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
+		
+		mv.addObject("vo",vo);
+		mv.addObject("rno",rno);
+		mv.setViewName("/admin/admin_recipe/recipe_update_ncf");
+		return mv;
+	}
+	
+	//레시피 업데이트 폼 - 디저트
+	@RequestMapping(value="/admin/admin_recipe/recipe_update_de.th", method=RequestMethod.GET)
+	public ModelAndView recipe_update_de(String rnum, String rno) {
+		ModelAndView mv = new ModelAndView();
+		DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
+		
+		mv.addObject("vo",vo);
+		mv.addObject("rno",rno);
+		mv.setViewName("/admin/admin_recipe/recipe_update_de");
+		return mv;
+	}
+	
+	//레시피 업데이트 처리 - 커피
+		@RequestMapping(value="/admin/admin_recipe/recipe_update_cf.th", method=RequestMethod.POST)
+		public ModelAndView recipe_update_cf(DpRecipeVO vo, HttpServletRequest request) throws Exception{
 			ModelAndView mv = new ModelAndView();
 			String oldFile = vo.getRsfile();
 			vo = fileService.fileCheck(vo);
@@ -90,25 +153,80 @@ public class AdminController {
 			int result = recipeService.getUpdateResult(vo); 
 			if(result == 1) {
 				fileService.fileSave(vo, request, oldFile);
-				mv.setViewName("redirect:/admin/admin_recipe/recipe_list.th");
+				mv.setViewName("redirect:/admin/admin_recipe/recipe_list_cf.th");
 			}else {
 				//에러페이지 호출
 			}
 			
 			return mv;
 		}
-	
-	//레시피 등록폼
-	@RequestMapping(value="/admin/admin_recipe/recipe_write.th", method=RequestMethod.GET)
-	public ModelAndView recipe_write() {
+		
+	//레시피 업데이트 처리 - 논커피
+			@RequestMapping(value="/admin/admin_recipe/recipe_update_ncf.th", method=RequestMethod.POST)
+			public ModelAndView recipe_update_ncf(DpRecipeVO vo, HttpServletRequest request) throws Exception{
+				ModelAndView mv = new ModelAndView();
+				String oldFile = vo.getRsfile();
+				vo = fileService.fileCheck(vo);
+				
+				int result = recipeService.getUpdateResult(vo); 
+				if(result == 1) {
+					fileService.fileSave(vo, request, oldFile);
+					mv.setViewName("redirect:/admin/admin_recipe/recipe_list_ncf.th");
+				}else {
+					//에러페이지 호출
+				}
+				
+				return mv;
+			}
+				
+	//레시피 업데이트 처리 - 디저트
+	@RequestMapping(value="/admin/admin_recipe/recipe_update_desert.th", method=RequestMethod.POST)
+	public ModelAndView recipe_update_desert(DpRecipeVO vo, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/admin/admin_recipe/recipe_write");
+		String oldFile = vo.getRsfile();
+		vo = fileService.fileCheck(vo);
+		
+		int result = recipeService.getUpdateResult(vo); 
+		if(result == 1) {
+			fileService.fileSave(vo, request, oldFile);
+			mv.setViewName("redirect:/admin/admin_recipe/recipe_list_desert.th");
+		}else {
+			//에러페이지 호출
+		}
+		
+		return mv;
+	}
+
+	
+	
+	
+	//레시피 등록폼 - 커피
+	@RequestMapping(value="/admin/admin_recipe/recipe_write_cf.th", method=RequestMethod.GET)
+	public ModelAndView recipe_write_cf() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/admin/admin_recipe/recipe_write_cf");
 		return mv;
 	}
 	
-	//레시피 등록처리
-	@RequestMapping(value="/admin/admin_recipe/recipe_write.th", method=RequestMethod.POST)
-	public String recipe_write(DpRecipeVO vo, HttpServletRequest request) throws Exception{
+	//레시피 등록폼 - 논커피
+		@RequestMapping(value="/admin/admin_recipe/recipe_write_ncf.th", method=RequestMethod.GET)
+		public ModelAndView recipe_write_ncf() {
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("/admin/admin_recipe/recipe_write_ncf");
+			return mv;
+		}
+		
+	//레시피 등록폼 - 디저트
+	@RequestMapping(value="/admin/admin_recipe/recipe_write_de.th", method=RequestMethod.GET)
+	public ModelAndView recipe_write_de() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/admin/admin_recipe/recipe_write_de");
+		return mv;
+	}
+	
+	//레시피 등록처리 - 커피
+	@RequestMapping(value="/admin/admin_recipe/recipe_write_cf.th", method=RequestMethod.POST)
+	public String recipe_write_cf(DpRecipeVO vo, HttpServletRequest request) throws Exception{
 		
 		String result_page = "";
 		
@@ -117,23 +235,58 @@ public class AdminController {
 		
 		if(result == 1) {
 			fileService.fileSave(vo, request);
-			result_page = "redirect:/admin/admin_recipe/recipe_list.th";
+			result_page = "redirect:/admin/admin_recipe/recipe_list_cf.th";
 		}else {
 			//에러페이지 호출
 		}
 		return result_page;
-		
-		
+	}	
+	
+		//레시피 등록처리 - 논커피
+		@RequestMapping(value="/admin/admin_recipe/recipe_write_ncf.th", method=RequestMethod.POST)
+		public String recipe_write_ncf(DpRecipeVO vo, HttpServletRequest request) throws Exception{
+			
+			String result_page = "";
+			
+			vo = fileService.fileCheck(vo);
+			int result = recipeService.getInsertResult(vo);
+			
+			if(result == 1) {
+				fileService.fileSave(vo, request);
+				result_page = "redirect:/admin/admin_recipe/recipe_list_ncf.th";
+			}else {
+				//에러페이지 호출
+			}
+			return result_page;
+	}
+		//레시피 등록처리 - 디저트
+		@RequestMapping(value="/admin/admin_recipe/recipe_write_de.th", method=RequestMethod.POST)
+		public String recipe_write_de(DpRecipeVO vo, HttpServletRequest request) throws Exception{
+			
+			String result_page = "";
+			
+			vo = fileService.fileCheck(vo);
+			int result = recipeService.getInsertResult(vo);
+			
+			if(result == 1) {
+				fileService.fileSave(vo, request);
+				result_page = "redirect:/admin/admin_recipe/recipe_list_de.th";
+			}else {
+				//에러페이지 호출
+			}
+			return result_page;		
 		
 	}
-	/*recipe_list 레시피 리스트*/		
-	@RequestMapping(value="/admin/admin_recipe/recipe_list.th", method=RequestMethod.GET)
+		
+		
+	/*recipe_list 레시피 리스트  - 디저트*/		
+	@RequestMapping(value="/admin/admin_recipe/recipe_list_de.th", method=RequestMethod.GET)
 	public ModelAndView recipe_list(String rpage) {
 		ModelAndView mv = new ModelAndView();
 		Map<String, String> param = pageService.getPageResult2(rpage, "recipe", recipeService);
 		int startCount = Integer.parseInt(param.get("start"));
 		int endCount = Integer.parseInt(param.get("end"));
-		List<Object> olist = recipeService.getListResult(startCount, endCount);
+		List<Object> olist = recipeService.getListResult(startCount, endCount, "de");
 		ArrayList<DpRecipeVO> list = new ArrayList<DpRecipeVO>();
 		for(Object obj : olist) {
 			list.add((DpRecipeVO)obj);
@@ -143,17 +296,17 @@ public class AdminController {
 		mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
 		mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
 		
-		mv.setViewName("/admin/admin_recipe/recipe_list");
+		mv.setViewName("/admin/admin_recipe/recipe_list_de");
 		return mv;
 	}
-	/*recipe_list 레시피 리스트*/		
+	/*recipe_list 레시피 리스트 - 커피*/		
 	@RequestMapping(value="/admin/admin_recipe/recipe_list_cf.th", method=RequestMethod.GET)
 	public ModelAndView recipe_list_cf(String rpage) {
 		ModelAndView mv = new ModelAndView();
 		Map<String, String> param = pageService.getPageResult2(rpage, "recipe", recipeService);
 		int startCount = Integer.parseInt(param.get("start"));
 		int endCount = Integer.parseInt(param.get("end"));
-		List<Object> olist = recipeService.getListResult(startCount, endCount);
+		List<Object> olist = recipeService.getListResult(startCount, endCount, "cf");
 		ArrayList<DpRecipeVO> list = new ArrayList<DpRecipeVO>();
 		for(Object obj : olist) {
 			list.add((DpRecipeVO)obj);
@@ -166,14 +319,14 @@ public class AdminController {
 		mv.setViewName("/admin/admin_recipe/recipe_list_cf");
 		return mv;
 	}
-	/*recipe_list 레시피 리스트*/		
+	/*recipe_list 레시피 리스트 - 논커피*/		
 	@RequestMapping(value="/admin/admin_recipe/recipe_list_ncf.th", method=RequestMethod.GET)
 	public ModelAndView recipe_list_ncf(String rpage) {
 		ModelAndView mv = new ModelAndView();
 		Map<String, String> param = pageService.getPageResult2(rpage, "recipe", recipeService);
 		int startCount = Integer.parseInt(param.get("start"));
 		int endCount = Integer.parseInt(param.get("end"));
-		List<Object> olist = recipeService.getListResult(startCount, endCount);
+		List<Object> olist = recipeService.getListResult(startCount, endCount,"ncf");
 		ArrayList<DpRecipeVO> list = new ArrayList<DpRecipeVO>();
 		for(Object obj : olist) {
 			list.add((DpRecipeVO)obj);
@@ -187,8 +340,8 @@ public class AdminController {
 		return mv;
 	}
 	
-	//레시피 상세페이지
-	@RequestMapping(value="/admin/admin_recipe/recipe_content.th", method=RequestMethod.GET)
+	//레시피 상세페이지 - 디저트
+	@RequestMapping(value="/admin/admin_recipe/recipe_content_de.th", method=RequestMethod.GET)
 	public ModelAndView recipe_content(String rnum, String rno) {
 		ModelAndView mv = new ModelAndView();
 		recipeService.getUpdateHits(rnum);
@@ -197,11 +350,11 @@ public class AdminController {
 		mv.addObject("rnum", rnum);
 		mv.addObject("vo", vo);
 		mv.addObject("rno", rno);
-		mv.setViewName("/admin/admin_recipe/recipe_content");
+		mv.setViewName("/admin/admin_recipe/recipe_content_de");
 		return mv;
 	}
 	
-	//레시피 상세페이지
+	//레시피 상세페이지 - 커피
 		@RequestMapping(value="/admin/admin_recipe/recipe_content_cf.th", method=RequestMethod.GET)
 		public ModelAndView recipe_content_cf(String rnum, String rno) {
 			ModelAndView mv = new ModelAndView();
@@ -215,7 +368,7 @@ public class AdminController {
 			return mv;
 		}
 		
-		//레시피 상세페이지
+		//레시피 상세페이지 - 논커피
 		@RequestMapping(value="/admin/admin_recipe/recipe_content_ncf.th", method=RequestMethod.GET)
 		public ModelAndView recipe_content_ncf(String rnum, String rno) {
 			ModelAndView mv = new ModelAndView();

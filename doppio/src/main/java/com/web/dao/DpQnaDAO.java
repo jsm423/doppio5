@@ -78,4 +78,9 @@ public class DpQnaDAO implements DpObjectDAO{
 	
 	@Override
 	public String selectFile(String id) { return "";}
+	@Override
+	public List<Object> select(int startCount, int endCount, String cate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

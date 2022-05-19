@@ -21,7 +21,7 @@
 				<div>
 					<a href="http://localhost:9000/doppio/member.th"><div><img src="/doppio/resources/img/member.png" width="130px" height="130px"><br>Member</div></a>
 					<a href="http://localhost:9000/doppio/admin/admin_package/package_list.th"><img src="/doppio/resources/img/package.png" width="130px" height="130px"><br>Package</a>
-					<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th"><img src="/doppio/resources/img/recipe.png" width="130px" height="130px"><br>Recipe</a>
+					<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list_cf.th?rcate=cf"><img src="/doppio/resources/img/recipe.png" width="130px" height="130px"><br>Recipe</a>
 				</div><br><br><br><br>
 				</section>
 			</div>

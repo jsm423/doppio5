@@ -6,6 +6,7 @@ public interface DpObjectService {
 	int getInsertResult(Object obj);
 	int getListCount();
 	List<Object> getListResult(int startCount, int endCount);
+	List<Object> getListResult(int startCount, int endCount,String cate);
 	void getUpdateHits(String num);
 	Object getContent(String num);
 	int getUpdateResult(Object obj);

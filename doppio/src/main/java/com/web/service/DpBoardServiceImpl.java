@@ -51,5 +51,11 @@ public class DpBoardServiceImpl implements DpBoardService {
 	public String getFilename(String bnum) {
 		return boardDao.selectFile(bnum);
 	}
+
+	@Override
+	public List<Object> getListResult(int startCount, int endCount, String cate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

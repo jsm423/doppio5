@@ -11,4 +11,5 @@ public class DpObjectServiceAdapter implements DpObjectService{
 	public int getUpdateResult(Object obj) { return 0;}
 	public int getDeleteResult(String num) {return 0;}
 	public String getFilename(String num) { return "";}
+	public List<Object> getListResult(int startCount, int endCount, String cate) {	return null;	}
 }

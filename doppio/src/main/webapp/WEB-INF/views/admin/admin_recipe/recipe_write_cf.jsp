@@ -19,7 +19,7 @@
 			<div class="title">
 				<p>레시피 작성</p><br>
 			</div>
-			<form name="recipe_write" action="/doppio/admin/admin_recipe/recipe_write.th" method="post" enctype="multipart/form-data">
+			<form name="recipe_write_cf" action="/doppio/admin/admin_recipe/recipe_write_cf.th" method="post" enctype="multipart/form-data">
 				<table class="content_write">
 					<tr>
 						<th>카테고리</th>
@@ -66,8 +66,8 @@
 					</tr>
 					<tr>					
 						<td colspan="2">
-							<button type="button" class="btn_style2" id="btnRecipe">저장</button>
-							<button type="button" class="btn_style2" id="btnCancel">취소</button>
+							<button type="button" class="btn_style2" id="btnRecipecf">저장</button>
+							<button type="button" class="btn_style2" id="btnCancel" onclick="location.href='http://localhost:9000/doppio/admin/admin_recipe/recipe_list_cf.th?rcate=cf'">취소</button>
 							<!-- <a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th"></a> -->
 						</td>
 					</tr>

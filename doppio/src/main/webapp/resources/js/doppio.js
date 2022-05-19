@@ -108,7 +108,7 @@ $(document).ready(function(){
 	/*******************
 	 * 레시피 - 글쓰기 폼체크
 	 ********************/	
- 	$("#btnRecipe").click(function(){
+ 	$("#btnRecipecf").click(function(){
  		if($("#rname").val() == ""){ 
 			alert("레시피명을 입력해주세요");
 			$("#rname").focus();
@@ -126,14 +126,60 @@ $(document).ready(function(){
 			$("#rcontent2").focus();
 			return false;
 		}else{
-			recipe_write.submit();
+			recipe_write_cf.submit();
 		}
 	});
 	
-		
-	$("#btnCancel").click(function(){
- 		location.href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th"
+	/*******************
+	 * 레시피 - 글쓰기 폼체크
+	 ********************/	
+ 	$("#btnRecipencf").click(function(){
+ 		if($("#rname").val() == ""){ 
+			alert("레시피명을 입력해주세요");
+			$("#rname").focus();
+				return false;
+		}else if($("#rtitle").val() == ""){
+			alert("제목을 입력해주세요");
+			$("#rtitle").focus();
+			return false;
+		}else if($("#rcontent1").val() == ""){
+			alert("재료를 입력해주세요");
+			$("#rcontent1").focus();
+			return false;
+		}else if($("#rcontent2").val() == ""){
+			alert("레시피를 입력해주세요");
+			$("#rcontent2").focus();
+			return false;
+		}else{
+			recipe_write_ncf.submit();
+		}
 	});
+	
+	/*******************
+	 * 레시피 - 글쓰기 폼체크
+	 ********************/	
+ 	$("#btnRecipede").click(function(){
+ 		if($("#rname").val() == ""){ 
+			alert("레시피명을 입력해주세요");
+			$("#rname").focus();
+				return false;
+		}else if($("#rtitle").val() == ""){
+			alert("제목을 입력해주세요");
+			$("#rtitle").focus();
+			return false;
+		}else if($("#rcontent1").val() == ""){
+			alert("재료를 입력해주세요");
+			$("#rcontent1").focus();
+			return false;
+		}else if($("#rcontent2").val() == ""){
+			alert("레시피를 입력해주세요");
+			$("#rcontent2").focus();
+			return false;
+		}else{
+			recipe_write_de.submit();
+		}
+	});
+	
 	
 	/*******************
 	 * 패키지 - 등록 폼체크

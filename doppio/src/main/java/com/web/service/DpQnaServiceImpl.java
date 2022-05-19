@@ -46,4 +46,10 @@ public class DpQnaServiceImpl implements DpQnaService{
 	@Override public int getDeleteResult(String qnum) {
 		return qnaDao.delete(qnum);
 	}
+
+	@Override
+	public List<Object> getListResult(int startCount, int endCount, String cate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

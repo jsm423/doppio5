@@ -62,4 +62,10 @@ public class DpBoardDAO implements DpObjectDAO{
 		return sqlSession.delete(namespace+".delete", bnum);
 	}
 
+	@Override
+	public List<Object> select(int startCount, int endCount, String cate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
