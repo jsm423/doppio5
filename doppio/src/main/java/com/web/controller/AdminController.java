@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.dao.DpRecipeDAO;
+import com.web.service.DpCommentServiceImpl;
 import com.web.service.DpPackageServiceImpl;
 import com.web.service.DpPageServiceImpl;
 import com.web.service.DpRecipeServiceImpl;
 import com.web.service.FileServiceImpl;
+import com.web.vo.DpCommentVO;
 import com.web.vo.DpPackageVO;
 import com.web.vo.DpRecipeVO;
 
@@ -38,6 +40,9 @@ public class AdminController {
 	
 	@Autowired
 	private FileServiceImpl fileService;
+	
+	@Autowired
+	private DpCommentServiceImpl commentService;
 	
 	
 	@RequestMapping(value="/admin/admin.th", method=RequestMethod.GET)
@@ -144,40 +149,40 @@ public class AdminController {
 	}
 	
 	//레시피 업데이트 처리 - 커피
-		@RequestMapping(value="/admin/admin_recipe/recipe_update_cf.th", method=RequestMethod.POST)
-		public ModelAndView recipe_update_cf(DpRecipeVO vo, HttpServletRequest request) throws Exception{
-			ModelAndView mv = new ModelAndView();
-			String oldFile = vo.getRsfile();
-			vo = fileService.fileCheck(vo);
-			
-			int result = recipeService.getUpdateResult(vo); 
-			if(result == 1) {
-				fileService.fileSave(vo, request, oldFile);
-				mv.setViewName("redirect:/admin/admin_recipe/recipe_list_cf.th");
-			}else {
-				//에러페이지 호출
-			}
-			
-			return mv;
+	@RequestMapping(value="/admin/admin_recipe/recipe_update_cf.th", method=RequestMethod.POST)
+	public ModelAndView recipe_update_cf(DpRecipeVO vo, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String oldFile = vo.getRsfile();
+		vo = fileService.fileCheck(vo);
+		
+		int result = recipeService.getUpdateResult(vo); 
+		if(result == 1) {
+			fileService.fileSave(vo, request, oldFile);
+			mv.setViewName("redirect:/admin/admin_recipe/recipe_list_cf.th");
+		}else {
+			//에러페이지 호출
 		}
 		
+		return mv;
+	}
+		
 	//레시피 업데이트 처리 - 논커피
-			@RequestMapping(value="/admin/admin_recipe/recipe_update_ncf.th", method=RequestMethod.POST)
-			public ModelAndView recipe_update_ncf(DpRecipeVO vo, HttpServletRequest request) throws Exception{
-				ModelAndView mv = new ModelAndView();
-				String oldFile = vo.getRsfile();
-				vo = fileService.fileCheck(vo);
-				
-				int result = recipeService.getUpdateResult(vo); 
-				if(result == 1) {
-					fileService.fileSave(vo, request, oldFile);
-					mv.setViewName("redirect:/admin/admin_recipe/recipe_list_ncf.th");
-				}else {
-					//에러페이지 호출
-				}
-				
-				return mv;
-			}
+	@RequestMapping(value="/admin/admin_recipe/recipe_update_ncf.th", method=RequestMethod.POST)
+	public ModelAndView recipe_update_ncf(DpRecipeVO vo, HttpServletRequest request) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String oldFile = vo.getRsfile();
+		vo = fileService.fileCheck(vo);
+		
+		int result = recipeService.getUpdateResult(vo); 
+		if(result == 1) {
+			fileService.fileSave(vo, request, oldFile);
+			mv.setViewName("redirect:/admin/admin_recipe/recipe_list_ncf.th");
+		}else {
+			//에러페이지 호출
+		}
+		
+		return mv;
+	}
 				
 	//레시피 업데이트 처리 - 디저트
 	@RequestMapping(value="/admin/admin_recipe/recipe_update_desert.th", method=RequestMethod.POST)
@@ -522,4 +527,70 @@ public class AdminController {
 			}
 			return mv;
 		}
+		
+		
+		
+//		
+//		
+//		//댓글 등록폼 - 커피
+//		@RequestMapping(value="/admin/admin_recipe/recipe_write_cf.th", method=RequestMethod.GET)
+//		public ModelAndView comment_write_cf() {
+//			ModelAndView mv = new ModelAndView();
+//			mv.setViewName("/admin/admin_recipe/recipe_write_cf");
+//			return mv;
+//		}
+//		
+//
+//		//댓글 등록 기능 - 커피
+//		 @RequestMapping(value="/admin/admin_recipe/recipe_content_cf.th",method=RequestMethod.POST) 
+//		 public ModelAndView comment_write_cf(DpCommentVO vo,	 HttpServletRequest request) throws Exception{
+//		  
+//			 ModelAndView mv = new ModelAndView();
+//			 
+//			 int result = commentService.getInsertResult(vo); 
+//			 if(result == 1) {
+//			 mv.setViewName("redirect:/admin/admin_recipe/recipe_content_cf.th"); 
+//			 }else {
+//			 //에러페이지 
+//			 } return mv;
+//		  
+//		  }
+//		
+//		//댓글 리스트 - 커피
+//		@RequestMapping(value = "/admin/admin_recipe/recipe_content_cf.th", method = RequestMethod.GET)
+//		public ModelAndView comment_list_cf(String rpage) {
+//			ModelAndView mv = new ModelAndView();
+//			Map<String, String> param = pageService.getPageResult3(rpage, "comment", commentService);
+//			int startCount = Integer.parseInt(param.get("start"));
+//			int endCount = Integer.parseInt(param.get("end"));
+//			List<Object> olist = commentService.getListResult(startCount, endCount);
+//			ArrayList<DpCommentVO> list = new ArrayList<DpCommentVO>();
+//			for (Object obj : olist) {
+//				list.add((DpCommentVO) obj);
+//			}
+//
+//			mv.addObject("list", list);
+//			mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
+//			mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
+//			mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
+//
+//			mv.setViewName("/admin/admin_recipe/recipe_content_cf");
+//			return mv;
+//		}
+//		
+//		
+//		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 }

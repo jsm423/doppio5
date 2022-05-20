@@ -68,4 +68,10 @@ public class DpBoardDAO implements DpObjectDAO{
 		return null;
 	}
 
+	@Override
+	public int execTotalCount(String rcate) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

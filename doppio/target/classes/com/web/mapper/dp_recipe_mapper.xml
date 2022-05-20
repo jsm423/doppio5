@@ -14,12 +14,12 @@
 	</update>
 	
 	<select id="count" resultType="int">
-		select count(*) from doppio_recipe
+		select count(*) from doppio_recipe where rcate=#{rcate}
 	</select>
 	
 	<select id="list" parameterType="map" resultType="com.web.vo.DpRecipeVO">
 		select rno, rnum, rtitle, rhits, rdate, rfile, rsfile, rcate from 
-				 (select rownum rno, rnum, rtitle, rhits, rdate , rfile, rsfile, rcate
+				 (select rownum rno,rnum, rtitle, rhits, rdate , rfile, rsfile, rcate
 			     from (SELECT rnum, rtitle, rhits, rdate, rfile, rsfile, rcate from doppio_recipe 
 			     <if test='rcate!=null and rcate!=""'>
 					where rcate=#{rcate}

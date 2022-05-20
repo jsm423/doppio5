@@ -21,6 +21,10 @@ public class DpRecipeServiceImpl implements DpRecipeService{
 		return recipeDao.execTotalCount();
 	}
 	
+	public int getTotalPage(String rcate) {
+		return recipeDao.execTotalCount(rcate);
+	}
+	
 	@Override
 	public void getUpdateHits(String rnum) {
 		recipeDao.updateHits(rnum);

@@ -71,7 +71,8 @@
 			         </ul>
        			 </div>
      		 </div>
-      
+     		 
+      <form name="comment_write_cf" action="doppio/admin/admin_recipe/recipe_write_cf.th" method="post">
      	<div class="댓글">
         	<div class="subtitle">&nbsp;댓글</div>
          	<div class="commentfield">
@@ -86,12 +87,15 @@
          			</tr>
          		</table>        		
 
-         		
+         		<input type="hidden" name="cmcate_num" value="${vo.rnum }">
             	<textarea rows="1" cols="40" style="width: 600px;" placeholder="내용을 입력해 주세요" id="cmcontent" name="cmcontent"></textarea>
-           		<button type="button" class="enter" id="btnComm">등록</button>         
+           		<button type="button" class="enter" id="btnComm">등록</button>  
+           		
          	</div>
       		</div>
-
+		</form>
+		
+		
    		</div>
   		</div>
   		

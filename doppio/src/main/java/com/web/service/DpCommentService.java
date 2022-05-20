@@ -1,5 +1,5 @@
 package com.web.service;
 
-public interface DpCommentService {
+public interface DpCommentService extends DpObjectService{
 
 }

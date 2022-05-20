@@ -4,7 +4,8 @@ import java.util.List;
 
 public interface DpObjectDAO {
 	int insert(Object obj);
-	int execTotalCount(); 
+	int execTotalCount();
+	int execTotalCount(String rcate);
 	List<Object> select(int startCount, int endCount); //list
 	List<Object> select(int startCount, int endCount, String cate); //list_rcate
 	void updateHits(String num);

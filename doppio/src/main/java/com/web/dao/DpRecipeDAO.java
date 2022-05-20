@@ -41,6 +41,11 @@ public class DpRecipeDAO implements DpObjectDAO{
 		return sqlSession.selectOne(namespace+".count");
 	}
 	
+	@Override
+	public int execTotalCount(String rcate) {
+		return sqlSession.selectOne(namespace+".count",rcate);
+	}
+	
 	@Override //조회수 업데이트
 	public void updateHits(String rnum) {
 		sqlSession.update(namespace+".update_hits", rnum);
@@ -67,7 +72,7 @@ public class DpRecipeDAO implements DpObjectDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	 
+ 
 	
 	
 	

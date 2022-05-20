@@ -100,35 +100,55 @@ import com.web.vo.DpRecipeVO;
 		}
 		
 		//레시피 상세페이지 - 커피
-			@RequestMapping(value="/recipe/recipe_content_cf.th", method=RequestMethod.GET)
-			public ModelAndView recipe_content_cf(String rnum, String rno) {
-				ModelAndView mv = new ModelAndView();
-				recipeService.getUpdateHits(rnum);
-				DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
-				
-				mv.addObject("rnum", rnum);
-				mv.addObject("vo", vo);
-				mv.addObject("rno", rno);
-				mv.setViewName("/recipe/recipe_content_cf");
-				return mv;
-			}
+		@RequestMapping(value="/recipe/recipe_content_cf.th", method=RequestMethod.GET)
+		public ModelAndView recipe_content_cf(String rnum, String rno) {
+			ModelAndView mv = new ModelAndView();
+			recipeService.getUpdateHits(rnum);
+			DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
 			
-			//레시피 상세페이지 - 논커피
-			@RequestMapping(value="/recipe/recipe_content_ncf.th", method=RequestMethod.GET)
-			public ModelAndView recipe_content_ncf(String rnum, String rno) {
-				ModelAndView mv = new ModelAndView();
-				recipeService.getUpdateHits(rnum);
-				DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
-				
-				mv.addObject("rnum", rnum);
-				mv.addObject("vo", vo);
-				mv.addObject("rno", rno);
-				mv.setViewName("/recipe/recipe_content_ncf");
-				return mv;
-			}	
+			mv.addObject("rnum", rnum);
+			mv.addObject("vo", vo);
+			mv.addObject("rno", rno);
+			mv.setViewName("/recipe/recipe_content_cf");
+			return mv;
+		}
+			
+		//레시피 상세페이지 - 논커피
+		@RequestMapping(value="/recipe/recipe_content_ncf.th", method=RequestMethod.GET)
+		public ModelAndView recipe_content_ncf(String rnum, String rno) {
+			ModelAndView mv = new ModelAndView();
+			recipeService.getUpdateHits(rnum);
+			DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
+			
+			mv.addObject("rnum", rnum);
+			mv.addObject("vo", vo);
+			mv.addObject("rno", rno);
+			mv.setViewName("/recipe/recipe_content_ncf");
+			return mv;
+		}	
 		
 	
 		
+
 		
-			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
