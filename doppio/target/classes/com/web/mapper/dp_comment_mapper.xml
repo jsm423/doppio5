@@ -14,11 +14,11 @@
 	</select>
 
 	<update id="update" parameterType="com.web.vo.DpCommentVO">
-		update doppio_comment set cmcontent=#{cmcomment} where cmnum=#{cmnum}
+		update doppio_comment set cmcomment=#{cmcomment} where cmnum=#{num}
 	</update>
 	
 	<delete id="delete" parameterType="java.lang.String">
-		delete from doppio_comment where cmnum=#{cmnum}
+		delete from doppio_comment where cmnum=#{num}
 	</delete>
 	
 	<select id="count" resultType="int">
