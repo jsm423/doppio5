@@ -100,7 +100,17 @@ public class DpPageServiceImpl{
 			dbCount = recipeService.getTotalPage("de");
 		} 
 		
-		if(serviceName.equals("package")) {
+		if(serviceName.equals("package_cf")) {
+			packageService = (DpPackageServiceImpl)service;
+			dbCount = packageService.getListCount();
+		}
+		
+		if(serviceName.equals("package_ncf")) {
+			packageService = (DpPackageServiceImpl)service;
+			dbCount = packageService.getListCount();
+		} 
+		
+		if(serviceName.equals("package_de")) {
 			packageService = (DpPackageServiceImpl)service;
 			dbCount = packageService.getListCount();
 		}

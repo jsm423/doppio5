@@ -20,7 +20,7 @@
 			<div class="title">
 				<p>관리자 package</p><br>
 			</div>
-			<form name="package_write" action="/doppio/admin/admin_package/package_write.th" method="post" enctype="multipart/form-data">
+			<form name="package_write_cf" action="/doppio/admin/admin_package/package_write_cf.th" method="post" enctype="multipart/form-data">
 				<table class="content_write">
 					<tr>
 						<th>패키지명</th>
@@ -35,14 +35,19 @@
 				</table>
 				<table class="content_write">
 					<tr>
-						<th>설명문</th>
+						<th>세부 사항</th>
 						<td width="90%"><input type="text" name="pcontent" id="pcontent"></td>
 					</tr>
 				</table>
 				<table class="content_write">
 					<tr>
 						<th>구분</th>
-						<td width="90%"><input type="text" name="pcate" id="pcate"></td>
+						<td width="90%">
+							<select name="pcate" id="pcate">
+								<option value="cf">Coffee</option>
+								<option value="ncf">Non-Coffee</option>
+								<option value="de">Dessert</option>							
+							</select></td>
 					</tr>
 				</table>
 				<table class="content_write">
@@ -67,8 +72,8 @@
 					</tr>
 					<tr>					
 						<td colspan="2">
-							<button type="button" class="btn_style2" id="btnPackage">저장</button>
-							<a href="http://localhost:9000/doppio/admin/admin_package/package_list.th"><button type="button" class="btn_style2">취소</button></a>
+							<button type="button" class="btn_style2" id="btnPackageCf">저장</button>
+							<a href="http://localhost:9000/doppio/admin/admin_package/package_list_cf.th"><button type="button" class="btn_style2">취소</button></a>
 						</td>
 					</tr>
 				</table>

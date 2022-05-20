@@ -33,13 +33,13 @@
 				
 				jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 					   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-			           $(location).attr('href', "http://localhost:9000/doppio/admin/admin_package/package_list.th?rpage="+e.page);         
+			           $(location).attr('href', "http://localhost:9000/doppio/admin/admin_package/package_list_cf.th?rpage="+e.page);         
 			    });
 				
 		 	});
 		</script>
 		<style>
-			div.mypage_nav a:nth-child(3) {text-decoration: underline;}
+			div.mypage_nav a:nth-child(1) {text-decoration: underline;}
 			.pagenumber{margin-left: auto; margin-right: auto;}
 		</style>
 		</head>
@@ -53,18 +53,18 @@
 			<div class="list_div">
 		
 			<div class="recipe_header">
-				<img alt="dessert" src="http://localhost:9000/doppio/resources/img/package_dessert_bn.png">
+				<img alt="coffee" src="http://localhost:9000/doppio/resources/img/package_coffee_bn.png">
 			</div>
-		<br><br>
+			<br><br>
 		<div class="mypage_nav">
-			<a href="#">coffee</a>&emsp;&emsp;
-			<a href="#">non-coffee</a>&emsp;&emsp;
-			<a href="#">dessert</a>
+			<a href="http://localhost:9000/doppio/admin/admin_package/package_list_cf.th">coffee</a>&emsp;&emsp;
+			<a href="http://localhost:9000/doppio/admin/admin_package/package_list_ncf.th">non-coffee</a>&emsp;&emsp;
+			<a href="http://localhost:9000/doppio/admin/admin_package/package_list_de.th">dessert</a>
 		</div>
 		
 		<!-- 옵션 박스 -->
 		<div class="purchasebtn">
-				<a href="http://localhost:9000/doppio/admin/admin_package/package_write.th"><button type="submit">등록</button></a>
+				<a href="http://localhost:9000/doppio/admin/admin_package/package_write_cf.th"><button type="submit">제품 등록</button></a>
 		</div>
 		<div class="lioption_div">
 			<div class="lioption_div2">
@@ -74,8 +74,8 @@
 							<li>
 								<select name="oplist" id="oplist" style= "width: 200px; height: 30px;">
 								<option value="전체보기">전체보기</option>
-								<option value="쿠키&브래드">쿠키&브래드</option>
-								<option value="샐러드&샌드위치">샐러드&샌드위치</option></select>
+								<option value="원두커피">원두커피</option>
+								<option value="믹스커피">믹스커피</option></select>
 							</li>
 							
 						</ul>
@@ -92,7 +92,7 @@
 						<input type="hidden" name="psfile" value="${vo.psfile }">
 						<input type="hidden" name="ptitle" value="${vo.ptitle }">
 						<c:if test="${vo.psfile != null}">
-							<a href="package_content.th?pnum=${vo.pnum }&rno=${vo.rno}">
+							<a href="package_content_cf.th?pnum=${vo.pnum }&rno=${vo.rno}">
 								<img src="http://localhost:9000/doppio/resources/upload/${vo.psfile }" class="package_img" width="300" height="300"/>
 							</a>
 						</c:if>
@@ -105,34 +105,13 @@
 			</div>
 			</div>
 		</div>
-			<!--
-				<div class="imgcon5">
-						<img src="/doppio/img/d5.jpg" width="300" height="300"/>
-						<br>
-						<a href="#">딸기가 딸기딸기, <br>황 치즈 크로플</a> 
-				</div>
-				<div class="imgcon6">
-						<img src="/doppio/img/d6.jpg" width="300" height="300"/>
-						<br>
-						<a href="#">몽글몽글 쫀득쫀득, <br>크림치즈 찹쌀떡</a>
-				</div>
-				<div class="imgcon7">
-						<img src="/doppio/img/d7.jpg" width="300" height="300"/>
-						<br>
-						<a href="#">집들이 음식으로 딱, <br>핑거 케이크</a>
-				</div>
-				<div class="imgcon8">
-						<img src="/doppio/img/d8.jpg" width="300" height="300"/>
-						<br>
-						<a href="#">이름부터 너무 귀여워, <br>타마고 샌드와 에그 스튜</a>
-				</div> -->
 		
 		<table class="pagenumber">
 			<tr>
 				<td colspan="4"><div id="ampaginationsm"></div></td>
 			</tr>
 		</table>
-				
+		
 		<br><br><br><br><br><br>
 			
 		<!-- footer -->

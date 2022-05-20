@@ -184,7 +184,7 @@ $(document).ready(function(){
 	/*******************
 	 * 패키지 - 등록 폼체크
 	 ********************/	
- 	$("#btnPackage").click(function(){
+ 	$("#btnPackageNcf").click(function(){
  		if($("#pname").val() == ""){ 
 			alert("상품명을 입력해주세요");
 			$("#pname").focus();
@@ -210,13 +210,75 @@ $(document).ready(function(){
 			$("#pprice").focus();
 				return false;
 		}else{
-			package_write.submit();
+			package_write_ncf.submit();
 		}
 	});
 	
-	 
+	/*******************
+	 * 패키지 - 등록 폼체크
+	 ********************/	
+ 	$("#btnPackageCf").click(function(){
+ 		if($("#pname").val() == ""){ 
+			alert("상품명을 입력해주세요");
+			$("#pname").focus();
+				return false;
+		}else if($("#ptitle").val() == ""){
+			alert("제목을 입력해주세요");
+			$("#ptitle").focus();
+				return false;
+		}else if($("#pcontent").val() == ""){
+			alert("소제목을 입력해주세요");
+			$("#pcontent").focus();
+				return false;
+		}else if($("#pcate").val() == ""){
+			alert("상품 구분을 입력해 주세요");
+			$("#pcate").focus();
+				return false;
+		}else if($("#pstock").val() == ""){
+			alert("재고 현황을 입력해 주세요");
+			$("#pstock").focus();
+				return false;
+		}else if($("#pprice").val() == ""){
+			alert("상품 가격을 입력해 주세요");
+			$("#pprice").focus();
+				return false;
+		}else{
+			package_write_cf.submit();
+		}
+	});
 	
-	
+	/*******************
+	 * 패키지 - 등록 폼체크
+	 ********************/	
+ 	$("#btnPackageDe").click(function(){
+ 		if($("#pname").val() == ""){ 
+			alert("상품명을 입력해주세요");
+			$("#pname").focus();
+				return false;
+		}else if($("#ptitle").val() == ""){
+			alert("제목을 입력해주세요");
+			$("#ptitle").focus();
+				return false;
+		}else if($("#pcontent").val() == ""){
+			alert("소제목을 입력해주세요");
+			$("#pcontent").focus();
+				return false;
+		}else if($("#pcate").val() == ""){
+			alert("상품 구분을 입력해 주세요");
+			$("#pcate").focus();
+				return false;
+		}else if($("#pstock").val() == ""){
+			alert("재고 현황을 입력해 주세요");
+			$("#pstock").focus();
+				return false;
+		}else if($("#pprice").val() == ""){
+			alert("상품 가격을 입력해 주세요");
+			$("#pprice").focus();
+				return false;
+		}else{
+			package_write_de.submit();
+		}
+	});
 	
 	
 	

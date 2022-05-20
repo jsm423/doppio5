@@ -69,6 +69,12 @@ public class DpCommentDAO implements DpObjectDAO{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public int execTotalCount1(String pcate) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 	

@@ -6,6 +6,7 @@ public interface DpObjectDAO {
 	int insert(Object obj);
 	int execTotalCount();
 	int execTotalCount(String rcate);
+	int execTotalCount1(String pcate);
 	List<Object> select(int startCount, int endCount); //list
 	List<Object> select(int startCount, int endCount, String cate); //list_rcate
 	void updateHits(String num);

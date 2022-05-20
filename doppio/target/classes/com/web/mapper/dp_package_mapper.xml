@@ -9,9 +9,15 @@
 	<select id="list" parameterType="map" resultType="com.web.vo.DpPackageVO">
 		select rno, pnum, ptitle, phits, pdate, pfile, psfile from 
 				 (select rownum rno, pnum, ptitle, phits, pdate , pfile, psfile 
-			     from (SELECT pnum, ptitle, phits, pdate, pfile, psfile from doppio_package order by pdate desc) 
+			     from (SELECT pnum, ptitle, phits, pdate, pfile, psfile from doppio_package  
+
+			      <if test='pcate!=null and pcate!=""'>
+					where pcate=#{pcate}
+			     </if>
+			      order by pdate desc) 
 			     ) where rno between #{start} and #{end}
 	</select>
+	
 	<select id="count" resultType="int">
 		select count(*) from doppio_package
 	</select>

@@ -31,13 +31,10 @@ public class DpPackageDAO implements DpObjectDAO {
 		return sqlSession.selectOne(namespace+".count");
 	}
 
-	@Override //판매글 리스트
+	@Override 
 	public List<Object> select(int startCount, int endCount) {
-		Map param = new HashMap<String, String>();
-		param.put("start", startCount);
-		param.put("end", endCount);
-		
-		return sqlSession.selectList(namespace+".list", param);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override //조회수 업데이트
@@ -62,14 +59,24 @@ public class DpPackageDAO implements DpObjectDAO {
 		return sqlSession.delete(namespace+".delete", pnum);
 	}
 
-	@Override
-	public List<Object> select(int startCount, int endCount, String cate) {
-		// TODO Auto-generated method stub
-		return null;
+	@Override //리스트
+	public List<Object> select(int startCount, int endCount, String pcate){
+		Map param = new HashMap<String, String>();
+		param.put("start", startCount);
+		param.put("end", endCount);
+		if(pcate != null && pcate !="")
+			param.put("pcate", pcate);
+		return sqlSession.selectList(namespace+".list", param);
 	}
 
 	@Override
 	public int execTotalCount(String rcate) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int execTotalCount1(String pcate) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

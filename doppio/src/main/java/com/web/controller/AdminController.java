@@ -391,143 +391,360 @@ public class AdminController {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		/* 관리자 패키지 */
+		//************************************************************************************
 		
-		//패키지 업데이트 폼
-		@RequestMapping(value="/admin/admin_package/package_update.th", method=RequestMethod.GET)
-		public ModelAndView package_update(String pnum, String rno) {
-				
-				ModelAndView mv = new ModelAndView();
-				DpPackageVO vo = (DpPackageVO)packageService.getContent(pnum);
+		
+		
+		
+		
+			/* 관리자 패키지 */
+			
+			//디저트 패키지 업데이트 폼 
+			@RequestMapping(value="/admin/admin_package/package_update_de.th", method=RequestMethod.GET)
+			public ModelAndView package_update_de(String pnum, String rno) {
 					
-				mv.addObject("vo",vo);
-				mv.addObject("rno",rno);
-				mv.setViewName("/admin/admin_package/package_update");
+					ModelAndView mv = new ModelAndView();
+					DpPackageVO vo = (DpPackageVO)packageService.getContent(pnum);
+						
+					mv.addObject("vo",vo);
+					mv.addObject("rno",rno);
+					mv.setViewName("/admin/admin_package/package_update_de");
+						
+						return mv;
+					}
+			//커피 패키지 업데이트 폼
+					@RequestMapping(value="/admin/admin_package/package_update_cf.th", method=RequestMethod.GET)
+					public ModelAndView package_update_cf(String pnum, String rno) {
+							
+							ModelAndView mv = new ModelAndView();
+							DpPackageVO vo = (DpPackageVO)packageService.getContent(pnum);
+								
+							mv.addObject("vo",vo);
+							mv.addObject("rno",rno);
+							mv.setViewName("/admin/admin_package/package_update_cf");
+								
+								return mv;
+							}
+			//논커피 패키지 업데이트 폼
+			@RequestMapping(value="/admin/admin_package/package_update_ncf.th", method=RequestMethod.GET)
+			public ModelAndView package_update_ncf(String pnum, String rno) {
 					
-					return mv;
-				}
+							ModelAndView mv = new ModelAndView();
+							DpPackageVO vo = (DpPackageVO)packageService.getContent(pnum);
+										
+							mv.addObject("vo",vo);
+							mv.addObject("rno",rno);
+							mv.setViewName("/admin/admin_package/package_update_ncf");
+								
+							return mv;
+							}	
+			
+			
+			
+			//디저트 패키지 업데이트 처리 
+					@RequestMapping(value="/admin/admin_package/package_update_de.th", method=RequestMethod.POST)
+					public ModelAndView package_update_de(DpPackageVO vo, HttpServletRequest request) throws Exception{
+							ModelAndView mv = new ModelAndView();
+							String oldFile = vo.getPsfile();
+							vo = fileService.fileCheck(vo);
+							
+							int result = packageService.getUpdateResult(vo); 
+							if(result == 1) {
+								fileService.fileSave(vo, request, oldFile);
+								mv.setViewName("redirect:/admin/admin_package/package_list_de.th");
+							}else {
+								//에러페이지 호출
+							}
+							
+							return mv;
+						}
+			//커피 패키지 업데이트 처리
+					@RequestMapping(value="/admin/admin_package/package_update_cf.th", method=RequestMethod.POST)
+					public ModelAndView package_update_cf(DpPackageVO vo, HttpServletRequest request) throws Exception{
+							ModelAndView mv = new ModelAndView();
+							String oldFile = vo.getPsfile();
+							vo = fileService.fileCheck(vo);
+							
+							int result = packageService.getUpdateResult(vo); 
+							if(result == 1) {
+								fileService.fileSave(vo, request, oldFile);
+								mv.setViewName("redirect:/admin/admin_package/package_list_cf.th");
+							}else {
+								//에러페이지 호출
+							}
+							
+							return mv;
+						}
+			//논커피 패키지 업데이트 처리
+					@RequestMapping(value="/admin/admin_package/package_update_ncf.th", method=RequestMethod.POST)
+					public ModelAndView package_update_ncf(DpPackageVO vo, HttpServletRequest request) throws Exception{
+							ModelAndView mv = new ModelAndView();
+							String oldFile = vo.getPsfile();
+							vo = fileService.fileCheck(vo);
+							
+							int result = packageService.getUpdateResult(vo); 
+							if(result == 1) {
+								fileService.fileSave(vo, request, oldFile);
+								mv.setViewName("redirect:/admin/admin_package/package_list_ncf.th");
+							}else {
+								//에러페이지 호출
+							}
+							
+							return mv;
+						}
 		
-		//패키지 업데이트 처리
-		@RequestMapping(value="/admin/admin_package/package_update.th", method=RequestMethod.POST)
-		public ModelAndView recipe_package(DpPackageVO vo, HttpServletRequest request) throws Exception{
-				ModelAndView mv = new ModelAndView();
-				String oldFile = vo.getPsfile();
-				vo = fileService.fileCheck(vo);
+			//디저트 패키지 등록폼
+					@RequestMapping(value="/admin/admin_package/package_write_de.th", method=RequestMethod.GET)
+					public ModelAndView package_write_de() {
+						ModelAndView mv = new ModelAndView();
+						mv.setViewName("/admin/admin_package/package_write_de");
+						return mv;
+					}
+			
+			//커피 패키지 등록폼
+					@RequestMapping(value="/admin/admin_package/package_write_cf.th", method=RequestMethod.GET)
+					public ModelAndView package_write_cf() {
+						ModelAndView mv = new ModelAndView();
+						mv.setViewName("/admin/admin_package/package_write_cf");
+						return mv;
+					}
+					
+			//논커피 패키지 등록폼
+					@RequestMapping(value="/admin/admin_package/package_write_ncf.th", method=RequestMethod.GET)
+					public ModelAndView package_write_ncf() {
+						ModelAndView mv = new ModelAndView();
+						mv.setViewName("/admin/admin_package/package_write_ncf");
+						return mv;
+					}
+			
+			//디저트 패키지 등록처리
+					@RequestMapping(value="/admin/admin_package/package_write_de.th", method=RequestMethod.POST)
+					public String package_write_de(DpPackageVO vo, HttpServletRequest request) throws Exception{
+						
+						String result_page = "";
+						
+						vo = fileService.fileCheck(vo);
+						int result = packageService.getInsertResult(vo);
+						
+						if(result == 1) {
+							fileService.fileSave(vo, request);
+							result_page = "redirect:/admin/admin_package/package_list_de.th";
+						}else {
+							//에러페이지 호출
+						}
+						return result_page;
+					}
+			
+			//커피 패키지 등록처리
+					@RequestMapping(value="/admin/admin_package/package_write_cf.th", method=RequestMethod.POST)
+					public String package_write_cf(DpPackageVO vo, HttpServletRequest request) throws Exception{
+						
+						String result_page = "";
+						
+						vo = fileService.fileCheck(vo);
+						int result = packageService.getInsertResult(vo);
+						
+						if(result == 1) {
+							fileService.fileSave(vo, request);
+							result_page = "redirect:/admin/admin_package/package_list_cf.th";
+						}else {
+							//에러페이지 호출
+						}
+						return result_page;
+					}
+					
+			//논커피 패키지 등록처리
+					@RequestMapping(value="/admin/admin_package/package_write_ncf.th", method=RequestMethod.POST)
+					public String package_write_ncf(DpPackageVO vo, HttpServletRequest request) throws Exception{
+						
+						String result_page = "";
+						
+						vo = fileService.fileCheck(vo);
+						int result = packageService.getInsertResult(vo);
+						
+						if(result == 1) {
+							fileService.fileSave(vo, request);
+							result_page = "redirect:/admin/admin_package/package_list_ncf.th";
+						}else {
+							//에러페이지 호출
+						}
+						return result_page;
+					}
 				
-				int result = packageService.getUpdateResult(vo); 
-				if(result == 1) {
-					fileService.fileSave(vo, request, oldFile);
-					mv.setViewName("redirect:/admin/admin_package/package_list.th");
-				}else {
-					//에러페이지 호출
-				}
+		
+			//디저트 패키지 리스트
+					@RequestMapping(value="/admin/admin_package/package_list_de.th", method=RequestMethod.GET)
 				
-				return mv;
-			}
-	
-		//패키지 등록폼
-		@RequestMapping(value="/admin/admin_package/package_write.th", method=RequestMethod.GET)
-		public ModelAndView package_write() {
-			ModelAndView mv = new ModelAndView();
-			mv.setViewName("/admin/admin_package/package_write");
-			return mv;
-		}
-		
-		//패키지 등록처리
-		@RequestMapping(value="/admin/admin_package/package_write.th", method=RequestMethod.POST)
-		public String package_write(DpPackageVO vo, HttpServletRequest request) throws Exception{
-			
-			String result_page = "";
-			
-			vo = fileService.fileCheck(vo);
-			int result = packageService.getInsertResult(vo);
-			
-			if(result == 1) {
-				fileService.fileSave(vo, request);
-				result_page = "redirect:/admin/admin_package/package_list.th";
-			}else {
-				//에러페이지 호출
-			}
-			return result_page;
-		}
-			
-	
-		//패키지 리스트
-		@RequestMapping(value="/admin/admin_package/package_list.th", method=RequestMethod.GET)
-	
-		public ModelAndView package_list(String rpage) {
-			ModelAndView mv = new ModelAndView();
-			Map<String, String> param = pageService.getPageResult2(rpage, "package", packageService);
-				
-				int startCount = Integer.parseInt(param.get("start"));
-				int endCount = Integer.parseInt(param.get("end"));
-			
-			List<Object> olist = packageService.getListResult(startCount, endCount);
-			ArrayList<DpPackageVO> list = new ArrayList<DpPackageVO>();
-			
-			for(Object obj : olist) {
-				list.add((DpPackageVO)obj);
-			}
-				mv.addObject("list", list);
-				mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
-				mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
-				mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
-			
-				mv.setViewName("/admin/admin_package/package_list");
-			return mv;
-	}
-		
-		//패키지 상세보기
-		@RequestMapping(value="/admin/admin_package/package_content.th", method=RequestMethod.GET)
-		public ModelAndView package_content(String pnum, String rno) {
-			ModelAndView mv = new ModelAndView();
-			/* packageService.getUpdateHits(pnum); */
-			DpPackageVO vo = (DpPackageVO)packageService.getContent(pnum);
-			
-			mv.addObject("pnum", pnum);
-			mv.addObject("vo", vo);
-			mv.addObject("rno", rno);
-			mv.setViewName("/admin/admin_package/package_content");
-			return mv;
-		}
-		
-		//패키지 삭제처리
-		@RequestMapping(value="/admin/admin_package/package_content.th", method=RequestMethod.POST)
-		public ModelAndView package_delete(DpPackageVO vo, HttpServletRequest request) throws Exception{
-			ModelAndView mv = new ModelAndView();
-			String psfile = packageService.getFilename(vo.getPnum());
-			int result = packageService.getDeleteResult(vo.getPnum());
-			
-			if(result == 1) {
-				if(psfile != null) {
-					String path = request.getSession().getServletContext().getRealPath("/");
-					path += "resources\\upload\\";
-					File file = new File(path + psfile);
-					if(file.exists()) file.delete();
+					public ModelAndView package_list_de(String rpage) {
+						ModelAndView mv = new ModelAndView();
+						Map<String, String> param = pageService.getPageResult2(rpage, "package_de", packageService);
+							
+							int startCount = Integer.parseInt(param.get("start"));
+							int endCount = Integer.parseInt(param.get("end"));
+						
+						List<Object> olist = packageService.getListResult(startCount, endCount, "de");
+						ArrayList<DpPackageVO> list = new ArrayList<DpPackageVO>();
+						
+						for(Object obj : olist) {
+							list.add((DpPackageVO)obj);
+						}
+							mv.addObject("list", list);
+							mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
+							mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
+							mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
+						
+							mv.setViewName("/admin/admin_package/package_list_de");
+						return mv;
 				}
-				mv.setViewName("redirect:/admin/admin_package/package_list.th");
-			}
-			return mv;
-		}
-		
+			
+			//커피 패키지 리스트
+					@RequestMapping(value="/admin/admin_package/package_list_cf.th", method=RequestMethod.GET)
+				
+					public ModelAndView package_list_cf(String rpage) {
+						ModelAndView mv = new ModelAndView();
+						Map<String, String> param = pageService.getPageResult2(rpage, "package_cf", packageService);
+							
+							int startCount = Integer.parseInt(param.get("start"));
+							int endCount = Integer.parseInt(param.get("end"));
+						
+						List<Object> olist = packageService.getListResult(startCount, endCount, "cf");
+						ArrayList<DpPackageVO> list = new ArrayList<DpPackageVO>();
+						
+						for(Object obj : olist) {
+							list.add((DpPackageVO)obj);
+						}
+							mv.addObject("list", list);
+							mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
+							mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
+							mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
+						
+							mv.setViewName("/admin/admin_package/package_list_cf");
+						return mv;
+				}
+					
+			//논커피 패키지 리스트
+					@RequestMapping(value="/admin/admin_package/package_list_ncf.th", method=RequestMethod.GET)
+				
+					public ModelAndView package_list_ncf(String rpage) {
+						ModelAndView mv = new ModelAndView();
+						Map<String, String> param = pageService.getPageResult2(rpage, "package_ncf", packageService);
+							
+							int startCount = Integer.parseInt(param.get("start"));
+							int endCount = Integer.parseInt(param.get("end"));
+						
+						List<Object> olist = packageService.getListResult(startCount, endCount, "ncf");
+						ArrayList<DpPackageVO> list = new ArrayList<DpPackageVO>();
+						
+						for(Object obj : olist) {
+							list.add((DpPackageVO)obj);
+						}
+							mv.addObject("list", list);
+							mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
+							mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
+							mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
+						
+							mv.setViewName("/admin/admin_package/package_list_ncf");
+						return mv;
+				}
+			
+			//디저트 패키지 상세보기
+					@RequestMapping(value="/admin/admin_package/package_content_de.th", method=RequestMethod.GET)
+					public ModelAndView package_content_de(String pnum, String rno) {
+						ModelAndView mv = new ModelAndView();
+						/* packageService.getUpdateHits(pnum); */
+						DpPackageVO vo = (DpPackageVO)packageService.getContent(pnum);
+						
+						mv.addObject("pnum", pnum);
+						mv.addObject("vo", vo);
+						mv.addObject("rno", rno);
+						mv.setViewName("/admin/admin_package/package_content_de");
+						return mv;
+					}
+			
+			//커피 패키지 상세보기
+					@RequestMapping(value="/admin/admin_package/package_content_cf.th", method=RequestMethod.GET)
+					public ModelAndView package_content_cf(String pnum, String rno) {
+						ModelAndView mv = new ModelAndView();
+						/* packageService.getUpdateHits(pnum); */
+						DpPackageVO vo = (DpPackageVO)packageService.getContent(pnum);
+						
+						mv.addObject("pnum", pnum);
+						mv.addObject("vo", vo);
+						mv.addObject("rno", rno);
+						mv.setViewName("/admin/admin_package/package_content_cf");
+						return mv;
+					}
+					
+			//논커피 패키지 상세보기
+					@RequestMapping(value="/admin/admin_package/package_content_ncf.th", method=RequestMethod.GET)
+					public ModelAndView package_content_ncf(String pnum, String rno) {
+						ModelAndView mv = new ModelAndView();
+						/* packageService.getUpdateHits(pnum); */
+						DpPackageVO vo = (DpPackageVO)packageService.getContent(pnum);
+						
+						mv.addObject("pnum", pnum);
+						mv.addObject("vo", vo);
+						mv.addObject("rno", rno);
+						mv.setViewName("/admin/admin_package/package_content_ncf");
+						return mv;
+					}
+			
+			//디저트 패키지 삭제처리
+					@RequestMapping(value="/admin/admin_package/package_content_de.th", method=RequestMethod.POST)
+					public ModelAndView package_delete_de(DpPackageVO vo, HttpServletRequest request) throws Exception{
+						ModelAndView mv = new ModelAndView();
+						String psfile = packageService.getFilename(vo.getPnum());
+						int result = packageService.getDeleteResult(vo.getPnum());
+						
+						if(result == 1) {
+							if(psfile != null) {
+								String path = request.getSession().getServletContext().getRealPath("/");
+								path += "resources\\upload\\";
+								File file = new File(path + psfile);
+								if(file.exists()) file.delete();
+							}
+							mv.setViewName("redirect:/admin/admin_package/package_list_de.th");
+						}
+						return mv;
+					}
+			
+			//커피 패키지 삭제처리
+					@RequestMapping(value="/admin/admin_package/package_content_cf.th", method=RequestMethod.POST)
+					public ModelAndView package_delete_cf(DpPackageVO vo, HttpServletRequest request) throws Exception{
+						ModelAndView mv = new ModelAndView();
+						String psfile = packageService.getFilename(vo.getPnum());
+						int result = packageService.getDeleteResult(vo.getPnum());
+						
+						if(result == 1) {
+							if(psfile != null) {
+								String path = request.getSession().getServletContext().getRealPath("/");
+								path += "resources\\upload\\";
+								File file = new File(path + psfile);
+								if(file.exists()) file.delete();
+							}
+							mv.setViewName("redirect:/admin/admin_package/package_list_cf.th");
+						}
+						return mv;
+					}
+					
+			//논커피 패키지 삭제처리
+					@RequestMapping(value="/admin/admin_package/package_content_ncf.th", method=RequestMethod.POST)
+					public ModelAndView package_delete_ncf(DpPackageVO vo, HttpServletRequest request) throws Exception{
+						ModelAndView mv = new ModelAndView();
+						String psfile = packageService.getFilename(vo.getPnum());
+						int result = packageService.getDeleteResult(vo.getPnum());
+						
+						if(result == 1) {
+							if(psfile != null) {
+								String path = request.getSession().getServletContext().getRealPath("/");
+								path += "resources\\upload\\";
+								File file = new File(path + psfile);
+								if(file.exists()) file.delete();
+							}
+							mv.setViewName("redirect:/admin/admin_package/package_list_ncf.th");
+						}
+						return mv;
+					}
 		
 		
 //		

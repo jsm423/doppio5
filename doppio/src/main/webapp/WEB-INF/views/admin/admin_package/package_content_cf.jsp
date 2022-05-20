@@ -22,7 +22,8 @@
 		<!-- content -->
 		<div class="recipe_buy">
 			<div class="buy_div">
-				<a href="http://localhost:9000/doppio/admin/admin_package/package_list.th" id="btnBack"> >> BACK </a>
+				<a href="http://localhost:9000/doppio/admin/admin_package/package_list_cf.th" id="btnBack"> >> BACK </a>
+				
 				<!-- 판매 상품 이미지 -->		
 				<input type="hidden" name="pname" value="${vo.ptitle }">	
 				<div class="buy_img">
@@ -100,11 +101,11 @@
 				</div>
 			
 			<div id="btn_package">	
-			<form name="delForm" action="/doppio/admin/admin_package/package_content.th?pnum=${vo.pnum }" method="post">
+			<form name="delForm" action="/doppio/admin/admin_package/package_content_cf.th?pnum=${vo.pnum }" method="post">
 				<table id="contenttable">
 				<tr id="contenthead">
 					<td width="100%"></td>
-					<td><button type="button" class="pkbt" onclick="location.href='http://localhost:9000/doppio/admin/admin_package/package_update.th?pnum=${vo.pnum }&rno=${rno}'">수정</button></td>
+					<td><button type="button" class="pkbt" onclick="location.href='http://localhost:9000/doppio/admin/admin_package/package_update_cf.th?pnum=${vo.pnum }&rno=${rno}'">수정</button></td>
 					<td><button type="submit" class="pkbt">삭제</button></td>
 				</tr>
 				</table>

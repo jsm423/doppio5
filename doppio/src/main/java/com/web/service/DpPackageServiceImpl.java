@@ -24,8 +24,8 @@ public class DpPackageServiceImpl implements DpPackageService {
 	}
 	
 	@Override
-	public void getUpdateHits(String bnum) {
-		packageDao.updateHits(bnum);
+	public void getUpdateHits(String pnum) {
+		packageDao.updateHits(pnum);
 	}
 	
 	@Override
@@ -34,8 +34,8 @@ public class DpPackageServiceImpl implements DpPackageService {
 	}
 	
 	@Override
-	public Object getContent(String bnum) {
-		return packageDao.select(bnum);
+	public Object getContent(String pnum) {
+		return packageDao.select(pnum);
 	}
 	
 	@Override
@@ -44,18 +44,17 @@ public class DpPackageServiceImpl implements DpPackageService {
 		return packageDao.update(vo);
 	}
 	
-	@Override public int getDeleteResult(String bnum) {
-		return packageDao.delete(bnum);
+	@Override public int getDeleteResult(String pnum) {
+		return packageDao.delete(pnum);
 	}
 	
 	@Override
-	public String getFilename(String bnum) {
-		return packageDao.selectFile(bnum);
+	public String getFilename(String pnum) {
+		return packageDao.selectFile(pnum);
 	}
 
 	@Override
 	public List<Object> getListResult(int startCount, int endCount, String cate) {
-		// TODO Auto-generated method stub
-		return null;
+		return packageDao.select(startCount, endCount, cate);
 	}
 }
