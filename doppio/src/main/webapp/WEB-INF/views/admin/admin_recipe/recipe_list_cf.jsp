@@ -39,7 +39,6 @@
 </script>
 <style>
 	div.mypage_nav a:nth-child(1) {text-decoration: underline;}
-	.pagenumber{margin-left: auto; margin-right: auto;}
 </style>
 </head>
 <body>

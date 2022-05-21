@@ -7,7 +7,7 @@
 
 	<!-- 회원가입 -->
 	<insert id="insert" parameterType="com.web.vo.DpMemberVO">
-		insert into doppio_member values('m_'||sequ_doppio_member_mnum.nextval,#{id},#{pass},#{name},#{hp},#{address},#{email},sysdate,'n')
+		insert into doppio_member values('m_'||sequ_doppio_member_mnum.nextval,#{id},#{pass},#{name},#{hp},#{address},#{email},sysdate,'n',0)
 	</insert>
 	
 	<!-- 회원 가입시 아이디 중복 체크 -->
@@ -18,6 +18,33 @@
 	<!-- 로그인 -->
 	<select id="login" parameterType="com.web.vo.DpMemberVO" resultType="int">
 		select count(*) from doppio_member where id=#{id} and pass=#{pass}
+	</select>
+	
+	<!-- 회원탈퇴 -->
+	<update id="status1" parameterType="java.lang.String">
+		update doppio_member set join_status=1 where mnum=#{mnum}
+	</update>
+	
+	<update id="status2" parameterType="java.lang.String">
+		update doppio_member set join_status=0 where mnum=#{mnum}
+	</update>
+	
+	<!-- 회원 전체 리스트 -->
+	<select id="list" parameterType="map" resultType="com.web.vo.DpMemberVO">
+		select rno, mnum, id, name, hp, address, email, mdate, join_status
+			from (select rownum rno, mnum, id, name, hp, address, email, mdate, join_status
+			from (select mnum, id, name, hp, address, email, mdate, join_status from doppio_member order by mdate desc)
+			) where rno between ${start} and #{end}
+	</select>
+	
+	<!-- 회원 전체 리스트 페이지 카운트 -->
+	<select id="count" resultType="int">
+		select count(*) from doppio_member
+	</select>
+	
+	<!-- 회원 상세 정보 -->
+	<select id="content" parameterType="java.lang.String" resultType="com.web.vo.DpMemberVO">
+		select mnum, id, pass, name, hp, address, email, mdate, join_status from doppio_member where mnum=#{mnum}
 	</select>
 
 </mapper>

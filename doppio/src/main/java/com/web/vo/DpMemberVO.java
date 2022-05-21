@@ -2,8 +2,8 @@ package com.web.vo;
 
 public class DpMemberVO {
 	String id, pass, name, hp, address, email, mdate, admin,
-	email1, email2, hp1, hp2, hp3;
-	int join_status, mnum;
+	email1, email2, hp1, hp2, hp3, mnum;
+	int join_status, rno;
 	
 	public String getId() {
 		return id;
@@ -95,11 +95,17 @@ public class DpMemberVO {
 	public void setJoin_status(int join_status) {
 		this.join_status = join_status;
 	}
-	public int getMnum() {
+	public String getMnum() {
 		return mnum;
 	}
-	public void setMnum(int mnum) {
+	public void setMnum(String mnum) {
 		this.mnum = mnum;
+	}
+	public int getRno() {
+		return rno;
+	}
+	public void setRno(int rno) {
+		this.rno = rno;
 	}
 	
 }

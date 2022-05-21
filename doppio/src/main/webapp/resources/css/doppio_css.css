@@ -377,6 +377,7 @@
 	}
 	
 	/* 댓글 */
+	.pagenumber{margin-left: auto; margin-right: auto;}
 	.commtable{
 		width:700px;
 		/* border: 1px solid red; */ 

@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class DpPageServiceImpl{
+	@Autowired
+	private DpMemberServiceImpl memberService;
 	
 	@Autowired
 	private DpQnaServiceImpl qnaService;
@@ -19,6 +21,8 @@ public class DpPageServiceImpl{
 	@Autowired
 	private DpPackageServiceImpl packageService;
 	
+	@Autowired
+	private DpCommentServiceImpl commentService;
 	/**
 	 * 페이징 처리
 	 */
@@ -147,15 +151,21 @@ public class DpPageServiceImpl{
 		//페이징 처리 - startCount, endCount 구하기
 				int startCount = 0;
 				int endCount = 0;
-				int pageSize = 6;	//한페이지당 게시물 수
+				int pageSize = 10;	//한페이지당 게시물 수
 				int reqPage = 1;	//요청페이지	
 				int pageCount = 1;	//전체 페이지 수
 				int dbCount = 0;    //DB에서 가져온 전체 행수
 		
 		
+		if(serviceName.equals("member")) {
+			memberService = (DpMemberServiceImpl)service;
+			dbCount = memberService.getListCount();
+		} 
+				
+		
 		if(serviceName.equals("comment")) {
-			recipeService = (DpRecipeServiceImpl)service;
-			dbCount = recipeService.getListCount();
+			commentService = (DpCommentServiceImpl)service;
+			dbCount = commentService.getListCount();
 		} 
 		
 		

@@ -1,6 +1,8 @@
 package com.web.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,16 +45,45 @@ public class DpMemberDAO implements DpObjectDAO{
 		return sqlSession.selectOne(namespace+".count");
 	}
 	
+	/**
+	 * 회원 탈퇴 신청/취소
+	 */
+	public int updateJoinStatus(String id, String status) {
+		int result = 0;
+		int value = Integer.parseInt(status);
+		if(value==0) {
+			//신청
+			result = sqlSession.update(namespace+".status1", id);			
+		}else {
+			//취소
+			result = sqlSession.update(namespace+".status2", id);
+		}
+		return result;
+	}
+	
+	/**	 *  회원 전체 리스트 + (페이징처리)	 */
 	@Override
 	public List<Object> select(int startCount, int endCount){ 
-		return null;
+		Map param = new HashMap<String, String>();
+		param.put("start", startCount);
+		param.put("end", endCount);
+		
+		return sqlSession.selectList(namespace+".list", param);
 	}
+	
+	
+	/**
+	 * 회원 상세 정보
+	 */
+	@Override
+	public Object select(String mnum) { 
+		
+		return sqlSession.selectOne(namespace+".content", mnum);
+	}
+	
 	
 	@Override
 	public void updateHits(String num) {}
-	
-	@Override
-	public Object select(String num) { return null;}
 	
 	@Override
 	public int update(Object obj){ return 0; }

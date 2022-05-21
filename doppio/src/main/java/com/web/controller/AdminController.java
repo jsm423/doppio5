@@ -15,16 +15,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.web.dao.DpRecipeDAO;
 import com.web.service.DpCommentServiceImpl;
+import com.web.service.DpMemberServiceImpl;
 import com.web.service.DpPackageServiceImpl;
 import com.web.service.DpPageServiceImpl;
 import com.web.service.DpRecipeServiceImpl;
 import com.web.service.FileServiceImpl;
-import com.web.vo.DpCommentVO;
+import com.web.vo.DpMemberVO;
 import com.web.vo.DpPackageVO;
 import com.web.vo.DpRecipeVO;
 
 @Controller
 public class AdminController {
+	@Autowired
+	private DpMemberServiceImpl memberService;
 	
 	@Autowired
 	private DpRecipeServiceImpl recipeService;
@@ -50,6 +53,48 @@ public class AdminController {
 	
 		return "/admin/admin";
 	}
+	
+	
+	
+	/**	 * 관리자 회원관리페이지 (리스트)	 */
+	@RequestMapping(value="/admin/member/member_list.th", method=RequestMethod.GET)
+	public ModelAndView admin_member_list(String rpage) {
+		ModelAndView mv = new ModelAndView();
+		Map<String,String> param = pageService.getPageResult3(rpage, "member", memberService);
+		int startCount = Integer.parseInt(param.get("start"));
+		int endCount = Integer.parseInt(param.get("end"));
+		ArrayList<DpMemberVO> list = new ArrayList<DpMemberVO>();
+		List<Object> olist = memberService.getListResult(startCount, endCount);
+		for(Object obj : olist) {
+			list.add((DpMemberVO)obj);
+		}
+		mv.addObject("list",list);
+		mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
+		mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
+		mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
+		mv.setViewName("/admin/member/member_list");
+		return mv;
+	}
+	
+	/**	 * 관리자 회원관리 상세페이지	 */
+	@RequestMapping(value="/admin/member/member_content.th", method=RequestMethod.GET)
+	public ModelAndView admin_member_content(String mnum, String rno) {
+		ModelAndView mv = new ModelAndView();
+		DpMemberVO vo = (DpMemberVO)memberService.getContent(mnum);
+		
+		mv.addObject("vo", vo);
+		mv.addObject("rno", rno);
+		
+		mv.setViewName("/admin/member/member_content");
+		return mv;
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	/* 관리자 레시피 */
 	//레시피 삭제처리 - 커피
