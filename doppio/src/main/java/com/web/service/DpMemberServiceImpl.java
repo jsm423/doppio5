@@ -53,6 +53,11 @@ public class DpMemberServiceImpl extends DpObjectServiceAdapter implements DpMem
 		return memberDao.select(startCount, endCount);
 	}
 	
+	@Override
+	public int getUpdateResult(Object obj) {
+		DpMemberVO vo = (DpMemberVO)obj;
+		return memberDao.update(vo);
+	}
 	
 	
 	

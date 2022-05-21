@@ -81,12 +81,19 @@ public class DpMemberDAO implements DpObjectDAO{
 		return sqlSession.selectOne(namespace+".content", mnum);
 	}
 	
+	/**
+	 * 회원정보 수정
+	 */
+	@Override
+	public int update(Object obj){ 
+		DpMemberVO vo = (DpMemberVO)obj;
+		return sqlSession.update(namespace+".update", vo);
+	}
+	
 	
 	@Override
-	public void updateHits(String num) {}
+	public void updateHits(String num) {}	
 	
-	@Override
-	public int update(Object obj){ return 0; }
 	
 	@Override
 	public int delete(String num) {return 0;}

@@ -29,7 +29,7 @@
 		update doppio_member set join_status=0 where mnum=#{mnum}
 	</update>
 	
-	<!-- 회원 전체 리스트 -->
+	<!-- 어드민 회원 전체 리스트 -->
 	<select id="list" parameterType="map" resultType="com.web.vo.DpMemberVO">
 		select rno, mnum, id, name, hp, address, email, mdate, join_status
 			from (select rownum rno, mnum, id, name, hp, address, email, mdate, join_status
@@ -37,14 +37,18 @@
 			) where rno between ${start} and #{end}
 	</select>
 	
-	<!-- 회원 전체 리스트 페이지 카운트 -->
+	<!-- 어드민 회원 전체 리스트 페이지 카운트 -->
 	<select id="count" resultType="int">
 		select count(*) from doppio_member
 	</select>
 	
-	<!-- 회원 상세 정보 -->
+	<!-- 어드민 회원 상세 정보 -->
 	<select id="content" parameterType="java.lang.String" resultType="com.web.vo.DpMemberVO">
 		select mnum, id, pass, name, hp, address, email, mdate, join_status from doppio_member where mnum=#{mnum}
 	</select>
-
+	
+	<!-- 마이페이지 회원 정보 수정 -->
+	<update id="update" parameterType="com.web.vo.DpMemberVO">
+		update doppio_member set pass=#{pass}, name=#{name}, address=#{address}, hp=#{hp}, email=#{email} where mnum=#{mnum}
+	</update>
 </mapper>

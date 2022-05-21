@@ -146,6 +146,8 @@
 	div.mypage_nav{text-align: center; width: 100%; margin-top: -25px; margin-bottom: 50px;}
 	div.mypage_nav a{text-decoration: none; color: black;}
 	div.mypage_nav a:hover{text-decoration: underline;}
+	input.mypage_address{width: 550px;}
+	input.mypage_email{width: 350px;}
 	
 	/* 주문내역 */
 	#orderdiv{
