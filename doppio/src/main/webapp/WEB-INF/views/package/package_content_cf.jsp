@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>      
 <!DOCTYPE html>
 <html lang="ko">
 	<head> 
@@ -18,17 +18,23 @@
 		<!-- content -->
 		<div class="recipe_buy">
 			<div class="buy_div">
+				<a href="http://localhost:9000/doppio/package/package_list_cf.th" id="btnBack"> >> BACK </a>
 				
-				<!-- 판매 상품 이미지 -->			
+				<!-- 판매 상품 이미지 -->		
+				<input type="hidden" name="pname" value="${vo.ptitle }">	
 				<div class="buy_img">
-					<img src="http://localhost:9000/doppio/resources/img/c4.jpg" width="500px" height="500px">
+					<c:if test="${vo.psfile != null}">
+							<img src="http://localhost:9000/doppio/resources/upload/${vo.psfile}"
+							     width="500px" height="500px">
+					</c:if>
+					</td>
 				</div>
 				
 				<!-- 설명창 -->
 				<div class="buy_title">
-					<h2>SNS 화제의 그 음료, <br>달고나 라떼</h2><br>
+					<h2>${vo.ptitle}</h2><br>
 					
-				<p style="font-size: 15px">아직도 안 만들어 보셨나요? 달콤함의 끝판왕, 함께 만들어 봐요.</p><br>
+				<p style="font-size: 15px">${vo.pcontent}</p><br>
 					
 				<div class="buy_stitle">
 					<h3>할인 받고 저렴하게 구매하세요!</h3>
@@ -87,16 +93,17 @@
 					</section>
 				</div>
 				<div class="option_sum">
-					<h3 style="font-size: 25px;"> 9000 + 3500 + 0 + 4000 <br> 
-					= <span style="font-size: 35px; font-weight: bold;">16500 won</span></h3> 
+					<h2>임시 가격 : ${vo.pprice}</h2>
+				</div>
+				
 				</div>
 				<div class="option_btn">
-				<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th"><button type="submit" class="btn_style">장바구니</button></a>
-				<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th"><button type="submit" class="btn_style">바로구매</button></a>
+				<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th"><button type="submit" class="pkbt">장바구니</button></a>
+				<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th"><button type="submit" class="pkbt">바로구매</button></a>
 				</div>
 			</div>
-			</div>
 			<br><br><br>
+			
 			
 		<!-- footer -->
 		<jsp:include page="../doppio_footer.jsp"></jsp:include>
