@@ -78,6 +78,12 @@ public class DpRecipeDAO implements DpObjectDAO{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public List<Object> select1(int startCount, int endCount, String num) {
+		// TODO Auto-generated method stub
+		return null;
+	}
  
 	
 	

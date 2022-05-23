@@ -14,4 +14,5 @@ public interface DpObjectDAO {
 	int update(Object obj);
 	int delete(String num);
 	String selectFile(String id);
+	List<Object> select1(int startCount, int endCount, String num);
 }

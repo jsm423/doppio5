@@ -17,10 +17,6 @@ public class DpCommentServiceImpl implements DpCommentService {
 		return commentDao.insert(vo);
 	}
 	
-	@Override //리스트
-	public List<Object> getListResult(int startCount, int endCount){
-		return commentDao.select(startCount, endCount);
-	}
 	
 	@Override //수정
 	public int getUpdateResult(Object obj) {
@@ -38,16 +34,26 @@ public class DpCommentServiceImpl implements DpCommentService {
 		return commentDao.execTotalCount();
 	}
 
+	@Override // 리스트
+	public List<Object> getListResult1(int startCount, int endCount, String num){
+		return commentDao.select1(startCount, endCount, num);
+	}
+	
 	@Override
 	public List<Object> getListResult(int startCount, int endCount, String cate) {
 		return null;
 	}
-
+	
 	@Override
 	public void getUpdateHits(String num) {}
 
 	@Override
 	public Object getContent(String num) {
+		return null;
+	}
+
+	@Override
+	public List<Object> getListResult(int startCount, int endCount) {
 		return null;
 	}
 }

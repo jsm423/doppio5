@@ -21,14 +21,18 @@ public class DpCommentDAO implements DpObjectDAO{
 		return sqlSession.insert(namespace+".insert", vo);
 	}
 	
-	//´ñ±Û ¸®½ºÆ®
-	public List<Object> select(int startCount, int endCount){
+	//´ñ±Û ¸®½ºÆ®	
+	@Override
+	public List<Object> select1(int startCount, int endCount, String num) {
 		Map param = new HashMap<String, String>();
 		param.put("start", startCount);
 		param.put("end", endCount);
+		param.put("num", num);
 		
 		return sqlSession.selectList(namespace+".list", param);
 	}
+	
+	
 	
 	
 	//´ñ±Û ¼öÁ¤
@@ -75,8 +79,11 @@ public class DpCommentDAO implements DpObjectDAO{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	
-	
+	public List<Object> select(int startCount, int endCount){
+		return null;		
+	}
 	
 	
 	

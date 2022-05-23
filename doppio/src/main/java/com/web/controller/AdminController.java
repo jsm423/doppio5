@@ -2,6 +2,7 @@ package com.web.controller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.dao.DpRecipeDAO;
@@ -20,8 +23,10 @@ import com.web.service.DpPackageServiceImpl;
 import com.web.service.DpPageServiceImpl;
 import com.web.service.DpRecipeServiceImpl;
 import com.web.service.FileServiceImpl;
+import com.web.vo.DpCommentVO;
 import com.web.vo.DpMemberVO;
 import com.web.vo.DpPackageVO;
+import com.web.vo.DpQnaVO;
 import com.web.vo.DpRecipeVO;
 
 @Controller
@@ -259,12 +264,12 @@ public class AdminController {
 	}
 	
 	//레시피 등록폼 - 논커피
-		@RequestMapping(value="/admin/admin_recipe/recipe_write_ncf.th", method=RequestMethod.GET)
-		public ModelAndView recipe_write_ncf() {
-			ModelAndView mv = new ModelAndView();
-			mv.setViewName("/admin/admin_recipe/recipe_write_ncf");
-			return mv;
-		}
+	@RequestMapping(value="/admin/admin_recipe/recipe_write_ncf.th", method=RequestMethod.GET)
+	public ModelAndView recipe_write_ncf() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/admin/admin_recipe/recipe_write_ncf");
+		return mv;
+	}
 		
 	//레시피 등록폼 - 디저트
 	@RequestMapping(value="/admin/admin_recipe/recipe_write_de.th", method=RequestMethod.GET)
@@ -292,39 +297,39 @@ public class AdminController {
 		return result_page;
 	}	
 	
-		//레시피 등록처리 - 논커피
-		@RequestMapping(value="/admin/admin_recipe/recipe_write_ncf.th", method=RequestMethod.POST)
-		public String recipe_write_ncf(DpRecipeVO vo, HttpServletRequest request) throws Exception{
-			
-			String result_page = "";
-			
-			vo = fileService.fileCheck(vo);
-			int result = recipeService.getInsertResult(vo);
-			
-			if(result == 1) {
-				fileService.fileSave(vo, request);
-				result_page = "redirect:/admin/admin_recipe/recipe_list_ncf.th";
-			}else {
-				//에러페이지 호출
-			}
-			return result_page;
+	//레시피 등록처리 - 논커피
+	@RequestMapping(value="/admin/admin_recipe/recipe_write_ncf.th", method=RequestMethod.POST)
+	public String recipe_write_ncf(DpRecipeVO vo, HttpServletRequest request) throws Exception{
+		
+		String result_page = "";
+		
+		vo = fileService.fileCheck(vo);
+		int result = recipeService.getInsertResult(vo);
+		
+		if(result == 1) {
+			fileService.fileSave(vo, request);
+			result_page = "redirect:/admin/admin_recipe/recipe_list_ncf.th";
+		}else {
+			//에러페이지 호출
+		}
+		return result_page;
 	}
-		//레시피 등록처리 - 디저트
-		@RequestMapping(value="/admin/admin_recipe/recipe_write_de.th", method=RequestMethod.POST)
-		public String recipe_write_de(DpRecipeVO vo, HttpServletRequest request) throws Exception{
-			
-			String result_page = "";
-			
-			vo = fileService.fileCheck(vo);
-			int result = recipeService.getInsertResult(vo);
-			
-			if(result == 1) {
-				fileService.fileSave(vo, request);
-				result_page = "redirect:/admin/admin_recipe/recipe_list_de.th";
-			}else {
-				//에러페이지 호출
-			}
-			return result_page;		
+	//레시피 등록처리 - 디저트
+	@RequestMapping(value="/admin/admin_recipe/recipe_write_de.th", method=RequestMethod.POST)
+	public String recipe_write_de(DpRecipeVO vo, HttpServletRequest request) throws Exception{
+		
+		String result_page = "";
+		
+		vo = fileService.fileCheck(vo);
+		int result = recipeService.getInsertResult(vo);
+		
+		if(result == 1) {
+			fileService.fileSave(vo, request);
+			result_page = "redirect:/admin/admin_recipe/recipe_list_de.th";
+		}else {
+			//에러페이지 호출
+		}
+		return result_page;		
 		
 	}
 		
@@ -405,32 +410,65 @@ public class AdminController {
 	}
 	
 	//레시피 상세페이지 - 커피
-		@RequestMapping(value="/admin/admin_recipe/recipe_content_cf.th", method=RequestMethod.GET)
-		public ModelAndView recipe_content_cf(String rnum, String rno) {
-			ModelAndView mv = new ModelAndView();
-			/* recipeService.getUpdateHits(rnum); */
-			DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
-			
-			mv.addObject("rnum", rnum);
-			mv.addObject("vo", vo);
-			mv.addObject("rno", rno);
-			mv.setViewName("/admin/admin_recipe/recipe_content_cf");
-			return mv;
+	@RequestMapping(value="/admin/admin_recipe/recipe_content_cf.th", method=RequestMethod.GET)
+	public ModelAndView recipe_content_cf(String rnum, String rno, String rpage) {
+		ModelAndView mv = new ModelAndView();
+		/* recipeService.getUpdateHits(rnum); */
+		DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
+		
+		Map<String, String> param = pageService.getPageResult2(rpage, "comment", commentService);
+		int startCount = Integer.parseInt(param.get("start"));
+		int endCount = Integer.parseInt(param.get("end"));
+		List<Object> olist = commentService.getListResult1(startCount, endCount, rnum); 
+		ArrayList<DpCommentVO> list = new ArrayList<DpCommentVO>();
+		for(Object obj : olist) {
+			list.add((DpCommentVO)obj);
 		}
 		
-		//레시피 상세페이지 - 논커피
-		@RequestMapping(value="/admin/admin_recipe/recipe_content_ncf.th", method=RequestMethod.GET)
-		public ModelAndView recipe_content_ncf(String rnum, String rno) {
-			ModelAndView mv = new ModelAndView();
-			/* recipeService.getUpdateHits(rnum); */
-			DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
-			
-			mv.addObject("rnum", rnum);
-			mv.addObject("vo", vo);
-			mv.addObject("rno", rno);
-			mv.setViewName("/admin/admin_recipe/recipe_content_ncf");
-			return mv;
-		}	
+		mv.addObject("list", list);
+		mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
+		mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
+		mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
+		
+		mv.addObject("rnum", rnum);
+		mv.addObject("vo", vo);
+		mv.addObject("rno", rno);
+		mv.setViewName("/admin/admin_recipe/recipe_content_cf");
+		return mv;
+	}
+//		
+//	//레시피 상세페이지 - 커피 - 댓글등록
+//	@RequestMapping(value="/admin/admin_recipe/recipe_content_cf.th", method=RequestMethod.POST)
+//	public ModelAndView recipe_content_cf_write(DpRecipeVO vo, HttpServletRequest request) throws Exception{
+//		ModelAndView mv = new ModelAndView();
+//		
+//		
+//		int result = commentService.getInsertResult(vo);
+//		/* System.out.println("rnum -----> " + param.get("rnum")); */
+//		
+//		
+//		 if(result == 1) { 
+//			 mv.setViewName("redirect:/admin/admin_recipe/recipe_content_cf.th");
+//		 }else { 
+//			 //에러페이지 
+//		}
+//		
+//		return mv;
+//	}
+		
+	//레시피 상세페이지 - 논커피
+	@RequestMapping(value="/admin/admin_recipe/recipe_content_ncf.th", method=RequestMethod.GET)
+	public ModelAndView recipe_content_ncf(String rnum, String rno) {
+		ModelAndView mv = new ModelAndView();
+		/* recipeService.getUpdateHits(rnum); */
+		DpRecipeVO vo = (DpRecipeVO)recipeService.getContent(rnum);
+		
+		mv.addObject("rnum", rnum);
+		mv.addObject("vo", vo);
+		mv.addObject("rno", rno);
+		mv.setViewName("/admin/admin_recipe/recipe_content_ncf");
+		return mv;
+	}	
 	
 	
 	

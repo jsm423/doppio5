@@ -2,6 +2,8 @@ package com.web.service;
 
 import java.util.List;
 
+import com.web.vo.DpCommentVO;
+
 public class DpObjectServiceAdapter implements DpObjectService{
 	public int getInsertResult(Object obj) {return 0;}
 	public int getListCount() {return 0;}
@@ -12,4 +14,5 @@ public class DpObjectServiceAdapter implements DpObjectService{
 	public int getDeleteResult(String num) {return 0;}
 	public String getFilename(String num) { return "";}
 	public List<Object> getListResult(int startCount, int endCount, String cate) {	return null;	}
+	public List<DpCommentVO> getListResult(String num){return null;}
 }
