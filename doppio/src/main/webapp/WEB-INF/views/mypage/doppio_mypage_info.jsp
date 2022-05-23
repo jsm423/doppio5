@@ -25,7 +25,7 @@
 				//cgv_member 테이블에서 test라는 계정의 join_status 값을 1로 수정
 				//url : join_status.do				
 				$.ajax({
-					url : "join_status.th?mnum='m_101'&status="+status, //test, 1
+					url : "join_status.th?mnum='m_24'&status="+status, //test, 1
 					success : function(result){
 						if(result == 1){
 							alert("처리가 완료되었습니다.");
