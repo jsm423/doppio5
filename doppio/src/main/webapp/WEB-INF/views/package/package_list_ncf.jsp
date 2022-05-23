@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -8,6 +9,38 @@
 		<title>Doppio</title>
 		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
 		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/recipe_list_css.css">
+		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/am-pagination.css">
+		<script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+		<script src="http://localhost:9000/doppio/resources/js/am-pagination.js"></script>
+			<script>
+			$(document).ready(function(){
+				
+				var pager = jQuery('#ampaginationsm').pagination({
+				
+				    maxSize: 7,	    		// max page size
+				    totals: '${dbCount}',	// total pages	
+				    page: '${reqPage}',		// initial page		
+				    pageSize: '${pageSize}',			// max number items per page
+				
+				    // custom labels		
+				    lastText: '&raquo;&raquo;', 		
+				    firstText: '&laquo;&laquo;',		
+				    prevText: '&laquo;',		
+				    nextText: '&raquo;',
+						     
+				    btnSize:'sm'	// 'sm'  or 'lg'		
+				});
+				
+				jQuery('#ampaginationsm').on('am.pagination.change',function(e){
+					   jQuery('.showlabelsm').text('The selected page no: '+e.page);
+			           $(location).attr('href', "http://localhost:9000/doppio/admin/admin_package/package_list_ncf.th?rpage="+e.page);         
+			    });
+				
+		 	});
+		</script>
+		<style>
+			.pagenumber{margin-left: auto; margin-right: auto;}
+		</style>
 		</head>
 	<body>
 		
@@ -42,54 +75,34 @@
 		<!-- 판매 리스트 -->
 			<div class="imgcon_div">
 				<section class="imgcon_sc">
-				
+				<c:forEach var="vo" items="${list}">
 					<div class="imgcon1">
-						<a href="http://localhost:9000/doppio/package/package_content_ncf.th"><img src="http://localhost:9000/doppio/resources/img/nc1.jpg" class="recipe_img" width="300" height="300"/></a>
+						<input type="hidden" name="rno" value="${vo.rno }">
+						<input type="hidden" name="pnum" value="${vo.pnum }">
+						<input type="hidden" name="psfile" value="${vo.psfile }">
+						<input type="hidden" name="ptitle" value="${vo.ptitle }">
+						<c:if test="${vo.psfile != null}">
+							<a href="http://localhost:9000/doppio/package/package_content_ncf.th?pnum=${vo.pnum }&rno=${vo.rno}">
+								<img src="http://localhost:9000/doppio/resources/upload/${vo.psfile }" class="package_img" width="300" height="300"/>
+							</a>
+						</c:if>
 						<br>
-						<a href="http://localhost:9000/doppio/package/package_content_ncf.th">흰 민들레 꽃차 심플리 패키지<br>11000won</a>
+						<a href="http://localhost:9000/doppio/package/package_content_ncf.th?pnum=${vo.pnum }&rno=${vo.rno}">${vo.ptitle }</a>
 					</div>
-					<div class="imgcon2">
-							<a href="http://localhost:9000/doppio/package/package_content_ncf.th"><img src="/doppio/resources/img/nc2.jpg" class="recipe_img" width="300" height="300"/></a>
-							<br>
-							<a href="http://localhost:9000/doppio/package/package_content_ncf.th">패션 후르츠 스파클링 빅 패키지<br>15000won</a>
-					</div>
-					<div class="imgcon3">
-							<a href="http://localhost:9000/doppio/package/package_content_ncf.th"><img src="/doppio/resources/img/nc3.jpg" class="recipe_img" width="300" height="300"/></a>
-							<br>
-							<a href="http://localhost:9000/doppio/package/package_content_ncf.th">스위트 홍차 가드닝 패키지<br>17500won</a>
-					</div>
-					<div class="imgcon4">
-							<a href="http://localhost:9000/doppio/package/package_content_ncf.th"><img src="/doppio/resources/img/nc4.jpg" class="recipe_img" width="300" height="300"/></a>
-							<br>
-							<a href="http://localhost:9000/doppio/package/package_content_ncf.th">이색 칵테일 홈 파티 패키지<br>22000won</a>
-					</div>
+				</c:forEach>
 					
 				</section>
 			</div>
 			</div>
 		</div>
-			<!--
-				<div class="imgcon5">
-						<img src="/doppio/img/d5.jpg" width="300" height="300"/>
-						<br>
-						<a href="#">딸기가 딸기딸기, <br>황 치즈 크로플</a> 
-				</div>
-				<div class="imgcon6">
-						<img src="/doppio/img/d6.jpg" width="300" height="300"/>
-						<br>
-						<a href="#">몽글몽글 쫀득쫀득, <br>크림치즈 찹쌀떡</a>
-				</div>
-				<div class="imgcon7">
-						<img src="/doppio/img/d7.jpg" width="300" height="300"/>
-						<br>
-						<a href="#">집들이 음식으로 딱, <br>핑거 케이크</a>
-				</div>
-				<div class="imgcon8">
-						<img src="/doppio/img/d8.jpg" width="300" height="300"/>
-						<br>
-						<a href="#">이름부터 너무 귀여워, <br>타마고 샌드와 에그 스튜</a>
-				</div> -->
-			
+		
+		<table class="pagenumber">
+			<tr>
+				<td colspan="4"><div id="ampaginationsm"></div></td>
+			</tr>
+		</table>
+		
+		<br><br><br><br><br><br>
 			
 		<!-- footer -->
 		<jsp:include page="../doppio_footer.jsp"></jsp:include>
