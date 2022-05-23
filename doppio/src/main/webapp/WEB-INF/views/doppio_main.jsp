@@ -1,33 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>DOPPIO</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_main_css.css">
 <script>
 	var login_result = "${login_result}";
+	var logout_result = "${logout_result}";
+	var sid = "${sid}";
+	
 	if(login_result=="succ"){
 		alert("로그인에 성공하셨습니다.");
 		/* location.href="http://localhost:9000/doppio/doppio_main.th" */
 	}
-	
+	if(logout_result=="succ"){
+		alert("["+sid+"]님! "+"로그아웃에 성공하셨습니다.");
+	}
 </script>
 <style>
 *{margin: 0;}  
 </style>
 </head>
-<body>
+<body>	
+<c:if test="${sessionScope.sid != null }">
+	세션 : ${sessionScope.sid }
+</c:if>
 	<img class="main_bgpic" src="/doppio/resources/img/maindark.jpg" width="100%">
 <div class="main_bgheader">
-	<div id="log">
-		<br>
-		<p><a href="http://localhost:9000/doppio/login/doppio_login.th">login</a>&emsp;
-		<a href="http://localhost:9000/doppio/join/doppio_join.th">join</a>&emsp;
-		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_info.th">mypage</a>&emsp;
-		<a href="http://localhost:9000/doppio/admin/admin.th">admin</a></p>
-	</div>
+	<c:choose>
+		<c:when test="${sessionScope.sid != null }">
+		<div id="log">
+			<br>
+			<p><a href="http://localhost:9000/doppio/login/doppio_logout.th">${sessionScope.sid}님&emsp; logout</a>&emsp;
+			<!-- <a href="http://localhost:9000/doppio/join/doppio_join.th">join</a>&emsp; -->
+			<a href="http://localhost:9000/doppio/mypage/doppio_mypage_info.th">mypage</a>&emsp;
+			<c:if test="${sessionScope.sid == 'test' }">
+				<a href="http://localhost:9000/doppio/admin/admin.th">admin</a>
+			</c:if>
+			
+		</div>
+		</c:when>
+		<c:otherwise>
+		<div id="log">
+			<br>
+			<p><a href="http://localhost:9000/doppio/login/doppio_login.th">login</a>&emsp;
+			<a href="http://localhost:9000/doppio/join/doppio_join.th">join</a>&emsp;
+			<!-- <a href="http://localhost:9000/doppio/mypage/doppio_mypage_info.th">mypage</a>&emsp; -->
+			<!-- <a href="http://localhost:9000/doppio/admin/admin.th">admin</a></p> -->
+		</div>
+		</c:otherwise>
+	</c:choose>
 </div>	
 <div class="main_bgnav">
 	<nav>

@@ -7,6 +7,42 @@
 <meta charset="UTF-8">
 <title>DOPPIO</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
+<script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+<script>
+	$(document).ready(function(){
+		
+		//회원탈퇴 신청 처리
+		$("#join_status").click(function(){
+			//var choice = confirm("정말로 회원탈퇴를 신청하시겠습니까?");
+			//alert(choice);
+			//var bname = $("#join_status").text();
+			var status = 0;
+			if($("#join_status").text() == "취소"){ //신청 : 0; 취소 : 1
+				status = 1;
+			}
+			
+			if(confirm("정말로 회원탈퇴를 신청/취소 하시겠습니까?")){
+				//cgv_member 테이블에서 test라는 계정의 join_status 값을 1로 수정
+				//url : join_status.do				
+				$.ajax({
+					url : "join_status.th?mnum='m_101'&status="+status, //test, 1
+					success : function(result){
+						if(result == 1){
+							alert("처리가 완료되었습니다.");
+							if(status == 0){
+								$("#join_status").text("취소");	
+							}else{
+								$("#join_status").text("신청");	
+							}
+						}
+					}
+				});//ajax
+					
+				
+			}
+		});
+	});
+</script>
 <style type="text/css">
 	
 	/* 마이페이지 개별css */
@@ -26,6 +62,7 @@
 		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th">장바구니</a>&emsp;&emsp;
 		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_order_history.th">주문내역</a>
 	</div>
+	${vo.mnum }
 <form name="" action="/doppio/mypage/doppio_mypage_info.th?mnum=${vo.mnum }" method="post">
 	<div class="join_frame">
 		<table class="join_table">

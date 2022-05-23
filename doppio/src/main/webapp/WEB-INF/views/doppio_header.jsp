@@ -1,25 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>DOPPIO</title>
 
 </head>
 <body>
+<c:if test="${sessionScope.sid != null }">
+	세션 : ${sessionScope.sid }
+</c:if>
+세션 : ${sessionScope.sid }
 <header>
 	<div class="doppio_logo">
 		<a href="http://localhost:9000/doppio/doppio_main.th"><img src="/doppio/resources/img/DOPPIO_LOGO2.png" width="200px"></a>
 	</div>
+	<c:choose>
+	<c:when test="${sessionScope.sid != null }">
 	<div id="log">
 		<br>
-		<p><a href="http://localhost:9000/doppio/login/doppio_login.th">login</a>&emsp;
-		<a href="http://localhost:9000/doppio/join/doppio_join.th">join</a>&emsp;
+		<p>
+		<a href="http://localhost:9000/doppio/login/doppio_logout.th">${sessionScope.sid}님&emsp; logout</a>&emsp;
+		<!-- <a href="http://localhost:9000/doppio/join/doppio_join.th">join</a>&emsp; -->
 		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_info.th">mypage</a>&emsp;
-		<a href="http://localhost:9000/doppio/admin/admin.th">admin</a></p>
+		<c:if test="${sessionScope.sid == 'test' }">
+			<a href="http://localhost:9000/doppio/admin/admin.th">admin</a>
+		</c:if>
+		</p>
 	</div>
-
+	</c:when>
+	<c:otherwise>
+	<div id="log">
+		<br>
+		<p>
+		<a href="http://localhost:9000/doppio/login/doppio_login.th">login</a>&emsp;
+		<a href="http://localhost:9000/doppio/join/doppio_join.th">join</a>&emsp;
+		<!-- <a href="http://localhost:9000/doppio/mypage/doppio_mypage_info.th">mypage</a>&emsp;
+		<a href="http://localhost:9000/doppio/admin/admin.th">admin</a> -->
+		</p>
+	</div>
+	</c:otherwise>
+	</c:choose>
 <nav>
 	<ul class="menu">
 		<li>

@@ -49,6 +49,23 @@
 	<beans:bean id="packageService" class="com.web.service.DpPackageServiceImpl"></beans:bean>
 	<beans:bean id="commentService" class="com.web.service.DpCommentServiceImpl"></beans:bean>
 	
+	<!-- interceptor 객체 생성 -->
+	<beans:bean id="authInterceptor" class="com.web.interceptor.AuthInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/admin/admin.th"/>
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/admin/admin*"/>
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+	
+	
+	
+	
 	<context:component-scan base-package="com.web.controller" />
 	
 	

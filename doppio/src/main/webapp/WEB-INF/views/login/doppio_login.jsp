@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>DOPPIO</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
 <script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>
@@ -12,12 +12,16 @@
 	var join_result = "${join_result}";
 	if(join_result == "succ"){
 		alert("회원가입에 성공했습니다.");
-	}
-	
+	}	
 
 	var login_result = "${login_result}";
 	if(login_result == "fail"){
 		alert("아이디 또는 패스워드가 다릅니다. 다시 로그인 해주세요.")
+	}
+	
+	var auth_result = "${auth_result}";
+	if(auth_result == "fail"){
+		alert("접속권한이 없습니다. 로그인해주세요");
 	}
 </script>
 </head>
