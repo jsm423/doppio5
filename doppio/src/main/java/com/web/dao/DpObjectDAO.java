@@ -1,9 +1,11 @@
 package com.web.dao;
 
 import java.util.List;
+import java.util.Map;
 
 public interface DpObjectDAO {
 	int insert(Object obj);
+	int insert(Map<String, Object> param);
 	int execTotalCount();
 	int execTotalCount(String rcate);
 	int execTotalCount1(String pcate);

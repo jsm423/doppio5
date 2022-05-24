@@ -86,6 +86,12 @@ public class DpBoardDAO implements DpObjectDAO{
 		return null;
 	}
 
+	@Override
+	public int insert(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 
 }

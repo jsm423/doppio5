@@ -5,8 +5,8 @@
 
 <mapper namespace="mapper.comment">
 	
-	<insert id="insert" parameterType="com.web.vo.DpCommentVO">
-		insert into doppio_comment values('cm_'||sequ_doppio_comment_cmnum.nextval, #{cmcomment},'test',sysdate,'r_75')
+	<insert id="insert" parameterType="hashMap" >
+		insert into doppio_comment values('cm_'||SEQU_DOPPIO_COMMEMT_CMNUM.nextval, #{cmcomment},'test',sysdate, #{rnum})
 	</insert>
 	
 	<select id="list" parameterType="map" resultType="com.web.vo.DpCommentVO">
@@ -22,6 +22,6 @@
 	</delete>
 	
 	<select id="count" resultType="int">
-		select count(*) from doppio_comment
+		select count(*) from doppio_comment where cmcate_num='r_75'
 	</select>
 </mapper>

@@ -120,6 +120,11 @@ public class DpMemberDAO implements DpObjectDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public int insert(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 	

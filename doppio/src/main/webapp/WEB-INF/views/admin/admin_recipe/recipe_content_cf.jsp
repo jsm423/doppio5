@@ -104,7 +104,13 @@
     	<div class="댓글">
        	<div class="subtitle">&nbsp;댓글 ${vo.rnum }</div>
         	<div class="commentfield">
-        	
+        		<c:if test="${sessionScope.sid != null }">
+				<form name="comment_write_cf" action="doppio/admin/admin_recipe/recipe_write_cf.th" method="post">
+			        		<input type="hidden" name="cmcate_num" value="${vo.rnum}">
+			           	<textarea rows="1" cols="40" style="width: 600px;" placeholder="내용을 입력해 주세요" id="cmcomment" name="cmcomment"></textarea>
+			          		<button type="button" class="enter" id="btnComm" data-rnum="${vo.rnum}">등록</button>  
+			    </form> 
+			    </c:if> 
 
         		<table class="commtable">
         			<!-- <tr class="commbtn">
@@ -117,22 +123,19 @@
         			<c:forEach var="vo" items="${list }">
         			<tr class="commbtn">
         				<td colspan="2" class="commbtntd"><p>${vo.cmdate }</p>&nbsp;
+        				<c:if test="${sessionScope.sid == vo.id }">
         				<button class="commbtnup">수정</button>
         				<button class="commbtndel">삭제</button></td>
+        				</c:if>
         			</tr>
         			<tr>
-        				<th class="commth" >${vo.id }</th><td class="commtd">${vo.cmcomment}</td>
+        				<th class="commth" >${vo.id}</th><td class="commtd">${vo.cmcomment}</td>
         			</tr>
         			</c:forEach>
-        		</table>        		
-	<form name="comment_write_cf" action="doppio/admin/admin_recipe/recipe_write_cf.th" method="post">
-        		<input type="hidden" name="cmcate_num" value="${vo.rnum}">
-           	<textarea rows="1" cols="40" style="width: 600px;" placeholder="내용을 입력해 주세요" id="cmcomment" name="cmcomment"></textarea>
-          		<button type="button" class="enter" id="btnComm" data-rnum="${vo.rnum}">등록</button>  
-    </form>    		
+        		 </table>        		
+     		
         	</div>
      		</div>
-	
 	
 		<table class="pagenumber">
 			<tr>

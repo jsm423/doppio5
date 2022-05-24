@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.web.dao.DpCommentDAO;
 import com.web.dao.DpRecipeDAO;
 import com.web.service.DpCommentServiceImpl;
 import com.web.service.DpMemberServiceImpl;
@@ -52,6 +55,8 @@ public class AdminController {
 	@Autowired
 	private DpCommentServiceImpl commentService;
 	
+	@Autowired
+	private DpCommentDAO commentDao;
 	
 	@RequestMapping(value="/admin/admin.th", method=RequestMethod.GET)
 	public String admin() {
@@ -436,25 +441,26 @@ public class AdminController {
 		mv.setViewName("/admin/admin_recipe/recipe_content_cf");
 		return mv;
 	}
-//		
-//	//레시피 상세페이지 - 커피 - 댓글등록
-//	@RequestMapping(value="/admin/admin_recipe/recipe_content_cf.th", method=RequestMethod.POST)
-//	public ModelAndView recipe_content_cf_write(DpRecipeVO vo, HttpServletRequest request) throws Exception{
-//		ModelAndView mv = new ModelAndView();
-//		
-//		
-//		int result = commentService.getInsertResult(vo);
-//		/* System.out.println("rnum -----> " + param.get("rnum")); */
-//		
-//		
-//		 if(result == 1) { 
-//			 mv.setViewName("redirect:/admin/admin_recipe/recipe_content_cf.th");
-//		 }else { 
-//			 //에러페이지 
-//		}
-//		
-//		return mv;
-//	}
+		
+	//레시피 상세페이지 - 커피 - 댓글등록
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/admin/admin_recipe/recipe_content_cf_cmtWrite.th", method=RequestMethod.POST)
+	public ModelAndView recipe_content_cf_write(@RequestBody String vo, HttpServletRequest request) throws Exception{
+	
+		ModelAndView mv = new ModelAndView();
+		
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String,Object> param =  mapper.readValue(vo, Map.class);
+		int s = commentDao.insert(param);
+		
+		if(s < 1) {
+			mv.addObject("req", "gg");
+		}else {
+			mv.setViewName("/admin/admin_recipe/recipe_content_cf");
+		}
+		return mv;
+	}
 		
 	//레시피 상세페이지 - 논커피
 	@RequestMapping(value="/admin/admin_recipe/recipe_content_ncf.th", method=RequestMethod.GET)

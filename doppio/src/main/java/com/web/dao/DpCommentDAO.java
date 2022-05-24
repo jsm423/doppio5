@@ -16,9 +16,8 @@ public class DpCommentDAO implements DpObjectDAO{
 	
 	//´ñ±Û µî·Ï
 	@Override
-	public int insert(Object obj) {
-		DpCommentVO vo = (DpCommentVO)obj;
-		return sqlSession.insert(namespace+".insert", vo);
+	public int insert(Map<String, Object> param) {
+		return sqlSession.insert(namespace+".insert", param);
 	}
 	
 	//´ñ±Û ¸®½ºÆ®	
@@ -83,6 +82,12 @@ public class DpCommentDAO implements DpObjectDAO{
 	
 	public List<Object> select(int startCount, int endCount){
 		return null;		
+	}
+
+	@Override
+	public int insert(Object obj) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 	

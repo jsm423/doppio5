@@ -71,7 +71,7 @@ $(document).ready(function(){
 	
 	
 	/*******************
-	 * 게시판 - 글쓰기 폼체크
+	 * 큐엔에이 - 글쓰기 폼체크
 	 ********************/	
  	$("#btnQna").click(function(){
 		if($("#qtitle").val() == ""){
@@ -279,6 +279,42 @@ $(document).ready(function(){
 			package_write_de.submit();
 		}
 	});
+	
+	
+	/*******************
+	 * 레시피 - 댓글쓰기 폼체크
+	 ********************/	
+ 	$("#btnComm").click(function(){
+ 	
+ 		if($("#cmcomment").val() == ""){
+			alert("댓글내용을 입력해주세요");
+			$("#cmcomment").focus();
+			return false;
+		}else{
+			$.ajax({
+					url : "/doppio/admin/admin_recipe/recipe_content_cf_cmtWrite.th",
+					type: "POST",
+					data : JSON.stringify({
+						"rnum" : $(this).data("rnum"),
+						"cmcomment" : $('#cmcomment').val()
+					}),
+					contentType : 'application/json',
+					success : function(result){
+						location.reload();
+					}
+				});//ajax
+		
+		
+			//comment_write_cf.submit();
+		}
+	});
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
