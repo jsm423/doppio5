@@ -135,6 +135,11 @@ public class DpMemberDAO implements DpObjectDAO{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	@Override
+	public List<Object> oplist(String popid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 	

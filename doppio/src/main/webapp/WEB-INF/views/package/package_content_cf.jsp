@@ -8,6 +8,8 @@
 		<title>Doppio</title>
 		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
 		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/recipe_buy_css.css">
+		<script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+		<script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>  	
 	</head>
 	<body>
 	
@@ -19,7 +21,7 @@
 		<div class="recipe_buy">
 			<div class="buy_div">
 				<a href="http://localhost:9000/doppio/package/package_list_cf.th" id="btnBack"> >> BACK </a>
-				
+				<form name="package_cart_cf" action="/package/package_content_cf.th" method="post">
 				<!-- 판매 상품 이미지 -->		
 				<input type="hidden" name="pname" value="${vo.ptitle }">	
 				<div class="buy_img">
@@ -27,12 +29,12 @@
 							<img src="http://localhost:9000/doppio/resources/upload/${vo.psfile}"
 							     width="500px" height="500px">
 					</c:if>
-					</td>
 				</div>
 				
 				<!-- 설명창 -->
 				<div class="buy_title">
 					<h2>${vo.ptitle}</h2><br>
+					<input type="hidden" name="pnum" id="pnum" value="${vo.pnum}">
 					
 				<p style="font-size: 15px">${vo.pcontent}</p><br>
 					
@@ -46,49 +48,23 @@
 					<section class="option_sc">
 						<ul class="opli">
 						
-							<li class="ol">옵션선택 : </li>
-							<li>
-								<select name="oplist" id="oplist" style= "width: 200px; height: 30px;">
-								<option value="---------">구매 수량을 선택해 주세요.</option>
-								<option value="1세트">1세트</option>
-								<option value="2세트">2세트 (+6500원)</option>
-								<option value="3세트">3세트 (+12000원)</option>
-								<option value="4세트">4세트 (+18000원)</option>
-								<option value="5세트">5세트 (+23000원)</option>
-								</select>
-							</li>
-							<li class="ol"></li>
-							<li>
-								<select name="oplist" id="oplist" style= "width: 200px; height: 30px;">
-								<option value="---------">음료를 추가해 보세요.</option>
-								<option value="아메리카노">아메리카노 3팩 (+3000원)</option>
-								<option value="밀크티">밀크티 300ml (+3500원)</option>
-								<option value="딸기라떼">라떼 아트 키트 (+5000원)</option>
-								<option value="밀크티">스파클링 와인 (+9000원)</option>
-								<option value="밀크티">하이볼 패키지 (+14000원)</option>
-								</select>
-							</li>
-							<!-- <li class="ol"></li>
-							<li>
-								<select name="oplist" id="oplist" style= "width: 200px; height: 30px;">
-								<option value="---------">함께 읽으면 좋은 책이에요.</option>
-								<option value="베스트셀러">4월의 베스트 셀러 - 파친코 (+11000원)</option>
-								<option value="오늘의책1">오늘의 책 - 마음의 법칙 (+12000원)</option>
-								<option value="오늘의책2">오늘의 책 - 저주토끼 (+13000원)</option>
-								<option value="오늘의책3">오늘의 책 - 여름이 온다 (+13000원)</option>
-								<option value="오늘의책4">오늘의 책 - 백광 (+13000원)</option>
-								</select>
-							</li>
-							<li class="ol"></li>
-							<li>
-								<select name="oplist" id="oplist" style= "width: 200px; height: 30px;">
-								<option value="---------">데코 용품은 어떠세요?</option>
-								<option value="포스터">인스타 감성, 킨포크 포스터 (+3000원)</option>
-								<option value="트레이">사진과 같아요, 우드 트레이 (+4000원)</option>
-								<option value="조화">무향의 아름다움, 조화 다발 (+6000원)</option>
-								<option value="피규어">촬영 필수템, 피규어 5종 (+12000원)</option>
-								</select>
-							</li> -->
+						<div class="count_option" style="text-align: left;">
+							<label> 희망 옵션을 선택해 주세요: </label> <br><br>
+							<select class="cacount" id="cacount"  name="cacount" style= "width: 200px; height: 30px;">
+							<c:forEach begin="1" end="${vo.pstock }" var="count">
+								<option>${count }</option></c:forEach>
+							</select>
+						</div>
+						
+						<li class="ol"></li>
+						<li>
+							<input type="hidden" name="popid" value="${vo.popid}">
+							<select name="oplist" id="oplist" style= "width: 200px; height: 30px;">
+								<c:forEach var="vo" items="${list}">
+								<option>${vo.popname }</option>
+								</c:forEach>
+							</select>
+						</li>
 						</ul>
 					</section>
 				</div>
@@ -97,9 +73,24 @@
 				</div>
 				
 				</div>
+			
 				<div class="option_btn">
-				<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th"><button type="submit" class="pkbt">장바구니</button></a>
+				
+				<button type="button" class="pkbt" id="cart_btn_cf">장바구니</button>
+				<script>
+				$("#cart_btn_cf").click(function(){
+					
+					var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");  
+			        
+			        if (check == true) {
+			        	
+			        	package_cart_cf.submit();
+			        	location.assign("/doppio/mypage/doppio_mypage_basket.th?pnum=${vo.pnum}&id=${sessionScope.sid}");
+			        } 
+				});
+		     	</script> 
 				<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th"><button type="submit" class="pkbt">바로구매</button></a>
+				</form>
 				</div>
 			</div>
 			<br><br><br>

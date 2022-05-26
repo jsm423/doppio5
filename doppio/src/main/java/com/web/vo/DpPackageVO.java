@@ -4,6 +4,36 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class DpPackageVO {
 	
+	//패키지 옵션
+		String popid, popname, popprice;
+		int poprice;
+		
+		public String getPopid() {
+			return popid;
+		}
+		public void setPopid(String popid) {
+			this.popid = popid;
+		}
+		public String getPopname() {
+			return popname;
+		}
+		public void setPopname(String popname) {
+			this.popname = popname;
+		}
+		public String getPopprice() {
+			return popprice;
+		}
+		public void setPopprice(String popprice) {
+			this.popprice = popprice;
+		}
+		public int getPoprice() {
+			return poprice;
+		}
+		public void setPoprice(int poprice) {
+			this.poprice = poprice;
+		}
+
+	
 	String pnum, pname, ptitle, psubtitle, pcontent, pdate,
 	pfile, psfile, pcate, pprice, pstock;
 	

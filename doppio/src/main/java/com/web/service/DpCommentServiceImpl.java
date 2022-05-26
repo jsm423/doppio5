@@ -56,4 +56,11 @@ public class DpCommentServiceImpl implements DpCommentService {
 	public List<Object> getListResult(int startCount, int endCount) {
 		return null;
 	}
+
+
+	@Override
+	public List<Object> getOplist(String popname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

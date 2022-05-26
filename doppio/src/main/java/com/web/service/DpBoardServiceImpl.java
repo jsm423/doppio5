@@ -57,5 +57,11 @@ public class DpBoardServiceImpl implements DpBoardService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public List<Object> getOplist(String popname) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 

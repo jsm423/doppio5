@@ -15,4 +15,5 @@ public class DpObjectServiceAdapter implements DpObjectService{
 	public String getFilename(String num) { return "";}
 	public List<Object> getListResult(int startCount, int endCount, String cate) {	return null;	}
 	public List<DpCommentVO> getListResult(String num){return null;}
+	public List<Object> getOplist(String popname) {return null;}
 }

@@ -104,6 +104,12 @@ public class DpBoardDAO implements DpObjectDAO{
 		return 0;
 	}
 
+	@Override
+	public List<Object> oplist(String popid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

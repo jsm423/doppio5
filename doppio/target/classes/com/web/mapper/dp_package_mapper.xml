@@ -6,6 +6,10 @@
 
 <mapper namespace="mapper.package">
 	
+	<select id="oplist" resultType="com.web.vo.DpPackageOptionVO">
+		select * from doppio_package_option
+	</select>
+	
 	<select id="list" parameterType="map" resultType="com.web.vo.DpPackageVO">
 		select rno, pnum, ptitle, phits, pdate, pfile, psfile from 
 				 (select rownum rno, pnum, ptitle, phits, pdate , pfile, psfile 

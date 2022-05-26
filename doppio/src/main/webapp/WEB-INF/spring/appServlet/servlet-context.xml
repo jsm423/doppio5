@@ -38,6 +38,7 @@
 	<beans:bean id="recipeDao" class="com.web.dao.DpRecipeDAO"></beans:bean>
 	<beans:bean id="packageDao" class="com.web.dao.DpPackageDAO"></beans:bean>
 	<beans:bean id="commentDao" class="com.web.dao.DpCommentDAO"></beans:bean>
+	<beans:bean id="cartDao" class="com.web.dao.DpCartDAO"></beans:bean>
 	
 	<!-- Service 객체 생성 -->
 	<beans:bean id="memberService" class="com.web.service.DpMemberServiceImpl"></beans:bean>
@@ -48,6 +49,7 @@
 	<beans:bean id="recipeService" class="com.web.service.DpRecipeServiceImpl"></beans:bean>
 	<beans:bean id="packageService" class="com.web.service.DpPackageServiceImpl"></beans:bean>
 	<beans:bean id="commentService" class="com.web.service.DpCommentServiceImpl"></beans:bean>
+	<beans:bean id="cartService" class="com.web.service.DpCartServiceImpl"></beans:bean>
 	
 	<!-- interceptor 객체 생성 -->
 	<beans:bean id="authInterceptor" class="com.web.interceptor.AuthInterceptor"></beans:bean>

@@ -57,4 +57,9 @@ public class DpPackageServiceImpl implements DpPackageService {
 	public List<Object> getListResult(int startCount, int endCount, String cate) {
 		return packageDao.select(startCount, endCount, cate);
 	}
+	
+	@Override
+	public List<Object> getOplist(String popname) {
+		return packageDao.oplist(popname);
+	}
 }
