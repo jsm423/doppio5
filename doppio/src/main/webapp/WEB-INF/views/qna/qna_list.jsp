@@ -71,12 +71,14 @@
 			<div class="title">
 				<p>Q & A</p><br>
 			</div>
+			<c:if test="${sessionScope.sid != null }">
 			<a href="http://localhost:9000/doppio/qna/qna_write.th"><button type="button" class="write_button">글쓰기</button></a><br><br>
+			</c:if>
 			<table id="board_table">
 				<tr id="board_head">
 					<th>번호</th>
 					<th width="60%">제목</th>
-					<th>글쓴이</th>	
+					<th>작성자</th>	
 					<th>등록일</th>
 					<th>조회수</th>
 				</tr>
@@ -84,7 +86,7 @@
 					<tr class="boardhover">
 						<td>${vo.rno }</td>
 						<td><a href="http://localhost:9000/doppio/qna/qna_content.th?qnum=${vo.qnum }&rno=${vo.rno}" class="boardtitle">${vo.qtitle }</a></td>
-						<td><%-- ${vo.id } --%>test</td>
+						<td>${vo.id }</td>
 						<td>${vo.qdate }</td>
 						<td>${vo.qhits }</td>
 					</tr>

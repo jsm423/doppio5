@@ -69,24 +69,45 @@
      		 </div>
       
      	 <div class="댓글">
-        	<div class="subtitle">&nbsp;댓글</div>
-         	<div class="commentfield">
-         	
+       	<div class="subtitle">&nbsp;댓글</div>
+        	<div class="commentfield">
+        		<c:if test="${sessionScope.sid != null }">
+				<form name="comment_write_ncf" action="doppio/recipe/recipe_write_ncf.th" method="post">
+			        		<input type="hidden" name="cmcate_num" value="${vo.rnum}">
+			        		<input type="hidden" name="id" id="id" value="${sessionScope.sid }">
+			           	<textarea rows="1" cols="40" style="width: 600px;" placeholder="내용을 입력해 주세요" id="cmcomment" name="cmcomment"></textarea>
+			          		<button type="button" class="enter" id="btnComm4" data-rnum="${vo.rnum}">등록</button>  
+			    </form> 
+			    </c:if> 
 
-         		<table class="commtable">
-         			<tr class="commbtn">
-         				<td colspan="2" class="commbtntd"><p>2022-05-19</p>&nbsp;<button class="commbtnup">수정</button><button class="commbtndel">삭제</button></td>
-         			</tr>
-         			<tr>
-         				<th class="commth" >작성자 id</th><td class="commtd">댓글내용입니다</td>
-         			</tr>
-         		</table>        		
-
-         		
-            	<textarea rows="1" cols="40" style="width: 600px;" placeholder="내용을 입력해 주세요" id="cmcontent" name="cmcontent"></textarea>
-           		<button type="button" class="enter" id="btnComm">등록</button>         
-         	</div>
-      		</div>
+        		<table class="commtable" >
+        			        			
+        			<c:forEach var="vo" items="${list }">
+        			<tr class="commbtn">
+        				<td colspan="2" class="commbtntd"><p>${vo.cmdate }</p>&nbsp;
+        				<c:if test="${sessionScope.sid == vo.id }">
+        				<button class="commbtnup" data-cnum="${vo.cmnum}">수정</button>
+        				<button type="submit" data-cnum="${vo.cmnum}" class="commbtndel">삭제</button></td>
+        				</c:if>
+        			</tr>
+        			
+        			<tr class="cmtArea"> <!-- style="vertical-align: text-top;" -->
+        				<tr class="${vo.cmnum}">
+	        				<th class="commth" data-cnum="${vo.cmnum}">${vo.id}</th>
+	        				<td class="commtd" data-cnum="${vo.cmnum}">${vo.cmcomment}</td>
+        				</tr>
+        				
+        				<%-- <td>
+        				<textarea style="width: 520px; vertical-align:top;">${vo.cmcomment}</textarea>
+        				<button type="button" style="width: 50px; height: 61px;" id="cmtSave">저장</button>
+        				</td> --%>
+        				
+        			</tr>
+        			</c:forEach>
+        		 </table>        		
+     		
+        	</div>
+     		</div>
    		</div>
   		</div>
   		

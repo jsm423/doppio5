@@ -129,18 +129,26 @@
 	   .subtitle{
 	      font-size: 20px;
 	      font-weight: bold;
-
+		  text-align: left;
 	   }
 	   
 	   .ingredient,.recipe{margin: 15px;}
 	   .recipe{list-style-type: decimal;}
-	   .commentfield{margin-left: 70px;}
+	   .commentfield{width: 700px; margin-left: 50px;}
 	   .commentfield textarea{
 	      font-size: 15px;
 	      padding-top: 12px;
 	      padding-bottom: 12px;
 	      padding-left: 8px;
-	      margin-bottom: 30px;
+	      margin-bottom: 15px;
+	   }
+	   .commentfield2{width: 700px; margin-left: 50px; display: inline-block;}
+	   .commentfield2 textarea{
+	      font-size: 15px;
+	      padding-top: 12px;
+	      padding-bottom: 12px;
+	      padding-left: 8px;
+	      margin-bottom: 15px;
 	   }
 	   
 
@@ -149,13 +157,13 @@
 	      font-size: 15px;
 	      padding: 12.5px 25px;
 	      border-radius: 10px;
-	      margin-bottom: 30px;
+	      margin-bottom: 15px;
 	      border-style: none;
 	      cursor: pointer;
 	   }
 	   
 	   .commentfield textarea,button{vertical-align: middle;}
-	   
+	   .commentfield2 textarea,button{vertical-align: middle;}
 	   .subtitle {
 	   		background-color: #D2D2D2;
 	   		border-radius: 10px;

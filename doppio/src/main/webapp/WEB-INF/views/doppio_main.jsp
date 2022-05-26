@@ -157,10 +157,7 @@
 		</div>
 	</div>
 
-<footer>
-	<div id="copyright">
-		Copyright &copy doppio.homecafe All Rights Reserved
-	</div>
-</footer>
+<!-- footer -->
+	<jsp:include page="doppio_footer.jsp"></jsp:include>
 </body>
 </html>

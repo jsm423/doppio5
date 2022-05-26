@@ -12,17 +12,17 @@
 		<choose>
 			<when test="bfile != null">
 				values('b_'||sequ_doppio_board_bnum.nextval
-					,#{btitle },#{bcontent},'test', 0 ,sysdate, #{bfile}, #{bsfile})
+					,#{btitle },#{bcontent},#{id}, 0 ,sysdate, #{bfile}, #{bsfile})
 			</when>
 			<otherwise>
 				values('b_'||sequ_doppio_board_bnum.nextval
-					,#{btitle },#{bcontent},'test', 0,sysdate, null, null)
+					,#{btitle },#{bcontent},#{id}, 0,sysdate, null, null)
 			</otherwise>
 		</choose>		
 	</insert>
 	
 	<select id="list" parameterType="map" resultType="com.web.vo.DpBoardVO"> <!-- bdate앞에 id추가 -->
-		select rno, bnum, btitle, bdate, bhits 
+		select rno, bnum, btitle, id, bdate, bhits 
 			from (select rownum rno, bnum, btitle, id, to_char(bdate,'yyyy/mm/dd') bdate, bhits
 			     from (SELECT bnum, btitle, id, bdate, bhits from doppio_board order by bdate desc) 
 			     ) where rno between #{start} and #{end} 

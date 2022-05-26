@@ -14,7 +14,9 @@ public interface DpObjectDAO {
 	void updateHits(String num);
 	Object select(String num);
 	int update(Object obj);
+	int update(Map<String, Object> param);
 	int delete(String num);
+	int delete(Map<String, Object> param);
 	String selectFile(String id);
 	List<Object> select1(int startCount, int endCount, String num);
 }

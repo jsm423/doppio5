@@ -7,7 +7,9 @@
 <meta charset="UTF-8">
 <title>DOPPIO</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
+<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/recipe_content_css.css">
 <script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -36,7 +38,7 @@
 				<tr class="containerhead">
 					<td width="5%">${rno }</td>
 					<td width="60%" style="font-size:20px">${vo.btitle }</td>
-					<td width="20%" class="t_right">test</td>
+					<td width="20%" class="t_right">${vo.id }</td>
 					<td width="15%" class="t_right" colspan="2">${vo.bdate }</td>
 				</tr>
 			</table>
@@ -45,8 +47,10 @@
 			<table id="contenttable">
 				<tr id="contenthead">
 					<td width="82%"></td>
+					<c:if test="${sessionScope.sid == vo.id }">
 					<td><a href="http://localhost:9000/doppio/board/board_update.th?bnum=${vo.bnum}&rno=${rno}" width="9%">수정</a></td>
 					<td><a width="9%"><button type="submit" class="delbtn">삭제</button></a></td>
+					</c:if>
 				</tr>
 			</table>
 			</form>
@@ -62,7 +66,7 @@
 				</td>
 				</tr>
 			</table>
-			<br><br><br><br><br>
+			<!-- <br><br><br><br><br>
 			<div id="comment">
 			<h4>댓글</h4><br>
 			<div id="comment_1">
@@ -72,7 +76,49 @@
 				</div>	
 			</div>
 			</div>
-			<br><br><br><br><br>
+			<br><br><br><br><br> -->
+			<div class="댓글">
+       	<!-- <div class="subtitle">&nbsp;댓글 </div>  -->
+        	<div class="commentfield2" >
+        		<c:if test="${sessionScope.sid != null }">
+				<form name="comment_write" action="doppio/board/board_write.th" method="post">
+			        		<input type="hidden" name="cmcate_num" value="${vo.bnum}">
+			        		<input type="hidden" name="id" id="id" value="${sessionScope.sid }">
+			           	<textarea rows="1" cols="40" style="width: 600px;" placeholder="내용을 입력해 주세요" id="cmcomment" name="cmcomment"></textarea>
+			          		<button type="button" class="enter" id="btnComm6" data-bnum="${vo.bnum}">등록</button>  
+			    </form> 
+			    </c:if> 
+
+        		<table class="commtable" >
+        			        			
+        			<c:forEach var="vo" items="${list }">
+        			<tr class="commbtn">
+        				<td colspan="2" class="commbtntd"><p>${vo.cmdate }</p>&nbsp;
+        				<c:if test="${sessionScope.sid == vo.id }">
+        				<button class="commbtnup" data-cnum="${vo.cmnum}">수정</button>
+        				<button type="submit" data-cnum="${vo.cmnum}" class="commbtndel">삭제</button>
+        				</c:if>
+        				</td>
+        				
+        			</tr>
+        			
+        			<tr class="cmtArea"> <!-- style="vertical-align: text-top;" -->
+        				<tr class="${vo.cmnum}">
+	        				<th class="commth" data-cnum="${vo.cmnum}">${vo.id}</th>
+	        				<td class="commtd" data-cnum="${vo.cmnum}">${vo.cmcomment}</td>
+        				</tr>
+        				
+        				<%-- <td>
+        				<textarea style="width: 520px; vertical-align:top;">${vo.cmcomment}</textarea>
+        				<button type="button" style="width: 50px; height: 61px;" id="cmtSave">저장</button>
+        				</td> --%>
+        				
+        			
+        			</c:forEach>
+        		 </table>        		
+     		
+        	</div>
+     		</div>
 		</section>
 		
 	</div>

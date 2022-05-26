@@ -6,22 +6,25 @@
 <mapper namespace="mapper.comment">
 	
 	<insert id="insert" parameterType="hashMap" >
-		insert into doppio_comment values('cm_'||SEQU_DOPPIO_COMMEMT_CMNUM.nextval, #{cmcomment},'test',sysdate, #{rnum})
+		insert into doppio_comment values('cm_'||SEQU_DOPPIO_COMMEMT_CMNUM.nextval, #{cmcomment},#{id},sysdate, #{num})
 	</insert>
 	
 	<select id="list" parameterType="map" resultType="com.web.vo.DpCommentVO">
-		select cmnum, cmcomment, id, cmdate,cmcate_num from doppio_comment where cmcate_num=#{num} 
+		select rno, cmnum, cmcomment, id, cmdate, cmcate_num 
+		    from(select rownum rno, cmnum, cmcomment, id, cmdate, cmcate_num 
+		        from(select cmnum, cmcomment, id, cmdate,cmcate_num from doppio_comment order by cmdate desc)
+		            ) where cmcate_num=#{num}
 	</select>
 
 	<update id="update" parameterType="com.web.vo.DpCommentVO">
-		update doppio_comment set cmcomment=#{cmcomment} where cmnum=#{num}
+		update doppio_comment set cmcomment=#{cmcomment} where cmnum=#{cmnum}
 	</update>
 	
 	<delete id="delete" parameterType="java.lang.String">
-		delete from doppio_comment where cmnum=#{num}
+		delete from doppio_comment where cmnum=#{cmnum}
 	</delete>
 	
 	<select id="count" resultType="int">
-		select count(*) from doppio_comment where cmcate_num='r_75'
+		select count(*) from doppio_comment
 	</select>
 </mapper>

@@ -31,21 +31,17 @@ public class DpCommentDAO implements DpObjectDAO{
 		return sqlSession.selectList(namespace+".list", param);
 	}
 	
-	
-	
-	
 	//´ñ±Û ¼öÁ¤
 	@Override
-	public int update(Object obj) {
-		DpCommentVO vo = (DpCommentVO)obj;
-		return sqlSession.update(namespace+".update", vo);
+	public int update(Map<String, Object> param) {
+		return sqlSession.update(namespace+".update", param);
 	}
 	
 	
 	//´ñ±Û »èÁ¦
 	@Override
-	public int delete(String cmnum) {
-		return sqlSession.delete(namespace+".delete", cmnum);
+	public int delete(Map<String, Object> param) {
+		return sqlSession.delete(namespace+".delete", param);
 	}
 	
 	
@@ -86,6 +82,18 @@ public class DpCommentDAO implements DpObjectDAO{
 
 	@Override
 	public int insert(Object obj) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int update(Object obj) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int delete(String num) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

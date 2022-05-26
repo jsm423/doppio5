@@ -383,14 +383,13 @@
 	.commtable{
 		width:700px;
 		/* border: 1px solid red; */ 
-		margin-bottom: 10px;
+		margin-bottom: 70px;
 		text-align: left;
 	}
 	.commtable>tr{
-		/*  border: 1px solid blue;  */
 
 	}
-	.commth{/* border: 1px solid pink; */ width: 15%; font-size: 14px;}
+	.commth{/* border: 1px solid pink; */ width: 10%; font-size: 14px;}
 	.commtd{/* border: 1px solid black; */font-size: 14px;}
 	.commbtn{width: 700px; }
 	.commbtntd{/* border: 1px solid purple; */ text-align: right; }
@@ -402,3 +401,4 @@
 	}
 	.commbtnup:hover{text-decoration: underline;}
 	.commbtndel:hover {text-decoration: underline;}
+	.댓글{text-align: center;}

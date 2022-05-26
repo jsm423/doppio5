@@ -67,12 +67,14 @@
 			<div class="title">
 				<p>게시판</p><br>
 			</div>
+			<c:if test="${sessionScope.sid != null }">
 			<a href="http://localhost:9000/doppio/board/board_write.th"><button type="button" class="write_button">글쓰기</button></a><br><br>
+			</c:if>
 			<table id="board_table">
 				<tr id="board_head">
 					<th>번호</th>
 					<th width="60%">제목</th>
-					<th>글쓴이</th>	
+					<th>작성자</th>	
 					<th>등록일</th>
 					<th>조회수</th>
 				</tr>

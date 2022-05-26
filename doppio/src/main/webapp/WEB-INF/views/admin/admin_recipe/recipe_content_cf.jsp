@@ -12,7 +12,7 @@
 <script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>
 <script src="http://localhost:9000/doppio/resources/js/am-pagination.js"></script>
-<script>
+<!-- <script>
 	$(document).ready(function(){
 		
 		var pager = jQuery('#ampaginationsm').pagination({
@@ -33,11 +33,11 @@
 		
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
-	           $(location).attr('href', "http://localhost:9000/doppio/admin/admin_recipe/recipe_content_cf.th?&rpage="+e.page);         
+	           $(location).attr('href', "http://localhost:9000/doppio/admin/admin_recipe/recipe_content_cf.th?rnum=${rnum }&rno=${rno}&rpage="+e.page);         
 	    });
 		
  	});
-</script>
+</script> -->
 </head>
 <body>
 	
@@ -107,29 +107,34 @@
         		<c:if test="${sessionScope.sid != null }">
 				<form name="comment_write_cf" action="doppio/admin/admin_recipe/recipe_write_cf.th" method="post">
 			        		<input type="hidden" name="cmcate_num" value="${vo.rnum}">
+			        		<input type="hidden" name="id" id="id" value="${sessionScope.sid }">
 			           	<textarea rows="1" cols="40" style="width: 600px;" placeholder="내용을 입력해 주세요" id="cmcomment" name="cmcomment"></textarea>
 			          		<button type="button" class="enter" id="btnComm" data-rnum="${vo.rnum}">등록</button>  
 			    </form> 
 			    </c:if> 
 
-        		<table class="commtable">
-        			<!-- <tr class="commbtn">
-        				<td colspan="2" class="commbtntd"><p>2022-05-23</p>&nbsp;<button class="commbtnup">수정</button><button class="commbtndel">삭제</button></td>
-        			</tr>
-        			<tr>
-        				<th class="commth" >작성자 id</th><td class="commtd">댓글내용입니다</td>
-        			</tr> -->
-        			
+        		<table class="commtable" >
+        			        			
         			<c:forEach var="vo" items="${list }">
         			<tr class="commbtn">
         				<td colspan="2" class="commbtntd"><p>${vo.cmdate }</p>&nbsp;
         				<c:if test="${sessionScope.sid == vo.id }">
-        				<button class="commbtnup">수정</button>
-        				<button class="commbtndel">삭제</button></td>
+        				<button class="commbtnup" data-cnum="${vo.cmnum}">수정</button>
+        				<button type="submit" data-cnum="${vo.cmnum}" class="commbtndel">삭제</button></td>
         				</c:if>
         			</tr>
-        			<tr>
-        				<th class="commth" >${vo.id}</th><td class="commtd">${vo.cmcomment}</td>
+        			
+        			<tr class="cmtArea"> <!-- style="vertical-align: text-top;" -->
+        				<tr class="${vo.cmnum}">
+	        				<th class="commth" data-cnum="${vo.cmnum}">${vo.id}</th>
+	        				<td class="commtd" data-cnum="${vo.cmnum}">${vo.cmcomment}</td>
+        				</tr>
+        				
+        				<%-- <td>
+        				<textarea style="width: 520px; vertical-align:top;">${vo.cmcomment}</textarea>
+        				<button type="button" style="width: 50px; height: 61px;" id="cmtSave">저장</button>
+        				</td> --%>
+        				
         			</tr>
         			</c:forEach>
         		 </table>        		
@@ -137,16 +142,18 @@
         	</div>
      		</div>
 	
-		<table class="pagenumber">
+		<!-- <table class="pagenumber">
 			<tr>
 				<td colspan="4"><div id="ampaginationsm"></td>
 			</tr>
-		</table>
+		</table> -->
 	
   		</div>
  		</div>
  		
 	<!-- footer -->
 	<jsp:include page="../../doppio_footer.jsp"></jsp:include>
+	<input type="hidden" id="rn" data-rn="${vo.rnum }">
+	<input type="hidden" id="rno" data-rn="${vo.rno }">
 </body>
 </html>

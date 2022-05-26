@@ -125,6 +125,16 @@ public class DpMemberDAO implements DpObjectDAO{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	@Override
+	public int update(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public int delete(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 	
 	

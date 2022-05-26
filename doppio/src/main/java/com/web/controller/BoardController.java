@@ -9,15 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.dao.DpBoardDAO;
+import com.web.dao.DpCommentDAO;
 import com.web.service.DpBoardServiceImpl;
+import com.web.service.DpCommentServiceImpl;
 import com.web.service.DpPageServiceImpl;
 import com.web.service.FileServiceImpl;
 import com.web.vo.DpBoardVO;
+import com.web.vo.DpCommentVO;
 import com.web.vo.DpQnaVO;
 
 @Controller
@@ -34,6 +39,12 @@ public class BoardController {
 	
 	@Autowired
 	private FileServiceImpl fileService;
+	
+	@Autowired
+	private DpCommentServiceImpl commentService;
+
+	@Autowired
+	private DpCommentDAO commentDao;
 	
 	//게시글 리스트
 	@RequestMapping(value="/board/board_list.th", method=RequestMethod.GET)
@@ -61,16 +72,29 @@ public class BoardController {
 	
 	//게시글 상세보기
 	@RequestMapping(value="/board/board_content.th", method=RequestMethod.GET)
-		public ModelAndView board_content(String bnum, String rno) {
-			ModelAndView mv = new ModelAndView();
-			boardService.getUpdateHits(bnum);
-			DpBoardVO vo = (DpBoardVO)boardService.getContent(bnum);
-			
-			mv.addObject("bnum", bnum);
-			mv.addObject("vo", vo);
-			mv.addObject("rno", rno);
-			mv.setViewName("/board/board_content");
-			return mv;
+		public ModelAndView board_content(String bnum, String rno, String rpage) {
+		ModelAndView mv = new ModelAndView();
+		boardService.getUpdateHits(bnum);
+		DpBoardVO vo = (DpBoardVO)boardService.getContent(bnum);
+		Map<String, String> param = pageService.getPageResult3(rpage, "comment", commentService); 
+		int startCount = Integer.parseInt(param.get("start")); 
+		int endCount = Integer.parseInt(param.get("end")); 
+		List<Object> olist = commentService.getListResult1(startCount, endCount, bnum);
+		ArrayList<DpCommentVO> list = new ArrayList<DpCommentVO>(); 
+		for(Object obj : olist) { 
+			list.add((DpCommentVO)obj); 
+		}
+		  
+		mv.addObject("list", list); 
+		mv.addObject("dbCount", Integer.parseInt(param.get("dbCount"))); 
+		mv.addObject("pageSize", Integer.parseInt(param.get("pageSize"))); 
+		mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
+		  
+		mv.addObject("bnum", bnum); 
+		mv.addObject("vo", vo); 
+		mv.addObject("rno", rno);
+		mv.setViewName("/board/board_content"); 
+		return mv; 
 	}
 	
 	//게시글 등록폼
@@ -170,4 +194,61 @@ public class BoardController {
 			
 			return mv;
 	}
+		
+		
+		
+		
+		
+		
+		
+	// 게시판 상세페이지 - 댓글등록
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/board/board_content_cmtWrite.th", method = RequestMethod.POST)
+	public ModelAndView board_content_write(@RequestBody String vo, HttpServletRequest request) throws Exception {
+
+		ModelAndView mv = new ModelAndView();
+
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> param = mapper.readValue(vo, Map.class);
+		int s = commentDao.insert(param);
+
+		if (s >= 1) {
+			mv.setViewName("/board/board_content");
+		}
+		return mv;
+	}
+
+	// 게시판 상세페이지 - 댓글수정
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/board/board_content_cmtUpdate.th", method = RequestMethod.POST)
+	public ModelAndView board_content_update(@RequestBody String vo, HttpServletRequest request) throws Exception {
+
+		ModelAndView mv = new ModelAndView();
+
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> param = mapper.readValue(vo, Map.class);
+		int s = commentDao.update(param);
+
+		if (s >= 1) {
+			mv.setViewName("/board/board_content");			
+		} 
+		return mv;
+	}
+	
+	// 게시판 상세페이지 - 댓글삭제
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/board/board_content_cmtDelete.th", method = RequestMethod.POST)
+	public ModelAndView board_content_delete(@RequestBody String vo, HttpServletRequest request) throws Exception {
+
+		ModelAndView mv = new ModelAndView();
+
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> param = mapper.readValue(vo, Map.class);
+		int s = commentDao.delete(param);
+
+		if (s >= 1) {
+			mv.setViewName("/board/board_content");			
+		} 
+		return mv;
+	}	
 }

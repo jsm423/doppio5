@@ -20,6 +20,7 @@
 				<p>게시판</p><br>
 			</div>
 			<form name="board_write" action="/doppio/board/board_write.th" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="id" id="id" value="${sessionScope.sid }">
 				<table class="content_write">
 					<tr>
 						<th>제목</th>

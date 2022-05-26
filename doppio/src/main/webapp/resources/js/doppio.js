@@ -1,4 +1,15 @@
+function init(){
+ 
+ 
+ 
+}
+
+
+
 $(document).ready(function(){
+
+
+	init();
 
 		
 	/**************
@@ -282,7 +293,7 @@ $(document).ready(function(){
 	
 	
 	/*******************
-	 * 레시피 - 댓글쓰기 폼체크
+	 * 레시피 - 댓글쓰기 폼체크 admin cf
 	 ********************/	
  	$("#btnComm").click(function(){
  	
@@ -295,7 +306,8 @@ $(document).ready(function(){
 					url : "/doppio/admin/admin_recipe/recipe_content_cf_cmtWrite.th",
 					type: "POST",
 					data : JSON.stringify({
-						"rnum" : $(this).data("rnum"),
+						"num" : $(this).data("rnum"),
+						"id" : $('#id').val(),
 						"cmcomment" : $('#cmcomment').val()
 					}),
 					contentType : 'application/json',
@@ -308,6 +320,189 @@ $(document).ready(function(){
 			//comment_write_cf.submit();
 		}
 	});
+	/*******************
+	 * 레시피 - 댓글쓰기 폼체크 admin ncf
+	 ********************/	
+ 	$("#btnComm1").click(function(){
+ 	
+ 		if($("#cmcomment").val() == ""){
+			alert("댓글내용을 입력해주세요");
+			$("#cmcomment").focus();
+			return false;
+		}else{
+			$.ajax({
+					url : "/doppio/admin/admin_recipe/recipe_content_ncf_cmtWrite.th",
+					type: "POST",
+					data : JSON.stringify({
+						"num" : $(this).data("rnum"),
+						"id" : $('#id').val(),
+						"cmcomment" : $('#cmcomment').val()
+					}),
+					contentType : 'application/json',
+					success : function(result){
+						location.reload();
+					}
+				});//ajax
+		
+		
+		}
+	});
+	/*******************
+	 * 레시피 - 댓글쓰기 폼체크 admin de
+	 ********************/	
+ 	$("#btnComm2").click(function(){ 		
+ 		if($("#cmcomment").val() == ""){
+			alert("댓글내용을 입력해주세요");
+			$("#cmcomment").focus();
+			return false;
+		}else{
+			$.ajax({
+					url : "/doppio/admin/admin_recipe/recipe_content_de_cmtWrite.th",
+					type: "POST",
+					data : JSON.stringify({
+						"num" : $(this).data("rnum"),
+						"id" : $('#id').val(),
+						"cmcomment" : $('#cmcomment').val()
+					}),
+					contentType : 'application/json',
+					success : function(result){
+						location.reload();
+					}
+				});//ajax	
+		
+		}
+	});
+	
+	/*******************
+	 * 레시피 - 댓글쓰기 폼체크 cf
+	 ********************/	
+ 	$("#btnComm3").click(function(){ 		
+ 		if($("#cmcomment").val() == ""){
+			alert("댓글내용을 입력해주세요");
+			$("#cmcomment").focus();
+			return false;
+		}else{
+			$.ajax({
+					url : "/doppio/recipe/recipe_content_cf_cmtWrite.th",
+					type: "POST",
+					data : JSON.stringify({
+						"num" : $(this).data("rnum"),
+						"id" : $('#id').val(),
+						"cmcomment" : $('#cmcomment').val()
+					}),
+					contentType : 'application/json',
+					success : function(result){
+						location.reload();
+					}
+				});//ajax	
+		
+		}
+	});
+	
+	/*******************
+	 * 레시피 - 댓글쓰기 폼체크 ncf
+	 ********************/	
+ 	$("#btnComm4").click(function(){ 		
+ 		if($("#cmcomment").val() == ""){
+			alert("댓글내용을 입력해주세요");
+			$("#cmcomment").focus();
+			return false;
+		}else{
+			$.ajax({
+					url : "/doppio/recipe/recipe_content_ncf_cmtWrite.th",
+					type: "POST",
+					data : JSON.stringify({
+						"num" : $(this).data("rnum"),
+						"id" : $('#id').val(),
+						"cmcomment" : $('#cmcomment').val()
+					}),
+					contentType : 'application/json',
+					success : function(result){
+						location.reload();
+					}
+				});//ajax	
+		
+		}
+	});
+	/*******************
+	 * 레시피 - 댓글쓰기 폼체크 de
+	 ********************/	
+ 	$("#btnComm5").click(function(){ 		
+ 		if($("#cmcomment").val() == ""){
+			alert("댓글내용을 입력해주세요");
+			$("#cmcomment").focus();
+			return false;
+		}else{
+			$.ajax({
+					url : "/doppio/recipe/recipe_content_de_cmtWrite.th",
+					type: "POST",
+					data : JSON.stringify({
+						"num" : $(this).data("rnum"),
+						"id" : $('#id').val(),
+						"cmcomment" : $('#cmcomment').val()
+					}),
+					contentType : 'application/json',
+					success : function(result){
+						location.reload();
+					}
+				});//ajax	
+		
+		}
+	});
+	
+	/*******************
+	 * board 게시판 - 댓글쓰기 폼체크 
+	 ********************/	
+	 
+	 
+ 	$("#btnComm6").click(function(){ 		
+ 		if($("#cmcomment").val() == ""){
+			alert("댓글내용을 입력해주세요");
+			$("#cmcomment").focus();
+			return false;
+		}else{
+			$.ajax({
+					url : "/doppio/board/board_content_cmtWrite.th",
+					type: "POST",
+					data : JSON.stringify({
+						"num" : $(this).data("bnum"),
+						"id" : $('#id').val(),
+						"cmcomment" : $('#cmcomment').val()
+					}),
+					contentType : 'application/json',
+					success : function(result){
+						location.reload();
+					}
+				});//ajax	
+		
+		}
+	});
+	
+	/*******************
+	 * qna 큐엔에이 - 댓글쓰기 폼체크 
+	 ********************/	
+ 	$("#btnComm7").click(function(){ 		
+ 		if($("#cmcomment").val() == ""){
+			alert("댓글내용을 입력해주세요");
+			$("#cmcomment").focus();
+			return false;
+		}else{
+			$.ajax({
+					url : "/doppio/qna/qna_content_cmtWrite.th",
+					type: "POST",
+					data : JSON.stringify({
+						"num" : $(this).data("qnum"),
+						"id" : $('#id').val(),
+						"cmcomment" : $('#cmcomment').val()
+					}),
+					contentType : 'application/json',
+					success : function(result){
+						location.reload();
+					}
+				});//ajax	
+		
+		}
+	});
 	
 	
 	
@@ -316,8 +511,75 @@ $(document).ready(function(){
 	
 	
 	
+	/*******************
+	 * 레시피 - 댓글 수정 폼체크 - 공통
+	 ********************/	
+ 	$(".commbtnup").click(function(){
+ 	
+ 		$(this).attr("style","display:none");
+ 		var cnum = $(this).data("cnum");
+ 		var oldCmt = $('.'+cnum+'> td').text();
+		console.log(cnum);
+ 		
+ 		var cmtform = '<td>'
+        cmtform+='<textarea style="width: 520px; vertical-align:top;" id="updatecmt">'
+        cmtform+=oldCmt
+        cmtform+='</textarea>'
+        cmtform+='<button style="width: 50px; height: 61px;" data-cnum="'
+        cmtform+=cnum
+        cmtform+='"id="cmtSave">저장</button>'
+        cmtform+='</td>'	
+		  			
+		
+		$('.'+cnum+'> td').empty();
+		$('.'+cnum+'> td').append(cmtform);
+		
+	});
 	
 	
+	
+	
+	/*******************
+	 * 댓글 수정 api 호출 admin cf
+	 ********************/	
+	$(document).on('click','#cmtSave',function(){ 			
+		//console.log("aaa");
+		$.ajax({
+			url : "/doppio/admin/admin_recipe/recipe_content_cf_cmtUpdate.th",
+			type: "POST",
+			data : JSON.stringify({
+				"cmnum" : $(this).data("cnum"),
+				"cmcomment" : $('#updatecmt').val()
+			}),
+			contentType : 'application/json',
+			success : function(result){
+				location.reload();
+			}
+		});//ajax
+	});
+	
+	
+	/*******************
+	 * 레시피 - 댓글 삭제 폼체크 admin cf
+	 ********************/	
+ 	$(".commbtndel").click(function(){
+
+ 		$.ajax({
+			url : "/doppio/admin/admin_recipe/recipe_content_cf_cmtDelete.th",
+			type: "POST",
+			data : JSON.stringify({
+				"cmnum" : $(this).data("cnum")
+			}),
+			contentType : 'application/json',
+			success : function(result){
+				location.reload();
+			}
+		});//ajax
+ 			
+		  			
+		
+	});
+		
 	
 	
 	

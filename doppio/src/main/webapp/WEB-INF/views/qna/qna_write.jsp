@@ -20,6 +20,7 @@
 				<p>Q & A</p><br>
 			</div>
 			<form name="qna_write" action="/doppio/qna/qna_write.th" method="post">
+				<input type="hidden" name="id" id="id" value="${sessionScope.sid }">
 				<table class="content_write">
 					<tr>
 						<th>제목</th>
