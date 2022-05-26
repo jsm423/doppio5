@@ -17,14 +17,13 @@ public class DpCartDAO implements DpObjectDAO {
 	//장바구니 추가
 		@Override
 		public int insert(Object obj) {
-			DpCartVO vo = (DpCartVO)obj;
-			return sqlSession.insert(namespace+".insert", vo);
+			return 0;			
 		}
 	
 		@Override
 		public int insert(Map<String, Object> param) {
-			// TODO Auto-generated method stub
-			return 0;
+			
+			return sqlSession.insert(namespace+".insert", param);
 		}
 	
 		@Override

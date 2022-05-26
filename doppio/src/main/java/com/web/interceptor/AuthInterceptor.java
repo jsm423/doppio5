@@ -20,7 +20,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 		//1. request 객체에서 세션정보 얻어오기
 		HttpSession session = request.getSession();
 		String sid = (String)session.getAttribute("sid");
-
+		
 		//2. 세션정보 체크 및 페이지 이동
 		if(sid == null) {
 			//response.sendRedirect("http://localhost:9000/mycgv/login.do");

@@ -582,10 +582,37 @@ $(document).ready(function(){
 		
 	
 	
+	/*******************
+	 * 장바구니로 이동 package cf
+	 ********************/	
 	
-	
-	
-	
+	$("#cart_btn_cf").click(function(){
+		
+		$.ajax({
+			url : "/doppio/package/package_content_cf_cart.th",
+			type: "POST",
+			data : JSON.stringify({
+				"pnum" : $(this).data("pnum"),
+				"id" : $('#id').val(),
+				"popid" : $('#popid').val(),
+				"cacount" : $('#cacount').val()
+			}),
+			contentType : 'application/json',
+			success : function(result){
+				//location.href("/doppio/mypage/doppio_mypage_basket.th");
+				//console.log("aaa");
+				var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");  
+			        
+		        if (check == true) {
+		        	
+		        	package_cart_cf.submit();
+		        	location.assign("/doppio/mypage/doppio_mypage_basket.th");
+		        } 
+			}
+		});//ajax
+		
+		
+	});
 	
 	
 	

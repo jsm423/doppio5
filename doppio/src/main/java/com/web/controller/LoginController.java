@@ -38,6 +38,7 @@ public class LoginController {
 		
 		if(result == 1) {
 			session.setAttribute("sid",vo.getId());
+			
 			mv.addObject("login_result", "succ");
 			mv.setViewName("doppio_main");
 		}else {
@@ -54,10 +55,11 @@ public class LoginController {
 	public ModelAndView logout(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		String sid = (String)session.getAttribute("sid");
-
+		
 		if(sid != null) {
 			session.invalidate();
 			mv.addObject("sid", sid);
+			
 			mv.addObject("logout_result", "succ");
 		}
 		mv.setViewName("/doppio_main");

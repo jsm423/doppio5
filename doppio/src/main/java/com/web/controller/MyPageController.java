@@ -1,6 +1,7 @@
 package com.web.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,7 +33,7 @@ public class MyPageController {
 	public ModelAndView doppio_mypage_info() {/* String mnum */
 		ModelAndView mv = new ModelAndView();
 		DpMemberVO vo = (DpMemberVO)memberService.getContent("m_24"); //mnum±‚¡ÿ
-		
+
 		mv.addObject("vo",vo);
 		mv.setViewName("/mypage/doppio_mypage_info");
 		return mv;

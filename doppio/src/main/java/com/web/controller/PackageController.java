@@ -8,15 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.web.dao.DpCartDAO;
 import com.web.service.DpCartServiceImpl;
 import com.web.service.DpMemberServiceImpl;
 import com.web.service.DpPackageServiceImpl;
 import com.web.service.DpPageServiceImpl;
-import com.web.vo.DpCartVO;
 import com.web.vo.DpPackageOptionVO;
 import com.web.vo.DpPackageVO;
 
@@ -35,6 +37,8 @@ public class PackageController {
 	@Autowired
 	private DpMemberServiceImpl memberService;
 	
+	@Autowired
+	private DpCartDAO cartDao;
 	
 	/*
 	 * 		package_list_de
@@ -182,15 +186,18 @@ public class PackageController {
 	
 	
 	//카트 등록처리
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/package/package_content_cf_cart.th", method=RequestMethod.POST)
-	public ModelAndView add_cart_cf(DpCartVO vo, HttpServletRequest request) throws Exception{
+	public ModelAndView add_cart_cf(@RequestBody String vo, HttpServletRequest request) throws Exception{
 		
-		 ModelAndView mv = new  ModelAndView();
-			
-		int result = cartService.getInsertResult(vo);
+		ModelAndView mv = new  ModelAndView();
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> param = mapper.readValue(vo, Map.class);
+		int s = cartDao.insert(param);
 		
-		if(result >= 1) {
-			mv.setViewName("redirect:/mypage/doppio_mypage_basket.th");
+		
+		if(s >= 1) {
+			mv.setViewName("/mypage/doppio_mypage_basket");
 		}else {
 			//에러페이지 호출
 		}
