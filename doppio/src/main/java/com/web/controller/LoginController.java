@@ -37,7 +37,7 @@ public class LoginController {
 	public ModelAndView login(DpMemberVO vo, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Map<String,Object> result = memberService.getLoginResult(vo);
-		
+		 
 		if(result.size() > 0) {
 			session.setAttribute("sid",vo.getId());
 			session.setAttribute("mnum", result.get("MNUM"));

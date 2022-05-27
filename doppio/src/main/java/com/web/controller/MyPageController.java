@@ -45,9 +45,9 @@ public class MyPageController {
 	
 	//회원수정 페이지 폼
 	@RequestMapping(value = "/mypage/doppio_mypage_info.th", method = RequestMethod.GET)
-	public ModelAndView doppio_mypage_info() {/* String mnum */
+	public ModelAndView doppio_mypage_info(String mnum) {/* String mnum */
 		ModelAndView mv = new ModelAndView();
-		DpMemberVO vo = (DpMemberVO)memberService.getContent("m_24"); //mnum기준
+		DpMemberVO vo = (DpMemberVO)memberService.getContent(mnum); //mnum기준
 
 		mv.addObject("vo",vo);
 		mv.setViewName("/mypage/doppio_mypage_info");

@@ -112,7 +112,7 @@ public class AdminController {
 			if (rsfile != null) {
 				String path = request.getSession().getServletContext().getRealPath("/");
 				path += "resources\\upload\\";
-				File file = new File(path + rsfile);
+				File file = new File(path + rsfile); 
 				if (file.exists())
 					file.delete();
 			}

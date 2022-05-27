@@ -24,7 +24,7 @@
 		<p>
 		<a href="http://localhost:9000/doppio/login/doppio_logout.th">${sessionScope.sid}님&emsp; logout</a>&emsp;
 		<!-- <a href="http://localhost:9000/doppio/join/doppio_join.th">join</a>&emsp; -->
-		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_info.th?mnum=${sessionScope.mnum }">mypage</a>&emsp;
+		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_info.th?mnum=${sessionScope.mnum}">mypage</a>&emsp;
 		<c:if test="${sessionScope.sid == 'test' }">
 			<a href="http://localhost:9000/doppio/admin/admin.th">admin</a>
 		</c:if>

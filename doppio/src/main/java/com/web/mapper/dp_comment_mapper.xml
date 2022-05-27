@@ -6,7 +6,7 @@
 <mapper namespace="mapper.comment">
 	
 	<insert id="insert" parameterType="hashMap" >
-		insert into doppio_comment values('cm_'||SEQU_DOPPIO_COMMEMT_CMNUM.nextval, #{cmcomment},#{id},sysdate, #{num})
+		insert into doppio_comment values('cm_'||SEQU_DOPPIO_COMMEMT_CMNUM.nextval,#{cmcomment},#{id},sysdate, #{num})
 	</insert>
 	
 	<select id="list" parameterType="map" resultType="com.web.vo.DpCommentVO">

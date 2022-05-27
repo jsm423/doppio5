@@ -604,7 +604,7 @@ $(document).ready(function(){
 				var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");  
 			        
 		        if (check == true) {
-		        	
+		        	 
 		        	package_cart_cf.submit();
 		        	location.assign("/doppio/mypage/doppio_mypage_basket.th");
 		        } 

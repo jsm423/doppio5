@@ -41,7 +41,7 @@ public class DpMemberDAO implements DpObjectDAO{
 	/**
 	 * 페이징 처리
 	 */
-	public int execTotalCount() {
+	public int execTotalCount() { 
 		return sqlSession.selectOne(namespace+".count");
 	}
 	
