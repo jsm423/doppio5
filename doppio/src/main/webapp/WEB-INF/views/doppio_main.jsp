@@ -36,7 +36,7 @@
 			<br>
 			<p><a href="http://localhost:9000/doppio/login/doppio_logout.th">${sessionScope.sid}님&emsp; logout</a>&emsp;
 			<!-- <a href="http://localhost:9000/doppio/join/doppio_join.th">join</a>&emsp; -->
-			<a href="http://localhost:9000/doppio/mypage/doppio_mypage_info.th">mypage</a>&emsp;
+			<a href="http://localhost:9000/doppio/mypage/doppio_mypage_info.th?mnum=${sessionScope.mnum }">mypage</a>&emsp;
 			<c:if test="${sessionScope.sid == 'test' }">
 				<a href="http://localhost:9000/doppio/admin/admin.th">admin</a>
 			</c:if>
@@ -106,7 +106,7 @@
 					<br><br>
 					<a href="#">Non-Coffee</a>
 			</div>
-			<div class="main_new_pic3" style="" >
+			<div class="main_new_pic3"  >
 					<div class="main_new_more"><a href="http://localhost:9000/doppio/recipe/recipe_list.th">> MORE</a></div>					
 					<a href="http://localhost:9000/doppio/recipe/recipe_content_de.th"><img src="/doppio/resources/img/newdessert.jpg" width="100%"></a>
 					<br><br>

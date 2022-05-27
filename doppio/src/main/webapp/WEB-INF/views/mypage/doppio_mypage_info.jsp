@@ -25,7 +25,7 @@
 				//cgv_member 테이블에서 test라는 계정의 join_status 값을 1로 수정
 				//url : join_status.do				
 				$.ajax({
-					url : "join_status.th?mnum='m_24'&status="+status, //test, 1
+					url : "join_status.th?mnum='${vo.mnum}'&status="+status, //test, 1
 					success : function(result){
 						if(result == 1){
 							alert("처리가 완료되었습니다.");
@@ -58,11 +58,11 @@
 	</div>
 	<br><br>
 	<div class="mypage_nav">
-		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_info.th">정보수정</a>&emsp;&emsp;
+		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_info?mnum=${sessionScope.mnum }.th">정보수정</a>&emsp;&emsp;
 		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th">장바구니</a>&emsp;&emsp;
 		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_order_history.th">주문내역</a>
 	</div>
-	${vo.mnum }
+
 <form name="" action="/doppio/mypage/doppio_mypage_info.th?mnum=${vo.mnum }" method="post">
 	<div class="join_frame">
 		<table class="join_table">

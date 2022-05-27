@@ -34,7 +34,7 @@ public class DpMemberDAO implements DpObjectDAO{
 	 * ·Î±×ÀÎ - select(DpMemberVO vo)
 	 */
 
-	public int select(DpMemberVO vo) {
+	public Map<String,Object> select(DpMemberVO vo) {
 		return sqlSession.selectOne(namespace+".login", vo);
 	}
 	

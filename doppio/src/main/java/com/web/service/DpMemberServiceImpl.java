@@ -2,6 +2,7 @@ package com.web.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,7 +25,8 @@ public class DpMemberServiceImpl extends DpObjectServiceAdapter implements DpMem
 	}
 	
 	@Override	//·Î±×ÀÎ
-	public int getLoginResult(DpMemberVO vo) {
+	public Map<String,Object> getLoginResult(DpMemberVO vo) {
+		System.out.println("getLoginResult ------> " +  memberDao.select(vo));
 		return memberDao.select(vo);
 	}
 	

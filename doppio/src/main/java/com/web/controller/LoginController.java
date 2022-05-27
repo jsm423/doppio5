@@ -1,5 +1,7 @@
 package com.web.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,17 +36,19 @@ public class LoginController {
 	@RequestMapping(value="/login/doppio_login.th", method=RequestMethod.POST)
 	public ModelAndView login(DpMemberVO vo, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		int result = memberService.getLoginResult(vo);
+		Map<String,Object> result = memberService.getLoginResult(vo);
 		
-		if(result == 1) {
+		if(result.size() > 0) {
 			session.setAttribute("sid",vo.getId());
-			
+			session.setAttribute("mnum", result.get("MNUM"));
 			mv.addObject("login_result", "succ");
 			mv.setViewName("doppio_main");
 		}else {
 			mv.addObject("login_result","fail");
 			mv.setViewName("/login/doppio_login");
 		}
+				
+		
 		return mv;
 	}
 	
@@ -59,7 +63,6 @@ public class LoginController {
 		if(sid != null) {
 			session.invalidate();
 			mv.addObject("sid", sid);
-			
 			mv.addObject("logout_result", "succ");
 		}
 		mv.setViewName("/doppio_main");
