@@ -23,6 +23,9 @@ public class DpPageServiceImpl{
 	
 	@Autowired
 	private DpCommentServiceImpl commentService;
+	
+	@Autowired
+	private DpCartServiceImpl cartService;
 	/**
 	 * 페이징 처리
 	 */
@@ -46,6 +49,11 @@ public class DpPageServiceImpl{
 		if(serviceName.equals("board")) {
 			boardService = (DpBoardServiceImpl)service;
 			dbCount = boardService.getListCount();
+		} 
+		
+		if(serviceName.equals("cart_list")) {
+			cartService = (DpCartServiceImpl)service;
+			dbCount = cartService.getListCount();
 		}
 		
 		

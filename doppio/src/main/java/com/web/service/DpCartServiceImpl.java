@@ -24,10 +24,9 @@ public class DpCartServiceImpl implements DpCartService {
 		return 0;
 	}
 
-	@Override
+	@Override	//카트 리스트
 	public List<Object> getListResult(int startCount, int endCount) {
-		// TODO Auto-generated method stub
-		return null;
+		return cartDAO.select(startCount, endCount);
 	}
 
 	@Override

@@ -47,21 +47,25 @@
 							<th colspan="2" style="text-align: center;" style="line-height: 100px;">상품명</th>
 							<th style="line-height: 100px;">가격</th>
 							<th style="line-height: 100px;">수량</th>
-							<th style="line-height: 100px;">상품정보</th>
+							<th style="line-height: 100px;">옵션</th>
 						</tr>
 					</thead>
 				
 					<tbody>
+					<c:forEach var="vo" items="${list}">
 						<tr>
-							<td><img alt="basket_img" src="http://localhost:9000/doppio/resources/img/d2.jpg" 
-									class="basket_con"></td>
-							<td>버석바삭! 커피와 함께, 크랙 쿠키</td>
-							<td>14000원</td>
-							<td><select>
-								<option>수량</option>
-								</select></td>
-							<td>제품 정보</td>
+							<td>
+								<input type="hidden" name="rno" value="${vo.rno }">
+								<input type="hidden" name="pnum" value="${vo.pnum }">
+									<c:if test="${vo.psfile != null}">
+								<img src="http://localhost:9000/doppio/resources/upload/${vo.psfile }" class="package_img" width="150" height="150"/>
+									</c:if></td>
+							<td>${vo.ptitle }</td>
+							<td>${vo.pprice }</td>
+							<td>${vo.cacount }</td>
+							<td>${vo.popid }</td>
 						</tr>
+					</c:forEach>
 						<tr style="line-height: 200px;"><td colspan="5"><h3>상품을 결제해 주세요!</h3></td></tr>
 					</tbody>
 				</table>

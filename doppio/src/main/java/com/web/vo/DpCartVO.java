@@ -4,7 +4,51 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class DpCartVO {
 	
+	String ptitle, pcontent, pfile, psfile, pprice, popid;
+	
+	public String getPopid() {
+		return popid;
+	}
+	public void setPopid(String popid) {
+		this.popid = popid;
+	}
+	public String getPtitle() {
+		return ptitle;
+	}
+	public void setPtitle(String ptitle) {
+		this.ptitle = ptitle;
+	}
+	public String getPcontent() {
+		return pcontent;
+	}
+	public void setPcontent(String pcontent) {
+		this.pcontent = pcontent;
+	}
+	public String getPfile() {
+		return pfile;
+	}
+	public void setPfile(String pfile) {
+		this.pfile = pfile;
+	}
+	public String getPsfile() {
+		return psfile;
+	}
+	public void setPsfile(String psfile) {
+		this.psfile = psfile;
+	}
+	public String getPprice() {
+		return pprice;
+	}
+	public void setPprice(String pprice) {
+		this.pprice = pprice;
+	}
+	
+	
+	
+	
+	
 	String  canum, pnum, id, cadate, cacount;
+	
 	public String getCanum() {
 		return canum;
 	}

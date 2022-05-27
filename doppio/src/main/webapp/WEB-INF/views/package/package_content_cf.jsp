@@ -18,7 +18,7 @@
 		
 		
 		<!-- content -->
-<div class="recipe_buy">
+		<div class="recipe_buy">
 		<form name="package_cart_cf" action="/package/package_content_cf.th" method="post">
 			<div class="buy_div">
 				<a href="http://localhost:9000/doppio/package/package_list_cf.th" id="btnBack"> >> BACK </a>
