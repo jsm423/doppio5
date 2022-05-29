@@ -20,44 +20,44 @@
 			<table class="join_table">
 					<tr class="join_tr">
 						<td class="join_td1">번호</td>
-						<td class="join_td2">1
+						<td class="join_td2">${rno}
 							
 						</td>
 					</tr>
 					<tr class="join_tr">
 						<td class="join_td1">아이디</td>
 						<td class="join_td2">
-							hong
+							${vo.id }
+						</td>
+					</tr>
+					<tr class="join_tr">
+						<td class="join_td1">비밀번호</td>
+						<td class="join_td2">
+							${vo.pass }
 						</td>
 					</tr>
 					<tr class="join_tr">
 						<td class="join_td1">이름</td>
 						<td class="join_td2">
-							홍길동
-						</td>
-					</tr>
-					<tr class="join_tr">
-						<td class="join_td1">성별</td>
-						<td class="join_td2">
-							남
+							${vo.name }
 						</td>
 					</tr>
 					<tr class="join_tr">
 						<td class="join_td1">핸드폰</td>
 						<td class="join_td2">
-							010-1234-5678
+							${vo.hp }
 						</td>
 					</tr>
 					<tr class="join_tr">
 						<td class="join_td1">주소</td>
 						<td class="join_td2">
-							서울시 강남구
+							${vo.address }
 						</td>
 					</tr>
 					<tr class="join_tr">
 						<td class="join_td1">가입일</td>
 						<td class="join_td2">
-							2022-04-27
+							${vo.mdate }
 						</td>
 					</tr>
 				</table>
@@ -65,7 +65,7 @@
 				<table class="content_write" id="lasttable">
 					<tr>					
 						<td colspan="2">
-							<a href="http://localhost:9000/doppio/member.th"><button type="button" class="btn_style3" onclick="boardFormCheck()">리스트</button></a>
+							<button type="button" class="btn_style3" onclick="location.href='http://localhost:9000/doppio/admin/member/member_list.th'">리스트</button>
 							<a href="http://localhost:9000/doppio/admin/admin.th"><button type="button" class="btn_style3">관리자 홈</button></a>
 						</td>
 					</tr>

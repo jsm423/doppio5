@@ -25,14 +25,14 @@
 				//cgv_member 테이블에서 test라는 계정의 join_status 값을 1로 수정
 				//url : join_status.do				
 				$.ajax({
-					url : "join_status.th?mnum='${vo.mnum}'&status="+status, //test, 1
+					url : "/doppio/mypage/doppio_mypage_info.th?mnum=m_30&status="+status, //test, 1
 					success : function(result){
 						if(result == 1){
 							alert("처리가 완료되었습니다.");
 							if(status == 0){
-								$("#join_status").text("취소");	
+								$("#join_status").text("탈퇴취소");	
 							}else{
-								$("#join_status").text("신청");	
+								$("#join_status").text("회원탈퇴");	
 							}
 						}
 					}

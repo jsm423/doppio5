@@ -48,15 +48,15 @@ public class DpMemberDAO implements DpObjectDAO{
 	/**
 	 * 회원 탈퇴 신청/취소
 	 */
-	public int updateJoinStatus(String id, String status) {
+	public int updateJoinStatus(String mnum, String status) {
 		int result = 0;
 		int value = Integer.parseInt(status);
 		if(value==0) {
 			//신청
-			result = sqlSession.update(namespace+".status1", id);			
+			result = sqlSession.update(namespace+".status1", mnum);			
 		}else {
 			//취소
-			result = sqlSession.update(namespace+".status2", id);
+			result = sqlSession.update(namespace+".status2", mnum);
 		}
 		return result;
 	}

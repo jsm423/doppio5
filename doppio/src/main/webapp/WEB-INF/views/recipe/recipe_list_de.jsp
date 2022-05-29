@@ -59,7 +59,7 @@
 
 		<div class="lioption_div">
 			<div class="lioption_div2">
-				<section class="lioption_sc">
+				<!-- <section class="lioption_sc">
 						<ul class="liopli">
 							
 							<li>
@@ -70,7 +70,7 @@
 							</li>
 							
 						</ul>
-					</section>
+					</section> -->
 			</div>
 		</div>
 		<!-- 판매 리스트 -->
