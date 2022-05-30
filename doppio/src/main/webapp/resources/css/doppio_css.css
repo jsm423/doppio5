@@ -1,10 +1,11 @@
 @charset "UTF-8";
-
+	
 	/* header */
-	header{background-image: url("/doppio/resources/img/headerdark.jpg"); background-repeat: no-repeat; background-size: 100%; height: 300px;}
+	header{background-image: url("/doppio/resources/img/maindark.jpg"); background-repeat: no-repeat; background-size: 100%; height: 300px;}
 	*{margin: 0;}
 	#log{text-align: right; width: 1000px; height: 60px; margin: 0 auto; margin-top: -100px;}
 	#log a{text-decoration: none; color: white; font-size: 12px; font-weight: bold;  }
+	
 	
 	
 	li{cursor: pointer;}
@@ -65,7 +66,7 @@
 	/* content */
 	
 	/* login */
-	div.title p{text-align:center; font-size: 40px; font-weight: 900; margin-top: 100px;}
+	div.title p{text-align:center; font-size: 40px; font-weight: 900; margin-top: 100px; width: 100%;}
 	.login_page{width: 100%; height: 300px; padding-top: 20px;}	
 	div.login{width: 310px; margin: 0 auto; margin-top: 30px;}
 	div.login_form{float: left;}
@@ -102,7 +103,7 @@
 		box-shadow: 1px 1px 1px #F361A6;
 		background-color: pink;
 	}
-	div.join_frame{margin-bottom: 150px;}
+	div.join_frame{margin-bottom: 50px;}
 	
 	/* 관리자 */
 	
@@ -174,29 +175,37 @@
 	}
 	
 	/* 게시판 */
+	#board_head{
+		border-top: 2px double black;
+		border-bottom: 2px double black;
+	}
+	#writebtn{
+		width: 1000px;
+		text-align: right;
+	}
 	.write_button{
 		text-align: center;
-		width: 5%;
-		height: 3%;
-		background-color: pink;
+		width: 80px;
+		height: 30px;
+		background-color: gray;
 		color:white;
 		text-shadow: 1px 1px 1px black;
-		font: bord;
 		border-radius: 4px;
-		position:absolute;
-		top: 50%;
-		left:70%;
-		box-shadow: 1px 1px 1px #F361A6;
-		border-style: none;
-		
+		box-shadow: 1px 1px 2px lightgray;
+		border-style: none;		
+	}
+	.write_button:hover{
+		cursor: pointer;
 	}
 	#boarddiv{
-		width:50%;
+		width:1000px;
 		margin: 0 auto;
+		text-align: right;
+
 	}
 	
 	#board_table{
-		width:100%;
+		width:1000px;
 		text-align: center;
 		border-collapse: collapse;
 		
@@ -204,6 +213,7 @@
 	#board_table tr{
 		padding:15px;
 		height:40px;
+
 	}
 	.boardtitle{
 		text-decoration-line: none;
@@ -217,9 +227,18 @@
 	}
 	
 	/* 게시판 내용 */
-	button.delbtn{background-color: white; border-style: none; font-size: 16px;}
-	#headtable, #comment{
-		width:70%;
+	button.delbtn{
+		background-color: white; 
+		border-style: none; 
+		font-size: 16px;
+		padding-right: 0px;		
+	}
+	button.delbtn:hover{
+		cursor: pointer;
+		text-decoration: underline;
+	}
+	#headtable{
+		width:1000px;
 		margin: 0 auto;
 	}
 	
@@ -231,11 +250,19 @@
 	#hits{
 		text-align: right;
 	}
-	
+	tr.containerhead{
+		width: 1000px;
+	}
+	tr.containerhead td span{
+		font-size:25px;
+		font-weight: bold;
+		width: 70%;
+	}
 	#contenttable tr td a{
 		text-decoration-line: none;
 		color: black;
 		text-align: right;
+		
 	}
 	
 	.containertitle>th{
@@ -243,23 +270,24 @@
 	}
 	
 	#middleline{
-		width:70%;
+		width:1000px;
 		margin: 0 auto;
 		border : 2px solid black;
 		
 	}
-	
 	#contenttable{
-		width:70%;
+		width: 1000px;
 		margin:0 auto;
 		text-align: right;
+		
+		padding: 0;
 	}
 	.t_right{
 		text-align: right;
 	}
 	
 	#contentmain{
-		width:63%;
+		width:900px;
 		margin:0 auto;
 	}
 	
@@ -381,18 +409,19 @@
 	/* 댓글 */
 	.pagenumber{margin-left: auto; margin-right: auto;}
 	.commtable{
-		width:700px;
-		/* border: 1px solid red; */ 
+		width:900px;
+		/* border: 1px solid red; */
 		margin-bottom: 70px;
 		text-align: left;
 	}
 	.commtable>tr{
-
+	/* 	border: 1px solid red; */
+		background-color: blue;
 	}
 	.commth{/* border: 1px solid pink; */ width: 10%; font-size: 14px;}
 	.commtd{/* border: 1px solid black; */font-size: 14px;}
-	.commbtn{width: 700px; }
-	.commbtntd{/* border: 1px solid purple; */ text-align: right; }
+	.commbtn{width: 1000px; /* border: 1px solid red; */}
+	.commbtntd{/* border: 1px solid purple; */  text-align: right; border-bottom: 1px solid black;}
 	.commbtntd>p{font-size: 3pt; vertical-align: middle; display: inline-block;}
 	.commbtnup,.commbtndel{
 		width:35px; margin: 0px; padding:0px; 

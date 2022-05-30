@@ -128,7 +128,7 @@ public class DpMemberDAO implements DpObjectDAO{
 	@Override
 	public int update(Map<String, Object> param) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(namespace+".status1", param);
 	}
 	@Override
 	public int delete(Map<String, Object> param) {

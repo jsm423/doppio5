@@ -37,18 +37,31 @@ public class LoginController {
 	public ModelAndView login(DpMemberVO vo, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		Map<String,Object> result = memberService.getLoginResult(vo);
-		 
+
+		//int k = (result.get("join_status").toString().isEmpty()) ? -1 : Integer.parseInt(String.valueOf(result.get("join_status")));  
+		
 		if(result.size() > 0) {
-			session.setAttribute("sid",vo.getId());
-			session.setAttribute("mnum", result.get("MNUM"));
+			 
+//			if(k == 0) {
+				session.setAttribute("sid",vo.getId());
+				session.setAttribute("mnum", result.get("MNUM"));
+//				mv.addObject("login_result", "succ");
+//				mv.setViewName("doppio_main");
+//			}else if(k == 1) {
+//				mv.addObject("login_result", "drop");
+//				mv.setViewName("doppio_main");
+//			}
 			mv.addObject("login_result", "succ");
 			mv.setViewName("doppio_main");
+				
 		}else {
+			
 			mv.addObject("login_result","fail");
 			mv.setViewName("/login/doppio_login");
-		}
 				
-		
+//			mv.addObject("login_result", "succ");
+//			mv.setViewName("doppio_main");
+		}
 		return mv;
 	}
 	

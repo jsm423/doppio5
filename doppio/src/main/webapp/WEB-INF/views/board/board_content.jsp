@@ -23,33 +23,26 @@
 			</div>
 			<table id="headtable">
 				<tr>
-					<td colspan="4"><a href="http://localhost:9000/doppio/board/board_list.th" id="tolist">목록으로</a></td>
-				</tr>
-				<tr>
-					<td colspan="4"></td>
-				</tr>
-				<tr>
-					<td colspan="4"></td>
+					<td><a href="http://localhost:9000/doppio/board/board_list.th" id="tolist">> 목록으로</a></td>
 				</tr>
 				<tr id="hits">
-					<td colspan="4"></td>
-					<td>조회수:${vo.bhits }</td>
+					<td colspan="4">조회수:${vo.bhits }</td>
 				</tr>
 				<tr class="containerhead">
-					<td width="5%">${rno }</td>
-					<td width="60%" style="font-size:20px">${vo.btitle }</td>
-					<td width="20%" class="t_right">${vo.id }</td>
-					<td width="15%" class="t_right" colspan="2">${vo.bdate }</td>
+					<td>${rno }</td>
+					<td width="70%"><span>${vo.btitle }</span></td>
+					<td >${vo.id }</td>
+					<td class="t_right">${vo.bdate }</td>
 				</tr>
 			</table>
 			<hr id="middleline">
 			<form name="delForm" action="/doppio/board/board_content.th?bnum=${vo.bnum }" method="post">
 			<table id="contenttable">
-				<tr id="contenthead">
-					<td width="82%"></td>
-					<c:if test="${sessionScope.sid == vo.id }">
-					<td><a href="http://localhost:9000/doppio/board/board_update.th?bnum=${vo.bnum}&rno=${rno}" width="9%">수정</a></td>
-					<td><a width="9%"><button type="submit" class="delbtn">삭제</button></a></td>
+				<tr id="contenthead">					
+					<c:if test="${sessionScope.sid == vo.id || sessionScope.sid == 'test'}">
+					<td>
+					<button class="delbtn" onclick="location.href='http://localhost:9000/doppio/board/board_update.th?bnum=${vo.bnum}&rno=${rno}'">수정</button>
+					<button type="submit" class="delbtn">삭제</button></a></td>
 					</c:if>
 				</tr>
 			</table>
@@ -57,15 +50,17 @@
 			<table id="contentmain">
 				<tr>
 				<td colspan="5"><br>
-					<td>${vo.bcontent }<br><br><br><br>
-					
+				<td>
 					<c:if test="${vo.bsfile != null}">
 							<img src="http://localhost:9000/doppio/resources/upload/${vo.bsfile}"
-							     width="250px" height="250px">
+							     width="100%" height="100%">
 					</c:if>
+					
+					${vo.bcontent }
 				</td>
 				</tr>
 			</table>
+			<br><br><br><br><br><br>
 			<!-- <br><br><br><br><br>
 			<div id="comment">
 			<h4>댓글</h4><br>
@@ -84,7 +79,7 @@
 				<form name="comment_write" action="doppio/board/board_write.th" method="post">
 			        		<input type="hidden" name="cmcate_num" value="${vo.bnum}">
 			        		<input type="hidden" name="id" id="id" value="${sessionScope.sid }">
-			           	<textarea rows="1" cols="40" style="width: 600px;" placeholder="내용을 입력해 주세요" id="cmcomment" name="cmcomment"></textarea>
+			           	<textarea rows="1" cols="40" placeholder="내용을 입력해 주세요" id="cmcomment" name="cmcomment"></textarea>
 			          		<button type="button" class="enter" id="btnComm6" data-bnum="${vo.bnum}">등록</button>  
 			    </form> 
 			    </c:if> 

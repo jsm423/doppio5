@@ -65,11 +65,13 @@
 	<div id="boarddiv">
 		<section class="board_list">
 			<div class="title">
-				<p>게시판</p><br>
+				<p>BOARD</p><br>
 			</div>
+			<div id="writebtn">
 			<c:if test="${sessionScope.sid != null }">
-			<a href="http://localhost:9000/doppio/board/board_write.th"><button type="button" class="write_button">글쓰기</button></a><br><br>
+		    <button type="button" class="write_button" onclick="location.href='http://localhost:9000/doppio/board/board_write.th'">글쓰기</button><br><br>
 			</c:if>
+			</div>
 			<table id="board_table">
 				<tr id="board_head">
 					<th>번호</th>
@@ -88,7 +90,7 @@
 					</tr>
 				</c:forEach>
 				<tr>
-					<td colspan="4"><div id="ampaginationsm"></td>	
+					<td colspan="5"><div id="ampaginationsm"></td>	
 				</tr>
 			</table>
 			<br><br><br><br><br><br>

@@ -62,6 +62,31 @@ $(document).ready(function(){
 		}			
 	});
 	
+	/********************************
+	  회원가입폼 - 패스워드, 패스워드확인 비교
+	*********************************/
+	function passCheck(){
+		var pass = document.getElementById("pass");
+		var cpass = document.getElementById("cpass");
+		var msg = document.getElementById("msg");
+		msg.style.fontSize ="13px";
+				
+		if(pass.value != "" && cpass.value != ""){
+			if(pass.value == cpass.value){
+				msg.innerHTML = "패스워드가 동일합니다";
+				msg.style.color ="blue";
+				return true;
+			}else{
+				msg.innerHTML = "패스워드가 동일하지 않습니다";
+				msg.style.color ="red";
+				pass.value = "";
+				cpass.value = "";
+				pass.focus();
+				return false;
+			}
+		}
+		
+	}
 		
 	/**************
 	 * 로그인 - 폼체크

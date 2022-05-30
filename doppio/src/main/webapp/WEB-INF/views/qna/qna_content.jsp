@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>DOPPIO</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/recipe_content_css.css">
 <script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
@@ -21,30 +21,34 @@
 			<div class="title">
 				<p>Q & A</p><br><br>
 			</div>
+			
+			
 			<table id="headtable">
 				<tr>
-					<td colspan="4"><a href="http://localhost:9000/doppio/qna/qna_list.th" id="tolist">> 목록으로</a></td>
+					<td><a href="http://localhost:9000/doppio/qna/qna_list.th" id="tolist">> 목록으로</a></td>
 				</tr>
 				
-				<tr id="hits">
-					<td colspan="4"></td>
-					<td>조회수 : ${vo.qhits }</td>
+				<tr id="hits">					
+					<td colspan="4">조회수 : ${vo.qhits }</td>
 				</tr>
 				<tr class="containerhead">
-					<td width="5%">${rno }</td>
-					<td width="60%" style="font-size:20px">${vo.qtitle }</td>
-					<td width="20%" class="t_right">test</td>
-					<td width="15%" class="t_right" colspan="2">${vo.qdate }</td>
+					<td>${rno }</td>
+					<td width="70%"><span>${vo.qtitle }</span></td>
+					<td>${vo.id }</td>
+					<td class="t_right">${vo.qdate }</td>
 				</tr>
 			</table>
+			
+			
 			<hr id="middleline">
 			<form name="delForm" action="/doppio/qna/qna_content.th?qnum=${vo.qnum }" method="post">
 			<table id="contenttable">
 				<tr id="contenthead">
-					<td width="82%"></td>
-					<c:if test="${sessionScope.sid == vo.id }">
-					<td><a href="http://localhost:9000/doppio/qna/qna_update.th?qnum=${vo.qnum}&rno=${rno}" width="9%">수정</a></td>
-					<td><a width="9%"><button type="submit" class="delbtn">삭제</button></a></td>
+					<td></td>
+					<c:if test="${sessionScope.sid == vo.id || sessionScope.sid == 'test'}">
+					<td>
+					<button class="delbtn" onclick="location.href='http://localhost:9000/doppio/qna/qna_update.th?qnum=${vo.qnum}&rno=${rno}'">수정</button>
+					<button type="submit" class="delbtn">삭제</button></a></td>
 					</c:if>
 				</tr>
 			</table>
@@ -74,13 +78,12 @@
 				<form name="comment_write" action="doppio/qna/qna_write.th" method="post">
 			        		<input type="hidden" name="cmcate_num" value="${vo.qnum}">
 			        		<input type="hidden" name="id" id="id" value="${sessionScope.sid }">
-			           	<textarea rows="1" cols="40" style="width: 600px;" placeholder="내용을 입력해 주세요" id="cmcomment" name="cmcomment"></textarea>
+			           	<textarea rows="1" cols="40" placeholder="내용을 입력해 주세요" id="cmcomment" name="cmcomment"></textarea>
 			          		<button type="button" class="enter" id="btnComm7" data-qnum="${vo.qnum}">등록</button>  
 			    </form> 
 			    </c:if> 
 
-        		<table class="commtable" >
-        			        			
+        		<table class="commtable">        			        			
         			<c:forEach var="vo" items="${list }">
         			<tr class="commbtn">
         				<td colspan="2" class="commbtntd"><p>${vo.cmdate }</p>&nbsp;

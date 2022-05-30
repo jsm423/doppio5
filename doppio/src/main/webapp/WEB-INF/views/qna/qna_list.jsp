@@ -71,9 +71,11 @@
 			<div class="title">
 				<p>Q & A</p><br>
 			</div>
+			<div id="writebtn">
 			<c:if test="${sessionScope.sid != null }">
-			<a href="http://localhost:9000/doppio/qna/qna_write.th"><button type="button" class="write_button">글쓰기</button></a><br><br>
+			<button type="button" class="write_button" onclick="location.href='http://localhost:9000/doppio/qna/qna_write.th'">글쓰기</button><br><br>
 			</c:if>
+			</div>
 			<table id="board_table">
 				<tr id="board_head">
 					<th>번호</th>
@@ -93,7 +95,7 @@
 				</c:forEach>
 				
 				<tr>
-					<td colspan="4"><div id="ampaginationsm"  class="pagenum"></td>					
+					<td colspan="5"><div id="ampaginationsm"  class="pagenum"></td>					
 				</tr>
 			</table>
 			<br><br><br><br><br><br>

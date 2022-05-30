@@ -10,12 +10,17 @@
 <script>
 	var login_result = "${login_result}";
 	var logout_result = "${logout_result}";
+	//var drop_result = "${login_result}";
 	var sid = "${sid}";
 	
 	if(login_result=="succ"){
 		alert("로그인에 성공하셨습니다.");
 		/* location.href="http://localhost:9000/doppio/doppio_main.th" */
 	}
+/* 	if(login_result=="drop"){
+		alert("탈퇴한 회원입니다");
+	} 
+	 */
 	if(logout_result=="succ"){
 		alert("["+sid+"]님! "+"로그아웃에 성공하셨습니다.");
 	}

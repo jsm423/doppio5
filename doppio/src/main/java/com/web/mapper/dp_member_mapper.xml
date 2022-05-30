@@ -17,7 +17,7 @@
 	
 	<!-- 로그인 -->
 	<select id="login" parameterType="com.web.vo.DpMemberVO" resultType="map">
-		select mnum from doppio_member where id=#{id} and pass=#{pass} 
+		select mnum, join_status from doppio_member where id=#{id} and pass=#{pass}
 	</select>
 	
 	<!-- 회원탈퇴 -->

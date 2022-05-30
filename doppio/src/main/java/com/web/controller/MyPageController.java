@@ -1,26 +1,29 @@
 package com.web.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.web.dao.DpMemberDAO;
 import com.web.service.DpCartServiceImpl;
 import com.web.service.DpMemberServiceImpl;
 import com.web.service.DpPageServiceImpl;
 import com.web.vo.DpCartVO;
 import com.web.vo.DpMemberVO;
-import com.web.vo.DpPackageOptionVO;
-import com.web.vo.DpPackageVO;
 
 @Controller
 public class MyPageController {
@@ -34,13 +37,27 @@ public class MyPageController {
 	@Autowired
 	private DpPageServiceImpl pageService;
 	
+	@Autowired
+	private DpMemberDAO memberDao;
+	
 	//È¸¿ø Å»Åð ½ÅÃ»
 	@ResponseBody
-	@RequestMapping(value="/join_status.th", method=RequestMethod.GET)
-	public String join_status(String mnum, String status) {
-		int result = memberService.getStatusUpdate(mnum,status);
+	@RequestMapping(value="/mypage/doppio_mypage_info_out.th", method=RequestMethod.POST)
+	public ModelAndView join_status(@RequestBody String vo, HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
+		ModelAndView mv = new ModelAndView();
+
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> param = mapper.readValue(vo, Map.class);
 		
-		return String.valueOf(result);
+		System.out.println("out param ----> " + param);
+		
+		int s = memberDao.update(param);
+
+		/*
+		 * if (s >= 1) { mv.setViewName("/mypage/doppio_mypage_info"); }
+		 */		
+		
+		return mv;
 	}
 	
 	//È¸¿ø¼öÁ¤ ÆäÀÌÁö Æû

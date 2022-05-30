@@ -12,34 +12,28 @@
 	$(document).ready(function(){
 		
 		//회원탈퇴 신청 처리
-		$("#join_status").click(function(){
-			//var choice = confirm("정말로 회원탈퇴를 신청하시겠습니까?");
-			//alert(choice);
-			//var bname = $("#join_status").text();
-			var status = 0;
-			if($("#join_status").text() == "취소"){ //신청 : 0; 취소 : 1
-				status = 1;
-			}
-			
-			if(confirm("정말로 회원탈퇴를 신청/취소 하시겠습니까?")){
-				//cgv_member 테이블에서 test라는 계정의 join_status 값을 1로 수정
-				//url : join_status.do				
-				$.ajax({
-					url : "/doppio/mypage/doppio_mypage_info.th?mnum=m_30&status="+status, //test, 1
-					success : function(result){
-						if(result == 1){
-							alert("처리가 완료되었습니다.");
-							if(status == 0){
-								$("#join_status").text("탈퇴취소");	
-							}else{
-								$("#join_status").text("회원탈퇴");	
-							}
+		$(document).on('click','#join_status',function(){
+				
+			$.ajax({
+				url : "/doppio/mypage/doppio_mypage_info_out.th",
+				type: "POST",
+				data : JSON.stringify({
+					"mnum" : $(this).data("mnum"), 
+				}),
+				contentType : 'application/json',
+				success : function(result){
+					
+					console.log(result)
+					if(result == 1){
+						alert("처리가 완료되었습니다.");
+						if(status == 0){
+							$("#join_status").text("탈퇴취소");	
+						}else{
+							$("#join_status").text("회원탈퇴");	
 						}
 					}
-				});//ajax
-					
-				
-			}
+				}
+			}); //ajax
 		});
 	});
 </script>
@@ -112,23 +106,23 @@
 					<input type="text" name="email2" value="${vo.email2 }"> -->
 				</td>
 			</tr>
-		</table>
-		
-		<div class="join_btn"> 
-			<c:choose>
-				<c:when test="${vo.join_status == 0 }">
-					<button type="button" id="join_status">회원탈퇴</button>
-				</c:when>
-				<c:otherwise>
-					<button type="button" id="join_status">탈퇴취소</button>
-				</c:otherwise>
-			</c:choose>
-<!-- 			<button type="submit">회원탈퇴</button> -->
-			<button type="submit">저장하기</button>
-		</div>
+		</table>		
 	</div>
 </form>
 
+	<div class="join_btn">
+		<c:choose>
+			<c:when test="${vo.join_status == 0 }">
+				<button id="join_status" data-mnum="${vo.mnum }">회원탈퇴</button>
+			</c:when>
+			<c:otherwise>
+				<button id="join_status">탈퇴취소</button>
+			</c:otherwise>
+		</c:choose> 
+<!-- 			<button type="submit">회원탈퇴</button> -->
+		<button type="submit">저장하기</button>
+	</div>
+	<br><br><br><br><br>
 <!-- footer -->
 <jsp:include page="../doppio_footer.jsp"></jsp:include>
 </body>
