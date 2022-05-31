@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -117,6 +118,26 @@ public class MyPageController {
 			return mv;
 	}
 	
+	
+	/* 장바구니 삭제 */
+	@ResponseBody
+	@RequestMapping(value = "/mypage/doppio_mypage_basketDelete.th", method = RequestMethod.POST)
+	public String qna_delete(
+		@RequestParam(value="list[]") List<String> list) {
+
+		String result = "fail";
+		
+		//list에 담겨진 데이터를 서비스와 매퍼를 이용하여 DB에서 삭제하고 그 결과가 참이면 result를 리턴합니다.
+		
+		/*
+		 * System.out.println(1111); System.out.println(list.size());
+		 * 
+		 * for(String canum : list){ System.out.println(canum); }
+		 */
+
+		return result;
+
+	}
 	
 	/* error */
 	@RequestMapping(value = "/doppio_error.th", method = RequestMethod.GET)

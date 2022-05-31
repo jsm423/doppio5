@@ -52,11 +52,11 @@ public class DpCartServiceImpl implements DpCartService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	
+	//장바구니 삭제
 	@Override
-	public int getDeleteResult(String num) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getDeleteResult(String canum) {
+		return cartDAO.delete(canum);
 	}
 
 	@Override

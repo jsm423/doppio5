@@ -77,10 +77,9 @@ public class DpCartDAO implements DpObjectDAO {
 			return 0;
 		}
 	
-		@Override
-		public int delete(String num) {
-			// TODO Auto-generated method stub
-			return 0;
+		@Override //장바구니 삭제
+		public int delete(String canum) {
+			return sqlSession.delete(namespace+".delete", canum);
 		}
 	
 		@Override

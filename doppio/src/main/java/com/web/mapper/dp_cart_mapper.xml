@@ -17,4 +17,8 @@
 		from doppio_cart dca join doppio_package dpa on dca.pnum=dpa.pnum where id = 'test'	
 	</select>
 	
+	<!-- 카트 삭제 -->
+	<delete id="delete">
+		delete from doppio_cart where canum=#{canum}	
+	</delete>
 </mapper>
