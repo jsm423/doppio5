@@ -18,7 +18,11 @@
 	var login_result = "${login_result}";
 	if(login_result == "fail"){
 		alert("아이디 또는 패스워드가 다릅니다. 다시 로그인 해주세요.")
+	}else if(login_result == "drop"){
+		alert("탈퇴한 회원입니다.")
 	}
+	
+	
 	
 	var auth_result = "${auth_result}";
 	if(auth_result == "fail"){

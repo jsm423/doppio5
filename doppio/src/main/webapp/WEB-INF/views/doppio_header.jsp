@@ -9,10 +9,6 @@
 
 </head>
 <body>
-<c:if test="${sessionScope.sid != null }">
-	세션 : ${sessionScope.sid }
-</c:if>
-세션 : ${sessionScope.sid }
 <header>
 	<div class="doppio_logo">
 		<a href="http://localhost:9000/doppio/doppio_main.th"><img src="/doppio/resources/img/DOPPIO_LOGO2.png" width="200px"></a>

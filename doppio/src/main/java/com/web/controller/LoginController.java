@@ -38,23 +38,30 @@ public class LoginController {
 		ModelAndView mv = new ModelAndView();
 		Map<String,Object> result = memberService.getLoginResult(vo);
 
-		//int k = (result.get("join_status").toString().isEmpty()) ? -1 : Integer.parseInt(String.valueOf(result.get("join_status")));  
-		
 		if(result.size() > 0) {
 			 
-//			if(k == 0) {
+			System.out.println("result.size() > 0");
+			
+			if(String.valueOf(result.get("JOIN_STATUS")).equals("0")) {
+
+				System.out.println("joins status 0");
+				
+				mv.addObject("login_result", "succ");
+				mv.setViewName("/doppio_main");
 				session.setAttribute("sid",vo.getId());
 				session.setAttribute("mnum", result.get("MNUM"));
-//				mv.addObject("login_result", "succ");
-//				mv.setViewName("doppio_main");
-//			}else if(k == 1) {
-//				mv.addObject("login_result", "drop");
-//				mv.setViewName("doppio_main");
-//			}
-			mv.addObject("login_result", "succ");
-			mv.setViewName("doppio_main");
+
+			}else if(String.valueOf(result.get("JOIN_STATUS")).equals("1")) {
+				
+				System.out.println("joins status 1");
+				
+				mv.addObject("login_result", "drop");
+				mv.setViewName("/login/doppio_login");
+			}
 				
 		}else {
+
+			System.out.println("result.size() < 0");			
 			
 			mv.addObject("login_result","fail");
 			mv.setViewName("/login/doppio_login");
