@@ -620,7 +620,9 @@ $(document).ready(function(){
 				"pnum" : $(this).data("pnum"),
 				"id" : $('#id').val(),
 				"popid" : $('#popid').val(),
-				"cacount" : $('#cacount').val()
+				"cacount" : $('#cacount').val(),				
+				"pprice" : $('#pprice').val(),
+				"popprice" : $('#popprice').val()
 			}),
 			contentType : 'application/json',
 			success : function(result){
@@ -640,8 +642,11 @@ $(document).ready(function(){
 	});
 	
 	
+	/*******************
+	 * 회원탈퇴 신청처리
+	 ********************/
 	
-	
+
 	
 	
 	

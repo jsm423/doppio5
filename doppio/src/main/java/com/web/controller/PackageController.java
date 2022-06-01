@@ -126,13 +126,13 @@ public class PackageController {
 	 * */
 	
 	@RequestMapping(value="/package/package_content_de.th", method=RequestMethod.GET)
-		public ModelAndView package_content_de(String pnum, String popname, String rno) {
+		public ModelAndView package_content_de(String pnum, String popid, String rno) {
 		
 			ModelAndView mv = new ModelAndView();
 			packageService.getUpdateHits(pnum);
 			DpPackageVO vo = (DpPackageVO)packageService.getContent(pnum);
 			
-			List<Object> olist = packageService.getOplist(popname);
+			List<Object> olist = packageService.getOplist(popid);
 			ArrayList<DpPackageOptionVO> list = new ArrayList<DpPackageOptionVO>();
 			for(Object obj : olist){
 			//System.out.println(vo.getPopid());
@@ -145,7 +145,7 @@ public class PackageController {
 			}
 
 			mv.addObject("list", list);
-			mv.addObject("popname", popname);
+			mv.addObject("popid", popid);
 			mv.addObject("pnum", pnum);
 			mv.addObject("vo", vo);
 			mv.addObject("rno", rno);
@@ -159,13 +159,13 @@ public class PackageController {
 	 * */
 	
 	@RequestMapping(value="/package/package_content_cf.th", method=RequestMethod.GET)
-	public ModelAndView package_content_cf(String pnum, String popname, String rno) {
+	public ModelAndView package_content_cf(String pnum, String popid, String rno) {
 	
 		ModelAndView mv = new ModelAndView();
 		packageService.getUpdateHits(pnum);
 		DpPackageVO vo = (DpPackageVO)packageService.getContent(pnum);
 		
-		List<Object> olist = packageService.getOplist(popname);
+		List<Object> olist = packageService.getOplist(popid);
 		ArrayList<DpPackageOptionVO> list = new ArrayList<DpPackageOptionVO>();
 		for(Object obj : olist){
 		//System.out.println(vo.getPopid());
@@ -174,7 +174,7 @@ public class PackageController {
 		}
 		
 		mv.addObject("list", list);
-		mv.addObject("popname", popname);
+		mv.addObject("popid", popid);
 		mv.addObject("pnum", pnum);
 		mv.addObject("vo", vo);
 		mv.addObject("rno", rno);
@@ -211,13 +211,13 @@ public class PackageController {
 	 * */
 	
 	@RequestMapping(value="/package/package_content_ncf.th", method=RequestMethod.GET)
-		public ModelAndView package_content_ncf(String pnum, String popname, String rno) {
+		public ModelAndView package_content_ncf(String pnum, String popid, String rno) {
 			
 			ModelAndView mv = new ModelAndView();
 			packageService.getUpdateHits(pnum);
 			DpPackageVO vo = (DpPackageVO)packageService.getContent(pnum);
 			
-			List<Object> olist = packageService.getOplist(popname);
+			List<Object> olist = packageService.getOplist(popid);
 			ArrayList<DpPackageOptionVO> list = new ArrayList<DpPackageOptionVO>();
 			for(Object obj : olist){
 			//System.out.println(vo.getPopid());
@@ -230,7 +230,7 @@ public class PackageController {
 			}
 
 			mv.addObject("list", list);
-			mv.addObject("popname", popname);
+			mv.addObject("popid", popid);
 			mv.addObject("pnum", pnum);
 			mv.addObject("vo", vo);
 			mv.addObject("rno", rno);

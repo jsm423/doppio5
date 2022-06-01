@@ -59,7 +59,7 @@ public class DpPackageServiceImpl implements DpPackageService {
 	}
 	
 	@Override
-	public List<Object> getOplist(String popname) {
-		return packageDao.oplist(popname);
+	public List<Object> getOplist(String popid) {
+		return packageDao.oplist(popid);
 	}
 }

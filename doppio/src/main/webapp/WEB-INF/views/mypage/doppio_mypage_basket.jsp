@@ -14,43 +14,46 @@
 	<script>
 		$(document).ready(function(){
 			 $(".selectDelete_btn").click(function(){
-		         var checkArr = new Array();
-				 var confirm_val = confirm("정말 삭제하시겠습니까?");
-								  
-		          	 alert("1111");
+				 var checkArr = new Array(); // 배열 checkArr이라는 배열을 새로 생성하고
+		         var confirm_val = confirm("정말 삭제하시겠습니까?"); //정말삭제하겠냐는 confirm을 가진 confirm_val 변수 생성
+													  
+		          	 //alert("1111"); //여기까지 성공했으면 1111띄움
 		                             
-		                if(confirm_val) {					   
-		                  $("input[class='chBox']:checked").each(function(){
-		                    checkArr.push($(this).attr("data-canum"));
+		                if(confirm_val = true) {	//만약 저 삭제하겠냐는 confirm에서 확인을 누르면				   
+		                  $("input[class='chBox']:checked").each(function(){ //클래스 이름이 chBox인 input중에 체크된 것들을
+		                    checkArr.push($(this).attr("data-canum"));	//checkArr 배열에 이 인덱스의 data-canum이라는 요소를 가져와서 넣겠다
 		                    });
 
-		                    }// if
+		                 }// if
 		                        
-		                    $.each(checkArr, function (index, item) {
+		                $.each(checkArr, function (index, item) {	//checkArr배열에 들어있는 
 		            			
-		            		 	alert(item);
-		            		});
+		            		 	alert(item);	// 아이템을 띄워라?-----> 들어갔는지 확인용인가?
+		                });
 
-		                          alert(checkArr.length);     
+		                alert(checkArr.length);     // checkArr배열의 길이를 띄워라(즉 들어간 갯수겠지)
 		                             
-		                          var objParams = {
-		                                  "delList" : "delList",
-		                                  "list" : checkArr        
-		                              };
+		                var objParams = {			//objParams라는 변수에
+		                           "delList" : "delList",		// index가 delList, item이 delList인 값과
+		                           "list" : checkArr        		// index가 list, item이 checkArr인 값을  배열로 넣어라
+		                };
 
 		                          //ajax 호출
 		                         $.ajax({
-				                    url  :   "doppio_mypage_basketDelete.th",               
-				                    type :   "post",
-				                    data : { "list" : checkArr},
-				                    success     :   function(result){
-				                    		if(result == "ok"){
+				                    url  :   "doppio_mypage_basketDelete.th",               //이 url에(컨트롤러와 같아야함)
+				                    type :   "post",				   //post방식으로
+				                    data : { "list" : checkArr},		 // objParams 배열에 들은 list라는 index의 checkArr배열의 데이터를 가져와서
+				                    success     :   function(result){		 // 성공시
+				                    		if(result == "ok"){		// 만약 값이 ok이면 삭제완료
 				                    			alert("삭제 완료!!");
+				                    			console.log(result)
 				                    		}else{
-				                    			alert("삭제 실패!!");
+				                    			alert("삭제 실패!!");   // 성공은 했으나 값이 ok가 아니면 삭제실패
+				                    			console.log(result);
 				                    		}
 				                    },
 				                    error :   function(request, status, error){
+				                    		console.log(result);
 				                            console.log("AJAX_ERROR");
 				                    }
                					 });
@@ -110,10 +113,12 @@ div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 					<thead>
 						<tr>
 							<th style="line-height: 100px;">선택</th>
-							<th colspan="2" style="text-align: center;" style="line-height: 100px;">상품명</th>
+							<th colspan="2" style="text-align: center; line-height: 100px;">상품명</th>
 							<th style="line-height: 100px;">가격</th>
 							<th style="line-height: 100px;">수량</th>
 							<th style="line-height: 100px;">옵션</th>
+							<th style="line-height: 100px;">옵션가격</th>
+							<th style="line-height: 100px;">총 가격</th>
 							<!-- <th style="line-height: 100px;">삭제</th> -->
 						</tr>
 					</thead>
@@ -134,16 +139,22 @@ div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 								<input type="hidden" name="pnum" value="${vo.pnum }">
 									<c:if test="${vo.psfile != null}">
 								<img src="http://localhost:9000/doppio/resources/upload/${vo.psfile }" class="package_img" width="150" height="150"/>
-									</c:if></td>
+									</c:if>
+							</td>
 							<td>${vo.ptitle }</td>
-							<td>${vo.pprice }</td>
+							<td>${vo.pprice}원</td>
 							<td>${vo.cacount }</td>
 							<td>${vo.popid }</td>
+							<td>${vo.popprice }원</td>
+							<td>${ vo.pprice * vo.cacount + vo.popprice}원</td>
 							<!-- <td><button type="submit" class="basket_delete">삭제</button> </td> -->
 						</tr>
+						
 						</form>
-					</c:forEach>
-						<tr style="line-height: 200px;"><td colspan="7"><h3>상품을 결제해 주세요!</h3></td></tr>
+					</c:forEach>						
+						<tr style="line-height: 100px;">
+						<td colspan="9"><h3>상품을 결제해 주세요!</h3></td>
+						</tr>
 					</tbody>
 				</table>
 				</section>

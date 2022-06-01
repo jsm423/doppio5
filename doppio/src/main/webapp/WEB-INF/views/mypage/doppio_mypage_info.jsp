@@ -14,26 +14,67 @@
 		//회원탈퇴 신청 처리
 		$(document).on('click','#join_status',function(){
 				
-			$.ajax({
-				url : "/doppio/mypage/doppio_mypage_info_out.th",
-				type: "POST",
-				data : JSON.stringify({
-					"mnum" : $(this).data("mnum"), 
-				}),
-				contentType : 'application/json',
-				success : function(result){
-					
-					console.log(result)
-					if(result == 1){
-						alert("처리가 완료되었습니다.");
-						if(status == 0){
-							$("#join_status").text("탈퇴취소");	
-						}else{
-							$("#join_status").text("회원탈퇴");	
+			
+			if($(this).data("join") == 0){
+
+				if(confirm("ㄹㅇ ㅌㅌ하시겠습니까?")){
+					$.ajax({
+						url : "/doppio/mypage/doppio_mypage_info_out.th",
+						type: "POST",
+						data : JSON.stringify({
+							"mnum" : $(this).data("mnum"), 
+							"service" : "infoOut"
+						}),
+						contentType : 'application/json',
+						success : function(result){
+				
+							
+							if (result.res == "success") {
+								if(confirm("완료")){
+									location.reload();	
+								}						
+							} else {               
+								alert("전송된 값 없음");
+							}       
+						},       
+						error: function() {           
+								 alert("에러 발생");       
 						}
-					}
+							
+					}); //ajax 
 				}
-			}); //ajax
+			}else{
+				if(confirm("탈퇴 취소 하시겠습니까?")){
+					$.ajax({
+						url : "/doppio/mypage/doppio_mypage_info_out.th",
+						type: "POST",
+						data : JSON.stringify({
+							"mnum" : $(this).data("mnum"), 
+							"service" : "infoIn"
+						}),
+						contentType : 'application/json',
+						success : function(result){
+				
+							
+							if (result.res == "success") {
+								if(confirm("완료")){
+									location.reload();	
+								}						
+							} else {               
+								alert("전송된 값 없음");
+							}       
+						},       
+						error: function() {           
+								 alert("에러 발생");       
+						}
+							
+					}); //ajax 
+				}
+			}
+			
+			
+			
+		
 		});
 	});
 </script>
@@ -113,10 +154,10 @@
 	<div class="join_btn">
 		<c:choose>
 			<c:when test="${vo.join_status == 0 }">
-				<button id="join_status" data-mnum="${vo.mnum }">회원탈퇴</button>
+				<button id="join_status" data-mnum="${vo.mnum }" data-join="${vo.join_status }">회원탈퇴</button>
 			</c:when>
 			<c:otherwise>
-				<button id="join_status">탈퇴취소</button>
+				<button id="join_status" data-mnum="${vo.mnum }" data-join="${vo.join_status }">탈퇴취소</button>
 			</c:otherwise>
 		</c:choose> 
 <!-- 			<button type="submit">회원탈퇴</button> -->

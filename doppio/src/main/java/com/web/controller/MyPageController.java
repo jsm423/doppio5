@@ -2,6 +2,7 @@ package com.web.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -44,22 +45,41 @@ public class MyPageController {
 	//È¸¿ø Å»Åð ½ÅÃ»
 	@ResponseBody
 	@RequestMapping(value="/mypage/doppio_mypage_info_out.th", method=RequestMethod.POST)
-	public ModelAndView join_status(@RequestBody String vo, HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
-		ModelAndView mv = new ModelAndView();
+	public Map<String,Object> join_status(@RequestBody String vo) throws JsonParseException, JsonMappingException, IOException {
+
+		Map<String,Object> rMap = new HashMap<String,Object>();
+		//ModelAndView mv = new ModelAndView();
 
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> param = mapper.readValue(vo, Map.class);
 		
 		System.out.println("out param ----> " + param);
 		
+		if(param.get("service").equals("infoOut")){
+			param.put("mapperName","status1");						
+		}else {
+			param.put("mapperName","status2");
+		}
+		
+		
 		int s = memberDao.update(param);
 
-		/*
-		 * if (s >= 1) { mv.setViewName("/mypage/doppio_mypage_info"); }
-		 */		
+		System.out.println("s ------->" +s);
 		
-		return mv;
+		 if (s >= 1) {
+			 
+			 rMap.put("res", "success");
+			  
+		 }else {
+			 
+			 rMap.put("res", "fail");
+		 }
+		 
+		 		
+		
+		return rMap;
 	}
+	
 	
 	//È¸¿ø¼öÁ¤ ÆäÀÌÁö Æû
 	@RequestMapping(value = "/mypage/doppio_mypage_info.th", method = RequestMethod.GET)

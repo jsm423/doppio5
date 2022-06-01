@@ -4,8 +4,14 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class DpCartVO {
 	
-	String ptitle, pcontent, pfile, psfile, pprice, popid;
+	String ptitle, pcontent, pfile, psfile, pprice, popid, popprice;
 	
+	public String getPopprice() {
+		return popprice;
+	}
+	public void setPopprice(String popprice) {
+		this.popprice = popprice;
+	}
 	public String getPopid() {
 		return popid;
 	}
@@ -48,6 +54,7 @@ public class DpCartVO {
 	
 	
 	String  canum, pnum, id, cadate, cacount;
+	
 	
 	public String getCanum() {
 		return canum;

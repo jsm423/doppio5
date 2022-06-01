@@ -63,7 +63,7 @@ public class DpRecipeServiceImpl implements DpRecipeService{
 	}
 
 	@Override
-	public List<Object> getOplist(String popname) {
+	public List<Object> getOplist(String popid) {
 		// TODO Auto-generated method stub
 		return null;
 	}

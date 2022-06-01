@@ -13,8 +13,10 @@
 	
 	<!-- 카트 목록 -->
 	<select id="list" parameterType="map" resultType="com.web.vo.DpCartVO">
-		select dca.canum, dca.popid, dca.cacount, dpa.ptitle, dpa.pprice, dpa.pfile, dpa.psfile
-		from doppio_cart dca join doppio_package dpa on dca.pnum=dpa.pnum where id = 'test'	
+		select dca.canum, dca.popid, dca.cacount, dpa.ptitle, dpa.pprice, dpa.pfile, dpa.psfile, dpo.popprice
+		from doppio_cart dca join doppio_package dpa on dca.pnum=dpa.pnum 
+        join doppio_package_option dpo on dpo.popid = dca.popid
+        where id = 'test'
 	</select>
 	
 	<!-- 카트 삭제 -->

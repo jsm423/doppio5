@@ -63,15 +63,16 @@
 							
 							<select class="popid" name="popid" id="popid" style= "width: 200px; height: 30px;">
 								<c:forEach var="vo" items="${list}" >
-								<option >${vo.popid}</option>
+									<option>${vo.popid}</option>
 								</c:forEach>
+								<input type="hidden" name="popprice" id="popprice" value="${vo.popprice }">
 							</select>
 						</li>
 						</ul>
 					</section>
 				</div>
 				<div class="option_sum">
-					<h2>임시 가격 : ${vo.pprice}</h2>
+					<h2 name="pprice" id="pprice">임시 가격 : ${vo.pprice}</h2>
 				</div>
 				
 			</div>

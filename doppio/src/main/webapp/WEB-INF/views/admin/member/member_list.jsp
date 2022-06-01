@@ -82,18 +82,10 @@
 					<td>${vo.hp }</td>
 					<td>${vo.address }</td>
 					<td>${vo.mdate }</td>
-					<c:choose>
-						<c:when test="${vo.join_status == 0 }">
-							<td><button type="button" disabled>신청</button></td>
-						</c:when>
-						<c:otherwise>
-							<td><button type="button">신청</button></td>
-						</c:otherwise>
-					</c:choose>
 				</tr>
 				</c:forEach>
 				<tr>
-					<td colspan="7"><div id="ampaginationsm"></td>
+					<td colspan="6"><div id="ampaginationsm"></td>
 				</tr>
 			</table>
 			<br><br><br><br><br><br>

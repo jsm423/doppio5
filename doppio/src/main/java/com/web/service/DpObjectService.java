@@ -11,5 +11,5 @@ public interface DpObjectService {
 	Object getContent(String num);
 	int getUpdateResult(Object obj);
 	int getDeleteResult(String num);
-	List<Object> getOplist(String popname);
+	List<Object> getOplist(String popid);
 }

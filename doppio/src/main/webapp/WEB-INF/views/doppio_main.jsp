@@ -133,31 +133,23 @@
 			<span>Review</span>
 			<p>List of recent reviews</p>				
 	</div>
-	<div class="main_review_box" >
+	<div class="main_review_box">
 		<div class="main_review_inner_box" >
 			<c:forEach var="vo" items="${list }">
-			<div class="main_review_pic">
-				<a href="http://localhost:9000/doppio/board/board_content.th"><img src="/doppio/resources/img/orange.jpg" width="100%" height="250px" ></a>
+			<div class="main_review_pic" >
+			<c:if test="${vo.bsfile != null}">
+				<a href="http://localhost:9000/doppio/board/board_content.th?bnum=${vo.bnum }&rno=${vo.rno}">
+				<img src="http://localhost:9000/doppio/resources/upload/${vo.bsfile }" width="350px" height="250px" ></a>
+			</c:if>
+			<c:if test="${vo.bsfile == null}">
+				<img src="http://localhost:9000/doppio/resources/img/noimage.png" width="350px" height="250px" >
+			</c:if>
 				<br>
 				<p>${vo.bdate }</p>
 				<div class="main_review_title"><a href="http://localhost:9000/doppio/board/board_content.th?bnum=${vo.bnum }&rno=${vo.rno}">${vo.btitle }</a></div>
 				<div class="main_review_more"><a href="http://localhost:9000/doppio/board/board_content.th?bnum=${vo.bnum }&rno=${vo.rno}">> READ MORE</a></div>
 			</div>
 			</c:forEach>
-			<!-- <div class="main_review_pic">
-					<a href="#"><img src="/doppio/resources/img/berry.jpg" width="100%" height="250px"></a>
-					<br>
-					<p>2022-04-25</p>
-					<div class="main_review_title"><a href="#">리뷰 제목</a></div>
-					<div class="main_review_more"><a href="#">> READ MORE</a></div>
-			</div>
-			<div class="main_review_pic3">	
-					<a href="#"><img src="/doppio/resources/img/lemon.jpg" width="100%" height="250px"></a>
-					<br>
-					<p>2022-04-25</p>
-					<div class="main_review_title"><a href="#">리뷰 제목</a></div>
-					<div class="main_review_more"><a href="#">> READ MORE</a></div>				
-			</div> -->
 		</div>
 	</div>
 
