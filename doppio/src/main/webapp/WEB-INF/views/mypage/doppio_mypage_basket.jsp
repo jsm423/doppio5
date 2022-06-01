@@ -12,7 +12,7 @@
 <script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/doppio/resources/js/doppio.js"></script> 
 	<script>
-		$(document).ready(function(){
+		 $(document).ready(function(){
 			 $(".selectDelete_btn").click(function(){
 				 var checkArr = new Array(); // 배열 checkArr이라는 배열을 새로 생성하고
 		         var confirm_val = confirm("정말 삭제하시겠습니까?"); //정말삭제하겠냐는 confirm을 가진 confirm_val 변수 생성
@@ -38,25 +38,25 @@
 		                           "list" : checkArr        		// index가 list, item이 checkArr인 값을  배열로 넣어라
 		                };
 
-		                          //ajax 호출
-		                         $.ajax({
-				                    url  :   "doppio_mypage_basketDelete.th",               //이 url에(컨트롤러와 같아야함)
-				                    type :   "post",				   //post방식으로
-				                    data : { "list" : checkArr},		 // objParams 배열에 들은 list라는 index의 checkArr배열의 데이터를 가져와서
-				                    success     :   function(result){		 // 성공시
-				                    		if(result == "ok"){		// 만약 값이 ok이면 삭제완료
-				                    			alert("삭제 완료!!");
-				                    			console.log(result)
-				                    		}else{
-				                    			alert("삭제 실패!!");   // 성공은 했으나 값이 ok가 아니면 삭제실패
-				                    			console.log(result);
-				                    		}
-				                    },
-				                    error :   function(request, status, error){
-				                    		console.log(result);
-				                            console.log("AJAX_ERROR");
-				                    }
-               					 });
+                          //ajax 호출
+                        $.ajax({
+		                    url  :   "/doppio/mypage/doppio_mypage_basketDelete.th",         //이 url에(컨트롤러와 같아야함)
+		                    type :   "post",				   //post방식으로
+		                    data : { "list" : checkArr},		 // objParams 배열에 들은 list라는 index의 checkArr배열의 데이터를 가져와서
+		                    success     :   function(result){		 // 성공시
+		                    		if(result == "ok"){		// 만약 값이 ok이면 삭제완료
+		                    			alert("삭제 완료!!");
+		                    			console.log(result)
+		                    		}else{
+		                    			alert("삭제 실패!!");   // 성공은 했으나 값이 ok가 아니면 삭제실패
+		                    			console.log(result);
+		                    		}
+		                    },
+		                    error :   function(request, status, error){
+		                    		console.log(result);
+		                            console.log("AJAX_ERROR");
+		                    }
+             					 }); 
 
 		                          
 		                    /*      $.ajax({
@@ -101,6 +101,7 @@ div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 		
 			
 			<div class="mypage_basket">
+			<form name="add_order" action="/doppio/mypage/doppio_mypage_basket_or.th" method="post">
 			<div class="basket_fix">
 				<div class="basket_div">
 				
@@ -123,9 +124,9 @@ div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 						</tr>
 					</thead>
 				
+				
 					<tbody>
 					<c:forEach var="vo" items="${list}">
-						<form name="delForm" action="doppio_mypage_basket.th" method="get">
 						<tr>
 							<th style="width: 5%; height: 60px;">
 							 <div class="checkBox">
@@ -150,10 +151,9 @@ div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 							<!-- <td><button type="submit" class="basket_delete">삭제</button> </td> -->
 						</tr>
 						
-						</form>
 					</c:forEach>						
 						<tr style="line-height: 100px;">
-						<td colspan="9"><h3>상품을 결제해 주세요!</h3></td>
+						<td colspan="10"><h3>상품을 결제해 주세요!</h3></td>
 						</tr>
 					</tbody>
 				</table>
@@ -162,10 +162,10 @@ div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 			</div>
 			
 			<div class="row" style="text-align: center; margin: 80px 0;">
-				<a href="http://localhost:9000/doppio/mypage/doppio_mypage_order_history.th"><button class="btn">주문하기</button></a>
+				<button type="button" id="orderlist_btn" data-canum="${vo.canum }">주문하기</button>
 				<a href="http://localhost:9000/doppio/package/package_list.th"><button class="btn btn-default">쇼핑을 계속하기</button></a>
 			</div>
-			
+			</form>
 		</div>
 
 

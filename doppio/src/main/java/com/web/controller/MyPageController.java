@@ -21,6 +21,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.dao.DpMemberDAO;
+import com.web.dao.DpOrderDAO;
 import com.web.service.DpCartServiceImpl;
 import com.web.service.DpMemberServiceImpl;
 import com.web.service.DpPageServiceImpl;
@@ -41,6 +42,9 @@ public class MyPageController {
 	
 	@Autowired
 	private DpMemberDAO memberDao;
+	
+	@Autowired
+	private DpOrderDAO orderDao;
 	
 	//회원 탈퇴 신청
 	@ResponseBody
@@ -145,18 +149,37 @@ public class MyPageController {
 	public String qna_delete(
 		@RequestParam(value="list[]") List<String> list) {
 
-		String result = "fail";
-		
+		String result = "ok";
+		System.out.println(list.size());
 		//list에 담겨진 데이터를 서비스와 매퍼를 이용하여 DB에서 삭제하고 그 결과가 참이면 result를 리턴합니다.
 		
 		/*
-		 * System.out.println(1111); System.out.println(list.size());
+		 * System.out.println(1111);
 		 * 
 		 * for(String canum : list){ System.out.println(canum); }
 		 */
 
 		return result;
 
+	}
+	
+	//주문 내역 넘기기
+	@ResponseBody
+	@RequestMapping(value="/doppio/mypage/doppio_mypage_basket_or.th", method=RequestMethod.POST)
+	public ModelAndView add_order(@RequestBody String vo, HttpServletRequest request) throws Exception{
+		
+		ModelAndView mv = new  ModelAndView();
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> param = mapper.readValue(vo, Map.class);
+		int s = orderDao.insert(param);
+		
+		
+		if(s >= 1) {
+			mv.setViewName("/mypage/doppio_mypage_order_history");
+		}else {
+			//에러페이지 호출
+		}
+		return mv;
 	}
 	
 	/* error */

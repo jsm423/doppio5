@@ -27,6 +27,9 @@ public class DpPageServiceImpl{
 	@Autowired
 	private DpCartServiceImpl cartService;
 	
+	@Autowired
+	private DpOrderServiceImpl orderService;
+	
 	/**
 	 * 페이징 처리
 	 */
@@ -57,6 +60,10 @@ public class DpPageServiceImpl{
 			dbCount = cartService.getListCount();
 		}
 		
+		if(serviceName.equals("order_list")) {
+			orderService = (DpOrderServiceImpl)service;
+			dbCount = orderService.getListCount();
+		}
 		
 		
 		

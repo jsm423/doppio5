@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="mapper.order">
+	
+	<!-- 구매 내역 넘기기 -->
+	<insert id="insert" parameterType="com.web.vo.DpOrderVO">
+		insert into doppio_order values('o_'||sequ_doppio_order_onum.nextval,#{canum},#{pnum},#{popid},'결제완료', sysdate)
+	</insert>
+	
+	<!-- 구매 내역 
+	<select id="list" parameterType="map" resultType="com.web.vo.DpOrderVO">
+		select dca.canum, dca.popid, dca.cacount, dpa.ptitle, dpa.pprice, dpo.popprice
+		from doppio_cart dca join doppio_package dpa on dca.pnum=dpa.pnum 
+        join doppio_package_option dpo on dpo.popid = dca.popid
+        where id = 'test'
+	</select> -->
+	
+	<!-- 구매 내역 -->
+	<select id="list" parameterType="map" resultType="com.web.vo.DpOrderVO">
+		select dor.onum, dca.pnum, dca.id, dor.ostate, dor.odate, dpa.ptitle, dca.cacount, dpa.pprice, dpo.popprice
+		from doppio_order dor join doppio_cart dca on dor.canum=dca.canum 
+        join doppio_package dpa on dpa.pnum = dor.pnum
+        join doppio_package_option dpo on dpo.popid = dor.popid
+        where id = 'test'
+	</select>
+	
+</mapper>

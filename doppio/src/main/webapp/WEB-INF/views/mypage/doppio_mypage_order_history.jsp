@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +18,7 @@
 	<!-- content -->
 	<br><br>
 	<div id="orderdiv">
-		<div class="title">
+		<div class="title"> 
 		<p>My Page</p>
 	</div>
 	<br><br>
@@ -30,13 +31,15 @@
 			<tr id="order_list">
 				<th>주문일</th><th>주문상품</th><th>결제금액</th><th>주문상태</th>
 			</tr>
+			<c:forEach var="vo" items="${list}">
 			<tr class="order_data">		
-				<td>2022-04-27</td><td>얼그레이</td><td>20,000원</td><td>배송중</td>
+				<td>${vo.odate }</td><td>${vo.ptitle }</td><td>${ vo.pprice * vo.cacount + vo.popprice }원</td><td>결제완료</td>
 			</tr>
-			<tr class="order_data">		
-				<td>2022-04-25</td><td>원두</td><td>15,000원</td><td>배송완료</td>
-			</tr>
+			</c:forEach>
 		</table>
+		<input type="hidden" name="pprice" value="${vo.vo.pprice }">
+		<input type="hidden" name="popprice" value="${vo.popprice }">
+		<input type="hidden" name="cacount" value="${vo.cacount }">
 		<br><br><br><br><br><br><br><br>
 	</div>
 	<!-- footer -->

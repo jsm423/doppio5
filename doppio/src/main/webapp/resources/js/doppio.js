@@ -641,10 +641,36 @@ $(document).ready(function(){
 		
 	});
 	
-	
 	/*******************
-	 * 회원탈퇴 신청처리
-	 ********************/
+	 * 장바구니 -> 주문내역
+	 ********************/	
+	$("#orderlist_btn").click(function(){
+		console.log("aaa");
+		$.ajax({
+			url : "/doppio/mypage/doppio_mypage_basket_or.th",
+			type: "POST",
+			data : JSON.stringify({
+				"canum" : $(this).data("canum")				
+			}),
+			contentType : 'application/json',
+			success : function(result){
+				//location.href("/doppio/mypage/doppio_mypage_order_history.th");
+				var check = confirm("주문 감사합니다. 내역을 확인하시겠습니까?");  
+			        
+		        if (check == true) {
+		        	 
+		        	doppio_mypage_basket.submit();
+		        	location.assign("/doppio/mypage/doppio_mypage_order_history.th");
+		        } 
+			}
+		});//ajax
+		
+		
+	});
+
+	
+	
+
 	
 
 	
