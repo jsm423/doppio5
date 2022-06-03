@@ -209,6 +209,7 @@
 		.w-btn-skin-outline:hover {
 		    background-color: #F8ECD1;
 		    color: #6e6e6e;
+		    cursor: pointer;
 		}
 	   
 	   

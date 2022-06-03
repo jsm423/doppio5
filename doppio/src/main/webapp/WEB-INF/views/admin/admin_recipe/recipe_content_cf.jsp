@@ -50,12 +50,12 @@
 <div class="recipe_content">
 	
 	<div class="content_div">
-			<h2>${vo.rtitle},${vo.rcate }</h2>
+			<h2>${vo.rtitle}</h2>
 		
 			<div class="table_div">
 					<table class="content_table">
 						<tr>
-							<th> 조회수 </th><td> ${vo.rhits} </td>
+							<th> ${vo.rhits} </th><td> 번 조회된 <b style="font-size: 15px;">${vo.rcate } 카테고리</b> 소속 레시피입니다. </td>
 						</tr>
 					</table>
 			</div><br>
@@ -65,15 +65,11 @@
 					encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		</div>
 		<br><br>
-		<div class="share">
-			<a href="#"><img alt="url" src="http://localhost:9000/doppio/resources/img/url_con.png" class="share_con" width="30px" height="30px"></a>	
-			<a href="#"><img alt="twitter" src="http://localhost:9000/doppio/resources/img/twt_con.png" class="share_con" width="30px" height="30px"></a>	
-			<a href="#"><img alt="kakao" src="http://localhost:9000/doppio/resources/img/kt_con.png" class="share_con" width="30px" height="30px"></a>	
+		<div class="option_btn" style="margin-bottom: 30px;">
 		<form name="delForm" action="/doppio/admin/admin_recipe/recipe_content_cf.th?rnum=${vo.rnum }" method="post">
-			<div class="admin_button">
-				<button type="button" id="btnUpdate" onclick="location.href='http://localhost:9000/doppio/admin/admin_recipe/recipe_update_cf.th?rnum=${vo.rnum }&rno=${rno}'">수정</button>
-				<button type="submit">삭제</button>
-			</div>
+			<button type="button" id="btnUpdate" class="w-btn-outline w-btn-skin-outline" onclick="location.href='http://localhost:9000/doppio/admin/admin_recipe/recipe_update_cf.th?rnum=${vo.rnum }&rno=${rno}'">수정</button>
+			<button type="submit" class="w-btn-outline w-btn-skin-outline">삭제</button>
+		
 		</form>
 		</div>
 		</div>
@@ -81,7 +77,7 @@
 	
 	<div class="content" style="width: 100%;">
   			<div style="width: 800px; margin: 0 auto;">
-    		 <div class="재료">
+    		 <div class="재료"> 
 	         <div class="subtitle">&nbsp;재료</div>
 			 <div>
 		         <ul class="uling" style="line-height: 30px;">
@@ -109,7 +105,7 @@
 			        		<input type="hidden" name="cmcate_num" value="${vo.rnum}">
 			        		<input type="hidden" name="id" id="id" value="${sessionScope.sid }">
 			           	<textarea rows="1" cols="40" style="width: 600px;" placeholder="내용을 입력해 주세요" id="cmcomment" name="cmcomment"></textarea>
-			          		<button type="button" class="enter" id="btnComm" data-rnum="${vo.rnum}">등록</button>  
+			          		<button type="button" class="enter w-btn-skin-outline" id="btnComm" data-rnum="${vo.rnum}">등록</button>  
 			    </form> 
 			    </c:if> 
 

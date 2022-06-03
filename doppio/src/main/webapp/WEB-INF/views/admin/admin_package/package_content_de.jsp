@@ -99,11 +99,10 @@
 					<h2>임시 가격 : ${vo.pprice}</h2>
 				</div>
 			
-			<div id="btn_package">	
+			<div class="option_btn">	
 			<form name="delForm" action="/doppio/admin/admin_package/package_content_de.th?pnum=${vo.pnum }" method="post">
-				<table id="contenttable">
-				<tr id="contenthead">
-					<td width="100%"></td>
+				<table>
+				<tr>
 					<td><button type="button" class="w-btn-outline w-btn-skin-outline" onclick="location.href='http://localhost:9000/doppio/admin/admin_package/package_update_de.th?pnum=${vo.pnum }&rno=${rno}'">수정</button></td>
 					<td><button type="submit" class="w-btn-outline w-btn-skin-outline">삭제</button></td>
 				</tr>

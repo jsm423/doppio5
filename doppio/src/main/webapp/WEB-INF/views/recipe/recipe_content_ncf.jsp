@@ -77,7 +77,7 @@
 			        		<input type="hidden" name="cmcate_num" value="${vo.rnum}">
 			        		<input type="hidden" name="id" id="id" value="${sessionScope.sid }">
 			           	<textarea rows="1" cols="40" style="width: 600px;" placeholder="내용을 입력해 주세요" id="cmcomment" name="cmcomment"></textarea>
-			          		<button type="button" class="enter" id="btnComm4" data-rnum="${vo.rnum}">등록</button>  
+			          		<button type="button" class="enter w-btn-skin-outline" id="btnComm4" data-rnum="${vo.rnum}">등록</button>  
 			    </form> 
 			    </c:if> 
 

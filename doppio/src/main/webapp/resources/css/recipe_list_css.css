@@ -20,7 +20,7 @@
 	}
 	
 	.purchasebtn button{
-		  margin-top: 30px; 
+		  margin-top: 18px; 
 		  margin-right: 200px;
 	   }
 	
@@ -32,7 +32,7 @@
 	
 	div.imgcon_div {
 		width: 100%;		
-		margin-top: 90px;
+		margin-top: 77px;
 		/* border: 1px solid red; */
 		/* margin: 90 auto; */
 		text-align: center;
@@ -169,5 +169,6 @@
 	.w-btn-skin-outline:hover {
     background-color: #F8ECD1;
     color: #6e6e6e;
+    cursor: pointer;
 	}
 	

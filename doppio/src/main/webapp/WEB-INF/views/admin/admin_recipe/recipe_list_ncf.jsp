@@ -63,7 +63,7 @@
 		
 		<!-- 옵션 박스 -->
 		<div class="purchasebtn">
-				<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_write_ncf.th"><button type="button">레시피 등록</button></a>
+				<a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_write_ncf.th"><button type="button" class="w-btn-outline w-btn-skin-outline">레시피 등록</button></a>
 		</div>
 		<div class="lioption_div">
 			<div class="lioption_div2">
