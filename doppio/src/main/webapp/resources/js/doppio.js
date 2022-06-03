@@ -642,6 +642,74 @@ $(document).ready(function(){
 	});
 	
 	/*******************
+	 * 장바구니로 이동 package ncf
+	 ********************/	
+	
+	$("#cart_btn_ncf").click(function(){
+		
+		$.ajax({
+			url : "/doppio/package/package_content_ncf_cart.th",
+			type: "POST",
+			data : JSON.stringify({
+				"pnum" : $(this).data("pnum"),
+				"id" : $('#id').val(),
+				"popid" : $('#popid').val(),
+				"cacount" : $('#cacount').val(),				
+				"pprice" : $('#pprice').val(),
+				"popprice" : $('#popprice').val()
+			}),
+			contentType : 'application/json',
+			success : function(result){
+				//location.href("/doppio/mypage/doppio_mypage_basket.th");
+				//console.log("aaa");
+				var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");  
+			        
+		        if (check == true) {
+		        	 
+		        	package_cart_ncf.submit();
+		        	location.assign("/doppio/mypage/doppio_mypage_basket.th");
+		        } 
+			}
+		});//ajax
+		
+		
+	});
+	
+	/*******************
+	 * 장바구니로 이동 package de
+	 ********************/	
+	
+	$("#cart_btn_de").click(function(){
+		
+		$.ajax({
+			url : "/doppio/package/package_content_de_cart.th",
+			type: "POST",
+			data : JSON.stringify({
+				"pnum" : $(this).data("pnum"),
+				"id" : $('#id').val(),
+				"popid" : $('#popid').val(),
+				"cacount" : $('#cacount').val(),				
+				"pprice" : $('#pprice').val(),
+				"popprice" : $('#popprice').val()
+			}),
+			contentType : 'application/json',
+			success : function(result){
+				//location.href("/doppio/mypage/doppio_mypage_basket.th");
+				//console.log("aaa");
+				var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");  
+			        
+		        if (check == true) {
+		        	 
+		        	package_cart_de.submit();
+		        	location.assign("/doppio/mypage/doppio_mypage_basket.th");
+		        } 
+			}
+		});//ajax
+		
+		
+	});
+	
+	/*******************
 	 * 장바구니 -> 주문내역
 	 ********************/	
 	$("#orderlist_btn").click(function(){

@@ -33,26 +33,27 @@
 				</tr>
 				<tr class="containerhead">
 					<td>${rno }</td>
-					<td width="70%"><span>${vo.qtitle }</span></td>
-					<td>${vo.id }</td>
-					<td class="t_right">${vo.qdate }</td>
+					<td width="60%"><span>${vo.qtitle }</span></td>
+					<td> 작성자 : ${vo.id }</td>
+					<td class="t_right"> 작성일 : ${vo.qdate }</td>
 				</tr>
 			</table>
 			
-			
 			<hr id="middleline">
 			<form name="delForm" action="/doppio/qna/qna_content.th?qnum=${vo.qnum }" method="post">
+			<br>
 			<table id="contenttable">
 				<tr id="contenthead">
 					<td></td>
 					<c:if test="${sessionScope.sid == vo.id || sessionScope.sid == 'test'}">
 					<td>
-					<button class="delbtn" onclick="location.href='http://localhost:9000/doppio/qna/qna_update.th?qnum=${vo.qnum}&rno=${rno}'">수정</button>
-					<button type="submit" class="delbtn">삭제</button></a></td>
+					<button type="button" class="delbtn" onclick="location.href='http://localhost:9000/doppio/qna/qna_update.th?qnum=${vo.qnum}&rno=${rno}'"><img src="http://localhost:9000/doppio/resources/img/edit_btn.png" class="board_con" width="30px" height="30px"></button>
+					<button type="submit" class="delbtn"><img src="http://localhost:9000/doppio/resources/img/delete_btn.png" class="board_con" width="30px" height="30px"></button></td>
 					</c:if>
 				</tr>
 			</table>
 			</form>
+			<br>
 			<table id="contentmain">
 				<tr>
 					<td>${vo.qcontent }</td>

@@ -64,7 +64,7 @@
 		
 		<!-- 옵션 박스 -->
 		<div class="purchasebtn">
-				<a href="http://localhost:9000/doppio/admin/admin_package/package_write_de.th"><button type="submit">제품 등록</button></a>
+				<a href="http://localhost:9000/doppio/admin/admin_package/package_write_de.th"><button type="submit" class="w-btn-outline w-btn-skin-outline">제품 등록</button></a>
 		</div>
 		<div class="lioption_div">
 			<div class="lioption_div2">

@@ -104,8 +104,8 @@
 				<table id="contenttable">
 				<tr id="contenthead">
 					<td width="100%"></td>
-					<td><button type="button" class="pkbt" onclick="location.href='http://localhost:9000/doppio/admin/admin_package/package_update_de.th?pnum=${vo.pnum }&rno=${rno}'">수정</button></td>
-					<td><button type="submit" class="pkbt">삭제</button></td>
+					<td><button type="button" class="w-btn-outline w-btn-skin-outline" onclick="location.href='http://localhost:9000/doppio/admin/admin_package/package_update_de.th?pnum=${vo.pnum }&rno=${rno}'">수정</button></td>
+					<td><button type="submit" class="w-btn-outline w-btn-skin-outline">삭제</button></td>
 				</tr>
 				</table>
 			</form>

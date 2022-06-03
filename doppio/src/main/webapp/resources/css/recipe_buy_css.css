@@ -90,12 +90,12 @@
 	.option_btn {
 		margin: auto;
 		margin-top: 20px;
-		margin-left: 495px;
+		margin-left: 430px;
 		display: inline-block;
-		width: 220px;
+		width: 330px;
 		height: 48px;
 		position: absolute;
-		top: 920px;
+		top: 885px;
 	}
 	
 	.btn_style {
@@ -107,16 +107,24 @@
 		padding:7px 0;
 	}
 	
-	div#btn_package {
-		width: 500px;
-		display: inline-block;
-		position: absolute;
-		top: 920px;
-		margin-left: 200px;
-		margin-top: 20px;
+	.w-btn-outline {
+    position: relative;
+    padding: 12px 25px;
+    border-radius: 15px;
+    font-family: "paybooc-Light", sans-serif;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.25s;
 	}
 	
-	button.pkbt{
-		width: 80px;
+	.w-btn-skin-outline {
+    border: 3px solid #F8ECD1;
+    color: #6e6e6e;
+    background-color: white;
 	}
 	
+	.w-btn-skin-outline:hover {
+    background-color: #F8ECD1;
+    color: #6e6e6e;
+	}

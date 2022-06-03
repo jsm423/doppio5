@@ -71,9 +71,11 @@
 			<div class="title">
 				<p>Q & A</p><br>
 			</div>
+			<h3 style="text-align: center;">이용에 있어 궁금한 사항이 있으신가요? QNA 게시판을 통해 질문해 주세요.</h3>
 			<div id="writebtn">
 			<c:if test="${sessionScope.sid != null }">
-			<button type="button" class="write_button" onclick="location.href='http://localhost:9000/doppio/qna/qna_write.th'">글쓰기</button><br><br>
+			<h5>게시글 작성</h5>
+			<button type="button" class="write_button" onclick="location.href='http://localhost:9000/doppio/qna/qna_write.th'"><img src="http://localhost:9000/doppio/resources/img/write_btn.png" class="board_con" width="30px" height="30px"></button><br><br>
 			</c:if>
 			</div>
 			<table id="board_table">

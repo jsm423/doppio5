@@ -22,12 +22,11 @@
 	<div class="recipe_content">
 		<div class="content_div">
 				
-				<h2>${vo.rtitle}</h2>
-				
+				<<h2>${vo.rtitle}</h2> 
 				<div class="table_div">
 						<table class="content_table">
 							<tr>
-								<th> 조회수 </th><td> ${vo.rhits} </td>
+								<th> ${vo.rhits} </th><td>명이 이 레시피에 관심을 가졌어요! ❤.❤</td>
 							</tr>
 						</table>
 				</div>
@@ -41,12 +40,14 @@
 			<br><br>
 			
 			<div class="share">
-				<a href="#"><img alt="url" src="http://localhost:9000/doppio/resources/img/url_con.png" class="share_con" width="50px" height="50px"></a>	
-				<a href="#"><img alt="twitter" src="http://localhost:9000/doppio/resources/img/twt_con.png" class="share_con" width="50px" height="50px"></a>	
-				<a href="#"><img alt="kakao" src="http://localhost:9000/doppio/resources/img/kt_con.png" class="share_con" width="50px" height="50px"></a>	
+				<!-- <a href="#"><img alt="url" src="http://localhost:9000/doppio/resources/img/url_con.png" class="share_con" width="45px" height="45px"></a>	
+				<a href="#"><img alt="twitter" src="http://localhost:9000/doppio/resources/img/twt_con.png" class="share_con" width="45px" height="45px"></a>	
+				<a href="#"><img alt="kakao" src="http://localhost:9000/doppio/resources/img/kt_con.png" class="share_con" width="45px" height="45px"></a>	 -->
 			<div class="purchasebtn">
-        		<a href= "http://localhost:9000/doppio/package/package_content.th"><button type="button">구매하기</button></a>
+        		<a href= "http://localhost:9000/doppio/package/package_content_cf.th"><h3>레시피가 마음에 드시나요? 구성품을 모두 담은 패키지를 소개해 드릴게요.</h3></a>
+     	 		<h5>클릭 시, 상품 구매 페이지로 이동합니다.</h5>
      	 	</div>
+     	 	<a href= "http://localhost:9000/doppio/package/package_content_cf.th"><img src="http://localhost:9000/doppio/resources/img/buy_btn1.png" class="share_con" width="70px" height="70px"></a>
 			</div>
 			</div>
 		</div>

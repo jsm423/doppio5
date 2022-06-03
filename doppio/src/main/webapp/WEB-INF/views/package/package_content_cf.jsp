@@ -80,14 +80,15 @@
 				<div class="option_btn">
 				<input type="hidden" name="pnum" id="pnum" value="${vo.pnum}">
 				<input type="hidden" name="id" id="id" value="${sessionScope.sid}">
-				<button type="button" class="pkbt" id="cart_btn_cf" data-pnum="${vo.pnum }">장바구니</button>
-				<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th"><button type="submit" class="pkbt">바로구매</button></a>
+				<button type="button" class="w-btn-outline w-btn-skin-outline" id="cart_btn_cf" data-pnum="${vo.pnum }">장바구니</button>
+				<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th"><button type="submit" class="w-btn-outline w-btn-skin-outline">바로구매</button></a>
 				</form>
 				</div>
-</div>
+			</div>
 			
 			</c:if>
 			<br><br><br>
+		
 			
 			
 		<!-- footer -->

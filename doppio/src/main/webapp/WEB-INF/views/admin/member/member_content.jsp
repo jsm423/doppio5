@@ -65,8 +65,8 @@
 				<table class="content_write" id="lasttable">
 					<tr>					
 						<td colspan="2">
-							<button type="button" class="btn_style3" onclick="location.href='http://localhost:9000/doppio/admin/member/member_list.th'">리스트</button>
-							<a href="http://localhost:9000/doppio/admin/admin.th"><button type="button" class="btn_style3">관리자 홈</button></a>
+							<button type="button" class="w-btn-outline w-btn-skin-outline" onclick="location.href='http://localhost:9000/doppio/admin/member/member_list.th'">리스트</button>
+							<a href="http://localhost:9000/doppio/admin/admin.th"><button type="button" class="w-btn-outline w-btn-skin-outline">관리자 홈</button></a>
 						</td>
 					</tr>
 				</table>

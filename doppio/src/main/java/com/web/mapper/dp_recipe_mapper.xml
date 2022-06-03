@@ -51,10 +51,10 @@
 		update doppio_recipe
 		<choose>
 			<when test="rfile != null">
-				set rname=#{rname},rtitle=#{rtitle},rcontent1=#{rcontent1}, rcontent2=#{rcontent2}, rfile=#{rfile}, rsfile=#{rsfile}, rurl=#{rurl}
+				set rcate=#{rcate}, rname=#{rname},rtitle=#{rtitle},rcontent1=#{rcontent1}, rcontent2=#{rcontent2}, rfile=#{rfile}, rsfile=#{rsfile}, rurl=#{rurl}
 			</when>
 			<otherwise>
-				set rname=#{rname},rtitle=#{rtitle},rcontent1=#{rcontent1},rcontent2=#{rcontent2}, rurl=#{rurl}
+				set rcate=#{rcate}, rname=#{rname},rtitle=#{rtitle},rcontent1=#{rcontent1},rcontent2=#{rcontent2}, rurl=#{rurl}
 			</otherwise>
 		</choose>
 		where rnum=#{rnum}

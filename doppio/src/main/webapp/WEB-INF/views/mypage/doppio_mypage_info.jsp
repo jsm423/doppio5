@@ -154,16 +154,17 @@
 	<div class="join_btn">
 		<c:choose>
 			<c:when test="${vo.join_status == 0 }">
-				<button id="join_status" data-mnum="${vo.mnum }" data-join="${vo.join_status }">회원탈퇴</button>
+				<button id="join_status" class="w-btn-outline w-btn-skin-outline" data-mnum="${vo.mnum }" data-join="${vo.join_status }">회원탈퇴</button>
 			</c:when>
 			<c:otherwise>
-				<button id="join_status" data-mnum="${vo.mnum }" data-join="${vo.join_status }">탈퇴취소</button>
+				<button id="join_status" class="w-btn-outline w-btn-skin-outline" data-mnum="${vo.mnum }" data-join="${vo.join_status }">탈퇴취소</button>
 			</c:otherwise>
 		</c:choose> 
 <!-- 			<button type="submit">회원탈퇴</button> -->
-		<button type="submit">저장하기</button>
+		<button type="submit" class="w-btn-outline w-btn-skin-outline">저장하기</button>
 	</div>
 	<br><br><br><br><br>
+    
 <!-- footer -->
 <jsp:include page="../doppio_footer.jsp"></jsp:include>
 </body>
