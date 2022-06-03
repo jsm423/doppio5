@@ -20,7 +20,9 @@
 		
 		<!-- content -->
 		<br>
-		<a href="http://localhost:9000/doppio/package/package_list_ncf.th" id="tolist" class="tolist2"> > 목록으로 </a>
+		<div class="list_go">
+		<a href="http://localhost:9000/doppio/package/package_list_cf.th" id="tolist" class="tolist2"> > 목록으로 </a>
+		</div>
 		<div class="recipe_buy">
 		
 		<form name="package_cart_ncf" action="/package/package_content_ncf.th?mnum=${sessionScope.mnum }" method="post">
@@ -79,7 +81,7 @@
 					<h2 name="pprice" id="pprice">임시 가격 : ${vo.pprice}</h2>
 				</div>
 				
-			</div>
+			
 				<c:if test="${sessionScope.sid != null }">
 				<div class="option_btn">
 				<input type="hidden" name="pnum" id="pnum" value="${vo.pnum}">
@@ -88,11 +90,11 @@
 				<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th"><button type="submit" class="w-btn-outline w-btn-skin-outline">바로구매</button></a>
 				</form>
 				</div>
-			</div>
 			
 			</c:if>
-			<br><br><br>
 			
+			</div>
+			<br><br><br>
 		<!-- footer -->
 		<jsp:include page="../doppio_footer.jsp"></jsp:include>
 	

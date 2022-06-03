@@ -20,16 +20,16 @@
 	
 	div.buy_div {
 		text-align: left;
-		width: 100%;
+		width: 1200px;
 		margin: auto;
-		margin-top: 70px;
+		margin-top: 50px;
 		border-top: 5px double #D2D2D2;
 		border-bottom: 5px double #D2D2D2;
 	}
 	
 	
 	div.buy_img {
-		margin: 50px 0px 50px 220px;
+		margin: 50px 0px 50px 50px;
 		display: inline-block;
 		width: 500px;
 		height: 500px;
@@ -40,7 +40,7 @@
 		width: 500px;
 		height: 500px;
 		position: absolute;
-		top: 455px;
+		top: 440px;
 		font-size: 20px;
 		margin-left: 130px;
 	}
@@ -53,7 +53,7 @@
 		width: 300px;
 		height: 300px;
 		position: absolute;
-		top: 600px;
+		top: 580px;
 		/* border: 3px solid blue; */
 	}
 	
@@ -90,12 +90,12 @@
 	.option_btn {
 		margin: auto;
 		margin-top: 20px;
-		margin-left: 430px;
+		margin-left: 380px;
 		display: inline-block;
 		width: 330px;
 		height: 48px;
 		position: absolute;
-		top: 885px;
+		top: 875px;
 	}
 	
 	.btn_style {
@@ -105,6 +105,16 @@
 		font-weigth:1000;
 		width: 35%;
 		padding:7px 0;
+	}
+	
+	.list_go {
+		text-align: right;
+		margin: auto;
+		width: 1200px;
+	}
+	
+	.list_go >a.tolist2{
+		
 	}
 	
 	.w-btn-outline {
