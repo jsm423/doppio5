@@ -5,7 +5,7 @@
 <html lang="ko">
 	<head> 
 		<meta charset="UTF-8">
-		<title>Doppio</title>
+		<title>DOPPIO</title>
 		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
 		<link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/recipe_buy_css.css">
 		<script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
@@ -18,10 +18,13 @@
 		
 		
 		<!-- content -->
+		<br>
+		<a href="http://localhost:9000/doppio/package/package_list_cf.th" id="tolist" class="tolist2"> > 목록으로 </a>
 		<div class="recipe_buy">
-		<form name="package_cart_cf" action="/package/package_content_cf.th" method="post">
+		
+		<form name="package_cart_cf" action="/package/package_content_cf.th?mnum=${sessionScope.mnum }" method="post">
 			<div class="buy_div">
-				<a href="http://localhost:9000/doppio/package/package_list_cf.th" id="btnBack"> >> BACK </a>
+				
 				
 				<!-- 판매 상품 이미지 -->		
 				<input type="hidden" name="pname" value="${vo.ptitle }">	
@@ -79,7 +82,7 @@
 			<c:if test="${sessionScope.sid != null }">
 				<div class="option_btn">
 				<input type="hidden" name="pnum" id="pnum" value="${vo.pnum}">
-				<input type="hidden" name="id" id="id" value="${sessionScope.sid}">
+				<input type="hidden" name="mnum" id="mnum" value="${sessionScope.mnum}">
 				<button type="button" class="w-btn-outline w-btn-skin-outline" id="cart_btn_cf" data-pnum="${vo.pnum }">장바구니</button>
 				<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th"><button type="submit" class="w-btn-outline w-btn-skin-outline">바로구매</button></a>
 				</form>

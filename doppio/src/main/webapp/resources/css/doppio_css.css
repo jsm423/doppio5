@@ -430,6 +430,12 @@
 		margin-bottom: 70px;
 		text-align: left;
 	}
+	.commtable2{
+		width: 700px;
+		/* border: 1px solid red; */
+		margin-bottom: 70px;
+		text-align: left;
+	}
 	.commtable>tr{
 	/* 	border: 1px solid red; */
 		background-color: blue;

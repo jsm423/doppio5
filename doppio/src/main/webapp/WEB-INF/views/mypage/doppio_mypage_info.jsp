@@ -93,9 +93,9 @@
 	</div>
 	<br><br>
 	<div class="mypage_nav">
-		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_info?mnum=${sessionScope.mnum}.th">정보수정</a>&emsp;&emsp;
-		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th">장바구니</a>&emsp;&emsp;
-		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_order_history.th">주문내역</a>
+		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_info.th?mnum=${sessionScope.mnum}">정보수정</a>&emsp;&emsp;
+		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th?mnum=${sessionScope.mnum}">장바구니</a>&emsp;&emsp;
+		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_order_history.th?mnum=${sessionScope.mnum}">주문내역</a>
 	</div>
 
 <form name="" action="/doppio/mypage/doppio_mypage_info.th?mnum=${vo.mnum }" method="post">

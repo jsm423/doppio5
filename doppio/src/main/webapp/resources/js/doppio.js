@@ -618,7 +618,7 @@ $(document).ready(function(){
 			type: "POST",
 			data : JSON.stringify({
 				"pnum" : $(this).data("pnum"),
-				"id" : $('#id').val(),
+				"mnum" : $('#mnum').val(),
 				"popid" : $('#popid').val(),
 				"cacount" : $('#cacount').val(),				
 				"pprice" : $('#pprice').val(),
@@ -629,11 +629,11 @@ $(document).ready(function(){
 				//location.href("/doppio/mypage/doppio_mypage_basket.th");
 				//console.log("aaa");
 				var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");  
-			        
+			    var mnum = $('#mnum').val();
 		        if (check == true) {
 		        	 
 		        	package_cart_cf.submit();
-		        	location.assign("/doppio/mypage/doppio_mypage_basket.th");
+		        	location.assign("/doppio/mypage/doppio_mypage_basket.th?mnum="+mnum);
 		        } 
 			}
 		});//ajax
@@ -652,7 +652,7 @@ $(document).ready(function(){
 			type: "POST",
 			data : JSON.stringify({
 				"pnum" : $(this).data("pnum"),
-				"id" : $('#id').val(),
+				"mnum" : $('#mnum').val(),
 				"popid" : $('#popid').val(),
 				"cacount" : $('#cacount').val(),				
 				"pprice" : $('#pprice').val(),
@@ -663,11 +663,11 @@ $(document).ready(function(){
 				//location.href("/doppio/mypage/doppio_mypage_basket.th");
 				//console.log("aaa");
 				var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");  
-			        
+			    var mnum = $('#mnum').val();
 		        if (check == true) {
 		        	 
 		        	package_cart_ncf.submit();
-		        	location.assign("/doppio/mypage/doppio_mypage_basket.th");
+		        	location.assign("/doppio/mypage/doppio_mypage_basket.th?mnum="+mnum);
 		        } 
 			}
 		});//ajax
@@ -686,7 +686,7 @@ $(document).ready(function(){
 			type: "POST",
 			data : JSON.stringify({
 				"pnum" : $(this).data("pnum"),
-				"id" : $('#id').val(),
+				"mnum" : $('#mnum').val(),
 				"popid" : $('#popid').val(),
 				"cacount" : $('#cacount').val(),				
 				"pprice" : $('#pprice').val(),
@@ -697,11 +697,11 @@ $(document).ready(function(){
 				//location.href("/doppio/mypage/doppio_mypage_basket.th");
 				//console.log("aaa");
 				var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");  
-			        
+			    var mnum = $('#mnum').val();    
 		        if (check == true) {
 		        	 
 		        	package_cart_de.submit();
-		        	location.assign("/doppio/mypage/doppio_mypage_basket.th");
+		        	location.assign("/doppio/mypage/doppio_mypage_basket.th?mnum="+mnum);
 		        } 
 			}
 		});//ajax
@@ -713,28 +713,49 @@ $(document).ready(function(){
 	 * 장바구니 -> 주문내역
 	 ********************/	
 	$("#orderlist_btn").click(function(){
-		console.log("aaa");
-		$.ajax({
+		if(confirm("주문 감사합니다. 내역을 확인하시겠습니까?")){
+		
+		var checkArr = new Array();
+		$("input[class='chBox']:checked").each(function(){ 
+          checkArr.push($(this).attr("data-canum"));	
+        });
+			
+		 $.each(checkArr, function (index, item) {	//checkArr배열에 들어있는 
+	            			
+	           alert(item);	// 아이템을 띄워라?-----> 들어갔는지 확인용인가?
+	      });
+	      
+	       $.ajax({
 			url : "/doppio/mypage/doppio_mypage_basket_or.th",
 			type: "POST",
-			data : JSON.stringify({
-				"canum" : $(this).data("canum")				
-			}),
-			contentType : 'application/json',
-			success : function(result){
-				//location.href("/doppio/mypage/doppio_mypage_order_history.th");
-				var check = confirm("주문 감사합니다. 내역을 확인하시겠습니까?");  
-			        
-		        if (check == true) {
-		        	 
-		        	doppio_mypage_basket.submit();
-		        	location.assign("/doppio/mypage/doppio_mypage_order_history.th");
-		        } 
-			}
-		});//ajax
-		
-		
+			data : 
+				JSON.stringify({
+				"mnum" : $(this).data("mnum"),
+				"pnum" : $('#pnum').val(),
+				"popid" : $('#popid').val(),
+				"cacount" : $('#cacount').val(),				
+				"pprice" : $('#pprice').val(),
+				"popprice" : $('#popprice').val(),
+				"list" : checkArr,
+				}),		 
+            success     :   function(result){
+				if(result.result == "ok"){		
+                   			alert("이동 완료!!");
+                   			location.reload();
+                   		}else{
+                   			alert("이동 실패!!");  
+                   			console.log(result);
+                   		}
+                   },
+                   error :   function(request, status, error){
+                   		
+                           console.log("AJAX_ERROR");
+                   }
+    			}); 
+			
+		}		//if
 	});
+
 
 	
 	

@@ -19,10 +19,13 @@
 		
 		
 		<!-- content -->
+		<br>
+		<a href="http://localhost:9000/doppio/package/package_list_de.th" id="tolist" class="tolist2"> > 목록으로 </a>
 		<div class="recipe_buy">
-		<form name="package_cart_de" action="/package/package_content_de.th" method="post">
+		
+		<form name="package_cart_de" action="/package/package_content_de.th?mnum=${sessionScope.mnum }" method="post">
 			<div class="buy_div">
-				<a href="http://localhost:9000/doppio/package/package_list_de.th" id="btnBack"> >> BACK </a>
+				
 				
 				<!-- 판매 상품 이미지 -->		
 				<input type="hidden" name="pname" value="${vo.ptitle }">	
@@ -80,7 +83,7 @@
 				<c:if test="${sessionScope.sid != null }">
 				<div class="option_btn">
 				<input type="hidden" name="pnum" id="pnum" value="${vo.pnum}">
-				<input type="hidden" name="id" id="id" value="${sessionScope.sid}">
+				<input type="hidden" name="mnum" id="mnum" value="${sessionScope.mnum}">
 				<button type="button" class="w-btn-outline w-btn-skin-outline" id="cart_btn_de" data-pnum="${vo.pnum }">장바구니</button>
 				<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th"><button type="submit" class="w-btn-outline w-btn-skin-outline">바로구매</button></a>
 				</form>

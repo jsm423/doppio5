@@ -113,7 +113,7 @@
 			    </form> 
 			    </c:if> 
 
-        		<table class="commtable" >
+        		<table class="commtable2" >
         			        			
         			<c:forEach var="vo" items="${list }">
         			<tr class="commbtn">
