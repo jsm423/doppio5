@@ -46,7 +46,15 @@ public class DpOrderVO {
 		this.cacount = cacount;
 	}
 
-	String onum, pnum, id, ostate, odate, popid;
+	String onum, pnum, id, ostate, odate, popid, mnum;
+
+	public String getMnum() {
+		return mnum;
+	}
+
+	public void setMnum(String mnum) {
+		this.mnum = mnum;
+	}
 
 	public String getPopid() {
 		return popid;

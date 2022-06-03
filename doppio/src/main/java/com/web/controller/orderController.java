@@ -39,25 +39,17 @@ public class orderController {
 	
 	//주문 내역
 	@RequestMapping(value="/mypage/doppio_mypage_order_history.th", method=RequestMethod.GET)
-	public ModelAndView order_list(String rpage) {
+	public ModelAndView order_list(String mnum) {
 		ModelAndView mv = new ModelAndView();
-		Map<String, String> param = pageService.getPageResult(rpage, "order_list", orderService);
-		
-		int startCount = Integer.parseInt(param.get("start"));
-		int endCount = Integer.parseInt(param.get("end"));
-		
-		List<Object> olist = orderService.getListResult(startCount, endCount);
+		List<Map<String, Object>> vo = orderDao.selectList(mnum);
 		ArrayList<DpOrderVO> list = new ArrayList<DpOrderVO>();
-		
-		for(Object obj : olist) {
+		for(Object obj : vo) {
 			list.add((DpOrderVO)obj);
 		}
 		mv.addObject("list", list);
-		mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
-		mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
-		mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
-		
+		mv.addObject("vo", vo);			
 		mv.setViewName("/mypage/doppio_mypage_order_history");
 		return mv;
-	}
+	}	
+		
 }

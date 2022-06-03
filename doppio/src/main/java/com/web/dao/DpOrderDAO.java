@@ -13,15 +13,14 @@ public class DpOrderDAO implements DpObjectDAO {
 	private SqlSessionTemplate sqlSession;
 	private String namespace="mapper.order";
 	
-	@Override
-	public int insert(Object obj) {
+	public int insert(String mnum) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert(namespace+".insert", mnum);
 	}
 
 	@Override
 	public int insert(Map<String, Object> param) {
-		return sqlSession.insert(namespace+".insert", param);
+		return 0;
 	}
 
 	@Override
@@ -43,14 +42,16 @@ public class DpOrderDAO implements DpObjectDAO {
 	}
 
 	@Override
-	public List<Object> select(int startCount, int endCount) {
-		Map param = new HashMap<String, String>();
-		param.put("start", startCount);
-		param.put("end", endCount);
-		
+	public List<Object> select(int startCount, int endCount) {		
+		return null;
+	}
+	
+	public List<Map<String, Object>> selectList(String mnum){ //게시글 리스트
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("mnum", mnum);
 		return sqlSession.selectList(namespace+".list", param);
 	}
-
+	
 	@Override
 	public List<Object> select(int startCount, int endCount, String cate) {
 		// TODO Auto-generated method stub
@@ -109,6 +110,12 @@ public class DpOrderDAO implements DpObjectDAO {
 	public List<Object> oplist(String popid) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int insert(Object obj) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -53,9 +53,15 @@ public class DpCartVO {
 	
 	
 	
-	String  canum, pnum, id, cadate, cacount;
+	String  canum, pnum, id, cadate, cacount, mnum;
 	
 	
+	public String getMnum() {
+		return mnum;
+	}
+	public void setMnum(String mnum) {
+		this.mnum = mnum;
+	}
 	public String getCanum() {
 		return canum;
 	}

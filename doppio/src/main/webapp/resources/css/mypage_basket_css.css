@@ -9,14 +9,14 @@
 	
 	div.basket_fix {
 		text-align: center;
-		width: 1450px;
+		width: 100%;
 		margin: auto;
 		margin-top: 70px;
 		/* border: 3px solid blue; */
 	}
 	
 	div.basket_div {
-		width: 100%;
+		width: 1200px;
 		margin: auto;
 		margin-top: 70px;
 		text-align: center;
@@ -26,7 +26,7 @@
 	}
 	
 	div.basket_sc {
-		width: 1450px;
+		width: 1200px;
 		margin: 0 auto;
 		display: inline-block;
 		position: absolute;
@@ -38,8 +38,8 @@
 	}
 	
 	.basket_div td > img {
-		width: 150px;
-		height: 150px;
+		width: 100px;
+		height: 100px;
 	}
 	
 	.basket_sc>table {

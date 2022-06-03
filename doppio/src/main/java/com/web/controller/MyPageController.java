@@ -20,10 +20,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.web.dao.DpCartDAO;
 import com.web.dao.DpMemberDAO;
 import com.web.dao.DpOrderDAO;
 import com.web.service.DpCartServiceImpl;
 import com.web.service.DpMemberServiceImpl;
+import com.web.service.DpOrderServiceImpl;
 import com.web.service.DpPageServiceImpl;
 import com.web.vo.DpCartVO;
 import com.web.vo.DpMemberVO;
@@ -45,6 +47,12 @@ public class MyPageController {
 	
 	@Autowired
 	private DpOrderDAO orderDao;
+	
+	@Autowired
+	private DpCartDAO cartDao;
+	
+	@Autowired
+	private DpOrderServiceImpl orderService;
 	
 	//회원 탈퇴 신청
 	@ResponseBody
@@ -120,24 +128,16 @@ public class MyPageController {
 	 * */
 	
 	@RequestMapping(value="/mypage/doppio_mypage_basket.th", method=RequestMethod.GET)
-		public ModelAndView cart_list(String rpage) {
+		public ModelAndView cart_list(String mnum) {
 			ModelAndView mv = new ModelAndView();
-			Map<String, String> param = pageService.getPageResult(rpage, "cart_list", cartService);
 			
-			int startCount = Integer.parseInt(param.get("start"));
-			int endCount = Integer.parseInt(param.get("end"));
-			
-			List<Object> olist = cartService.getListResult(startCount, endCount);
+			List<Map<String, Object>> vo = cartDao.selectList(mnum);
 			ArrayList<DpCartVO> list = new ArrayList<DpCartVO>();
-			
-			for(Object obj : olist) {
+			for(Object obj : vo) {
 				list.add((DpCartVO)obj);
 			}
 			mv.addObject("list", list);
-			mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
-			mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
-			mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
-			
+			mv.addObject("vo", vo);			
 			mv.setViewName("/mypage/doppio_mypage_basket");
 			return mv;
 	}
@@ -146,40 +146,50 @@ public class MyPageController {
 	/* 장바구니 삭제 */
 	@ResponseBody
 	@RequestMapping(value = "/mypage/doppio_mypage_basketDelete.th", method = RequestMethod.POST)
-	public String qna_delete(
-		@RequestParam(value="list[]") List<String> list) {
-
-		String result = "ok";
-		System.out.println(list.size());
-		//list에 담겨진 데이터를 서비스와 매퍼를 이용하여 DB에서 삭제하고 그 결과가 참이면 result를 리턴합니다.
+	public Map<String, Object> cart_delete(@RequestParam(value="list[]") List<String> list) {
 		
-		/*
-		 * System.out.println(1111);
-		 * 
-		 * for(String canum : list){ System.out.println(canum); }
-		 */
-
-		return result;
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		int lmap = 0;
+		for(String canum : list) {
+			lmap = cartService.getDeleteResult(canum);	
+			if(lmap < 1 ) {
+				map.put("result", "fail");
+				//어떤 canum에서 오류났는지
+				map.put("failCanum", canum);
+				return map;
+			}else{
+				map.put("result", "ok");
+			}
+		}
+		
+		
+		return map;
 
 	}
 	
 	//주문 내역 넘기기
 	@ResponseBody
-	@RequestMapping(value="/doppio/mypage/doppio_mypage_basket_or.th", method=RequestMethod.POST)
-	public ModelAndView add_order(@RequestBody String vo, HttpServletRequest request) throws Exception{
+	@RequestMapping(value="/mypage/doppio_mypage_basket_or.th", method=RequestMethod.POST)
+	public Map<String, Object> add_order(@RequestParam(value="list[]") List<String> list){		
 		
-		ModelAndView mv = new  ModelAndView();
-		ObjectMapper mapper = new ObjectMapper();
-		Map<String, Object> param = mapper.readValue(vo, Map.class);
-		int s = orderDao.insert(param);
-		
-		
-		if(s >= 1) {
-			mv.setViewName("/mypage/doppio_mypage_order_history");
-		}else {
-			//에러페이지 호출
+		Map<String, Object> map = new HashMap<String, Object>();
+		int lmap = 0;
+		for(String mnum : list) {
+			lmap = orderDao.insert(mnum);
+			if(lmap < 1 ) {
+				map.put("result", "fail");
+				//어떤 canum에서 오류났는지
+				map.put("failMnum", mnum);
+				return map;
+			}else{
+				map.put("result", "ok");
+			}
 		}
-		return mv;
+		
+		
+		return map;
+		
 	}
 	
 	/* error */

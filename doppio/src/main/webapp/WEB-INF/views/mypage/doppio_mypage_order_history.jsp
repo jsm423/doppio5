@@ -5,8 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>DOPPIO</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
+<script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/doppio/resources/js/doppio.js"></script> 
 <style>
 	div.mypage_nav a:nth-child(3) {text-decoration: underline;}
 </style>
@@ -24,8 +26,8 @@
 	<br><br>
 	<div class="mypage_nav">
 		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_info.th?mnum=${sessionScope.mnum}">정보수정</a>&emsp;&emsp;
-		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th">장바구니</a>&emsp;&emsp;
-		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_order_history.th">주문내역</a>
+		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th?mnum=${sessionScope.mnum}">장바구니</a>&emsp;&emsp;
+		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_order_history.th?mnum=${sessionScope.mnum}">주문내역</a>
 	</div>
 		<table id="order_table">
 			<tr id="order_list">
@@ -37,7 +39,7 @@
 			</tr>
 			</c:forEach>
 		</table>
-		<input type="hidden" name="pprice" value="${vo.vo.pprice }">
+		<input type="hidden" name="pprice" value="${vo.pprice }">
 		<input type="hidden" name="popprice" value="${vo.popprice }">
 		<input type="hidden" name="cacount" value="${vo.cacount }">
 		<br><br><br><br><br><br><br><br>

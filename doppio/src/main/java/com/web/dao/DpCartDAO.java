@@ -51,12 +51,14 @@ public class DpCartDAO implements DpObjectDAO {
 			return 0;
 		}
 	
-		@Override //게시글 리스트
+		@Override 
 		public List<Object> select(int startCount, int endCount) {
-			Map param = new HashMap<String, String>();
-			param.put("start", startCount);
-			param.put("end", endCount);
-			
+			return null;
+		}
+		
+		public List<Map<String, Object>> selectList(String mnum){ //게시글 리스트
+			Map<String, Object> param = new HashMap<String, Object>();
+			param.put("mnum", mnum);
 			return sqlSession.selectList(namespace+".list", param);
 		}
 	
@@ -82,6 +84,7 @@ public class DpCartDAO implements DpObjectDAO {
 		public int delete(String canum) {
 			return sqlSession.delete(namespace+".delete", canum);
 		}
+		
 	
 		@Override
 		public String selectFile(String id) {
