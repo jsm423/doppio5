@@ -15,7 +15,10 @@ public class DpCartDAO implements DpObjectDAO {
 	private SqlSessionTemplate sqlSession;
 	private String namespace="mapper.cart";
 	
-
+		public Map<String, Object> select(Map<String, Object> param){
+			return sqlSession.selectOne(namespace+"."+param.get("sqlName"), param);
+		}
+	
 		@Override
 		public int insert(Object obj) {
 			return 0;			
@@ -79,10 +82,11 @@ public class DpCartDAO implements DpObjectDAO {
 			// TODO Auto-generated method stub
 			return 0;
 		}
+		
 	
 		@Override //장바구니 삭제
 		public int delete(String canum) {
-			return sqlSession.delete(namespace+".delete", canum);
+			return 0;
 		}
 		
 	
@@ -104,16 +108,14 @@ public class DpCartDAO implements DpObjectDAO {
 			return null;
 		}
 
-		@Override
+		@Override //주문상태 업데이트
 		public int update(Map<String, Object> param) {
-			// TODO Auto-generated method stub
-			return 0;
+			return sqlSession.update(namespace+"."+param.get("sqlName"), param);
 		}
 
 		@Override
-		public int delete(Map<String, Object> param) {
-			// TODO Auto-generated method stub
-			return 0;
+		public int delete(Map<String, Object> param) {			
+			return sqlSession.delete(namespace+"."+param.get("sqlName"), param);
 		}
 		
 

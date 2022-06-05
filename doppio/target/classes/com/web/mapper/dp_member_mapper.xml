@@ -10,6 +10,11 @@
 		insert into doppio_member values('m_'||sequ_doppio_member_mnum.nextval,#{id},#{pass},#{name},#{hp},#{address},#{email},sysdate,'n',0)
 	</insert>
 	
+	<!-- 회원가입시 장바구니 생성 -->
+	<insert id="createCart" parameterType="map">
+		insert into doppio_cart values('ca_'||sequ_doppio_cart_canum.nextval, #{MNUM})
+	</insert>
+	
 	<!-- 회원 가입시 아이디 중복 체크 -->
 	<select id="id_check" parameterType="java.lang.String" resultType="int">
 	  select count(*)from doppio_member where id=#{id}

@@ -24,6 +24,16 @@ public class DpMemberDAO implements DpObjectDAO{
 		return sqlSession.insert(namespace+".insert", vo);
 	}
 	/**
+	 * 회원가입시 장바구니 추가
+	 */
+	
+	public int insertCart(Map<String, Object> param) {
+		
+		System.out.println("createCart param ----->" + param);
+		
+		return sqlSession.insert(namespace+".createCart", param);
+	}
+	/**
 	 * 회원가입시 아이디 중복 체크
 	 */
 	public int idCheck(String id) {

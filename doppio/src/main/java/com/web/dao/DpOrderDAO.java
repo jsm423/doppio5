@@ -13,16 +13,24 @@ public class DpOrderDAO implements DpObjectDAO {
 	private SqlSessionTemplate sqlSession;
 	private String namespace="mapper.order";
 	
-	public int insert(String mnum) {
-		// TODO Auto-generated method stub
-		return sqlSession.insert(namespace+".insert", mnum);
+	public Map<String, Object> select(Map<String, Object> param){
+		return sqlSession.selectOne(namespace+"."+param.get("sqlName"), param);
 	}
-
+	
 	@Override
-	public int insert(Map<String, Object> param) {
+	public int insert(Object obj) {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 
+
+	@Override
+	public int insert(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(namespace+"."+param.get("sqlName"), param);
+	}
+	
+	
 	@Override
 	public int execTotalCount() {
 		// TODO Auto-generated method stub
@@ -112,10 +120,6 @@ public class DpOrderDAO implements DpObjectDAO {
 		return null;
 	}
 
-	@Override
-	public int insert(Object obj) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+	
 
 }

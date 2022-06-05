@@ -5,9 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -154,25 +156,6 @@ public class PackageController {
 			return mv;
 	}
 	
-	//de 카트 등록처리 
-		@SuppressWarnings("unchecked")
-		@RequestMapping(value="/package/package_content_de_cart.th", method=RequestMethod.POST)
-		public ModelAndView add_cart_de(@RequestBody String vo, HttpServletRequest request) throws Exception{
-			
-			ModelAndView mv = new  ModelAndView();
-			ObjectMapper mapper = new ObjectMapper();
-			Map<String, Object> param = mapper.readValue(vo, Map.class);
-			int s = cartDao.insert(param);
-			
-			
-			if(s >= 1) {
-				mv.setViewName("/mypage/doppio_mypage_basket");
-			}else {
-				//에러페이지 호출
-			}
-			return mv;
-		}
-	
 	/*
 	 * 		package_content_cf 상세보기
 	 * */
@@ -201,29 +184,6 @@ public class PackageController {
 		
 		return mv;
 		}
-	
-	
-	
-	//cf 카트 등록처리 
-	@SuppressWarnings("unchecked")
-	@RequestMapping(value="/package/package_content_cf_cart.th", method=RequestMethod.POST)
-	public ModelAndView add_cart_cf(@RequestBody String vo, HttpServletRequest request) throws Exception{
-		
-		ModelAndView mv = new  ModelAndView();
-		ObjectMapper mapper = new ObjectMapper();
-		Map<String, Object> param = mapper.readValue(vo, Map.class);
-		int s = cartDao.insert(param);
-		
-		
-		if(s >= 1) {
-			mv.setViewName("/mypage/doppio_mypage_basket");
-		}else {
-			//에러페이지 호출
-		}
-		return mv;
-	}
-	
-	
 	
 	/*
 	 * 		package_content_ncf 상세보기
@@ -258,14 +218,57 @@ public class PackageController {
 			return mv;
 	}
 	
+	//de 카트 등록처리 
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/package/package_content_de_cart.th", method=RequestMethod.POST)
+	public ModelAndView add_cart_de(@RequestBody String vo, HttpServletRequest request, HttpSession session) throws Exception{
+		
+		ModelAndView mv = new  ModelAndView();
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> param = mapper.readValue(vo, Map.class);
+		param.put("mnum", session.getAttribute("mnum"));
+		int s = cartDao.insert(param);
+		
+		
+		if(s >= 1) {
+			mv.setViewName("/mypage/doppio_mypage_basket");
+		}else {
+			//에러페이지 호출
+		}
+		return mv;
+	}
+	
+	
+	//cf 카트 등록처리 
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/package/package_content_cf_cart.th", method=RequestMethod.POST)
+	public ModelAndView add_cart_cf(@RequestBody String vo, HttpServletRequest request, HttpSession session) throws Exception{
+		
+		ModelAndView mv = new  ModelAndView();
+		ObjectMapper mapper = new ObjectMapper();
+		Map<String, Object> param = mapper.readValue(vo, Map.class); // vo를 map형식으로 변환한것?
+		param.put("mnum", session.getAttribute("mnum"));		
+		int s = cartDao.insert(param);
+		
+		
+		if(s >= 1) {
+			mv.setViewName("/mypage/doppio_mypage_basket");
+		}else {
+			//에러페이지 호출
+		}
+		return mv;
+	}
+	
+	
 	//ncf 카트 등록처리 
 		@SuppressWarnings("unchecked")
 		@RequestMapping(value="/package/package_content_ncf_cart.th", method=RequestMethod.POST)
-		public ModelAndView add_cart_ncf(@RequestBody String vo, HttpServletRequest request) throws Exception{
+		public ModelAndView add_cart_ncf(@RequestBody String vo, HttpServletRequest request, HttpSession session) throws Exception{
 			
 			ModelAndView mv = new  ModelAndView();
 			ObjectMapper mapper = new ObjectMapper();
 			Map<String, Object> param = mapper.readValue(vo, Map.class);
+			param.put("mnum", session.getAttribute("mnum"));
 			int s = cartDao.insert(param);
 			
 			

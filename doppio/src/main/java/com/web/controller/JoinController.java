@@ -1,5 +1,8 @@
 package com.web.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,14 +37,29 @@ public class JoinController {
 	@RequestMapping(value="/join/doppio_join.th", method = RequestMethod.POST)
 	public ModelAndView Join(DpMemberVO vo) {
 		ModelAndView mv = new ModelAndView();
-		int result = memberService.getInsertResult(vo);
 		
-		if(result == 1) {
-			mv.addObject("join_result","succ");
-			mv.setViewName("/login/doppio_login");
+		//Map<String,Object> mnum = new HashMap<String,Object>();
+		
+		int result = memberService.getInsertResult(vo);
+		Map<String,Object> mnum = memberService.getLoginResult(vo);
+			
+		if(result < 1) {
+			
+			mv.addObject("err","회원가입 에러에러!!!");
+			return mv;
 		}else {
-			//에러페이지
+			
+			int	res = memberDao.insertCart(mnum);
+			if(res < 1) {
+				mv.addObject("err","장바구니 에러에러!!!");
+				return mv;	
+			}
 		}
+		
+		mv.addObject("join_result","succ");
+		mv.setViewName("/login/doppio_login");
+		
+		
 		return mv;
 	
 	}	

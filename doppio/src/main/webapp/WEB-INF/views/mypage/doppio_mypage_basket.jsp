@@ -21,7 +21,7 @@ $(document).ready(function(){
        	if(confirm("정말 삭제하시겠습니까?")) {	//만약 저 삭제하겠냐는 confirm에서 확인을 누르면				   
        		var checkArr = new Array();    
    			$("input[class='chBox']:checked").each(function(){ //클래스 이름이 chBox인 input중에 체크된 것들을
-              checkArr.push($(this).attr("data-canum"));	//checkArr 배열에 이 인덱스의 data-canum이라는 요소를 가져와서 넣겠다
+              checkArr.push($(this).attr("data-pnum"));	//checkArr 배열에 이 인덱스의 data-canum이라는 요소를 가져와서 넣겠다
               });
             
 
@@ -111,7 +111,7 @@ div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 						<tr>
 							<th style="width: 5%; height: 60px;">
 							 <div class="checkBox">
-   								<input type="checkbox" name="chBox" class="chBox" data-canum="${vo.canum}" data-mnum="${vo.mnum }"/>
+   								<input type="checkbox" name="chBox" class="chBox" data-pnum = "${vo.pnum }"/>
   							</div>
 							</th>
 							<td>
@@ -144,7 +144,7 @@ div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 			</div>
 			
 			<div class="row" style="text-align: center; margin: 80px 0;">
-				<button type="button" id="orderlist_btn" data-mnum="${sessionScope.mnum }">주문하기</button>
+				<button type="button" id="orderlist_btn" data-mnum="${sessionScope.mnum }" data-canum="${sessionScope.canum }">주문하기</button>
 				<a href="http://localhost:9000/doppio/package/package_list.th"><button class="btn btn-default">쇼핑을 계속하기</button></a>
 			</div>
 			</form>

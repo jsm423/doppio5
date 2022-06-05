@@ -713,47 +713,35 @@ $(document).ready(function(){
 	 * 장바구니 -> 주문내역
 	 ********************/	
 	$("#orderlist_btn").click(function(){
-		if(confirm("주문 감사합니다. 내역을 확인하시겠습니까?")){
-		
-		var checkArr = new Array();
-		$("input[class='chBox']:checked").each(function(){ 
-          checkArr.push($(this).attr("data-canum"));	
-        });
+		   
+		    var checkArr = new Array();
+			$("input[class='chBox']:checked").each(function(){ 
+	          checkArr.push($(this).attr("data-pnum"));	
+	        });
 			
-		 $.each(checkArr, function (index, item) {	//checkArr배열에 들어있는 
-	            			
-	           alert(item);	// 아이템을 띄워라?-----> 들어갔는지 확인용인가?
-	      });
-	      
+			console.log(checkArr);
+			
 	       $.ajax({
 			url : "/doppio/mypage/doppio_mypage_basket_or.th",
 			type: "POST",
-			data : 
-				JSON.stringify({
-				"mnum" : $(this).data("mnum"),
-				"pnum" : $('#pnum').val(),
-				"popid" : $('#popid').val(),
-				"cacount" : $('#cacount').val(),				
-				"pprice" : $('#pprice').val(),
-				"popprice" : $('#popprice').val(),
-				"list" : checkArr,
-				}),		 
+			data :	{"list":checkArr},
             success     :   function(result){
-				if(result.result == "ok"){		
-                   			alert("이동 완료!!");
-                   			location.reload();
-                   		}else{
-                   			alert("이동 실패!!");  
-                   			console.log(result);
+					var mnum = $('#mnum').val();
+					if(result.res == "ok"){				
+                   		if(confirm("주문이 되었습니다. 확인 하시겠습니까?")){
+                   			location.assign("/doppio/mypage/doppio_mypage_order_history.th?mnum="+mnum);
                    		}
-                   },
-                   error :   function(request, status, error){
-                   		
-                           console.log("AJAX_ERROR");
-                   }
-    			}); 
+                   		else{
+                   			location.reload();
+                   		}                   		
+                 	}else{
+                 		alert("주문 실패");
+                 	}
+                   			
+                }
+    		}); 
 			
-		}		//if
+		
 	});
 
 

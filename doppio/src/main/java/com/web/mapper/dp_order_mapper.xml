@@ -6,26 +6,23 @@
     
 <mapper namespace="mapper.order">
 	
-	<!-- 구매 내역 넘기기 -->
+	<!-- 주문번호 생성-->
+	<select id="selectOnum" resultType="map" parameterType="map">
+		select sequ_doppio_order_onum.nextval as onum from dual
+	</select>
+	
 	<insert id="insert" parameterType="java.lang.String">
-		insert into doppio_order values('o_'||sequ_doppio_order_onum.nextval,#{canum},#{pnum},#{popid},'m_1','결제완료', sysdate)
+		insert into doppio_order values(#{onum},#{mnum},'결제완료',sysdate)
 	</insert>
 	
-	<!-- 구매 내역 
-	<select id="list" parameterType="map" resultType="com.web.vo.DpOrderVO">
-		select dca.canum, dca.popid, dca.cacount, dpa.ptitle, dpa.pprice, dpo.popprice
-		from doppio_cart dca join doppio_package dpa on dca.pnum=dpa.pnum 
-        join doppio_package_option dpo on dpo.popid = dca.popid
-        where id = 'test'
-	</select> -->
+	
 	
 	<!-- 구매 내역 -->
 	<select id="list" parameterType="map" resultType="com.web.vo.DpOrderVO">
-		select dor.onum, dca.pnum, dca.mnum, dor.ostate, dor.odate, dpa.ptitle, dca.cacount, dpa.pprice, dpo.popprice
-		from doppio_order dor join doppio_cart dca on dor.canum=dca.canum 
-        join doppio_package dpa on dpa.pnum = dor.pnum
-        join doppio_package_option dpo on dpo.popid = dor.popid
-        where dor.mnum = 'm_1'
+		select dci.canum,dci.mnum,dci.pnum,dpa.ptitle,dpa.pprice,dpa.pfile,dpa.psfile,dci.cacount,dci.popid,dpo.popprice,dci.cadate
+	    from doppio_cart_item dci join doppio_package dpa on dci.pnum = dpa.pnum
+	    join doppio_package_option dpo on dpo.popid = dci.popid
+	    where dci.mnum=#{mnum} and dci.caorder='y'
 	</select>
 	
 </mapper>

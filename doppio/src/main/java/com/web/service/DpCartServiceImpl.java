@@ -50,14 +50,16 @@ public class DpCartServiceImpl implements DpCartService {
 	@Override
 	public int getUpdateResult(Object obj) {
 		// TODO Auto-generated method stub
-		return 0;
+		DpCartVO vo = (DpCartVO)obj;
+		return cartDAO.update(vo);
 	}
 	
 	//장바구니 삭제
 	@Override
-	public int getDeleteResult(String canum) {
-		return cartDAO.delete(canum);
+	public int getDeleteResult(String pnum) {
+		return cartDAO.delete(pnum);
 	}
+	
 
 	@Override
 	public String getFilename(String canum) {

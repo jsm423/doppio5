@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -146,52 +147,104 @@ public class MyPageController {
 	/* 장바구니 삭제 */
 	@ResponseBody
 	@RequestMapping(value = "/mypage/doppio_mypage_basketDelete.th", method = RequestMethod.POST)
-	public Map<String, Object> cart_delete(@RequestParam(value="list[]") List<String> list) {
-		
-		
+	public Map<String, Object> cart_delete(@RequestParam(value="list[]") List<String> list,HttpSession session) {
+	
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("mnum", session.getAttribute("mnum"));
+		map.put("sqlName", "selectCanum");
+		String canum = String.valueOf(cartDao.select(map).get("CANUM"));
+		map.put("sqlName", "delete");
+		map.put("canum", canum);
+	
 		int lmap = 0;
-		for(String canum : list) {
-			lmap = cartService.getDeleteResult(canum);	
+		for(String pnum : list) {
+			map.put("pnum", pnum);
+			lmap = cartDao.delete(map);
 			if(lmap < 1 ) {
 				map.put("result", "fail");
 				//어떤 canum에서 오류났는지
-				map.put("failCanum", canum);
+				map.put("failpnum", pnum);
 				return map;
 			}else{
 				map.put("result", "ok");
 			}
 		}
-		
-		
 		return map;
-
 	}
 	
-	//주문 내역 넘기기
+	//주문번호 생성
 	@ResponseBody
-	@RequestMapping(value="/mypage/doppio_mypage_basket_or.th", method=RequestMethod.POST)
-	public Map<String, Object> add_order(@RequestParam(value="list[]") List<String> list){		
+	@RequestMapping(value = "/mypage/doppio_mypage_basket_or.th", method=RequestMethod.POST)
+	public Map<String,Object> cart_order_update(@RequestParam(value="list[]") List<String> list, HttpSession session){
 		
-		Map<String, Object> map = new HashMap<String, Object>();
-		int lmap = 0;
-		for(String mnum : list) {
-			lmap = orderDao.insert(mnum);
-			if(lmap < 1 ) {
-				map.put("result", "fail");
-				//어떤 canum에서 오류났는지
-				map.put("failMnum", mnum);
-				return map;
-			}else{
-				map.put("result", "ok");
-			}
+		ModelAndView mv = new  ModelAndView();
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.clear();
+		map.put("sqlName", "selectOnum");
+		String onum = "o_"+String.valueOf(orderDao.select(map).get("ONUM")); 
+		//----------주문번호 생성 select
+		
+		map.put("sqlName", "insert");
+		map.put("onum", onum);
+		map.put("mnum", session.getAttribute("mnum"));
+		
+		int or = orderDao.insert(map);
+		
+		if(or<1) {
+			//오류났을때
+			System.out.println("insert 오류!!");
 		}
 		
+		map.put("sqlName", "selectCanum");
+		String canum = String.valueOf(cartDao.select(map).get("CANUM"));
+		
+		map.put("canum", canum);
+		map.put("sqlName", "update");
+		for(String pnum: list) {
+			map.put("pnum", pnum);
+			int up = cartDao.update(map);
+			if(up<1) {
+				//오류났을때
+				System.out.println("update 오류!!");
+				map.put("res","fail");
+				return map;
+			}
+		}	
+		
+		map.put("res", "ok");
 		
 		return map;
-		
 	}
+		
 	
+	
+	
+	
+//	
+//	//주문 내역 넘기기
+//	@ResponseBody
+//	@RequestMapping(value="/mypage/doppio_mypage_basket_or.th", method=RequestMethod.POST)
+//	public Map<String, Object> add_order(@RequestParam(value="list[]") List<String> list){		
+//		
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		int lmap = 0;
+//		for(String mnum : list) {
+//			lmap = orderDao.insert(mnum);
+//			if(lmap < 1 ) {
+//				map.put("result", "fail");
+//				//어떤 canum에서 오류났는지
+//				map.put("failMnum", mnum);
+//				return map;
+//			}else{
+//				map.put("result", "ok");
+//			}
+//		}
+//		
+//		
+//		return map;
+//		
+//	}
+//	
 	/* error */
 	@RequestMapping(value = "/doppio_error.th", method = RequestMethod.GET)
 	public String doppio_error() {

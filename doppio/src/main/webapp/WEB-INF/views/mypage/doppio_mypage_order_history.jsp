@@ -31,11 +31,11 @@
 	</div>
 		<table id="order_table">
 			<tr id="order_list">
-				<th>주문일</th><th>주문상품</th><th>결제금액</th><th>주문상태</th>
+				<th>주문상품</th><th>수량</th><th>결제금액</th><th>주문상태</th><th>주문일</th>
 			</tr>
 			<c:forEach var="vo" items="${list}">
 			<tr class="order_data">		
-				<td>${vo.odate }</td><td>${vo.ptitle }</td><td>${ vo.pprice * vo.cacount + vo.popprice }원</td><td>결제완료</td>
+				<td>${vo.ptitle }</td><td>${vo.cacount }</td><td>${ vo.pprice * vo.cacount + vo.popprice }원</td><td>결제완료</td><td>${vo.cadate }</td>
 			</tr>
 			</c:forEach>
 		</table>
