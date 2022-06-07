@@ -161,14 +161,14 @@
 	}
 	
 	.w-btn-skin-outline {
-    border: 3px solid #F8ECD1;
-    color: #6e6e6e;
+    border: 3px solid #D2D2D2;
+    color: #191919;
     background-color: white;
 	}
 	
 	.w-btn-skin-outline:hover {
-    background-color: #F8ECD1;
-    color: #6e6e6e;
+    background-color: #D2D2D2;
+    color: #191919;
     cursor: pointer;
 	}
 	

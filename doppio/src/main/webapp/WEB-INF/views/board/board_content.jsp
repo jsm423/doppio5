@@ -19,7 +19,7 @@
 	<div id="containdiv">
 		<section>
 			<div class="title">
-				<p>게시판</p><br><br>
+				<p>REVIEW</p><br><br>
 			</div>
 			<table id="headtable">
 				<tr>

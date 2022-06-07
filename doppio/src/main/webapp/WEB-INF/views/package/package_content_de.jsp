@@ -86,8 +86,7 @@
 				<div class="option_btn">
 				<input type="hidden" name="pnum" id="pnum" value="${vo.pnum}">
 				<input type="hidden" name="mnum" id="mnum" value="${sessionScope.mnum}">
-				<button type="button" class="w-btn-outline w-btn-skin-outline" id="cart_btn_de" data-pnum="${vo.pnum }">장바구니</button>
-				<a href="http://localhost:9000/doppio/mypage/doppio_mypage_basket.th"><button type="submit" class="w-btn-outline w-btn-skin-outline">바로구매</button></a>
+				<button type="button" class="w-btn-outline w-btn-skin-outline" id="cart_btn_de" data-pnum="${vo.pnum }">장바구니 담기</button>
 				</form>
 				</div>
 			

@@ -87,21 +87,20 @@ div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 				
 				<div class="delBtn">
 				   <button type="button" class="selectDelete_btn">선택 삭제</button>
-				  
 				</div>
 				
+				<br>
 				<section class="basket_sc">
-				<table class="basket_table" style="width: 75%; margin: auto;">
+				<table class="basket_table" style="width: 85%; margin: auto;">
 					<thead>
-						<tr>
-							<th style="line-height: 100px;">선택</th>
-							<th colspan="2" style="text-align: center; line-height: 100px;">상품명</th>
-							<th style="line-height: 100px;">가격</th>
-							<th style="line-height: 100px;">수량</th>
-							<th style="line-height: 100px;">옵션</th>
-							<th style="line-height: 100px;">옵션가격</th>
-							<th style="line-height: 100px;">총 가격</th>
-							<!-- <th style="line-height: 100px;">삭제</th> -->
+						<tr id="board_head">
+							<th style="line-height: 40px;">선택</th>
+							<th colspan="2" style="text-align: center; line-height: 40px;">상품명</th>
+							<th style="line-height: 40px;">가격</th>
+							<th style="line-height: 40px;">수량</th>
+							<th style="line-height: 40px;">옵션</th>
+							<th style="line-height: 40px;">옵션가격</th>
+							<th style="line-height: 40px;">총 가격</th>
 						</tr>
 					</thead>
 				
@@ -109,7 +108,7 @@ div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 					<tbody>
 					<c:forEach var="vo" items="${list}">
 						<tr>
-							<th style="width: 5%; height: 60px;">
+							<th style="width: 5%; height: 70px;">
 							 <div class="checkBox">
    								<input type="checkbox" name="chBox" class="chBox" data-pnum = "${vo.pnum }"/>
   							</div>
@@ -144,8 +143,8 @@ div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 			</div>
 			
 			<div class="row" style="text-align: center; margin: 80px 0;">
-				<button type="button" id="orderlist_btn" data-mnum="${sessionScope.mnum }" data-canum="${sessionScope.canum }">주문하기</button>
-				<a href="http://localhost:9000/doppio/package/package_list.th"><button class="btn btn-default">쇼핑을 계속하기</button></a>
+				<button type="button" id="orderlist_btn" class="w-btn-outline w-btn-skin-outline" data-mnum="${sessionScope.mnum }" data-canum="${sessionScope.canum }">주문하기</button>
+				<a href="http://localhost:9000/doppio/package/package_list.th"><button class="w-btn-outline w-btn-skin-outline">쇼핑을 계속하기</button></a>
 			</div>
 			</form>
 		</div>

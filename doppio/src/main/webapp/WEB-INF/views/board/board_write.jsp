@@ -41,8 +41,8 @@
 					</tr>
 					<tr>					
 						<td colspan="2">
-							<button type="button" class="btn_style2" id="btnBoard">저장</button>
-							<a href="http://localhost:9000/doppio/board/board_list.th"><button type="button" class="btn_style2">취소</button></a>
+							<button type="button" class="w-btn-outline w-btn-skin-outline" id="btnBoard">저장</button>
+							<a href="http://localhost:9000/doppio/board/board_list.th"><button type="button" class="w-btn-outline w-btn-skin-outline">취소</button></a>
 						</td>
 					</tr>
 				</table>

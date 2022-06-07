@@ -34,9 +34,9 @@
 				<table class="content_write" id="lasttable">
 					<tr>					
 						<td colspan="2">
-							<button type="submit" class="btn_style2">수정완료</button>
-							<a href="http://localhost:9000/doppio/qna/qna_content.th?qnum=${vo.qnum }&rno=${vo.rno}"><button type="button" class="btn_style2">취소</button></a>
-							<a href="http://localhost:9000/doppio/qna/qna_list.th"><button type="button" class="btn_style2">리스트</button></a>
+							<button type="submit" class="w-btn-outline w-btn-skin-outline">수정완료</button>
+							<a href="http://localhost:9000/doppio/qna/qna_content.th?qnum=${vo.qnum }&rno=${vo.rno}"><button type="button" class="w-btn-outline w-btn-skin-outline">취소</button></a>
+							<a href="http://localhost:9000/doppio/qna/qna_list.th"><button type="button" class="w-btn-outline w-btn-skin-outline">리스트</button></a>
 						</td>
 					</tr>
 				</table>

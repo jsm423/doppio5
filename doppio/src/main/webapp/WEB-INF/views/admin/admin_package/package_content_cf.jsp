@@ -18,11 +18,14 @@
 		<!-- header -->
 		<jsp:include page="../../doppio_header.jsp"></jsp:include>
 		
+		<br>
+		<div class="list_go">
+		<a href="http://localhost:9000/doppio/package/package_list_cf.th" id="tolist" class="tolist2"> > 목록으로 </a>
+		</div>
 		
 		<!-- content -->
 		<div class="recipe_buy">
 			<div class="buy_div">
-				<a href="http://localhost:9000/doppio/admin/admin_package/package_list_cf.th" id="btnBack"> >> BACK </a>
 				
 				<!-- 판매 상품 이미지 -->		
 				<input type="hidden" name="pname" value="${vo.ptitle }">	

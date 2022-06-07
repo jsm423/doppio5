@@ -66,9 +66,9 @@
 					</tr>
 					<tr>					
 						<td colspan="2">
-							<button type="submit" class="btn_style2">저장</button>
-							<a href="http://localhost:9000/doppio/board/board_content.th?bnum=${vo.bnum }&rno=${vo.rno}"><button type="button" class="btn_style2">취소</button></a>
-							<a href="http://localhost:9000/doppio/board/board_list.th"><button type="button" class="btn_style2">리스트</button></a>
+							<button type="submit" class="w-btn-outline w-btn-skin-outline">저장</button>
+							<a href="http://localhost:9000/doppio/board/board_content.th?bnum=${vo.bnum }&rno=${vo.rno}"><button type="button" class="w-btn-outline w-btn-skin-outline">취소</button></a>
+							<a href="http://localhost:9000/doppio/board/board_list.th"><button type="button" class="w-btn-outline w-btn-skin-outline">리스트</button></a>
 						</td>
 					</tr>
 				</table>
