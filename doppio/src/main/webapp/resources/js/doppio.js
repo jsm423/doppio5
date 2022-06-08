@@ -65,7 +65,7 @@ $(document).ready(function(){
 	/********************************
 	  회원가입폼 - 패스워드, 패스워드확인 비교
 	*********************************/
-	function passCheck(){
+	$(document).on('blur','#cpass',function(){ 		
 		var pass = document.getElementById("pass");
 		var cpass = document.getElementById("cpass");
 		var msg = document.getElementById("msg");
@@ -85,8 +85,8 @@ $(document).ready(function(){
 				return false;
 			}
 		}
-		
-	}
+	
+	});
 		
 	/**************
 	 * 로그인 - 폼체크

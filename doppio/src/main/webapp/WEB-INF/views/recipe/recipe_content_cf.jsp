@@ -55,25 +55,21 @@
 		<div class="content" style="width: 100%;">
    			<div style="width: 800px; margin: 0 auto;">
      		 <div class="재료">
-		         <div class="subtitle">재료</div>
-				 <div>
-			         <ul class="uling" style="line-height: 30px;">
-			            <li class="ingredient">${vo.rcontent1}</li>
-			         </ul>
+		         <div class="subtitle">&nbsp;재료</div>
+				 <div>			          
+			            <p class="ingredient" style="line-height: 30px;">${vo.rcontent1}</p>			         
      			 </div>
       		</div>
       		<br>
     		  <div class="레시피">
-		         <div class="subtitle">레시피</div>
+		         <div class="subtitle">&nbsp;레시피</div>
 		         <div style="margin-bottom: 100px;">
-			         <ul class="ulreci" style="line-height: 30px;">
-			            <li class="recipe">${vo.rcontent2 }</li>
-			         </ul>
+			            <p class="recipe" style="line-height: 30px;">${vo.rcontent2 }</p>
        			 </div>
      		 </div>
       
      	 <div class="댓글">
-       	<div class="subtitle">&nbsp;댓글 ${vo.rnum }</div>
+       	<div class="subtitle">&nbsp;댓글</div>
         	<div class="commentfield">
         		<c:if test="${sessionScope.sid != null }">
 				<form name="comment_write_cf" action="doppio/recipe/recipe_write_cf.th" method="post">

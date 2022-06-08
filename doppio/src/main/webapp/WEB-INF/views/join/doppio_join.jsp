@@ -65,12 +65,13 @@
 			<td class="join_td1">비밀번호</td>
 			<td class="join_td2">
 				<input type="password" name="pass" id="pass">
+				
 			</td>
 		</tr>
 		<tr class="join_tr">
 			<td class="join_td1">비밀번호 확인</td>
 			<td class="join_td2">
-				<input type="password" name="cpass" id="cpass" onblur="passCheck()">
+				<input type="password" name="cpass" id="cpass">
 				<div id="msg"></div>
 			</td>
 		</tr>
