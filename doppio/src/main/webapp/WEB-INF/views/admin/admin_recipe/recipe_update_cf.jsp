@@ -65,21 +65,53 @@
 						<td width="90%"><input type="text" name="rurl" id="rurl" value="${vo.rurl }"></td>
 					</tr>
 				</table>
+				
 				<hr class="writeline">
+				
 				<table class="content_write">
 					<tr>
-						<td>
-							재료<br>
+						<th>Ingredients</th>
+						<td width="90%">
 							<textarea name="rcontent1" id="rcontent1">${vo.rcontent1 }</textarea>
 						</td>
 					</tr>
 					<tr>
+						<th>Recipe</th>
+						<td width="90%">
+						<textarea name="rcontent2" id="rcontent2">${vo.rcontent2 }</textarea>
+						</td>
+					
+				</table>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<%-- <table class="content_write">
+					<tr>
 						<td>
-							레시피<br>
+							재료<br>
+							<textarea style="width: 800px;" name="rcontent1" id="rcontent1" cols="">${vo.rcontent1 }</textarea>
+						</td>
+					</tr>
+					<tr>
+						<th>Recipe</th>
+						<td width="90%">
 							<textarea name="rcontent2" id="rcontent2">${vo.rcontent2 }</textarea>
 						</td>
 					</tr>
-				</table>
+				</table> --%>
+				
+				
+				
+				
+				
+				
 				<hr class="writeline">
 				<table class="content_write" id="lasttable">
 					<tr>

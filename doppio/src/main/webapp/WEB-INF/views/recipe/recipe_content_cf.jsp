@@ -34,7 +34,7 @@
 				
 				<br>
 			<div class="iframediv">
-				<iframe height="500" width="100%" src="https://www.youtube.com/embed/${vo.rurl }" 
+				<iframe width="100%" height="500px" src="https://www.youtube.com/embed/${vo.rurl }" 
 						title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
 						encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
@@ -44,32 +44,33 @@
 				<a href="#"><img alt="twitter" src="http://localhost:9000/doppio/resources/img/twt_con.png" class="share_con" width="45px" height="45px"></a>	
 				<a href="#"><img alt="kakao" src="http://localhost:9000/doppio/resources/img/kt_con.png" class="share_con" width="45px" height="45px"></a>	 -->
 			<div class="purchasebtn">
-        		<a href= "http://localhost:9000/doppio/package/package_content_cf.th"><h3>레시피가 마음에 드시나요? 구성품을 모두 담은 패키지를 소개해 드릴게요.</h3></a>
-     	 		<h5>클릭 시, 상품 구매 페이지로 이동합니다.</h5>
+        		<a href= "http://localhost:9000/doppio/package/package_list_cf.th"><img src="http://localhost:9000/doppio/resources/img/recipe_click5.png" width="600px;"></a>
      	 	</div>
-     	 	<a href= "http://localhost:9000/doppio/package/package_content_cf.th"><img src="http://localhost:9000/doppio/resources/img/buy_btn1.png" class="share_con" width="70px" height="70px"></a>
 			</div>
 			</div>
 		</div>
 		
 		<div class="content" style="width: 100%;">
-   			<div style="width: 800px; margin: 0 auto;">
+			<div style="width: 800px; margin: 0 auto;">
      		 <div class="재료">
-		         <div class="subtitle">&nbsp;재료</div>
-				 <div>			          
-			            <p class="ingredient" style="line-height: 30px;">${vo.rcontent1}</p>			         
+		         <div class="subtitle">Ingredients</div>
+				 <div style="width: 800px">
+						<p class="ingredient" style="width:700px; white-space: pre-wrap;">${vo.rcontent1}</p>
      			 </div>
       		</div>
       		<br>
     		  <div class="레시피">
-		         <div class="subtitle">&nbsp;레시피</div>
-		         <div style="margin-bottom: 100px;">
-			            <p class="recipe" style="line-height: 30px;">${vo.rcontent2 }</p>
+		         <div class="subtitle">Recipe</div>
+		         <div style="margin-bottom: 100px; width: 800px;">					
+			            <p class="recipe" style="width: 700px; white-space: pre-wrap; ">${vo.rcontent2}</p>			          
        			 </div>
      		 </div>
-      
+		</div>
+   			
+     	
+      <div style="width: 800px; margin: 0 auto;">
      	 <div class="댓글">
-       	<div class="subtitle">&nbsp;댓글</div>
+       	<div class="subtitle">Tip Comments</div>
         	<div class="commentfield">
         		<c:if test="${sessionScope.sid != null }">
 				<form name="comment_write_cf" action="doppio/recipe/recipe_write_cf.th" method="post">

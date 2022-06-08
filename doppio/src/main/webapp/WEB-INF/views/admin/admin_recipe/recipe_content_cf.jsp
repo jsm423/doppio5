@@ -74,31 +74,28 @@
 		</div>
 		</div>
 </div>
-	
-	<div class="content" style="width: 100%;">
-  			<div style="width: 800px; margin: 0 auto;">
-    		 <div class="재료"> 
-	         <div class="subtitle">&nbsp;재료</div>
-			 <div>
-		         <ul class="uling" style="line-height: 30px;">
-		            <li class="ingredient">${vo.rcontent1}</li>
-		         
-		         </ul>
-    			 </div>
-     		</div>
-     		<br>
-   		  <div class="레시피">
-	         <div class="subtitle">&nbsp;레시피</div>
-	         <div style="margin-bottom: 100px;">
-		         <ul class="ulreci" style="line-height: 30px;">
-		            <li class="recipe">${vo.rcontent2 }</li>
-		         </ul>
-      			 </div>
-    		 </div>
+   		
+   		<div class="content" style="width: 100%;">
+   			<div style="width: 800px; margin: 0 auto;">
+     		 <div class="재료" style="width: 270px; float: left;">
+		         <div class="subtitle">Ingredients</div>
+				 <div>
+			         <p class="recipe" style="width: 250px; white-space: pre-wrap; margin: 0; ">${vo.rcontent1}</p>			     
+     			 </div>
+      		</div>
+      		
+    		  <div class="레시피" style="width: 500px; float: right;" >
+		         <div class="subtitle">Recipe</div>
+		         <div style="margin-bottom: 100px;">
+
+			            <p class="recipe" style="width: 500px; white-space: pre-wrap; margin: 0;">${vo.rcontent2}</p>			     
+
+       			 </div>
+     		 </div>
     		 
 
     	<div class="댓글">
-       	<div class="subtitle">&nbsp;댓글 ${vo.rnum }</div>
+       	<div class="subtitle" style="clear: both;">Tip Comments</div>
         	<div class="commentfield">
         		<c:if test="${sessionScope.sid != null }">
 				<form name="comment_write_cf" action="doppio/admin/admin_recipe/recipe_write_cf.th" method="post">

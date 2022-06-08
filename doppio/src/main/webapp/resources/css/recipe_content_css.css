@@ -86,7 +86,7 @@
 		padding-left: 15px;
 	}
 	
-	div.content_div>.iframediv{display: inline-block; width: 60%; margin-top:5px;}
+	div.content_div>.iframediv{display: inline-block; width: 1000px; margin-top:5px;}
 	div.content_div>iframe {
 		text-align: center;	
 		margin-bottom: 30px;
@@ -94,10 +94,11 @@
 	}
 	
 	.share {
+		
 		margin: auto;
 		margin-bottom: 20px;
 		text-align: center;
-		width: 45%;
+		width: 1000px;
 		line-height: 28px;
 		/* border: 2px solid black;
 		border-radius: 10px;
@@ -216,8 +217,8 @@
 	   .commentfield textarea,button{vertical-align: middle;}
 	   .commentfield2 textarea,button{vertical-align: middle;}
 	   .subtitle {
-	   		background-color: #D2D2D2;
-	   		border-radius: 10px;
-	   		padding: 5px 5px 5px 5px;
+	   		font-weight:900;
+	   		font-style:italic;
+	   		font-size: 40px;
 	   		margin-bottom: 20px;
 	   }

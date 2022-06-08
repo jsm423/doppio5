@@ -61,7 +61,7 @@
       		<br>
     		  <div class="레시피">
 		         <div class="subtitle">레시피</div>
-		         <div style="margin-bottom: 100px;">
+		         <div style="margin-bottom: 100px; border-style: ">
 			         <ul class="ulreci" style="line-height: 30px;">
 			            <li class="recipe">${vo.rcontent2 }</li>
 			         </ul>
@@ -69,7 +69,7 @@
      		 </div>
       
      	 <div class="댓글">
-       	<div class="subtitle">&nbsp;댓글 ${vo.rnum }</div>
+       	<div class="subtitle">&nbsp;댓글</div>
         	<div class="commentfield">
         		<c:if test="${sessionScope.sid != null }">
 				<form name="comment_write_ncf" action="doppio/admin/admin_recipe/recipe_write_ncf.th" method="post">

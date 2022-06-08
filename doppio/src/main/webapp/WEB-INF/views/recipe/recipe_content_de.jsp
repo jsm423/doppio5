@@ -33,7 +33,7 @@
 				
 			<br>
 			<div class="iframediv">
-				<iframe height="500" width="100%" src="https://www.youtube.com/embed/${vo.rurl }" 
+				<iframe height="500" width="1000px;" src="https://www.youtube.com/embed/${vo.rurl }" 
 						title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
 						encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
@@ -44,11 +44,9 @@
 				<a href="#"><img alt="twitter" src="http://localhost:9000/doppio/resources/img/twt_con.png" class="share_con" width="45px" height="45px"></a>	
 				<a href="#"><img alt="kakao" src="http://localhost:9000/doppio/resources/img/kt_con.png" class="share_con" width="45px" height="45px"></a>	 -->
 			<div class="purchasebtn">
-        		<a href= "http://localhost:9000/doppio/package/package_content_cf.th"><h3>레시피가 마음에 드시나요? 구성품을 모두 담은 패키지를 소개해 드릴게요.</h3></a>
-     	 		<h5>클릭 시, 상품 구매 페이지로 이동합니다.</h5>
+        		<a href= "http://localhost:9000/doppio/package/package_list_de.th"><img src="http://localhost:9000/doppio/resources/img/recipe_click5.png" width="600px;"></a>
      	 	</div>
-     	 	<a href= "http://localhost:9000/doppio/package/package_content_cf.th"><img src="http://localhost:9000/doppio/resources/img/buy_btn1.png" class="share_con" width="70px" height="70px"></a>
-			</div>
+     	 	</div>
 			</div>
 		</div>
 		
@@ -73,7 +71,7 @@
      		 </div>
       
      	 <div class="댓글">
-       	<div class="subtitle">&nbsp;댓글 ${vo.rnum }</div>
+       	<div class="subtitle">&nbsp;댓글</div>
         	<div class="commentfield">
         		<c:if test="${sessionScope.sid != null }">
 				<form name="comment_write_cf" action="doppio/recipe/recipe_write_cf.th" method="post">

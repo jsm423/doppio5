@@ -69,7 +69,7 @@
      		 </div>
       
      	 <div class="댓글">
-       	<div class="subtitle">&nbsp;댓글 ${vo.rnum }</div>
+       	<div class="subtitle">&nbsp;댓글</div>
         	<div class="commentfield">
         		<c:if test="${sessionScope.sid != null }">
 				<form name="comment_write_de" action="doppio/admin/admin_recipe/recipe_write_de.th" method="post">
