@@ -51,26 +51,25 @@
 		</div>
 		
 		<div class="content" style="width: 100%;">
-			<div style="width: 800px; margin: 0 auto;">
-     		 <div class="재료">
+			<div style="width: 800px; margin: 0 auto; ">
+     		 <div class="재료" style="width: 265px; float: left; border: 3px solid #d2d2d2;border-radius:10px; padding-left: 10px; padding-bottom: 5px;">
 		         <div class="subtitle">Ingredients</div>
-				 <div style="width: 800px">
-						<p class="ingredient" style="width:700px; white-space: pre-wrap;">${vo.rcontent1}</p>
+				 <div style="margin-top: 0px;">
+			         <p class="recipe" style="width: 250px; white-space: pre-wrap; margin: 0; ">${vo.rcontent1}</p>			     
      			 </div>
       		</div>
-      		<br>
-    		  <div class="레시피">
-		         <div class="subtitle">Recipe</div>
-		         <div style="margin-bottom: 100px; width: 800px;">					
-			            <p class="recipe" style="width: 700px; white-space: pre-wrap; ">${vo.rcontent2}</p>			          
+      		
+    		  <div class="레시피" style="width: 500px; float: right; border-top: 5px solid #d2d2d2; padding-top: 10px;" >
+		         <div class="subtitle">Recipe----------------------</div>
+		         <div style="margin-top: 0px;">
+			            <p class="recipe" style="width: 500px; white-space: pre-wrap; margin: 0;">${vo.rcontent2}</p>			     
        			 </div>
      		 </div>
-		</div>
-   			
+   		</div>	
      	
       <div style="width: 800px; margin: 0 auto;">
      	 <div class="댓글">
-       	<div class="subtitle">Tip Comments</div>
+       	<div class="subtitle" style="clear: both;">Tip Comments</div>
         	<div class="commentfield">
         		<c:if test="${sessionScope.sid != null }">
 				<form name="comment_write_cf" action="doppio/recipe/recipe_write_cf.th" method="post">

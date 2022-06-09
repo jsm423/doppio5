@@ -98,21 +98,27 @@
 		<div class="main_new_inner_box" >
 			<div class="main_new_pic">
 					<div class="main_new_more"><a href="http://localhost:9000/doppio/recipe/recipe_list_cf.th">> MORE</a></div>
-					<a href="#"><img src="/doppio/resources/img/newcoffee.jpg" width="100%" ></a>
+					<c:forEach var="olist" items="${ klist}">
+					<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th?rnum=${olist.rnum }&rno=${olist.rno}"><img src="http://localhost:9000/doppio/resources/upload/${olist.rsfile }" width="300px" height="300px" ></a>
 					<br><br>
-					<a href="#">Coffee</a>
+					<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th?rnum=${olist.rnum }&rno=${olist.rno}">${olist.rtitle }</a>
+					</c:forEach>
 			</div>
 			<div class="main_new_pic">
 					<div class="main_new_more"><a href="http://localhost:9000/doppio/recipe/recipe_list_ncf.th">> MORE</a></div>
-					<a href="#"><img src="/doppio/resources/img/newnoncoffee.jpg" width="100%"></a>
+					<c:forEach var="alist" items="${nlist}">
+					<a href="http://localhost:9000/doppio/recipe/recipe_content_ncf.th?rnum=${alist.rnum }&rno=${alist.rno}"><img src="http://localhost:9000/doppio/resources/upload/${alist.rsfile }" width="300px" height="300px"></a>
 					<br><br>
-					<a href="#">Non-Coffee</a>
+					<a href="http://localhost:9000/doppio/recipe/recipe_content_ncf.th?rnum=${alist.rnum }&rno=${alist.rno}">${alist.rtitle }</a>
+					</c:forEach>
 			</div>
 			<div class="main_new_pic3"  >
 					<div class="main_new_more"><a href="http://localhost:9000/doppio/recipe/recipe_list_de.th">> MORE</a></div>					
-					<a href="#"><img src="/doppio/resources/img/newdessert.jpg" width="100%"></a>
+					<c:forEach var="blist" items="${dlist}">
+					<a href="http://localhost:9000/doppio/recipe/recipe_content_de.th?rnum=${blist.rnum }&rno=${blist.rno}"><img src="http://localhost:9000/doppio/resources/upload/${blist.rsfile }" width="300px" height="300px"></a>
 					<br><br>
-					<a href="#">Dessert</a>				
+					<a href="http://localhost:9000/doppio/recipe/recipe_content_de.th?rnum=${blist.rnum }&rno=${blist.rno}">${blist.rtitle}</a>		
+					</c:forEach>		
 			</div>
 		</div>
 	</div>

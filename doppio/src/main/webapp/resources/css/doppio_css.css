@@ -440,8 +440,8 @@
 	/* 	border: 1px solid red; */
 		background-color: blue;
 	}
-	.commth{/* border: 1px solid pink; */ width: 10%; font-size: 14px;}
-	.commtd{/* border: 1px solid black; */font-size: 14px;}
+	.commth{/* border: 1px solid pink; */ width: 10%; font-size: 14px; font-family:"Malgun Gothic", "맑은 고딕"}
+	.commtd{/* border: 1px solid black; */font-size: 14px; font-family:"Malgun Gothic", "맑은 고딕"}
 	.commbtn{width: 1000px; /* border: 1px solid red; */}
 	.commbtntd{/* border: 1px solid purple; */  text-align: right; border-bottom: 1px solid black;}
 	.commbtntd>p{font-size: 3pt; vertical-align: middle; display: inline-block;}

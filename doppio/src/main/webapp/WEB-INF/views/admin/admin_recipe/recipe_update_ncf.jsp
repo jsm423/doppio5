@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>DOPPIO</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
 <script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>
@@ -68,15 +68,15 @@
 				<hr class="writeline">
 				<table class="content_write">
 					<tr>
-						<td>
-							재료<br>
+						<th>Ingredients</th>
+						<td width="90%">
 							<textarea name="rcontent1" id="rcontent1">${vo.rcontent1 }</textarea>
 						</td>
 					</tr>
 					<tr>
-						<td>
-							레시피<br>
-							<textarea name="rcontent2" id="rcontent2">${vo.rcontent2 }</textarea>
+						<th>Recipe</th>
+						<td width="90%">
+						<textarea name="rcontent2" id="rcontent2">${vo.rcontent2 }</textarea>
 						</td>
 					</tr>
 				</table>

@@ -55,7 +55,7 @@
 			<div class="table_div">
 					<table class="content_table">
 						<tr>
-							<th> ${vo.rhits} </th><td> 번 조회된 <b style="font-size: 15px;">${vo.rcate } 카테고리</b> 소속 레시피입니다. </td>
+							<th> ${vo.rhits} </th><td> 번 조회된 <b style="font-size: 15px;">Coffee 카테고리</b> 레시피입니다 </td>
 						</tr>
 					</table>
 			</div><br>
@@ -73,28 +73,25 @@
 		</form>
 		</div>
 		</div>
-</div>
-   		
+</div>   		
    		<div class="content" style="width: 100%;">
-   			<div style="width: 800px; margin: 0 auto;">
-     		 <div class="재료" style="width: 270px; float: left;">
+   			<div style="width: 800px; margin: 0 auto; ">
+     		 <div class="재료" style="width: 265px; float: left; border: 3px dashed #e4e4e4; border-radius:10px; padding-left: 10px; padding-bottom: 10px;">
 		         <div class="subtitle">Ingredients</div>
-				 <div>
+				 <div style="margin-top: 0px;">
 			         <p class="recipe" style="width: 250px; white-space: pre-wrap; margin: 0; ">${vo.rcontent1}</p>			     
      			 </div>
       		</div>
       		
-    		  <div class="레시피" style="width: 500px; float: right;" >
+    		  <div class="레시피" style="width: 500px; float: right; border-left: 5px solid #e4e4e4; padding-left: 10px;" >
 		         <div class="subtitle">Recipe</div>
-		         <div style="margin-bottom: 100px;">
-
+		         <div style="margin-top: 0px;">
 			            <p class="recipe" style="width: 500px; white-space: pre-wrap; margin: 0;">${vo.rcontent2}</p>			     
-
        			 </div>
      		 </div>
-    		 
+	 
 
-    	<div class="댓글">
+    	<div class="댓글" >
        	<div class="subtitle" style="clear: both;">Tip Comments</div>
         	<div class="commentfield">
         		<c:if test="${sessionScope.sid != null }">
