@@ -94,8 +94,8 @@
 					</tr>
 					<tr>					
 						<td colspan="2">
-							<button type="submit" class="btn_style2">저장</button>
-							<a href="http://localhost:9000/doppio/admin/admin_package/package_content_de.th?pnum=${vo.pnum }&rno=${vo.rno}"><button type="button" class="btn_style2">취소</button></a>
+							<button type="submit" class="w-btn-outline w-btn-skin-outline">저장</button>
+							<a href="http://localhost:9000/doppio/admin/admin_package/package_content_de.th?pnum=${vo.pnum }&rno=${vo.rno}"><button type="button" class="w-btn-outline w-btn-skin-outline">취소</button></a>
 						</td>
 					</tr>
 				</table>

@@ -66,8 +66,8 @@
 					</tr>
 					<tr>					
 						<td colspan="2">
-							<button type="button" class="btn_style2" id="btnRecipede">저장</button>
-							<button type="button" class="btn_style2" id="btnCancel" onclick="location.href='http://localhost:9000/doppio/admin/admin_recipe/recipe_list_de.th?rcate=de'">취소</button>
+							<button type="button" class="w-btn-outline w-btn-skin-outline" id="btnRecipede">저장</button>
+							<button type="button" class="w-btn-outline w-btn-skin-outline" id="btnCancel" onclick="location.href='http://localhost:9000/doppio/admin/admin_recipe/recipe_list_de.th?rcate=de'">취소</button>
 							<!-- <a href="http://localhost:9000/doppio/admin/admin_recipe/recipe_list.th"></a> -->
 						</td>
 					</tr>

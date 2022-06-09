@@ -72,8 +72,8 @@
 					</tr>
 					<tr>					
 						<td colspan="2">
-							<button type="button" class="btn_style2" id="btnPackageCf">저장</button>
-							<a href="http://localhost:9000/doppio/admin/admin_package/package_list_cf.th"><button type="button" class="btn_style2">취소</button></a>
+							<button type="button" class="w-btn-outline w-btn-skin-outline" id="btnPackageCf">저장</button>
+							<a href="http://localhost:9000/doppio/admin/admin_package/package_list_cf.th"><button type="button" class="w-btn-outline w-btn-skin-outline">취소</button></a>
 						</td>
 					</tr>
 				</table>

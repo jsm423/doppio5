@@ -202,16 +202,17 @@
 	
 		
 		.w-btn-skin-outline {
-		    border: 3px solid #D2D2D2;
+		    border: 2px solid #D2D2D2;
 		    color: #191919;
 		    background-color: white;
 		}
 		
 		.w-btn-skin-outline:hover {
-		    background-color: #D2D2D2;
-		    color: #191919;
-		    cursor: pointer;
-		}
+		   background-color: #FFF2CC;
+		   order: 2px solid #FFC000;
+		   color: #FFC000;
+		   cursor: pointer;
+	}
 	   
 	   
 	   .commentfield textarea,button{vertical-align: middle;}
