@@ -39,23 +39,22 @@
 				
 				<!-- 설명창 -->
 				<div class="buy_title">
-					<h2>${vo.ptitle}</h2><br>
-					
-					
-				<p style="font-size: 15px">${vo.pcontent}</p><br>
+					<h2>${vo.ptitle}</h2>
+				<p style="font-size: 18px; line-height: 65px;">￦ ${vo.pprice} 원</p><br>
 					
 				<div class="buy_stitle">
-					<h3>할인 받고 저렴하게 구매하세요!</h3>
+					<br>
+					<p style="font-size: 15px; line-height: 25px; white-space: pre-wrap;">${vo.pcontent }
+					</p><br>
 				</div>
 				</div>
 				
 				<!-- 옵션 박스 -->
 				<div class="option_div">
 					<section class="option_sc">
-						<ul class="opli">
-						
-						<div class="count_option" style="text-align: left;">
-							<label> 희망 옵션을 선택해 주세요: </label> <br><br>
+					
+						<label class="count_label"> 수량 </label> <br><br>
+						<div class="count_option">
 							<select class="cacount" id="cacount"  name="cacount" style= "width: 200px; height: 30px;">
 								<c:forEach begin="1" end="${vo.pstock }" var="count">
 									<option>${count }</option>
@@ -63,29 +62,27 @@
 							</select>
 						</div>
 						
-						<li class="ol"></li>
-						<li>
-							
+						<label class="add_label"> 추가 구매 </label> <br><br>
+						<div class="add_option">
 							<select class="popid" name="popid" id="popid" style= "width: 200px; height: 30px;">
 								<c:forEach var="vo" items="${list}" >
 									<option>${vo.popid}</option>
 								</c:forEach>
 								<input type="hidden" name="popprice" id="popprice" value="${vo.popprice }">
 							</select>
-						</li>
-						</ul>
+						</div>
 					</section>
 				</div>
-				<div class="option_sum">
-					<h2 name="pprice" id="pprice">임시 가격 : ${vo.pprice}</h2>
-				</div>
+				<%-- <div class="option_sum">
+					<h2 name="pprice" id="pprice">상품 가격 : ${vo.pprice}</h2>
+				</div> --%>
 				
 			
 			<c:if test="${sessionScope.sid != null }">
 				<div class="option_btn">
 				<input type="hidden" name="pnum" id="pnum" value="${vo.pnum}">
 				<input type="hidden" name="mnum" id="mnum" value="${sessionScope.mnum}">
-				<button type="button" class="w-btn-outline w-btn-skin-outline" id="cart_btn_cf" data-pnum="${vo.pnum }">장바구니 담기</button>
+				<button type="button" class="w-btn-outline w-btn-outline-package" id="cart_btn_cf" data-pnum="${vo.pnum }">장바구니 담기</button>
 				</form>
 				</div>
 			</div>

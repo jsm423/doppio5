@@ -56,8 +56,8 @@
 				</table>
 				<table class="content_write">
 					<tr>
-						<th>소제목</th>
-						<td width="90%"><input type="text" name="pcontent" id="pcontent" value="${vo.pcontent }"></td>
+						<th>내용</th>
+						<td width="90%"><textarea name="pcontent" id="pcontent" >${vo.pcontent}</textarea></td>
 					</tr>
 				</table>
 				<table class="content_write">

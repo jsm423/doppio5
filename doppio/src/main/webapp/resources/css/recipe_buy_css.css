@@ -29,7 +29,7 @@
 	
 	
 	div.buy_img {
-		margin: 50px 0px 50px 50px;
+		margin: 50px 0px 50px 65px;
 		display: inline-block;
 		width: 500px;
 		height: 500px;
@@ -37,7 +37,7 @@
 	
 	div.buy_title {
 		display: inline-block;
-		width: 500px;
+		width: 450px;
 		height: 500px;
 		position: absolute;
 		top: 440px;
@@ -59,8 +59,43 @@
 	
 	.option_sc {
 		text-align: left;
-  		width: 400px; 
+  		width: 500px; 
   		margin: auto;
+  		margin-left: 35px;
+  		margin-top: 90px;
+  	}
+  	
+  	.option_sc>label.count_label {
+		text-align: left;
+  		width: 100px; 
+  		margin: auto;
+  		position:absolute;
+  		top: 155px;
+  	}
+  	
+  	.option_sc>label.add_label {
+		text-align: left;
+  		width: 100px; 
+  		margin: auto;
+  		position:absolute;
+  		top: 195px;
+  	}
+  	
+  	.count_option {
+		text-align: center;
+  		width: 200px; 
+  		margin: auto;
+  		margin-top: 20px;
+  		margin-left: 250px;
+  	}
+  	
+  	.add_option {
+		text-align: center;
+  		width: 200px; 
+  		margin: auto;
+  		margin-left: 250px;
+  		position:absolute;
+  		top: 195px;
   	}
   	
   	div.option_sum {
@@ -75,27 +110,29 @@
 		/* border: 3px solid green; */
 	}
 	
-	div.optiondiv>ul.opli {
-		margin-bottom: 40px;
-		display: inline-block;
-		width: 100%;
-	}
-	
-	.opli>.ol {
-		margin-bottom: 10px; 
-	}
 	
 	li {list-style: none;}
 	
 	.option_btn {
 		margin: auto;
 		margin-top: 20px;
-		margin-left: 450px;
+		margin-left: 122px;
 		display: inline-block;
 		width: 330px;
 		height: 48px;
 		position: absolute;
 		top: 875px;
+	}
+	
+	.option_btn_admin {
+		margin: auto;
+		margin-top: 20px;
+		margin-left: 122px;
+		display: inline-block;
+		width: 330px;
+		height: 48px;
+		position: absolute;
+		top: 815px;
 	}
 	
 	.btn_style {
@@ -113,29 +150,54 @@
 		width: 1200px;
 	}
 	
-	.list_go >a.tolist2{
-		
-	}
-	
+	/*버튼 통일*/
 	.w-btn-outline {
-    position: relative;
-    padding: 12px 25px;
-    border-radius: 15px;
-    font-family: "paybooc-Light", sans-serif;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 600;
-    transition: 0.25s;
+	    position: relative;
+	    padding: 12px 25px;
+	    border-radius: 15px;
+	    font-family: "paybooc-Light", sans-serif;
+	    text-decoration: none;
+	    font-size: 15px;
+	    font-weight: 600;
+	    transition: 0.25s;
+	    width: 450px;
 	}
 	
-	.w-btn-skin-outline {
-    border: 3px solid #D2D2D2;
-    color: #191919;
-    background-color: white;
+	.w-btn-outline-package {
+	    border: 2px solid #D2D2D2;
+	    color: #191919;
+	    background-color: white;
 	}
 	
-	.w-btn-skin-outline:hover {
-    background-color: #D2D2D2;
-    color: #191919;
-    cursor: pointer;
+	.w-btn-outline-package:hover {
+	    background-color: #FFF2CC;
+	    border: 2px solid #FFC000;
+	    color: #FFC000;
+	    cursor: pointer;
+	}
+	
+		/*버튼 통일*/
+	.w-btn-outline {
+	    position: relative;
+	    padding: 12px 25px;
+	    border-radius: 15px;
+	    font-family: "paybooc-Light", sans-serif;
+	    text-decoration: none;
+	    font-size: 15px;
+	    font-weight: 600;
+	    transition: 0.25s;
+	    width: 450px;
+	}
+	
+	.w-btn-outline-package-admin {
+	    border: 2px solid #D2D2D2;
+	    color: #191919;
+	    background-color: white;
+	}
+	
+	.w-btn-outline-package-admin:hover {
+	    background-color: #FFF2CC;
+	    border: 2px solid #FFC000;
+	    color: #FFC000;
+	    cursor: pointer;
 	}
