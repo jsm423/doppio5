@@ -56,7 +56,7 @@
      			 </div>
       		</div>
       		
-    		  <div class="레시피" style="width: 500px; float: right; border-top: 5px double #d2d2d2; border-radius:10px; padding-top: 10px;" >
+    		  <div class="레시피" style="width: 500px; float: right; border-top: 5px double #d2d2d2; border-radius:10px; padding-top: 10px; margin-bottom: 100px;" >
 		         <div class="subtitle">Recipe</div>
 		         <div style="margin-top: 0px;">
 			            <p class="recipe" style="width: 500px; white-space: pre-wrap; margin: 0;">${vo.rcontent2}</p>			     

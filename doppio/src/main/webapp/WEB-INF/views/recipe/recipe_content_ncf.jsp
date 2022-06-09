@@ -49,14 +49,14 @@
 		
 		<div class="content" style="width: 100%;">
    			<div style="width: 800px; margin: 0 auto; ">
-     		 <div class="재료" style="width: 265px; float: left; border-top: 5px solid #d2d2d2; padding-top: 10px; padding-bottom: 5px;">
+     		 <div class="재료" style="width: 265px; float: left; border-top: 5px double #d2d2d2; border-radius:10px; padding-top: 10px; padding-bottom: 5px;">
 		         <div class="subtitle">Ingredients</div>
 				 <div style="margin-top: 0px;">
 			         <p class="recipe" style="width: 250px; white-space: pre-wrap; margin: 0; ">${vo.rcontent1}</p>			     
      			 </div>
       		</div>
       		
-    		  <div class="레시피" style="width: 500px; float: right; border-top: 5px solid #d2d2d2; padding-top: 10px;" >
+    		  <div class="레시피" style="width: 500px; float: right; border-top: 5px double #d2d2d2; border-radius:10px; padding-top: 10px;  margin-bottom: 100px;" >
 		         <div class="subtitle">Recipe</div>
 		         <div style="margin-top: 0px;">
 			            <p class="recipe" style="width: 500px; white-space: pre-wrap; margin: 0;">${vo.rcontent2}</p>			     
@@ -81,7 +81,7 @@
         			<c:forEach var="vo" items="${list }">
         			<tr class="commbtn">
         				<td colspan="2" class="commbtntd"><p>${vo.cmdate }</p>&nbsp;
-        				<c:if test="${sessionScope.sid == vo.id }">
+        				<c:if test="${sessionScope.sid == vo.id || sessionScope.sid == 'test'}">
         				<button class="commbtnup" data-cnum="${vo.cmnum}">수정</button>
         				<button type="submit" data-cnum="${vo.cmnum}" class="commbtndel">삭제</button></td>
         				</c:if>

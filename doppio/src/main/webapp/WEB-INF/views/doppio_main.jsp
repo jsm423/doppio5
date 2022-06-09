@@ -101,7 +101,7 @@
 					<c:forEach var="olist" items="${ klist}">
 					<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th?rnum=${olist.rnum }&rno=${olist.rno}"><img src="http://localhost:9000/doppio/resources/upload/${olist.rsfile }" width="300px" height="300px" ></a>
 					<br><br>
-					<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th?rnum=${olist.rnum }&rno=${olist.rno}">${olist.rtitle }</a>
+					<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th?rnum=${olist.rnum }&rno=${olist.rno}"><span style="letter-spacing: 2px; font-size: 10PX;">| COFFEE |</span><br>${olist.rtitle }</a>
 					</c:forEach>
 			</div>
 			<div class="main_new_pic">
@@ -109,7 +109,7 @@
 					<c:forEach var="alist" items="${nlist}">
 					<a href="http://localhost:9000/doppio/recipe/recipe_content_ncf.th?rnum=${alist.rnum }&rno=${alist.rno}"><img src="http://localhost:9000/doppio/resources/upload/${alist.rsfile }" width="300px" height="300px"></a>
 					<br><br>
-					<a href="http://localhost:9000/doppio/recipe/recipe_content_ncf.th?rnum=${alist.rnum }&rno=${alist.rno}">${alist.rtitle }</a>
+					<a href="http://localhost:9000/doppio/recipe/recipe_content_ncf.th?rnum=${alist.rnum }&rno=${alist.rno}"><span style="letter-spacing: 2px; font-size: 10PX;">| NON-COFFEE |</span><br>${alist.rtitle }</a>
 					</c:forEach>
 			</div>
 			<div class="main_new_pic3"  >
@@ -117,7 +117,7 @@
 					<c:forEach var="blist" items="${dlist}">
 					<a href="http://localhost:9000/doppio/recipe/recipe_content_de.th?rnum=${blist.rnum }&rno=${blist.rno}"><img src="http://localhost:9000/doppio/resources/upload/${blist.rsfile }" width="300px" height="300px"></a>
 					<br><br>
-					<a href="http://localhost:9000/doppio/recipe/recipe_content_de.th?rnum=${blist.rnum }&rno=${blist.rno}">${blist.rtitle}</a>		
+					<a href="http://localhost:9000/doppio/recipe/recipe_content_de.th?rnum=${blist.rnum }&rno=${blist.rno}" ><span style="letter-spacing: 2px; font-size: 10PX;">| DESSERT |</span><br>${blist.rtitle}</a>		
 					</c:forEach>		
 			</div>
 		</div>
