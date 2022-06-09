@@ -73,6 +73,7 @@
 					<th>핸드폰</th>
 					<th>주소</th>
 					<th>가입일</th>
+					<th>상태</th>
 				</tr>
 				<c:forEach var="vo" items="${list }">
 				<tr class="boardhover">
@@ -82,10 +83,18 @@
 					<td>${vo.hp }</td>
 					<td>${vo.address }</td>
 					<td>${vo.mdate }</td>
+					<c:choose>
+						<c:when test="${vo.join_status == 0 }">
+							<td>가입</td>
+						</c:when>
+						<c:otherwise>
+							<td>탈퇴</td>
+						</c:otherwise>
+					</c:choose>
 				</tr>
 				</c:forEach>
 				<tr>
-					<td colspan="6"><div id="ampaginationsm"></td>
+					<td colspan="7"><div id="ampaginationsm"></td>
 				</tr>
 			</table>
 			<br><br><br><br><br><br>
