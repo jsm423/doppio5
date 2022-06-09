@@ -23,7 +23,7 @@
 	} 
 	 */
 	if(logout_result=="succ"){
-		alert("["+sid+"]님! "+"로그아웃에 성공하셨습니다.");
+		alert(sid+"님 "+"로그아웃에 성공하셨습니다.");
 	}
 </script>
 <style>
@@ -79,6 +79,7 @@
 			<li>
 				<a>Community</a>
 				<ul class="inner_menu">
+					<li class="nav_list"><a href="http://localhost:9000/doppio/notice/notice_list.th">Notice</a></li>
 					<li class="nav_list"><a href="http://localhost:9000/doppio/board/board_list.th">Review</a></li>
 					<li class="nav_list"><a href="http://localhost:9000/doppio/qna/qna_list.th">Q & A</a></li>
 				</ul>

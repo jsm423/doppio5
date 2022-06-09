@@ -6,10 +6,72 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import com.web.vo.DpBoardVO;
+import com.web.vo.DpNoticeVO;
 import com.web.vo.DpPackageVO;
 import com.web.vo.DpRecipeVO;
 
 public class FileServiceImpl {
+		
+	// NOTICE------------------------------------------------------------------------------
+	/**
+	 * 파일 체크 후 psfile 생성 ---> VO 리턴
+	 */
+	public DpNoticeVO fileCheck(DpNoticeVO vo) {
+		
+		UUID uuid = UUID.randomUUID();		
+		
+		if(vo != null) {
+			if(!vo.getFile1().getOriginalFilename().equals("")) { //파일존재 하는 경우	
+				vo.setNfile(vo.getFile1().getOriginalFilename());
+				vo.setNsfile(uuid + "_" + vo.getFile1().getOriginalFilename());
+			}
+		}
+				
+		return vo;
+	}
+	
+	/**
+	 * 파일 저장
+	 */
+	public void fileSave(DpNoticeVO vo, HttpServletRequest request) throws Exception{
+		
+		if(!vo.getFile1().getOriginalFilename().equals("")) {
+		
+			//파일저장 위치 확인
+			String root_path = request.getSession().getServletContext().getRealPath("/");
+			root_path += "resources\\upload\\";
+			System.out.println(root_path);
+			
+			//파일저장
+			File file = new File(root_path + vo.getNsfile());			
+			vo.getFile1().transferTo(file);
+		}
+			
+	}
+	
+	/**
+	 * 파일 저장 - 기존 파일 삭제
+	 */
+	public void fileSave(DpNoticeVO vo, HttpServletRequest request, String fname) throws Exception{
+		
+		if(!vo.getFile1().getOriginalFilename().equals("")) {
+		
+			//파일저장 위치 확인
+			String root_path = request.getSession().getServletContext().getRealPath("/");
+			root_path += "resources\\upload\\";
+			System.out.println(root_path);
+			
+			//파일저장
+			File file = new File(root_path + vo.getNsfile());			
+			vo.getFile1().transferTo(file);
+			
+			//기존 파일이 존재하는 경우 삭제처리
+			File ofile = new File(root_path+fname);
+			if(ofile.exists()) {
+				ofile.delete();
+			}
+		}
+	}
 	
 	//-----------------------------------------------------------------------------------------------------------------
 			// package

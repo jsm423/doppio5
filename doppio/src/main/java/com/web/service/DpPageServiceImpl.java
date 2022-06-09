@@ -16,6 +16,9 @@ public class DpPageServiceImpl{
 	private DpBoardServiceImpl boardService;
 	
 	@Autowired
+	private DpNoticeServiceImpl noticeService;
+	
+	@Autowired
 	private DpRecipeServiceImpl recipeService;
 	
 	@Autowired
@@ -54,6 +57,11 @@ public class DpPageServiceImpl{
 			boardService = (DpBoardServiceImpl)service;
 			dbCount = boardService.getListCount();
 		} 
+		
+		if(serviceName.equals("notice")) {
+			noticeService = (DpNoticeServiceImpl)service;
+			dbCount = noticeService.getListCount();
+		}
 		
 		if(serviceName.equals("cart_list")) {
 			cartService = (DpCartServiceImpl)service;

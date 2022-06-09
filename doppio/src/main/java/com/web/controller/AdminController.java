@@ -22,15 +22,19 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.dao.DpCommentDAO;
+import com.web.dao.DpNoticeDAO;
 import com.web.dao.DpRecipeDAO;
 import com.web.service.DpCommentServiceImpl;
 import com.web.service.DpMemberServiceImpl;
+import com.web.service.DpNoticeServiceImpl;
 import com.web.service.DpPackageServiceImpl;
 import com.web.service.DpPageServiceImpl;
 import com.web.service.DpRecipeServiceImpl;
 import com.web.service.FileServiceImpl;
+import com.web.vo.DpBoardVO;
 import com.web.vo.DpCommentVO;
 import com.web.vo.DpMemberVO;
+import com.web.vo.DpNoticeVO;
 import com.web.vo.DpPackageVO;
 import com.web.vo.DpQnaVO;
 import com.web.vo.DpRecipeVO;
@@ -60,6 +64,13 @@ public class AdminController {
 
 	@Autowired
 	private DpCommentDAO commentDao;
+	
+	@Autowired
+	private DpNoticeServiceImpl noticeService;
+	
+	@Autowired
+	private DpNoticeDAO noticeDao;
+	
 
 	@RequestMapping(value = "/admin/admin.th", method = RequestMethod.GET)
 	public String admin() {
@@ -99,6 +110,163 @@ public class AdminController {
 		mv.setViewName("/admin/member/member_content");
 		return mv;
 	}
+	
+	
+	//------------------------notice--------------------------------//
+	
+	//공지 리스트
+	@RequestMapping(value="/admin/admin_notice/notice_list.th", method=RequestMethod.GET)
+	public ModelAndView notice_list(String rpage) {
+		ModelAndView mv = new ModelAndView();
+		
+		Map<String, String> param = pageService.getPageResult(rpage, "notice", noticeService);
+		int startCount = Integer.parseInt(param.get("start"));
+		int endCount = Integer.parseInt(param.get("end"));
+		
+		List<Object> olist = noticeService.getListResult(startCount, endCount);
+		ArrayList<DpNoticeVO> list = new ArrayList<DpNoticeVO>();
+		for(Object obj : olist) {
+			list.add((DpNoticeVO)obj);
+		}
+		
+		mv.addObject("list", list);
+		mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
+		mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
+		mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
+		
+		mv.setViewName("/admin/admin_notice/notice_list");
+		return mv;
+	}
+	
+	//공지 상세보기
+	@RequestMapping(value="/admin/admin_notice/notice_content.th", method=RequestMethod.GET)
+	public ModelAndView notice_content(String nnum, String rno, String rpage) {
+		ModelAndView mv = new ModelAndView();
+		noticeService.getUpdateHits(nnum);
+		DpNoticeVO vo = (DpNoticeVO)noticeService.getContent(nnum);
+		Map<String, String> param = pageService.getPageResult3(rpage, "comment", commentService); 
+		int startCount = Integer.parseInt(param.get("start")); 
+		int endCount = Integer.parseInt(param.get("end")); 
+		List<Object> olist = commentService.getListResult1(startCount, endCount, nnum);
+		ArrayList<DpCommentVO> list = new ArrayList<DpCommentVO>(); 
+		for(Object obj : olist) { 
+			list.add((DpCommentVO)obj); 
+		}
+		  
+		mv.addObject("list", list); 
+		mv.addObject("dbCount", Integer.parseInt(param.get("dbCount"))); 
+		mv.addObject("pageSize", Integer.parseInt(param.get("pageSize"))); 
+		mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
+		  
+		mv.addObject("nnum", nnum); 
+		mv.addObject("vo", vo); 
+		mv.addObject("rno", rno);
+		mv.setViewName("/admin/admin_notice/notice_content"); 
+		return mv; 
+	}
+	
+	
+	//공지 등록폼
+	@RequestMapping(value="/admin/admin_notice/notice_write.th", method=RequestMethod.GET)
+	public ModelAndView notice_write() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/admin/admin_notice/notice_write");
+		return mv;
+	}
+
+	//게시글 등록 처리
+	@RequestMapping(value="/admin/admin_notice/notice_write.th", method=RequestMethod.POST)
+	public String notice_write(DpNoticeVO vo, HttpServletRequest request) throws Exception{
+			
+			String result_page = "";		
+			
+			vo = fileService.fileCheck(vo);
+			int result = noticeService.getInsertResult(vo);
+			
+			if(result == 1) {
+				fileService.fileSave(vo,request);					
+				result_page = "redirect:/admin/admin_notice/notice_list.th";
+				
+			}else {
+				//에러페이지 호출
+			}		
+			
+			return result_page;
+	}
+	
+	
+	//게시글 수정폼
+	@RequestMapping(value="/admin/admin_notice/notice_update.th", method=RequestMethod.GET)
+	public ModelAndView notice_update(String nnum, String rno) {
+		ModelAndView mv = new ModelAndView();
+		DpNoticeVO vo = (DpNoticeVO)noticeService.getContent(nnum);
+		
+		mv.addObject("vo",vo);
+		mv.addObject("rno",rno);
+		mv.setViewName("/admin/admin_notice/notice_update");
+		
+		return mv;
+	}
+	
+	//게시글 수정 처리
+	@RequestMapping(value="/admin/admin_notice/notice_update.th", method=RequestMethod.POST)
+	public ModelAndView notice_update(DpNoticeVO vo, HttpServletRequest request) throws Exception{
+	
+		ModelAndView mv = new ModelAndView();
+		String oldFile = vo.getNsfile();
+		
+		vo = fileService.fileCheck(vo);
+		
+		int result = noticeService.getUpdateResult(vo);
+	
+		System.out.println("update Nnum ------ " + vo.getId());
+		
+		if(result == 1) {
+			fileService.fileSave(vo, request, oldFile);
+			mv.setViewName("redirect:/admin/admin_notice/notice_list.th");
+		}else {
+			//에러페이지 호출
+		}
+		
+		return mv;
+	}
+	
+	//게시글 삭제처리
+	@RequestMapping(value="/admin/admin_notice/notice_content.th", method=RequestMethod.POST)
+	public ModelAndView notice_delete(DpNoticeVO vo, HttpServletRequest request)
+													throws Exception{
+		ModelAndView mv = new ModelAndView();
+		String Nsfile = noticeService.getFilename(vo.getNnum());
+		int result = noticeService.getDeleteResult(vo.getNnum());
+	
+		if(result == 1) {
+			if(Nsfile != null) {
+				String path = request.getSession().getServletContext().getRealPath("/");
+				path += "resources\\upload\\";
+				File file = new File(path + Nsfile);
+				if(file.exists()) file.delete();
+			}
+			mv.setViewName("redirect:/admin/admin_notice/notice_list.th");			
+		}else {
+			//에러페이지 호출
+		}		
+		
+		return mv;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	/* 관리자 레시피 */
 	// 레시피 삭제처리 - 커피

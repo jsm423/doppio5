@@ -140,6 +140,23 @@ $(document).ready(function(){
 		}
 	});
 	
+	/*******************
+	 * 공지 - 글쓰기 폼체크
+	 ********************/	
+ 	$("#btnNotice").click(function(){
+		if($("#ntitle").val() == ""){
+			alert("제목을 입력해주세요");
+			$("#ntitle").focus();
+			return false;
+		}else if($("#ncontent").val() == ""){
+			alert("내용을 입력해주세요");
+			$("#ncontent").focus();
+			return false;
+		}else{
+			notice_write.submit();
+		}
+	});
+	
 	
 	/*******************
 	 * 레시피 - 글쓰기 폼체크

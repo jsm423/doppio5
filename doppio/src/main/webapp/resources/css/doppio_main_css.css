@@ -77,7 +77,7 @@
 	.main_letter p:hover{opacity: 80%;}
 	.main_letter span:hover{opacity: 80%;}
 	.main_new_text{margin-top: auto; text-align: center;}
-	.main_new_text p{font-size: 50px; font-family: sans-serif; font-weight: bolder; font-style: oblique;}
+	.main_new_text p{font-size: 50px; font-family: sans-serif; font-weight: bolder; font-style: oblique; text-shadow: 2px 2px 2px gray; }
 	.main_new_box{width: 100%; text-align: center;}
 	.main_new_inner_box{width: 1250px; margin: 0 auto;}
 	.main_new_pic{text-align: center; width: 300px; display: inline-block; margin-right: 50px; }
