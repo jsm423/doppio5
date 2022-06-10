@@ -8,6 +8,8 @@
 <title>DOPPIO</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_main_css.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+<script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>
 <script>
 	var login_result = "${login_result}";
 	var logout_result = "${logout_result}";
@@ -26,9 +28,14 @@
 		alert(sid+"님 "+"로그아웃에 성공하셨습니다.");
 	}
 </script>
+
+
 <style>
 *{margin: 0;}  
 </style>
+
+
+
 </head>
 <body>	
 	<img class="main_bgpic" src="/doppio/resources/img/maindark.jpg" width="100%">
@@ -123,19 +130,29 @@
 			</div>
 		</div>
 	</div>
+	
+	<!-- 슬라이드 배너 시작-->
+	<div >
+	<!-- <button style="display: inline-block;">&lang;</button> -->
+	<div id="sliderWrap">
+	  
+	  <ul id="slider" style="display: inline-block;">	  
+	  	<c:forEach var="vovo" items="${clist }">
+	    <li>
+	      <a href="http://localhost:9000/doppio/notice/notice_content.th?nnum=${vovo.nnum }&rno=${vovo.rno}"><img src="http://localhost:9000/doppio/resources/upload/${vovo.nsfile }" width="1250px" height="350px" alt="슬라이드1"></a>
+	    </li>
+	    </c:forEach>	    
+	  </ul>
+	  
+	</div>
+	<!-- <button style="display: inline-block;">&rang;</button> -->
+	</div>
 
-	<div class="slider">
-		<a href="#slide-1" class="slider_a" target="_self">&lang;</a>
-		
-			<div class="slides">
-		    	<div id="slide-1"><img src="/doppio/resources/img/main_event4.jpg" class="main_slide_img"></div>
-		    	<div id="slide-2"><img src="/doppio/resources/img/review_event2.jpg" class="main_slide_img"></div>
-		  	</div>  
-		<a href="#slide-2" class="slider_a">&rang;</a>
-	</div>	
+	<!-- 슬라이드 배너 끝 -->
 	
 	
-	<br><br><br><br><br>
+
+	
 	<div class="main_review">
 			<span>Review</span>
 			<p>List of recent reviews</p>				

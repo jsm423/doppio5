@@ -77,8 +77,8 @@
 	.main_letter p:hover{opacity: 80%;}
 	.main_letter span:hover{opacity: 80%;}
 	.main_new_text{margin-top: auto; text-align: center;}
-	.main_new_text p{font-size: 50px; font-family: sans-serif; font-weight: bolder; font-style: oblique; text-shadow: 2px 2px 2px gray; }
-	.main_new_box{width: 100%; text-align: center;}
+	.main_new_text p{font-size: 50px; font-family: sans-serif; font-weight: bolder; font-style: oblique; /* letter-spacing: 5px; */ /* text-shadow: 2px 2px 2px gray; */ }
+	.main_new_box{width: 100%; text-align: center; margin-bottom: 200px;}
 	.main_new_inner_box{width: 1250px; margin: 0 auto;}
 	.main_new_pic{text-align: center; width: 300px; display: inline-block; margin-right: 50px; }
 	.main_new_pic a{font-size: 15px; font-family: sans-serif;}
@@ -88,44 +88,27 @@
 	.main_new_more a{ font-size: 12px;}
 	.main_new_more a:hover{cursor: pointer; text-decoration: underline;}
 	div.main_new_inner_box div a{text-decoration: none; color: black;}
-
-	.slider {
-	    width: 100%;
-	    text-align: center;
-	    overflow: hidden;
-		margin-top: 200px;	
-	}  
-	.slides {
-		width:80%;
-	    display: flex;
-	   	overflow-x: hidden;
-		float: left;
-	} 
 	
-	.slides > div {
-	    flex-shrink: 0;
-	    width: 100%;
-	    height: 499px; 
-	    overflow: hidden;        
-	}  
-	.main_slide_img{
-	    object-fit: cover;	
-	    width: 100%;
-	    height: 100%;
-	}  
-	.slider a{ 	 
-		font-size:40px;
-		color:black;
-	   	text-decoration: none;
-	   	position: relative;
-	  	width: 9.8%;   
-	  	margin-top: 200px;
-	  }
-	.slider_a:first-child {	float: left;}
-	.slider_a:last-child {float: right;}
+	/* --------------------------------------------------- */
+	#sliderWrap { 
+	width: 1250px; height: 350px; 
+	margin: 0 auto; overflow: hidden; 
 	
+	}
+	#slider { 
+		display: inline-block; 
+		margin:0; padding:0; 
+		width: 2500px; 
+		
+	}
+	#slider > li { 
+		float:left; list-style:none; width: 1250px; 
+	}
+ 
 	
-	.main_review{width: 100%; height:150px; text-align: center;}
+	/* --------------------------------------------------- */
+	
+	.main_review{width: 100%; height:150px; text-align: center; margin-top: 200px;}
 	.main_review span{font-size: 50px; font-family: sans-serif; font-weight: bolder; font-style: oblique;}
 	.main_review p{font-size: 15px; font-family: sans-serif;}
 

@@ -1,16 +1,24 @@
-function init(){
- 
- 
- 
-}
-
 
 
 $(document).ready(function(){
+		
+	/**************
+	 * 메인 슬라이드 배너
+	 ************/
+	setInterval(slide,5000);
 
+	function slide() {
+			$('#slider').animate({marginLeft: '-100%'},3000,slideNext);
+	} 
 
-	init();
-
+	function slideNext(){
+			$('#slider>li').eq(0).appendTo('#slider');
+			$('#slider').animate({
+				marginLeft: 0
+			},0);
+	}
+	
+	
 		
 	/**************
 	 * 회원가입 - 폼체크

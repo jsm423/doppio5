@@ -2,7 +2,6 @@ package com.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.service.DpBoardServiceImpl;
+import com.web.service.DpNoticeServiceImpl;
 import com.web.service.DpPageServiceImpl;
 import com.web.service.DpRecipeServiceImpl;
 import com.web.vo.DpBoardVO;
+import com.web.vo.DpNoticeVO;
 import com.web.vo.DpRecipeVO;
 
 
@@ -21,6 +22,8 @@ import com.web.vo.DpRecipeVO;
 @Controller
 public class MainController {
 		
+	@Autowired
+	private DpNoticeServiceImpl noticeService;
 	
 	@Autowired
 	private DpBoardServiceImpl boardService;
@@ -63,6 +66,14 @@ public class MainController {
 		mv.addObject("dlist", dlist);
 		mv.addObject("alist", blist);
 		
+		//공지
+		List<Object> vovo  = noticeService.getListResult(1,2);
+		ArrayList<DpNoticeVO> clist = new ArrayList<DpNoticeVO>();
+		for(Object obj : vovo) {
+			clist.add((DpNoticeVO)obj);
+		}		
+		mv.addObject("clist", clist);
+		mv.addObject("vovo", vovo);
 		
 		//게시판
 		List<Object> vo  = boardService.getListResult(1, 3);
@@ -74,6 +85,7 @@ public class MainController {
 		mv.addObject("vo", vo);
 		
 		
+				
 		mv.setViewName("/doppio_main");
 		return mv;
 	}
