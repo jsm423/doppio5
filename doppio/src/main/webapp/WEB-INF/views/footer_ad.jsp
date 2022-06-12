@@ -18,9 +18,9 @@
 		<br>
 		<br><br>
 		<div class="info_content">
-			<img src="http://localhost:9000/doppio/resources/img/ad_img2.png" class="ad_img">
-			<img src="http://localhost:9000/doppio/resources/img/ad_img1.png" class="ad_img">
-			<p style="font-size: 18px;">매일 매일 업로드 되는 다양하고 새로운 리뷰!<br><br>
+			<img src="http://localhost:9000/doppio/resources/img/ad_img22.jpg" class="ad_img" style="border-radius: 30px;">
+			<img src="http://localhost:9000/doppio/resources/img/ad_img33.jpg" class="ad_img" style="border-radius: 30px;">
+			<p style="font-size: 18px; margin-top: 80px;">매일 매일 업로드 되는 다양하고 새로운 리뷰!<br><br>
 			
 			수요가 없을까 봐 걱정하셨나요?<br>
 			사업이란 목적이 있지만, 도무지 어디서부터 시작해야 할지 모르겠다구요?<br>
@@ -29,7 +29,7 @@
 		</div>
 		<br><br>
 			<div class="footer_btn">
-				<b style="font-size: 20px;">아래 EMAIL 주소로 문의 주세요. 전문 상담사가 신속, 친절하게 답변 드립니다.</b><br><br>
+				<b style="font-size: 20px;">아래 EMAIL 주소로 문의 주세요. 전문 상담사가 <span>신속 · 친절</span>하게 답변 드립니다.</b><br><br>
 				<p style="font-size: 18px;">E-MAIL - AdminDoppio@gmail.com</p>
 			</div>
 	</div>

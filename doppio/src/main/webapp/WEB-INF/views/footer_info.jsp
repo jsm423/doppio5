@@ -7,7 +7,7 @@
 		<meta charset="UTF-8">
 		<title>DOPPIO</title>
 		</head>
-	<body>
+	<body style="letter-spacing: 1px;">
 		<!-- <div class="footer_content_info_img">
 				<img alt="info" src="http://localhost:9000/doppio/resources/img/footer_content_img1.jpg" width="900px;" height="500px;">
 		</div> -->

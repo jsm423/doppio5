@@ -10,7 +10,7 @@
 <body bgcolor="white">
 <footer>
 	<div id="footer_content">
-		<p>(주)DOPPIO | 대표 : 조수민</p>
+		<p>&nbsp;&nbsp;(주)DOPPIO | 대표 : 조수민</p>
 		<a href="http://localhost:9000/doppio/footer_info.th">회사 소개</a>&nbsp;|&nbsp;<a href="http://localhost:9000/doppio/footer_ad.th">입점 제안</a>
 	</div>
 	<div id="footer_content2">

@@ -419,7 +419,7 @@
 	#footer_content>a{text-decoration: none; color: white;}
 	#footer_content>a:hover{text-decoration:underline;  color: #FFC000;}
 	#footer_content2{text-align: center; color: white; padding-top: 30px;}
-	
+	.footer_btn>b>span{color: #ffc000;}
 	/* error */
 	
 	.error_div{
