@@ -17,7 +17,7 @@
 			
 			if($(this).data("join") == 0){
 
-				if(confirm("ㄹㅇ ㅌㅌ하시겠습니까?")){
+				if(confirm("정말로 탈퇴하시겠습니까?")){
 					$.ajax({
 						url : "/doppio/mypage/doppio_mypage_info_out.th",
 						type: "POST",

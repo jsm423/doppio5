@@ -14,7 +14,11 @@ public class DpBoardDAO implements DpObjectDAO{
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	private String namespace="mapper.board";
-
+	
+	public Map<String,Object> select(Map<String,Object> param){
+		return sqlSession.selectOne(namespace+"."+param.get("sqlName"), param);
+	}
+	
 	@Override //bs∆ƒ¿œ
 	public String selectFile(String bnum) {
 		return sqlSession.selectOne(namespace+".bsfile", bnum);		
@@ -62,10 +66,9 @@ public class DpBoardDAO implements DpObjectDAO{
 		return sqlSession.delete(namespace+".delete", bnum);
 	}
 
-	@Override
-	public List<Object> select(int startCount, int endCount, String cate) {
+	public List<Object> selectList(Map<String,Object> param) {
 		// TODO Auto-generated method stub
-		return null;
+		return  sqlSession.selectList(namespace+".content", param);
 	}
 
 	@Override
@@ -110,6 +113,13 @@ public class DpBoardDAO implements DpObjectDAO{
 		return null;
 	}
 
-
+	@Override
+	public List<Object> select(int startCount, int endCount, String cate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
 
 }

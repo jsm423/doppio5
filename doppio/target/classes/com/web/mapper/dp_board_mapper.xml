@@ -21,13 +21,24 @@
 		</choose>		
 	</insert>
 	
-	<select id="list" parameterType="map" resultType="com.web.vo.DpBoardVO"> <!-- bdate앞에 id추가 -->
+	<select id="list" parameterType="map" resultType="com.web.vo.DpBoardVO"> 
 		select rno, bnum, btitle, id, bdate, bhits, bfile, bsfile 
 			from (select rownum rno, bnum, btitle, id, to_char(bdate,'yyyy/mm/dd') bdate, bhits, bfile, bsfile
 			     from (SELECT bnum, btitle, id, bdate, bhits, bfile, bsfile from doppio_board order by bdate desc) 
 			     ) where rno between #{start} and #{end} 
+			     <if test='keyword != null &amp;&amp; keyword != "" '>
+					 <if test='searchType="title"'>
+					 	and btitle like concat('%',#{keyword},'%')
+					 </if>
+					 <if test='searchType == "content"'>
+				     	and bcontent like concat('%',#{keyword},'%')
+				     </if>
+				     <if test='searchType == "id"'>
+				     	and id like concat('%',#{keyword},'%')
+				     </if>
+			     </if>
 	</select>	
-	
+		
 	<update id="update_hits" parameterType="java.lang.String">
 		update doppio_board set bhits=bhits+1 where bnum=#{bnum}
 	</update>

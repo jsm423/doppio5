@@ -1,8 +1,11 @@
 package com.web.service;
 
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -61,8 +64,41 @@ public class DpMemberServiceImpl extends DpObjectServiceAdapter implements DpMem
 		return memberDao.update(vo);
 	}
 	
+	//아이디 찾기
+	public List<Object> find_id(HttpServletResponse response, String name, String hp) throws Exception{
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		List<Object> id = memberDao.find_id(name, hp);
+		
+		if (id.isEmpty()) {
+			out.println("<script>");
+			out.println("alert('가입된 아이디가 없습니다. 다시 확인해주세요');");
+			out.println("location.assign('/doppio/login/doppio_find_id.th')");
+			out.println("</script>");
+			out.close();
+			return null;
+		} else {
+			return id;
+		}
+	}
 	
-	
+	//비밀번호 찾기
+	public List<Object> find_pass(HttpServletResponse response,String id, String name, String hp, String email) throws Exception{
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
+		List<Object> pass = memberDao.find_pass(id,name, hp,email);
+		
+		if (pass.isEmpty()) {
+			out.println("<script>");
+			out.println("alert('가입된 정보가 없습니다. 다시 확인해주세요');");
+			out.println("location.assign('/doppio/login/doppio_find_pass.th')");
+			out.println("</script>");
+			out.close();
+			return null;
+		} else {
+			return pass;
+		}
+	}
 	
 	
 	

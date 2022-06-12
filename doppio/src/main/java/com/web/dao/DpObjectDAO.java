@@ -20,4 +20,5 @@ public interface DpObjectDAO {
 	String selectFile(String id);
 	List<Object> select1(int startCount, int endCount, String num);
 	List<Object> oplist(String popid);
+	
 }

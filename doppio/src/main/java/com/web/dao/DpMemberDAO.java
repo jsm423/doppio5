@@ -16,6 +16,28 @@ public class DpMemberDAO implements DpObjectDAO{
 	private String namespace = "mapper.member";
 	
 	/**
+	 * 비밀번호 찾기
+	 */
+	public List<Object> find_pass(String id, String name, String hp, String email) throws Exception{
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("id", id);
+		param.put("name", name);
+		param.put("hp", hp);
+		param.put("email", email);
+		return sqlSession.selectList(namespace+".find_pass", param);
+	}
+	
+	/**
+	 * 아이디 찾기
+	 */
+	public List<Object> find_id(String name, String hp) throws Exception{
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("name", name);
+		param.put("hp", hp);
+		return sqlSession.selectList(namespace+".find_id", param);
+	}
+	
+	/**
 	 * 회원가입 - INSERT
 	 */
 	@Override

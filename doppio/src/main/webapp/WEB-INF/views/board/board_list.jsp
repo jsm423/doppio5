@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/am-pagination.css">
 <script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>
+<script src="http://localhost:9000/doppio/resources/js/board.js"></script>
 <script src="http://localhost:9000/doppio/resources/js/am-pagination.js"></script>
 
 <script>
@@ -94,8 +95,22 @@
 				<tr>
 					<td colspan="5"><div id="ampaginationsm"></td>	
 				</tr>
+				
 			</table>
-			<br><br><br><br><br><br>
+			
+			
+			<div style="text-align: center;">
+			  <select name="searchType">
+			      <option value="title">제목</option>
+			      <option value="content">내용</option>
+			      <option value="id">작성자</option>
+			  </select>
+			  
+			  <input type="text" name="keyword"/>
+			  
+			  <button id="searchBtn">검색</button>
+			</div>
+			<br><br>
 		</section>
 		
 	</div>

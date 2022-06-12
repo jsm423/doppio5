@@ -1,7 +1,9 @@
 package com.web.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,8 +14,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.dao.DpBoardDAO;
 import com.web.dao.DpCommentDAO;
@@ -23,7 +29,6 @@ import com.web.service.DpPageServiceImpl;
 import com.web.service.FileServiceImpl;
 import com.web.vo.DpBoardVO;
 import com.web.vo.DpCommentVO;
-import com.web.vo.DpQnaVO;
 
 @Controller
 public class BoardController {
@@ -46,28 +51,57 @@ public class BoardController {
 	@Autowired
 	private DpCommentDAO commentDao;
 	
+//	//게시글 검색
+//	@ResponseBody
+//	@RequestMapping(value="/board/board_list_search.th", method=RequestMethod.GET)
+//	public Map<String, Object> board_search(@RequestBody String rpage) throws JsonParseException, JsonMappingException, IOException {
+//		
+//		Map<String, Object> map = new HashMap<String, Object>();
+//		
+//		
+//		ObjectMapper mapper = new ObjectMapper();
+//		
+//		Map<String, Object> param = mapper.readValue(rpage, Map.class);
+//		
+////		int startCount = Integer.parseInt(param.get("start"));
+////		int endCount = Integer.parseInt(param.get("end"));
+//		
+//		List<Object> olist = boardService.getR(param);
+//		ArrayList<DpBoardVO> list = new ArrayList<DpBoardVO>();
+//		for(Object obj : olist) {
+//			list.add((DpBoardVO)obj);
+//		}
+//		map.put("list", list);
+//		map.put("dbCount", Integer.parseInt(param.get("dbCount")));
+//		map.put("pageSize", Integer.parseInt(param.get("pageSize")));
+//		map.put("reqPage", Integer.parseInt(param.get("reqPage")));
+//				
+//		return map;
+//	}
+	
+	
 	//게시글 리스트
 	@RequestMapping(value="/board/board_list.th", method=RequestMethod.GET)
-		public ModelAndView board_lis(String rpage) {
-			ModelAndView mv = new ModelAndView();
-			
-			Map<String, String> param = pageService.getPageResult(rpage, "board", boardService);
-			int startCount = Integer.parseInt(param.get("start"));
-			int endCount = Integer.parseInt(param.get("end"));
-			
-			List<Object> olist = boardService.getListResult(startCount, endCount);
-			ArrayList<DpBoardVO> list = new ArrayList<DpBoardVO>();
-			for(Object obj : olist) {
-				list.add((DpBoardVO)obj);
-			}
-			
-			mv.addObject("list", list);
-			mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
-			mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
-			mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
-			
-			mv.setViewName("/board/board_list");
-			return mv;
+	public ModelAndView board_lis(String rpage) {
+		ModelAndView mv = new ModelAndView();
+		
+		Map<String, String> param = pageService.getPageResult(rpage, "board", boardService);
+		int startCount = Integer.parseInt(param.get("start"));
+		int endCount = Integer.parseInt(param.get("end"));
+		
+		List<Object> olist = boardService.getListResult(startCount, endCount);
+		ArrayList<DpBoardVO> list = new ArrayList<DpBoardVO>();
+		for(Object obj : olist) {
+			list.add((DpBoardVO)obj);
+		}
+		
+		mv.addObject("list", list);
+		mv.addObject("dbCount", Integer.parseInt(param.get("dbCount")));
+		mv.addObject("pageSize", Integer.parseInt(param.get("pageSize")));
+		mv.addObject("reqPage", Integer.parseInt(param.get("reqPage")));
+		
+		mv.setViewName("/board/board_list");
+		return mv;
 	}
 	
 	//게시글 상세보기

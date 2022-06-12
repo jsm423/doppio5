@@ -17,7 +17,7 @@
 	var sid = "${sid}";
 	
 	if(login_result=="succ"){
-		alert("로그인에 성공하셨습니다.");
+		alert(sid+"님 환영합니다! DOPPIO에서 즐거운 시간 보내세요");
 		/* location.href="http://localhost:9000/doppio/doppio_main.th" */
 	}
 /* 	if(login_result=="drop"){
@@ -25,7 +25,7 @@
 	} 
 	 */
 	if(logout_result=="succ"){
-		alert(sid+"님 "+"로그아웃에 성공하셨습니다.");
+		alert(sid+"님 성공적으로 로그아웃되었습니다.");
 	}
 </script>
 

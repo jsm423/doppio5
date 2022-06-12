@@ -50,7 +50,7 @@
 				<button type="button" id="btnLogin">로그인</button>
 			</div>
 			<div class="login_join">
-				<p><a href="http://localhost:9000/doppio/join/doppio_join.th">회원가입</a><!-- | <a href="#">아이디 비밀번호 찾기</a> --></p>
+				<p><a href="http://localhost:9000/doppio/join/doppio_join.th">회원가입</a> | <a href="http://localhost:9000/doppio/login/doppio_find.th">아이디 비밀번호 찾기</a> </p>
 			</div>
 		</div>
 	</div>

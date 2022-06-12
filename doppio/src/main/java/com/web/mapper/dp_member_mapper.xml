@@ -56,4 +56,14 @@
 	<update id="update" parameterType="com.web.vo.DpMemberVO">
 		update doppio_member set pass=#{pass}, name=#{name}, address=#{address}, hp=#{hp}, email=#{email} where mnum=#{mnum}
 	</update>
+	
+	<!-- 아이디 찾기 -->
+	<select id="find_id" parameterType="java.lang.String" resultType="java.lang.String">
+		select id from doppio_member where name=#{name} and hp=#{hp}
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="find_pass" parameterType="java.lang.String" resultType="java.lang.String">
+		select pass from doppio_member where id=#{id} and name=#{name} and hp=#{hp} and email=#{email}
+	</select>
 </mapper>

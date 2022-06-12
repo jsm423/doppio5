@@ -1,13 +1,17 @@
 package com.web.controller;
 
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.service.DpMemberServiceImpl;
@@ -18,6 +22,52 @@ public class LoginController {
 	
 	@Autowired
 	private DpMemberServiceImpl memberService;
+	
+	/**
+	 * 비밀번호 찾기
+	 */	
+	@RequestMapping(value = "/login/doppio_find_pass.th", method = RequestMethod.GET)
+	public String find_pass() throws Exception{
+		return "/login/doppio_find_pass";    
+	}
+	
+	/**
+	 * 비밀번호 찾기 결과
+	 */
+	@RequestMapping(value = "/login/doppio_find_pass_result.th", method = RequestMethod.POST)
+	public String find_pass(HttpServletResponse response, 
+			@RequestParam("id") String id, @RequestParam("name") String name, 
+			@RequestParam("hp") String hp, @RequestParam("email") String email, Model md) throws Exception{
+		md.addAttribute("pass", memberService.find_pass(response, id, name, hp, email));
+		
+		return "/login/doppio_find_pass_result";    
+	}
+	
+	/**
+	 * 아이디 찾기
+	 */	
+	@RequestMapping(value = "/login/doppio_find_id.th", method = RequestMethod.GET)
+	public String find_id() throws Exception{
+		return "/login/doppio_find_id";    
+	}
+	
+	/**
+	 * 아이디 찾기 결과
+	 */
+	@RequestMapping(value = "/login/doppio_find_id_result.th", method = RequestMethod.POST)
+	public String find_id(HttpServletResponse response, @RequestParam("name") String name, @RequestParam("hp") String hp, Model md) throws Exception{
+		md.addAttribute("id", memberService.find_id(response, name, hp));
+		
+		return "/login/doppio_find_id_result";    
+	}
+	
+	/**
+	 * 아이디 비밀번호 찾기
+	 */	
+	@RequestMapping(value = "/login/doppio_find.th", method = RequestMethod.GET)
+	public String login_find() throws Exception{
+		return "/login/doppio_find";    
+	}
 	
 	/**
 	 * 로그인 화면
