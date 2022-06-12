@@ -32,7 +32,7 @@ $(document).ready(function(){
                    data : { "list" : checkArr},		 // objParams 배열에 들은 list라는 index의 checkArr배열의 데이터를 가져와서
                    success     :   function(result){		 // 성공시
                    		if(result.result == "ok"){		// 만약 값이 ok이면 삭제완료
-                   			alert("삭제 완료!!");
+                   			alert("삭제 완료되었습니다");
                    			location.reload();
                    		}else{
                    			alert("삭제 실패!!");   // 성공은 했으나 값이 ok가 아니면 삭제실패
@@ -141,7 +141,7 @@ div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 						
 					</c:forEach>						
 						<tr style="line-height: 100px;">
-						<td colspan="10"><h3>상품을 결제해 주세요!</h3></td>
+						<td colspan="10" style="padding-top: 0px; padding-bottom: 0px;"><h3>상품을 결제해 주세요!</h3></td>
 						</tr>
 					</tbody>
 				</table>
@@ -149,9 +149,9 @@ div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 				</div>
 			</div>
 			
-			<div class="row" style="text-align: center; margin: 80px 0;">
-				<button type="button" id="orderlist_btn" class="w-btn-outline w-btn-skin-outline" data-mnum="${sessionScope.mnum }" data-canum="${sessionScope.canum }">주문하기</button>
+			<div class="row" style="text-align: center; margin-bottom: 80px;">
 				<button type="button" class="w-btn-outline w-btn-skin-outline" onclick="location.href='http://localhost:9000/doppio/doppio_main.th'">홈으로 돌아가기</button>
+				<button type="button" id="orderlist_btn" class="w-btn-outline w-btn-skin-outline" data-mnum="${sessionScope.mnum }" data-canum="${sessionScope.canum }">주문하기</button>				
 			</div>
 			</form>
 		</div>

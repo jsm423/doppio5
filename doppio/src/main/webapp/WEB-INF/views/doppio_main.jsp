@@ -18,7 +18,7 @@
 	
 	if(login_result=="succ"){
 		alert(sid+"님 환영합니다! DOPPIO에서 즐거운 시간 보내세요");
-		/* location.href="http://localhost:9000/doppio/doppio_main.th" */
+		location.href="http://localhost:9000/doppio/doppio_main.th" 
 	}
 /* 	if(login_result=="drop"){
 		alert("탈퇴한 회원입니다");
@@ -26,6 +26,7 @@
 	 */
 	if(logout_result=="succ"){
 		alert(sid+"님 성공적으로 로그아웃되었습니다.");
+		location.href="http://localhost:9000/doppio/doppio_main.th" 
 	}
 </script>
 

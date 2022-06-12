@@ -172,7 +172,7 @@
 	.w-btn-outline-package:hover {
 	    background-color: #FFF2CC;
 	    border: 2px solid #FFC000;
-	    color: #FFC000;
+	    /* color: #FFC000; */
 	    cursor: pointer;
 	}
 	

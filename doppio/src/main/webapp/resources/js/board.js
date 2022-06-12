@@ -9,10 +9,12 @@ $(document).ready(function(){
  		
 		$.ajax({
 				url : "/doppio/board/board_list_search.th",
-				type: "GET",
+				type: "POST",
 				data : JSON.stringify({
 					"searchType" : $('select[name=searchType]').val(),
-					"keyword" : $('input[name=keyword]').val()
+					"keyword" : $('input[name=keyword]').val(),
+					"start" : "1",
+					"end"   : "5"
 				}),
 				contentType : 'application/json',
 				success : function(result){

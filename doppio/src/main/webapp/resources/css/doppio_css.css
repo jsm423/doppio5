@@ -152,13 +152,14 @@
 	
 	/* 주문내역 */
 	#orderdiv{
-		width:70%;
+		width:100%;
 		margin: 0 auto;
 	}
 	
 	
 	#order_table{
-		width:100%;
+		width:1000px;
+		margin: 0 auto;
 		border-top: 2px solid black;
 		border-bottom: 2px solid black;
 		text-align: center;
@@ -166,8 +167,8 @@
 	}
 	
 	#order_list>th{
-		background-color : lightgray;
 		border-bottom: 2px solid black;
+		height: 40px;
 	}
 	.order_data>td{
 		height: 70px;
@@ -181,30 +182,24 @@
 	}
 	#writebtn{
 		width: 1000px;
+		height:50px;
 		text-align: right;
 	}
 	.write_button{
 		text-align: center;
-		width: 80px;
-		height: 30px;
-		background-color: white;
-		/* color:white;
-		text-shadow: 1px 1px 1px black;
-		border-radius: 4px;
-		box-shadow: 1px 1px 2px lightgray; */
-		border-style: none;		
+		width: 120px;
+		height: 40px;
+		background-color: transparent;
+		border: 2px solid lightgray;	
+		border-radius: 15px;		 
 	}
-	#writebtn img:hover{
-		opacity: 40%;
-	}
-	
-	#writebtn >h5{
-		padding-right: 10px; 
-	}
-	
 	.write_button:hover{
-		cursor: pointer;
-	}
+		background-color: #FFF2CC;
+	    border: 2px solid #FFC000;
+	    /* color: #FFC000; */
+	    cursor: pointer;
+	 }
+	
 	#boarddiv{
 		width:1000px;
 		margin: 0 auto;
@@ -489,9 +484,19 @@
 	.w-btn-skin-outline:hover {
 	    background-color: #FFF2CC;
 	    border: 2px solid #FFC000;
-	    color: #FFC000;
+	    /* color: #FFC000; */
 	    cursor: pointer;
 	}
-	
+	#cmtSave{ 
+		margin-left: 2px;   
+		border: 2px solid #D2D2D2; 
+		background-color: transparent; 
+		border-radius: 15px;
+	}
+	#cmtSave:hover{
+	 	background-color: #FFF2CC;
+	    border: 2px solid #FFC000;
+	    cursor: pointer;
+	}
 	
 	

@@ -1,6 +1,7 @@
 package com.web.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -56,6 +57,12 @@ public class DpBoardServiceImpl implements DpBoardService {
 	public List<Object> getListResult(int startCount, int endCount, String cate) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	
+	public List<Object> getListResult(Map<String,Object> param) {
+		// TODO Auto-generated method stub
+		return boardDao.selectList(param);
 	}
 
 	@Override

@@ -68,7 +68,7 @@ public class DpBoardDAO implements DpObjectDAO{
 
 	public List<Object> selectList(Map<String,Object> param) {
 		// TODO Auto-generated method stub
-		return  sqlSession.selectList(namespace+".content", param);
+		return  sqlSession.selectList(namespace+".list", param);
 	}
 
 	@Override

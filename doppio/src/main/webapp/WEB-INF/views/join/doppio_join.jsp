@@ -105,7 +105,7 @@
 	</table>
 	
 	<div class="join_btn"> 
-		<button type="button" id="btnJoin">가입하기</button>
+		<button type="button" id="btnJoin" class="write_button">가입하기</button>
 	</div>
 </div>
 </form>	

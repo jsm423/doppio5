@@ -51,36 +51,39 @@ public class BoardController {
 	@Autowired
 	private DpCommentDAO commentDao;
 	
-//	//°Ô½Ã±Û °Ë»ö
-//	@ResponseBody
-//	@RequestMapping(value="/board/board_list_search.th", method=RequestMethod.GET)
-//	public Map<String, Object> board_search(@RequestBody String rpage) throws JsonParseException, JsonMappingException, IOException {
-//		
-//		Map<String, Object> map = new HashMap<String, Object>();
-//		
-//		
-//		ObjectMapper mapper = new ObjectMapper();
-//		
-//		Map<String, Object> param = mapper.readValue(rpage, Map.class);
-//		
-////		int startCount = Integer.parseInt(param.get("start"));
-////		int endCount = Integer.parseInt(param.get("end"));
-//		
-//		List<Object> olist = boardService.getR(param);
-//		ArrayList<DpBoardVO> list = new ArrayList<DpBoardVO>();
-//		for(Object obj : olist) {
-//			list.add((DpBoardVO)obj);
-//		}
-//		map.put("list", list);
-//		map.put("dbCount", Integer.parseInt(param.get("dbCount")));
-//		map.put("pageSize", Integer.parseInt(param.get("pageSize")));
-//		map.put("reqPage", Integer.parseInt(param.get("reqPage")));
-//				
-//		return map;
-//	}
+	//ê²Œì‹œê¸€ ê²€ìƒ‰
+	@ResponseBody
+	@RequestMapping(value="/board/board_list_search.th", method=RequestMethod.POST)
+	public Map<String, Object> board_search(@RequestBody String rpage) throws JsonParseException, JsonMappingException, IOException {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		Map<String, Object> param = mapper.readValue(rpage, Map.class);
+		
+//		int startCount = Integer.parseInt(param.get("start"));
+//		int endCount = Integer.parseInt(param.get("end"));
+
+		
+		List<Object> olist = boardService.getListResult(param);
+		/*
+		 * ArrayList<DpBoardVO> list = new ArrayList<DpBoardVO>(); for(Object obj :
+		 * olist) { list.add((DpBoardVO)obj); }
+		 */
+		map.put("seachList", olist);
+		/*
+		 * map.put("dbCount", Integer.parseInt(param.get("dbCount")));
+		 * map.put("pageSize", Integer.parseInt(param.get("pageSize")));
+		 * map.put("reqPage", Integer.parseInt(param.get("reqPage")));
+		 */
+				
+		return map;
+	}
 	
 	
-	//°Ô½Ã±Û ¸®½ºÆ®
+	//ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸
 	@RequestMapping(value="/board/board_list.th", method=RequestMethod.GET)
 	public ModelAndView board_lis(String rpage) {
 		ModelAndView mv = new ModelAndView();
@@ -104,7 +107,7 @@ public class BoardController {
 		return mv;
 	}
 	
-	//°Ô½Ã±Û »ó¼¼º¸±â
+	//ê²Œì‹œê¸€ ìƒì„¸ë³´ê¸°
 	@RequestMapping(value="/board/board_content.th", method=RequestMethod.GET)
 		public ModelAndView board_content(String bnum, String rno, String rpage) {
 		ModelAndView mv = new ModelAndView();
@@ -131,7 +134,7 @@ public class BoardController {
 		return mv; 
 	}
 	
-	//°Ô½Ã±Û µî·ÏÆû
+	//ê²Œì‹œê¸€ ë“±ë¡í¼
 			@RequestMapping(value="/board/board_write.th", method=RequestMethod.GET)
 			public ModelAndView board_write() {
 				ModelAndView mv = new ModelAndView();
@@ -139,7 +142,7 @@ public class BoardController {
 				return mv;
 			}
 	
-	//°Ô½Ã±Û µî·Ï Ã³¸®
+	//ê²Œì‹œê¸€ ë“±ë¡ì²˜ë¦¬
 	@RequestMapping(value="/board/board_write.th", method=RequestMethod.POST)
 		public String board_write(DpBoardVO vo, HttpServletRequest request) throws Exception{
 				
@@ -153,14 +156,14 @@ public class BoardController {
 					result_page = "redirect:board_list.th";
 					
 				}else {
-					//¿¡·¯ÆäÀÌÁö È£Ãâ
+					//å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ í˜¸å ì™ì˜™
 				}		
 				
 				return result_page;
 	}
 	
 	
-	//°Ô½Ã±Û ¼öÁ¤Æû
+	//ê²Œì‹œê¸€ ì—…ë°ì´íŠ¸í¼
 	@RequestMapping(value="/board/board_update.th", method=RequestMethod.GET)
 		public ModelAndView board_update(String bnum, String rno) {
 			ModelAndView mv = new ModelAndView();
@@ -173,7 +176,7 @@ public class BoardController {
 			return mv;
 	}
 	
-	//°Ô½Ã±Û ¼öÁ¤ Ã³¸®
+	//ê²Œì‹œê¸€ ì—…ë°ì´íŠ¸ ì²˜ë¦¬
 	@RequestMapping(value="/board/board_update.th", method=RequestMethod.POST)
 		public ModelAndView board_update(DpBoardVO vo, HttpServletRequest request) throws Exception{
 		
@@ -190,12 +193,12 @@ public class BoardController {
 				fileService.fileSave(vo, request, oldFile);
 				mv.setViewName("redirect:/board/board_list.th");
 			}else {
-				//¿¡·¯ÆäÀÌÁö È£Ãâ
+				//error
 			}
 			
 			return mv;
 	}
-//		//°Ô½Ã±Û »èÁ¦
+//		//ê²Œì‹œê¸€ ì‚­ì œ
 //		@RequestMapping(value="/board/board_content.th", method=RequestMethod.GET)
 //		public ModelAndView board_delete(String bnum, String rno) {
 //			ModelAndView mv = new ModelAndView();
@@ -206,7 +209,7 @@ public class BoardController {
 //			return mv;
 //		}
 	
-		//°Ô½Ã±Û »èÁ¦Ã³¸®
+		//ê²Œì‹œê¸€ ì‚­ì œì²˜ë¦¬
 		@RequestMapping(value="/board/board_content.th", method=RequestMethod.POST)
 		public ModelAndView board_delete(DpBoardVO vo, HttpServletRequest request)
 														throws Exception{
@@ -223,7 +226,7 @@ public class BoardController {
 				}
 				mv.setViewName("redirect:/board/board_list.th");			
 			}else {
-				//¿¡·¯ÆäÀÌÁö È£Ãâ
+				//ì—ëŸ¬í˜ì´ì§€ í˜¸ì¶œ
 			}		
 			
 			return mv;
@@ -235,7 +238,7 @@ public class BoardController {
 		
 		
 		
-	// °Ô½ÃÆÇ »ó¼¼ÆäÀÌÁö - ´ñ±Ûµî·Ï
+	// ëŒ“ê¸€ë“±ë¡
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/board/board_content_cmtWrite.th", method = RequestMethod.POST)
 	public ModelAndView board_content_write(@RequestBody String vo, HttpServletRequest request) throws Exception {
@@ -252,7 +255,7 @@ public class BoardController {
 		return mv;
 	}
 
-	// °Ô½ÃÆÇ »ó¼¼ÆäÀÌÁö - ´ñ±Û¼öÁ¤
+	// ëŒ“ê¸€ìˆ˜ì •
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/board/board_content_cmtUpdate.th", method = RequestMethod.POST)
 	public ModelAndView board_content_update(@RequestBody String vo, HttpServletRequest request) throws Exception {
@@ -269,7 +272,7 @@ public class BoardController {
 		return mv;
 	}
 	
-	// °Ô½ÃÆÇ »ó¼¼ÆäÀÌÁö - ´ñ±Û»èÁ¦
+	// ëŒ“ê¸€ì‚­ì œ
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/board/board_content_cmtDelete.th", method = RequestMethod.POST)
 	public ModelAndView board_content_delete(@RequestBody String vo, HttpServletRequest request) throws Exception {

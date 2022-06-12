@@ -71,8 +71,7 @@
 			<h3 style="text-align: center;">구매하신 상품은 어떠셨나요? 후기를 남겨주세요!</h3>
 			<div id="writebtn">
 			<c:if test="${sessionScope.sid != null }">
-			<h5>게시글 작성</h5>
-		    <button type="button" class="write_button" onclick="location.href='http://localhost:9000/doppio/board/board_write.th'"><img src="http://localhost:9000/doppio/resources/img/write_btn.png" class="board_con" width="30px" height="30px"></button><br><br>
+		    <button type="button" class="write_button" onclick="location.href='http://localhost:9000/doppio/board/board_write.th'">게시글 작성</button><br><br>
 			</c:if>
 			</div>
 			<table id="board_table">
@@ -83,6 +82,7 @@
 					<th>등록일</th>
 					<th>조회수</th>
 				</tr>
+				<div id="searchList">
 				<c:forEach var="vo" items="${list}">
 					<tr class="boardhover">
 						<td>${vo.rno }</td>
@@ -92,6 +92,7 @@
 						<td>${vo.bhits }</td>
 					</tr>
 				</c:forEach>
+				</div>
 				<tr>
 					<td colspan="5"><div id="ampaginationsm"></td>	
 				</tr>

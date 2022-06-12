@@ -175,7 +175,7 @@
 	   
 
 	   button.enter{
-	      border: 3px solid #D2D2D2;
+	      border: 2px solid #D2D2D2;
 		  color: #191919;
 		  background-color: white;	
 	      font-size: 15px;
@@ -210,7 +210,7 @@
 		.w-btn-skin-outline:hover {
 		   background-color: #FFF2CC;
 		   order: 2px solid #FFC000;
-		   color: #FFC000;
+		   /* color: #FFC000; */
 		   cursor: pointer;
 	}
 	   

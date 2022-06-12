@@ -39,9 +39,7 @@
 			</tr>
 			</c:forEach>
 		</table>
-		<%-- <input type="hidden" name="pprice" value="${vo.pprice }">
-		<input type="hidden" name="popprice" value="${vo.popprice }">
-		<input type="hidden" name="cacount" value="${vo.cacount }"> --%>
+
 		<br><br><br><br><br><br><br><br>
 	</div>
 	<!-- footer -->
