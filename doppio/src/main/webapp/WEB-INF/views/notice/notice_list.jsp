@@ -67,7 +67,7 @@
 			<div class="title">
 				<p>NOTICE</p><br>
 			</div>
-			<h3 style="text-align: center;">공지사항입니다--->수정하기</h3>
+			<h3 style="text-align: center;">각종 이벤트와 새로운 소식을 전해드려요. 놓치지 말고 확인해 보세요!</h3>
 			<div id="writebtn">
 			<c:if test="${ sessionScope.sid == 'test'}">
 			<h5>게시글 작성</h5>

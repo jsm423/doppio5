@@ -63,18 +63,22 @@
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 		<interceptor>
-			<mapping path="../admin"/>
+			<mapping path="/admin/member/*"/>
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 		<interceptor>
-			<mapping path="/admin/*"/>
+			<mapping path="/admin/admin_recipe/*"/>
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/admin/admin_package/*"/>
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/admin/admin_notice/*"/>
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 	</interceptors>
-	
-	 
-	
-	
 	
 	<context:component-scan base-package="com.web.controller" />
 	

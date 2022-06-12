@@ -52,6 +52,13 @@ $(document).ready(function(){
 
 });
 </script>
+<!-- <script>
+	$(document).ready(function(){
+		function moveHome(){
+		     location.href = "http://localhost:9000/doppio/doppio_main.th";
+	}
+	});
+</script> -->
 <style type="text/css">
 div.mypage_nav{text-align: center; width: 100%; margin-top: -25px; margin-bottom: 50px;}
 div.mypage_nav a{text-decoration: none; color: black;}
@@ -144,7 +151,7 @@ div.mypage_nav a:nth-child(2) {text-decoration: underline;}
 			
 			<div class="row" style="text-align: center; margin: 80px 0;">
 				<button type="button" id="orderlist_btn" class="w-btn-outline w-btn-skin-outline" data-mnum="${sessionScope.mnum }" data-canum="${sessionScope.canum }">주문하기</button>
-				<a href="http://localhost:9000/doppio/package/package_list.th"><button class="w-btn-outline w-btn-skin-outline">쇼핑을 계속하기</button></a>
+				<button type="button" class="w-btn-outline w-btn-skin-outline" onclick="location.href='http://localhost:9000/doppio/doppio_main.th'">홈으로 돌아가기</button>
 			</div>
 			</form>
 		</div>

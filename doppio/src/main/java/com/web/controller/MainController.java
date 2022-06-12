@@ -90,7 +90,16 @@ public class MainController {
 		return mv;
 	}
 	
-
+	/* footer */
+	@RequestMapping(value = "/footer_info.th", method = RequestMethod.GET)
+	public String doppio_footer_content1() {
+		return "/footer_info"; 
+	}
+	
+	@RequestMapping(value = "/footer_ad.th", method = RequestMethod.GET)
+	public String doppio_footer_content2() {
+		return "/footer_ad"; 
+	}
 
 		
 
