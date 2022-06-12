@@ -80,14 +80,14 @@
 							<input type="hidden" name="rno" value="${vo.rno }">
 							<input type="hidden" name="rnum" value="${vo.rnum }">
 							<input type="hidden" name="rsfile" value="${vo.rsfile }">
-							<input type="hidden" name="rtitle" value="${vo.rtitle }">
+							<input type="hidden" name="rtitle" value="${vo.rtitle }" >
 							<c:if test="${vo.rsfile != null}">
 								<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th?rnum=${vo.rnum }&rno=${vo.rno}">
 			<!-- 사진 -->			<img src="http://localhost:9000/doppio/resources/upload/${vo.rsfile }" class="recipe_img" width="300" height="300"/>
 								</a>
 							</c:if>
 							<br>
-			<!-- 글 -->		<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th?rnum=${vo.rnum }&rno=${vo.rno}">${vo.rtitle }</a>
+			<!-- 글 -->		<a href="http://localhost:9000/doppio/recipe/recipe_content_cf.th?rnum=${vo.rnum }&rno=${vo.rno}" class="letter">${vo.rtitle }</a>
 						</div>
 					</c:forEach>
 					

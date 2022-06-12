@@ -25,4 +25,10 @@
 	    where dci.mnum=#{mnum} and dci.caorder='y'
 	</select>
 	
+	<select id="adminList" parameterType="map" resultType="com.web.vo.DpOrderVO">
+		select dci.canum,dci.mnum,dmb.id,dci.pnum,dpa.ptitle,dpa.pprice,dpa.pfile,dpa.psfile,dci.cacount,dci.popid,dpo.popprice,dci.cadate
+	    from doppio_cart_item dci join doppio_package dpa on dci.pnum = dpa.pnum
+	    join doppio_package_option dpo on dpo.popid = dci.popid
+        join doppio_member dmb on dmb.mnum = dci.mnum
+	</select>
 </mapper>

@@ -14,7 +14,7 @@
 	<!-- content -->
 	<div>
 		<div class="title">
-				<p>관리자-회원정보</p>
+				<p>MEMBER INFO</p>
 		</div>
 		<br><br>
 			<table class="join_table">

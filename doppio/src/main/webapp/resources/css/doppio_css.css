@@ -114,31 +114,18 @@
 	div.title p{font-size: 40px; font-weight: 900; margin-top: 100px;}
 	
 	
-	section.team>div>div, section.admin>div>a {
-	/*border:1px solid blue;*/
+	section.admin>div>a {
+	
 	padding:50px;	
 	color:black;
 	font:bord;
 	border-radius:4px;
 	font-size:16px;
 	text-decoration-line: none;
+	background-color : white;
 	}
 	
-	section.admin>div>a:first-child {
-	background-color : white;
-	}	
-	
-	section.admin>div>a:nth-child(2) {
-	background-color : white;
-	
-	}
-	
-	section.admin>div>a:last-child{
-	background-color : white;
-	
-	}	
-
-	section.admin>div>a:first-child, section.admin>div>a:nth-child(2), section.admin>div>a:last-child {
+	section.admin>div>a:first-child, section.admin>div>a:nth-child(2), section.admin>div>a:nth-child(3), section.admin>div>a:nth-child(4),section.admin>div>a:last-child {
 		margin: 0 auto;
 		display : inline-block;
 		text-align: center;
@@ -231,15 +218,19 @@
 	
 	/* 게시판 내용 */
 	button.delbtn{
-		background-color: white; 
-		border-style: none; 
-		font-size: 16px;
-		padding-right: 0px;		
+		width:80px;
+		height:30px;
+		margin-left: 2px;   
+		border: 2px solid #D2D2D2; 
+		background-color: transparent; 
+		border-radius: 15px;	
 	}
 	button.delbtn:hover{
-		cursor: pointer;
-		text-decoration: underline;
+		background-color: #FFF2CC;
+	    border: 2px solid #FFC000;
+	    cursor: pointer;
 	}
+	
 	#headtable{
 		width:1000px;
 		margin: 0 auto;
@@ -498,5 +489,5 @@
 	    border: 2px solid #FFC000;
 	    cursor: pointer;
 	}
-	
+	.letter{letter-spacing: 0px;}
 	

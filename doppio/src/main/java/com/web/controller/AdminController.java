@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.dao.DpCommentDAO;
 import com.web.dao.DpNoticeDAO;
+import com.web.dao.DpOrderDAO;
 import com.web.dao.DpRecipeDAO;
 import com.web.service.DpCommentServiceImpl;
 import com.web.service.DpMemberServiceImpl;
@@ -35,6 +36,7 @@ import com.web.vo.DpBoardVO;
 import com.web.vo.DpCommentVO;
 import com.web.vo.DpMemberVO;
 import com.web.vo.DpNoticeVO;
+import com.web.vo.DpOrderVO;
 import com.web.vo.DpPackageVO;
 import com.web.vo.DpQnaVO;
 import com.web.vo.DpRecipeVO;
@@ -70,6 +72,9 @@ public class AdminController {
 	
 	@Autowired
 	private DpNoticeDAO noticeDao;
+	
+	@Autowired
+	private DpOrderDAO orderDao;
 	
 
 	@RequestMapping(value = "/admin/admin.th", method = RequestMethod.GET)
@@ -142,7 +147,7 @@ public class AdminController {
 	@RequestMapping(value="/admin/admin_notice/notice_content.th", method=RequestMethod.GET)
 	public ModelAndView notice_content(String nnum, String rno, String rpage) {
 		ModelAndView mv = new ModelAndView();
-		noticeService.getUpdateHits(nnum);
+		
 		DpNoticeVO vo = (DpNoticeVO)noticeService.getContent(nnum);
 		Map<String, String> param = pageService.getPageResult3(rpage, "comment", commentService); 
 		int startCount = Integer.parseInt(param.get("start")); 
@@ -174,7 +179,7 @@ public class AdminController {
 		return mv;
 	}
 
-	//게시글 등록 처리
+	//공지글 등록 처리
 	@RequestMapping(value="/admin/admin_notice/notice_write.th", method=RequestMethod.POST)
 	public String notice_write(DpNoticeVO vo, HttpServletRequest request) throws Exception{
 			
@@ -195,7 +200,7 @@ public class AdminController {
 	}
 	
 	
-	//게시글 수정폼
+	//공지글 수정폼
 	@RequestMapping(value="/admin/admin_notice/notice_update.th", method=RequestMethod.GET)
 	public ModelAndView notice_update(String nnum, String rno) {
 		ModelAndView mv = new ModelAndView();
@@ -208,7 +213,7 @@ public class AdminController {
 		return mv;
 	}
 	
-	//게시글 수정 처리
+	//공지글 수정 처리
 	@RequestMapping(value="/admin/admin_notice/notice_update.th", method=RequestMethod.POST)
 	public ModelAndView notice_update(DpNoticeVO vo, HttpServletRequest request) throws Exception{
 	
@@ -231,7 +236,7 @@ public class AdminController {
 		return mv;
 	}
 	
-	//게시글 삭제처리
+	//공지글 삭제처리
 	@RequestMapping(value="/admin/admin_notice/notice_content.th", method=RequestMethod.POST)
 	public ModelAndView notice_delete(DpNoticeVO vo, HttpServletRequest request)
 													throws Exception{
@@ -256,8 +261,22 @@ public class AdminController {
 	
 	
 	
+	//-----------------------ORDER--------------------------------//
 	
-	
+	//주문 내역
+	@RequestMapping(value="/admin/admin_order_list.th", method=RequestMethod.GET)
+	public ModelAndView admin_order_list(String mnum) {
+		ModelAndView mv = new ModelAndView();
+		List<Map<String, Object>> vo = orderDao.selectList2(mnum);
+		ArrayList<DpOrderVO> list = new ArrayList<DpOrderVO>();
+		for(Object obj : vo) {
+			list.add((DpOrderVO)obj);
+		}
+		mv.addObject("list", list);
+		mv.addObject("vo", vo);			
+		mv.setViewName("/admin/admin_order_list");
+		return mv;
+	}	
 	
 	
 	

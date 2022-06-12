@@ -18,7 +18,7 @@
 		<br>
 		<br><br>
 		<div class="info_content">
-			<img src="http://localhost:9000/doppio/resources/img/ad_img22.jpg" class="ad_img" style="border-radius: 30px;">
+			<img src="http://localhost:9000/doppio/resources/img/ad_img222.png" class="ad_img" style="border-radius: 30px;">
 			<img src="http://localhost:9000/doppio/resources/img/ad_img33.jpg" class="ad_img" style="border-radius: 30px;">
 			<p style="font-size: 18px; margin-top: 80px;">매일 매일 업로드 되는 다양하고 새로운 리뷰!<br><br>
 			

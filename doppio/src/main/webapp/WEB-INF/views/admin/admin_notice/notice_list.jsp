@@ -70,8 +70,7 @@
 			<h3 style="text-align: center;">각종 이벤트와 새로운 소식을 전해드려요. 놓치지 말고 확인해 보세요!</h3>
 			<div id="writebtn">
 			<c:if test="${sessionScope.sid != null }">
-			<h5>게시글 작성</h5>
-		    <button type="button" class="write_button" onclick="location.href='http://localhost:9000/doppio/admin/admin_notice/notice_write.th'"><img src="http://localhost:9000/doppio/resources/img/write_btn.png" class="board_con" width="30px" height="30px"></button><br><br>
+		    <button type="button" class="write_button" onclick="location.href='http://localhost:9000/doppio/admin/admin_notice/notice_write.th'">공지글 작성</button><br><br>
 			</c:if>
 			</div>
 			<table id="board_table">

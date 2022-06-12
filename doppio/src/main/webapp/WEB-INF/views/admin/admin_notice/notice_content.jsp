@@ -42,8 +42,8 @@
 				<tr id="contenthead">					
 					<c:if test="${sessionScope.sid == vo.id || sessionScope.sid == 'test'}">
 					<td>
-					<button type="button" class="delbtn" onclick="location.href='http://localhost:9000/doppio/admin/admin_notice/notice_update.th?nnum=${vo.nnum}&rno=${rno}'"><img src="http://localhost:9000/doppio/resources/img/edit_btn.png" class="board_con" width="30px" height="30px"></button>
-					<button type="submit" class="delbtn"><img src="http://localhost:9000/doppio/resources/img/delete_btn.png" class="board_con" width="30px" height="30px"></button></td>
+					<button type="button" class="delbtn" onclick="location.href='http://localhost:9000/doppio/admin/admin_notice/notice_update.th?nnum=${vo.nnum}&rno=${rno}'">수정</button>
+					<button type="submit" class="delbtn">삭제</button></td>
 					</c:if>
 				</tr>
 			</table>

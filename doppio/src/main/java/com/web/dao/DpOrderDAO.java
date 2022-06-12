@@ -60,6 +60,12 @@ public class DpOrderDAO implements DpObjectDAO {
 		return sqlSession.selectList(namespace+".list", param);
 	}
 	
+	public List<Map<String, Object>> selectList2(String mnum){ //게시글 리스트
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("mnum", mnum);
+		return sqlSession.selectList(namespace+".adminList", param);
+	}
+	
 	@Override
 	public List<Object> select(int startCount, int endCount, String cate) {
 		// TODO Auto-generated method stub

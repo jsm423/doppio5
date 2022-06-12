@@ -87,7 +87,7 @@
 								</a>
 							</c:if>
 							<br>
-							<a href="http://localhost:9000/doppio/recipe/recipe_content_ncf.th?rnum=${vo.rnum }&rno=${vo.rno}">${vo.rtitle }</a>
+							<a href="http://localhost:9000/doppio/recipe/recipe_content_ncf.th?rnum=${vo.rnum }&rno=${vo.rno}" class="letter">${vo.rtitle }</a>
 						</div>
 					</c:forEach>
 					

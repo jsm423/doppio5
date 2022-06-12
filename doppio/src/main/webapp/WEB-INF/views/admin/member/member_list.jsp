@@ -62,7 +62,7 @@
 	<div id="boarddiv">
 		<section class="board_list">
 			<div class="title">
-				<p>회원관리</p>
+				<p>MEMBER</p>
 			</div>
 			<br>
 			<table id="board_table">
