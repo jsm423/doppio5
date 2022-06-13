@@ -73,7 +73,8 @@
 		</div>
 		<!-- 판매 리스트 -->
 			<div class="imgcon_div">
-				<section class="imgcon_sc">
+				<div class="imgcon_sc">
+				
 				<c:forEach var="vo" items="${list}">
 					<div class="imgcon1">
 						<input type="hidden" name="rno" value="${vo.rno }">
@@ -90,7 +91,7 @@
 					</div>
 				</c:forEach>
 					
-				</section>
+				</div>
 			</div>
 			</div>
 		</div>

@@ -72,7 +72,7 @@ public class BoardController {
 		 * ArrayList<DpBoardVO> list = new ArrayList<DpBoardVO>(); for(Object obj :
 		 * olist) { list.add((DpBoardVO)obj); }
 		 */
-		map.put("seachList", olist);
+		map.put("searchList", olist);
 		/*
 		 * map.put("dbCount", Integer.parseInt(param.get("dbCount")));
 		 * map.put("pageSize", Integer.parseInt(param.get("pageSize")));

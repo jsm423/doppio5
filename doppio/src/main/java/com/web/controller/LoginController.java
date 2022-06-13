@@ -1,5 +1,6 @@
 package com.web.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -86,10 +87,10 @@ public class LoginController {
 	@RequestMapping(value="/login/doppio_login.th", method=RequestMethod.POST)
 	public ModelAndView login(DpMemberVO vo, HttpSession session) {
 		ModelAndView mv = new ModelAndView();
-		Map<String,Object> result = memberService.getLoginResult(vo);
-
-		if(result.size() > 0) {
-			 
+		Map<String,Object> result = new HashMap<String,Object>();
+		result = memberService.getLoginResult(vo);
+		
+		if(result !=null) {
 			System.out.println("result.size() > 0");
 			
 			if(String.valueOf(result.get("JOIN_STATUS")).equals("0")) {
@@ -108,8 +109,7 @@ public class LoginController {
 				mv.addObject("login_result", "drop");
 				mv.setViewName("/login/doppio_login");
 			}
-				
-		}else {
+		}else{
 
 			System.out.println("result.size() < 0");			
 			

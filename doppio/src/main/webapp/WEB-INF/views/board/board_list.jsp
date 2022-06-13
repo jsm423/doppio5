@@ -75,15 +75,14 @@
 			</c:if>
 			</div>
 			<table id="board_table">
-				<tr id="board_head">
+				<!-- <tr id="board_head">
 					<th>번호</th>
 					<th width="60%">제목</th>
 					<th>작성자</th>	
 					<th>등록일</th>
 					<th>조회수</th>
-				</tr>
-				<div id="searchList">
-				<c:forEach var="vo" items="${list}">
+				</tr> -->
+				<%-- <c:forEach var="vo" items="${list}">
 					<tr class="boardhover">
 						<td>${vo.rno }</td>
 						<td><a href="http://localhost:9000/doppio/board/board_content.th?bnum=${vo.bnum }&rno=${vo.rno}" class="boardtitle">${vo.btitle }</a></td>
@@ -91,11 +90,10 @@
 						<td>${vo.bdate }</td>
 						<td>${vo.bhits }</td>
 					</tr>
-				</c:forEach>
-				</div>
-				<tr>
-					<td colspan="5"><div id="ampaginationsm"></td>	
-				</tr>
+				</c:forEach> --%>
+				<!-- <tr>
+					<td colspan="5"><div id="ampaginationsm"></div></td>	
+				</tr> -->
 				
 			</table>
 			

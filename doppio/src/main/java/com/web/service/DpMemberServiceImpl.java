@@ -30,7 +30,7 @@ public class DpMemberServiceImpl extends DpObjectServiceAdapter implements DpMem
 	@Override	//로그인
 	public Map<String,Object> getLoginResult(DpMemberVO vo) {
 		System.out.println("getLoginResult ------> " +  memberDao.select(vo));
-		return memberDao.select(vo);  
+		return memberDao.select(vo);
 	}
 	
 	@Override //회원 탈퇴 신청 상태
