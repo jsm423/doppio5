@@ -5,7 +5,7 @@
 <html lang="ko">
 <head> 
 <meta charset="UTF-8">
-<title>Doppio</title>
+<title>DOPPIO</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/recipe_list_css.css">
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/am-pagination.css">

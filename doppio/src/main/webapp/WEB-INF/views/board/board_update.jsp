@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>DOPPIO</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
 <style>
 	#upload {

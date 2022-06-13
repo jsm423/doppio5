@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>DOPPIO</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
 <script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>
