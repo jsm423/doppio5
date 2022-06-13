@@ -1,6 +1,7 @@
 package com.web.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -64,5 +65,9 @@ public class DpNoticeServiceImpl implements DpNoticeService{
 	public List<Object> getOplist(String popid) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public List<Object> getListResult(Map<String,Object> param) {
+		// TODO Auto-generated method stub
+		return noticeDao.selectList(param);
 	}
 }

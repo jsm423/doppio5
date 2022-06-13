@@ -1,6 +1,7 @@
 package com.web.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -57,5 +58,9 @@ public class DpQnaServiceImpl implements DpQnaService{
 	public List<Object> getOplist(String popid) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public List<Object> getListResult(Map<String,Object> param) {
+		// TODO Auto-generated method stub
+		return qnaDao.selectList(param);
 	}
 }

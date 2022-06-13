@@ -53,7 +53,7 @@ public class BoardController {
 	
 	//게시글 검색
 	@ResponseBody
-	@RequestMapping(value="/board/board_list_search.th", method=RequestMethod.POST)
+	@RequestMapping(value="/board/board_list.th", method=RequestMethod.POST)
 	public Map<String, Object> board_search(@RequestBody String rpage) throws JsonParseException, JsonMappingException, IOException {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -72,7 +72,12 @@ public class BoardController {
 		 * ArrayList<DpBoardVO> list = new ArrayList<DpBoardVO>(); for(Object obj :
 		 * olist) { list.add((DpBoardVO)obj); }
 		 */
+		
+		int totalCnt = boardService.getListCount();
+		int resultCnt = olist.size();
 		map.put("searchList", olist);
+		map.put("totalListCnt", totalCnt);
+		map.put("resultCnt", resultCnt);
 		/*
 		 * map.put("dbCount", Integer.parseInt(param.get("dbCount")));
 		 * map.put("pageSize", Integer.parseInt(param.get("pageSize")));

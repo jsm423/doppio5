@@ -19,11 +19,25 @@
 		</choose>		
 	</insert>
 	
-	<select id="list" parameterType="map" resultType="com.web.vo.DpNoticeVO"> <!-- bdate앞에 id추가 -->
-		select rno, nnum, ntitle, id, ndate, nhits, nfile, nsfile 
-			from (select rownum rno, nnum, ntitle, id, to_char(ndate,'yyyy/mm/dd') ndate, nhits, nfile, nsfile
-			     from (SELECT nnum, ntitle, id, ndate, nhits, nfile, nsfile from doppio_notice order by ndate desc) 
-			     ) where rno between #{start} and #{end} 
+	<select id="list" parameterType="map" resultType="com.web.vo.DpNoticeVO">
+	select rno, nnum, ntitle, id, ndate, nhits, nfile, nsfile 
+		from (select rownum rno, nnum, ntitle, id, to_char(ndate,'yyyy/mm/dd') ndate, nhits, nfile, nsfile
+		from (select nnum, ntitle, id, ndate, nhits, nfile, nsfile from doppio_notice
+	           <if test='keyword != null and keyword != "" '>
+	           	<if test='searchType=="title"'>
+	           		where ntitle like '%'||#{keyword}||'%'
+	           	</if>
+	           	<if test='searchType=="content"'>
+	           		where ncontent like '%'||#{keyword}||'%'
+	           	</if>
+	           	<if test='searchType=="id"'>
+	           		where id like '%'||#{keyword}||'%'
+	           	</if>
+	          </if>
+	          order by ndate desc
+	         )          
+	    ) 
+	where rno between #{start} and #{end}
 	</select>	
 	
 	<update id="update_hits" parameterType="java.lang.String">

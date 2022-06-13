@@ -119,4 +119,8 @@ public class DpQnaDAO implements DpObjectDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public List<Object> selectList(Map<String,Object> param) {
+		// TODO Auto-generated method stub
+		return  sqlSession.selectList(namespace+".list", param);
+	}
 }

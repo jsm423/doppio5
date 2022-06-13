@@ -5,15 +5,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>DOPPIO</title>
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/doppio_css.css">
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/am-pagination.css">
 <script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
+<script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>
+<script src="http://localhost:9000/doppio/resources/js/qna.js"></script>
 <script src="http://localhost:9000/doppio/resources/js/am-pagination.js"></script>
 <script>
 	$(document).ready(function(){
 		
-		var pager = jQuery('#ampaginationsm').pagination({
+		/* var pager = jQuery('#ampaginationsm').pagination({
 		
 		    maxSize: 7,	    		// max page size
 		    totals: '${dbCount}',	// total pages	
@@ -32,35 +34,11 @@
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
 	           $(location).attr('href', "http://localhost:9000/doppio/qna/qna_list.th?rpage="+e.page);         
-	    });
+	    }); */
 		
  	});
 </script>
-<script>
-	$(document).ready(function() {
 
-		var page = $('#board_head').hover(function() {
-
-			$(this).css("background-color","#f7f7f7");
-
-		}, function() {
-
-		$(this).css("background-color","#ffffff");
-
-	});
-		var page1 = $('.boardhover').hover(function() {
-
-			$(this).css("background-color","#f7f7f7");
-
-		}, function() {
-
-		$(this).css("background-color","#ffffff");
-
-	});
-
-});
-
-</script>
 </head>
 <body>
 	<!-- header -->
@@ -78,7 +56,7 @@
 			</c:if>
 			</div>
 			<table id="board_table">
-				<tr id="board_head">
+				<%-- <tr id="board_head">
 					<th>번호</th>
 					<th width="60%">제목</th>
 					<th>작성자</th>	
@@ -97,11 +75,29 @@
 				
 				<tr>
 					<td colspan="5"><div id="ampaginationsm"  class="pagenum"></td>					
-				</tr>
+				</tr> --%>
 			</table>
-			<br><br><br><br><br><br>
+			<div style="text-align: center;">
+			<ul class="paging" >
+				
+			</ul>
+			</div> 
+			
+			<div style="text-align: center;">
+			  <select name="searchType">
+			      <option value="title">제목</option>
+			      <option value="content">내용</option>
+			      <option value="id">작성자</option>
+			  </select>
+			  
+			  <input type="text" name="keyword"/>
+			  
+			  <button id="searchBtn" >검색</button>
+			</div>
+			<br><br>
 		</section>
 		
+		<!-- <div id="ampaginationsm"></div> -->
 	</div>
 	
 	

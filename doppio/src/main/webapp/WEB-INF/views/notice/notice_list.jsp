@@ -10,12 +10,13 @@
 <link rel="stylesheet" href="http://localhost:9000/doppio/resources/css/am-pagination.css">
 <script src="http://localhost:9000/doppio/resources/js/jquery-3.6.0.min.js"></script>
 <script src="http://localhost:9000/doppio/resources/js/doppio.js"></script>
+<script src="http://localhost:9000/doppio/resources/js/notice.js"></script>
 <script src="http://localhost:9000/doppio/resources/js/am-pagination.js"></script>
 
 <script>
 	$(document).ready(function(){
 		
-		var pager = jQuery('#ampaginationsm').pagination({
+		/* var pager = jQuery('#ampaginationsm').pagination({
 		
 		    maxSize: 7,	    		// max page size
 		    totals: '${dbCount}',	// total pages	
@@ -34,27 +35,9 @@
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
 	           $(location).attr('href', "http://localhost:9000/doppio/notice/notice_list.th?rpage="+e.page);         
-	    });
+	    }); */
 		
  	});
-</script>
-
-<script>
-	$(document).ready(function() {
-
-	
-		var page1 = $('.boardhover').hover(function() {
-
-			$(this).css("background-color","#f7f7f7");
-
-		}, function() {
-
-		$(this).css("background-color","#ffffff");
-
-	});
-
-});
-
 </script>
 
 </head>
@@ -69,12 +52,12 @@
 			</div>
 			<h3 style="text-align: center;">각종 이벤트와 새로운 소식을 전해드려요. 놓치지 말고 확인해 보세요!</h3>
 			<div id="writebtn">
-			<c:if test="${ sessionScope.sid == 'test'}">
+			<%-- <c:if test="${ sessionScope.sid == 'test'}">
 		    <button type="button" class="write_button" onclick="location.href='http://localhost:9000/doppio/admin/admin_notice/notice_write.th'">공지글 작성</button><br><br>
-			</c:if>
+			</c:if> --%>
 			</div>
 			<table id="board_table">
-				<tr id="board_head">
+				<%-- <tr id="board_head">
 					<th>번호</th>
 					<th width="60%">제목</th>
 					<th>작성자</th>	
@@ -92,11 +75,29 @@
 				</c:forEach>
 				<tr>
 					<td colspan="5"><div id="ampaginationsm"></td>	
-				</tr>
+				</tr> --%>
 			</table>
-			<br><br><br><br><br><br>
+			<div style="text-align: center;">
+			<ul class="paging" >
+				
+			</ul>
+			</div> 
+			
+			<div style="text-align: center;">
+			  <select name="searchType">
+			      <option value="title">제목</option>
+			      <option value="content">내용</option>
+			      <option value="id">작성자</option>
+			  </select>
+			  
+			  <input type="text" name="keyword"/>
+			  
+			  <button id="searchBtn" >검색</button>
+			</div>
+			<br><br>
 		</section>
 		
+		<!-- <div id="ampaginationsm"></div> -->
 	</div>
 	
 	

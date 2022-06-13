@@ -118,7 +118,21 @@ public class AdminController {
 	
 	
 	//------------------------notice--------------------------------//
-	
+	//공지 리스트 검색
+	@ResponseBody
+	@RequestMapping(value="/admin/admin_notice/notice_list.th", method=RequestMethod.POST)
+	public Map<String, Object> notice_search(@RequestBody String rpage) throws JsonParseException, JsonMappingException, IOException {
+		Map<String, Object> map = new HashMap<String, Object>();
+		ObjectMapper mapper = new ObjectMapper();		
+		Map<String, Object> param = mapper.readValue(rpage, Map.class);
+		List<Object> olist = noticeService.getListResult(param);
+		int totalCnt = noticeService.getListCount();
+		int resultCnt = olist.size();
+		map.put("searchList", olist);
+		map.put("totalListCnt", totalCnt);
+		map.put("resultCnt", resultCnt);
+		return map;
+	}
 	//공지 리스트
 	@RequestMapping(value="/admin/admin_notice/notice_list.th", method=RequestMethod.GET)
 	public ModelAndView notice_list(String rpage) {

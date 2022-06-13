@@ -1,6 +1,8 @@
 package com.web.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,8 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.web.dao.DpCommentDAO;
 import com.web.dao.DpQnaDAO;
@@ -89,8 +94,21 @@ public class QnaController {
 		return mv;
 	}
 	
-	
-	
+	//qna 리스트 검색
+	@ResponseBody
+	@RequestMapping(value="/qna/qna_list.th", method=RequestMethod.POST)
+	public Map<String, Object> qna_search(@RequestBody String rpage) throws JsonParseException, JsonMappingException, IOException {
+		Map<String, Object> map = new HashMap<String, Object>();
+		ObjectMapper mapper = new ObjectMapper();		
+		Map<String, Object> param = mapper.readValue(rpage, Map.class);
+		List<Object> olist = qnaService.getListResult(param);
+		int totalCnt = qnaService.getListCount();
+		int resultCnt = olist.size();
+		map.put("searchList", olist);
+		map.put("totalListCnt", totalCnt);
+		map.put("resultCnt", resultCnt);
+		return map;
+	}
 	//qna 수정폼
 	@RequestMapping(value="/qna/qna_update.th", method=RequestMethod.GET)
 	public ModelAndView qna_update(String qnum, String rno) {

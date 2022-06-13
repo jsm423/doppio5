@@ -25,7 +25,7 @@ $(document).ready(function(){
 function searchFunc(page){
 
 		$.ajax({
-			url : "/doppio/board/board_list.th",
+			url : "/doppio/qna/qna_list.th",
 			type: "POST",
 			data : JSON.stringify({
 				"searchType" : $('select[name=searchType]').val(),
@@ -50,12 +50,12 @@ function searchFunc(page){
 					html+='<tr class="boardhover">';
 					html+='<td>'+(i+1)+'</td>';
 					html+='<td class="write_title">';
-					html+='<a href="http://localhost:9000/doppio/board/board_content.th?bnum=';
-					html+=this.bnum+'&rno='+this.rno+'"class="boardtitle">'+this.btitle+'</a>';
+					html+='<a href="http://localhost:9000/doppio/qna/qna_content.th?qnum=';
+					html+=this.qnum+'&rno='+this.rno+'"class="boardtitle">'+this.qtitle+'</a>';
 					html+='</td>';
 					html+='<td>'+this.id+'</td>';
-					html+='<td>'+this.bdate+'</td>';
-					html+='<td>'+this.bhits+'</td>';
+					html+='<td>'+this.qdate+'</td>';
+					html+='<td>'+this.qhits+'</td>';
 					html+='</tr>';	
 				});
 				

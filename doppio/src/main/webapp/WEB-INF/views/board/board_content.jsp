@@ -23,7 +23,7 @@
 			</div>
 			<table id="headtable">
 				<tr>
-					<td><a href="http://localhost:9000/doppio/board/board_list.th" id="tolist">> 목록으로</a></td>
+					<td class="tolistTd"><a href="http://localhost:9000/doppio/board/board_list.th" id="tolist">> 목록으로</a></td>
 				</tr>
 				<tr id="hits">
 					<td colspan="4">조회수 : ${vo.bhits }</td>

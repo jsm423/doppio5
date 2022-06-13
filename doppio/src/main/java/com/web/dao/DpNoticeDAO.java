@@ -41,6 +41,10 @@ public class DpNoticeDAO implements DpObjectDAO{
 		
 		return sqlSession.selectList(namespace+".list", param);
 	}
+	public List<Object> selectList(Map<String,Object> param) {
+		// TODO Auto-generated method stub
+		return  sqlSession.selectList(namespace+".list", param);
+	}
 
 	@Override //조회수 업데이트
 	public void updateHits(String nnum) {

@@ -239,8 +239,10 @@
 	#tolist{
 		text-decoration-line: none;
 		color:black;
+
 	}
 	#tolist:hover{text-decoration: underline;}
+	.tolistTd{width: 100px;}
 	#hits{
 		text-align: right;
 	}
@@ -490,4 +492,34 @@
 	    cursor: pointer;
 	}
 	.letter{letter-spacing: 0px;}
+	
+	.write_title{
+		text-align: left; padding-left: 40px;
+	}
+	.write_title a{
+		text-decoration: none;
+		color: black;
+	}
+	.write_title a:hover{
+		text-decoration: underline;
+	}
+	ul.paging{
+		text-align: center;
+		
+	}
+	
+	ul.paging li{
+		display: inline-block; 
+		margin: 0 10px;
+		
+	}
+	ul.paging li button {
+		text-decoration: none; color: black; border: none;
+		background-color: transparent;
+		cursor: pointer;
+		margin-top: 20px; margin-bottom: 20px;
+	}
+	
+	.on {color:red;}
+	
 	

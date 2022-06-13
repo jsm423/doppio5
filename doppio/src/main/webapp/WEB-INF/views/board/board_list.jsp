@@ -16,7 +16,7 @@
 <script>
 	$(document).ready(function(){
 		
-		var pager = jQuery('#ampaginationsm').pagination({
+		/* var pager = jQuery('#ampaginationsm').pagination({
 		
 		    maxSize: 7,	    		// max page size
 		    totals: '${dbCount}',	// total pages	
@@ -35,27 +35,8 @@
 		jQuery('#ampaginationsm').on('am.pagination.change',function(e){
 			   jQuery('.showlabelsm').text('The selected page no: '+e.page);
 	           $(location).attr('href', "http://localhost:9000/doppio/board/board_list.th?rpage="+e.page);         
-	    });
-		
- 	});
-</script>
-
-<script>
-	$(document).ready(function() {
-
-	
-		var page1 = $('.boardhover').hover(function() {
-
-			$(this).css("background-color","#f7f7f7");
-
-		}, function() {
-
-		$(this).css("background-color","#ffffff");
-
-	});
-
-});
-
+	    }); */
+	 });
 </script>
 
 </head>
@@ -92,11 +73,15 @@
 					</tr>
 				</c:forEach> --%>
 				<!-- <tr>
-					<td colspan="5"><div id="ampaginationsm"></div></td>	
+					<td colspan="5"></td>	
 				</tr> -->
 				
 			</table>
-			
+			<div style="text-align: center;">
+			<ul class="paging" >
+				
+			</ul>
+			</div> 
 			
 			<div style="text-align: center;">
 			  <select name="searchType">
@@ -107,11 +92,12 @@
 			  
 			  <input type="text" name="keyword"/>
 			  
-			  <button id="searchBtn">검색</button>
+			  <button id="searchBtn" >검색</button>
 			</div>
 			<br><br>
 		</section>
 		
+		<!-- <div id="ampaginationsm"></div> -->
 	</div>
 	
 	
