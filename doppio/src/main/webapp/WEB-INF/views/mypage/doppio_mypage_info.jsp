@@ -98,7 +98,7 @@
 		<a href="http://localhost:9000/doppio/mypage/doppio_mypage_order_history.th?mnum=${sessionScope.mnum}">주문내역</a>
 	</div>
 
-<form name="" action="/doppio/mypage/doppio_mypage_info.th?mnum=${vo.mnum }" method="post">
+<form name="info_submit" action="/doppio/mypage/doppio_mypage_info.th?mnum=${vo.mnum }" method="post">
 	<div class="join_frame">
 		<table class="join_table">
 			<tr class="join_tr">
@@ -161,7 +161,13 @@
 			</c:otherwise>
 		</c:choose> 
 <!-- 			<button type="submit">회원탈퇴</button> -->
-		<button type="submit" class="w-btn-outline w-btn-skin-outline">저장하기</button>
+		<button type="submit" class="w-btn-outline w-btn-skin-outline" id="infoSub">저장하기</button>
+		<script>
+			$("#infoSub").click(function(){
+				console.log("aaa");
+				info_submit.submit();
+			});
+		</script>
 	</div>
 	<br><br><br><br><br>
     
