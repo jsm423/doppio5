@@ -36,24 +36,23 @@
 							<img src="http://localhost:9000/doppio/resources/upload/${vo.psfile}"
 							     width="500px" height="500px">
 					</c:if>
-					</td>
 				</div>
 				
 				<!-- 설명창 -->
 				<div class="buy_title">
 					<h2>${vo.ptitle}</h2>
-				<p style="font-size: 18px; line-height: 65px;">￦ ${vo.pprice} 원</p><br>
+				<p style="font-size: 18px; line-height: 65px;">￦ ${vo.pprice} 원</p>
 					
 				<div class="buy_stitle">
-					<br>
-					<p style="font-size: 15px; line-height: 25px; white-space: pre-wrap;">${vo.pcontent }
+
+					<p style="font-size: 15px; line-height: 25px; white-space: pre-wrap; border: 1px solid red;">${vo.pcontent }
 					</p><br>
 				</div>
 				</div>
 				
 				<!-- 옵션 박스 -->
 				<div class="option_div">
-					<section class="option_sc">
+					<div class="option_sc">
 					
 						<label class="count_label"> 수량 </label> <br><br>
 						<div class="count_option">
@@ -73,7 +72,7 @@
 								<input type="hidden" name="popprice" id="popprice" value="${vo.popprice }">
 							</select>
 						</div>
-					</section>
+					</div>
 				</div>
 			
 				<c:if test="${sessionScope.sid != null }">
@@ -81,13 +80,12 @@
 				<input type="hidden" name="pnum" id="pnum" value="${vo.pnum}">
 				<input type="hidden" name="mnum" id="mnum" value="${sessionScope.mnum}">
 				<button type="button" class="w-btn-outline w-btn-outline-package" id="cart_btn_de" data-pnum="${vo.pnum }">장바구니 담기</button>
-				</form>
 				</div>
-			
-			
-			</c:if>
-			
-			</div>
+				</c:if>
+				</div>
+		</form>
+		
+		</div>
 			<br><br><br>
 		<!-- footer -->
 		<jsp:include page="../doppio_footer.jsp"></jsp:include>
