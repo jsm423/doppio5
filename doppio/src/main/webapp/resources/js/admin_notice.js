@@ -50,7 +50,7 @@ function searchFunc(page){
 					html+='<tr class="boardhover">';
 					html+='<td>'+(i+1)+'</td>';
 					html+='<td class="write_title">';
-					html+='<a href="http://localhost:9000/doppio/notice/notice_content.th?nnum=';
+					html+='<a href="http://localhost:9000/doppio/admin/admin_notice/notice_content.th?nnum=';
 					html+=this.nnum+'&rno='+this.rno+'"class="boardtitle">'+this.ntitle+'</a>';
 					html+='</td>';
 					html+='<td>'+this.id+'</td>';
