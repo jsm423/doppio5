@@ -58,7 +58,7 @@
 							     width="100%" height="100%">
 					</c:if>
 					
-					${vo.ncontent }
+					<p style="white-space: pre-wrap;">${vo.ncontent }</p>
 				</td>
 				</tr>
 			</table>

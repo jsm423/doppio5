@@ -52,13 +52,13 @@
 			<table id="contentmain">
 				<tr>
 				<td colspan="5"><br>
-				<td style="white-space: pre-wrap;">
+				<td>
 					<c:if test="${vo.bsfile != null}">
 							<img src="http://localhost:9000/doppio/resources/upload/${vo.bsfile}"
 							     width="100%" height="100%">
 					</c:if>
 					
-					${vo.bcontent }
+					<p style="white-space: pre-wrap;">${vo.bcontent }</p>
 				</td>
 				</tr>
 			</table>
