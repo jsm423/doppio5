@@ -31,7 +31,7 @@
 				<tr class="containerhead">
 					<td>${rno }</td>
 					<td width="60%"><span>${vo.btitle }</span></td>
-					<td > 작성자 : ${vo.id }</td>
+					<td > 작성자 ${vo.id }</td>
 					<td class="t_right"> 작성일 : ${vo.bdate }</td>
 				</tr>
 			</table>

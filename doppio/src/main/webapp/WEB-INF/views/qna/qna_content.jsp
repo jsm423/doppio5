@@ -34,7 +34,7 @@
 				<tr class="containerhead">
 					<td>${rno }</td>
 					<td width="60%"><span>${vo.qtitle }</span></td>
-					<td> 작성자 : ${vo.id }</td>
+					<td> 작성자 ${vo.id }</td>
 					<td class="t_right"> 작성일 : ${vo.qdate }</td>
 				</tr>
 			</table>
