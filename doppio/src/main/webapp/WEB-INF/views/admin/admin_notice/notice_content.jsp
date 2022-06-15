@@ -19,7 +19,7 @@
 	<div id="containdiv">
 		<section>
 			<div class="title">
-				<p>NOTICE</p><br><br>
+				<p>ADMIN NOTICE</p><br><br>
 			</div>
 			<table id="headtable">
 				<tr>

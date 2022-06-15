@@ -39,7 +39,7 @@
 	<div class="writecontent">
 		<section class="board_write">
 			<div class="title">
-				<p>게시판</p><br>
+				<p>ADMIN NOTICE</p><br>
 			</div>
 			<form name="notice_write" action="/doppio/admin/admin_notice/notice_update.th?nnum=${vo.nnum}" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="nnum" value="${vo.nnum }">

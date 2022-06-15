@@ -17,7 +17,7 @@
 	<div class="writecontent">
 		<section class="board_write">
 			<div class="title">
-				<p>게시판</p><br>
+				<p>ADMIN NOTICE</p><br>
 			</div>
 			<form name="notice_write" action="/doppio/admin/admin_notice/notice_write.th" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="id" id="id" value="${sessionScope.sid }">
