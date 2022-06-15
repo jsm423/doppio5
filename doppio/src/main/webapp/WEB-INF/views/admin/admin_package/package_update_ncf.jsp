@@ -39,7 +39,7 @@
 	<div class="writecontent">
 		<section class="board_write">
 			<div class="title">
-				<p>관리자 package</p><br>
+				<p>ADMIN PACKAGE</p><br>
 			</div>
 			<form name="package_write" action="/doppio/admin/admin_package/package_update_ncf.th?pnum=${vo.pnum }" method="post" enctype="multipart/form-data">
 				<table class="content_write">

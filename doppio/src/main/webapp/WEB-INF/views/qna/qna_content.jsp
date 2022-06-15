@@ -56,7 +56,7 @@
 			<br>
 			<table id="contentmain">
 				<tr>
-					<td>${vo.qcontent }</td>
+					<td style="white-space: pre-wrap;">${vo.qcontent }</td>
 				</tr>
 			</table>
 			<br><br><br><br><br><br>

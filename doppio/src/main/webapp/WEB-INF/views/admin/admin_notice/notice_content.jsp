@@ -52,7 +52,7 @@
 			<table id="contentmain">
 				<tr>
 				<td colspan="5"><br>
-				<td>
+				<td style="white-space: pre-wrap;">
 					<c:if test="${vo.nsfile != null}">
 							<img src="http://localhost:9000/doppio/resources/upload/${vo.nsfile}"
 							     width="100%" height="100%">

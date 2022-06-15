@@ -39,7 +39,7 @@
 	<div class="writecontent">
 		<section class="board_write">
 			<div class="title">
-				<p>게시판</p><br>
+				<p>REVIEW</p><br>
 			</div>
 			<form name="board_write" action="/doppio/board/board_update.th?bnum=${vo.bnum}" method="post" enctype="multipart/form-data">
 				<input type="hidden" name="bnum" value="${vo.bnum }">
