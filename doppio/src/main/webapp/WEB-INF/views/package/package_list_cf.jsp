@@ -98,7 +98,7 @@
 		
 		<table class="pagenumber">
 			<tr>
-				<td colspan="4"><div id="ampaginationsm"></div></td>
+				<td colspan="4"><div id="ampaginationsm"></td>
 			</tr>
 		</table>
 		

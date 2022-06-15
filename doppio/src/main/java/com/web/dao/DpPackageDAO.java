@@ -70,9 +70,9 @@ public class DpPackageDAO implements DpObjectDAO {
 	}
 
 	@Override
-	public int execTotalCount(String rcate) {
+	public int execTotalCount(String pcate) {
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.selectOne(namespace+".count",pcate);
 	}
 
 	@Override

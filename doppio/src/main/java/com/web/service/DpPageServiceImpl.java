@@ -130,17 +130,17 @@ public class DpPageServiceImpl{
 		
 		if(serviceName.equals("package_cf")) {
 			packageService = (DpPackageServiceImpl)service;
-			dbCount = packageService.getListCount();
+			dbCount = packageService.getTotalPage("cf");
 		}
 		
 		if(serviceName.equals("package_ncf")) {
 			packageService = (DpPackageServiceImpl)service;
-			dbCount = packageService.getListCount();
+			dbCount = packageService.getTotalPage("ncf");
 		} 
 		
 		if(serviceName.equals("package_de")) {
 			packageService = (DpPackageServiceImpl)service;
-			dbCount = packageService.getListCount();
+			dbCount = packageService.getTotalPage("de");
 		}
 		
 		//총 페이지 수 계산

@@ -62,4 +62,8 @@ public class DpPackageServiceImpl implements DpPackageService {
 	public List<Object> getOplist(String popid) {
 		return packageDao.oplist(popid);
 	}
+	
+	public int getTotalPage(String pcate) {
+		return packageDao.execTotalCount(pcate);
+	}
 }
