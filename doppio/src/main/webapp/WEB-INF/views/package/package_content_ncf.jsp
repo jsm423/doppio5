@@ -46,7 +46,7 @@
 					
 				<div class="buy_stitle">
 
-					<p style="font-size: 15px; line-height: 25px; white-space: pre-wrap; border: 1px solid red;">${vo.pcontent }
+					<p style="font-size: 15px; line-height: 25px; white-space: pre-wrap; ">${vo.pcontent }
 					</p><br>
 				</div>
 				</div>
