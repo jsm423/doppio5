@@ -80,7 +80,7 @@
 				<div class="option_btn">
 				<input type="hidden" name="pnum" id="pnum" value="${vo.pnum}">
 				<input type="hidden" name="mnum" id="mnum" value="${sessionScope.mnum}">
-				<button type="button" class="w-btn-outline w-btn-outline-package" id="cart_btn_de" data-pnum="${vo.pnum }">장바구니 담기</button>
+				<button type="button" class="w-btn-outline w-btn-outline-package" id="cart_btn_ncf" data-pnum="${vo.pnum }">장바구니 담기</button>
 				</div>
 				</c:if>
 				</div>
