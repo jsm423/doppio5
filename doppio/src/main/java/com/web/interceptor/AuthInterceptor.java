@@ -21,7 +21,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 		HttpSession session = request.getSession();
 		String sid = (String)session.getAttribute("sid");
 		//2. 세션정보 체크 및 페이지 이동
-		if(sid != "test") {
+		if(sid == null) {
 			//response.sendRedirect("http://localhost:9000/mycgv/login.do");
 			response.sendRedirect("http://localhost:9000/doppio/login/doppio_login.th?auth_result=fail");
 			return false;
